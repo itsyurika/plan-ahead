@@ -6,10 +6,11 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 // db connection
-const db = require('./configs/db.config');
+
 
 //routes import
 const assignmentsRoutes = require('./routes/assignmentsRoutes');
+const studentsRoutes = require('./routes/studentsRoutes');
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 
 //routes
 app.use('/assignments', assignmentsRoutes());
-
+app.use('/students', studentsRoutes());
 
 
 app.get('/', (req, res) => {
