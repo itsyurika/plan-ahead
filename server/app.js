@@ -5,8 +5,11 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+// db connection
+const db = require('./configs/db.config');
+
 //routes import
-const assignmentsRoutes = require('../routes/assignmentsRoutes');
+const assignmentsRoutes = require('./routes/assignmentsRoutes');
 
 const app = express();
 
@@ -23,4 +26,4 @@ app.get('/', (req, res) => {
 	res.json({greetings: 'hello world'});
 })
 
-app.listen(8080, () => console.log(`Server is listening on port ${8080} 😎`));
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT} 😎`));
