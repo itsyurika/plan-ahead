@@ -1,17 +1,20 @@
 const router = require('express').Router();
-const { createAssignment, getAllAssignments } = require('../prisma');
+const { createAssignment, getAllAssignments, getStudentAssignments } = require('../prisma');
 
 module.exports = () => {
   router.get('/', (req, res) => {
-    getStudentAssignments()
+    getAllAssignments() // todo replace hardcoded student id
       .then((assignments) => {
         res.json(assignments);
       });
+    // getStudentAssignments(1) // todo replace hardcoded student id
+    //   .then((assignments) => {
+    //     res.json(assignments);
+    //   });
   });
 
   router.post('/', (req, res) => {
-    console.log(req.body)
-    createAssignment(req.body); // todo add arguments
+    createAssignment(req.body);
   });
 
   return router;

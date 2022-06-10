@@ -51,6 +51,7 @@ const resetDB = async () => {
 		console.log('\n');
 		console.log("-- COMPLETED --");
 		pool.end();
+		process.exit(); // tells terminal to exit
 	} catch (e) {
 		console.log("ERROR OCCURED:\n", e);
 		pool.end();

@@ -9,7 +9,7 @@ module.exports = () => {
       });
   });
 
-  router.post('/', (req, res) => { // todo new student
+  router.post('/', (req, res) => {
     createStudent()
   });
 

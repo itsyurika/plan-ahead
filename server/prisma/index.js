@@ -44,7 +44,7 @@ const getAllAssignments = () => {
 
 const getStudentAssignments = (id) => {
   return prisma.studentAssignments.findUnique({
-    where {
+    where: {
       student_id: id
     },
   })
