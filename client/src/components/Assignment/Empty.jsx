@@ -2,9 +2,9 @@ import React from "react";
 
 export default (props) => {
   return (
-    <main className="appointment__add">
+    <main className="assignment__add">
       <img
-        className="appointment__add-button"
+        className="assignment__add-button"
         src="images/add.png"
         alt="Add"
         onClick={props.onAdd}

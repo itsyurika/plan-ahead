@@ -1,9 +1,10 @@
-// = main function =
+import Empty from "./Empty";
+
 const Assignment = (props) => {
 
   return (
     <article className='assignment'>
-      my assignment
+      <Empty />
     </article>
   );
 };
