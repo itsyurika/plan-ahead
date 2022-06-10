@@ -43,10 +43,17 @@ const getAllAssignments = () => {
 };
 
 const getStudentAssignments = (id) => {
-  return prisma.studentAssignments.findUnique({
+  console.log("id:", id)
+  return prisma.students.findMany({
     where: {
-      student_id: id
+      id: id
     },
+    // include: {
+    //   assignments: true
+    // },
+    // include: {
+    //   assignments: true
+    // }
   })
     .catch((e) => {
       throw e;

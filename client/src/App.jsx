@@ -28,6 +28,7 @@ function App() {
     <div className="App">
       {assignmentsList}
       <CreateAssignment />
+      
     </div>
   );
 }
