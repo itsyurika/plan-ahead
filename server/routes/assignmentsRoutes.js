@@ -1,8 +1,17 @@
 const router = require('express').Router();
+const { createAssignment, getAllAssignments } = require('../prisma');
 
 module.exports = () => {
   router.get('/', (req, res) => {
-    res.send("This is an assignment page");
+    getAllAssignments()
+      .then((assignments) => {
+        res.json(assignments);
+      });
   });
+
+  router.post('/', (req, res) => {
+    createAssignment(); // todo add arguments
+  });
+
   return router;
-}
+};
