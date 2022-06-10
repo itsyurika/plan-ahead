@@ -3,7 +3,7 @@ const { createAssignment, getAllAssignments } = require('../prisma');
 
 module.exports = () => {
   router.get('/', (req, res) => {
-    getAllAssignments()
+    getStudentAssignments()
       .then((assignments) => {
         res.json(assignments);
       });
@@ -16,3 +16,5 @@ module.exports = () => {
 
   return router;
 };
+
+

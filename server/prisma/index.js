@@ -42,5 +42,19 @@ const getAllAssignments = () => {
     });
 };
 
+const getStudentAssignments = (id) => {
+  return prisma.studentAssignments.findUnique({
+    where {
+      student_id: id
+    },
+  })
+    .catch((e) => {
+      throw e;
+    })
+    .finally(async () => {
+      prisma.$disconnect();
+    });
+};
 
-module.exports = { getAllStudents, createStudent, createAssignment,  getAllAssignments  };
+
+module.exports = { getAllStudents, createStudent, createAssignment,  getAllAssignments, getStudentAssignments  };

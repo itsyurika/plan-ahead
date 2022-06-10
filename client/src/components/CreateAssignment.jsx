@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import axios from 'axios';
 
 
-
-
-
-
 export default (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -17,7 +13,7 @@ export default (props) => {
     const data = {name, description, url, teacher_id, subject_id};
     console.log("confirmed!")
     axios.post('/assignments', data);
-  
+
   }
 
   return (
