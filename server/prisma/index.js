@@ -51,12 +51,4 @@ const getAllAssignments = () => {
 };
 
 
-
-
-
-
-
-
-
-
 module.exports = { getAllStudents, createStudent, createAssignment,  getAllAssignments  };
