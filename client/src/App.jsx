@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import Assignment from "components/Assignment";
-
-import './styles/App.css';
+import './styles/App.scss';
 import 'normalize.css';
 
 
