@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { getAllStudents } = require('../db/student_queries');
+const { getAllStudents } = require('../prisma');
 
 module.exports = () => {
   router.get('/', (req, res) => {
     getAllStudents()
-    .then(students => {
-      res.json(students)
-    })
+      .then((students) => {
+        res.json(students);
+      });
   });
   return router;
-}
+};

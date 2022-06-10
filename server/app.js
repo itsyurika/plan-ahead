@@ -24,7 +24,7 @@ app.use('/students', studentsRoutes());
 
 
 app.get('/', (req, res) => {
-	res.json({greetings: 'hello world'});
+	res.json({greetings: 'hello world???'});
 })
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT} 😎`));
