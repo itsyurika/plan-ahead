@@ -1,6 +1,4 @@
-import React from "react";
-
-export default (props) => {
+const Empty = (props) => {
   return (
     <main className="assignment__add">
       <img
@@ -12,3 +10,5 @@ export default (props) => {
     </main>
   );
 };
+
+export default Empty;

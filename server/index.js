@@ -1,5 +1,6 @@
 // = imports =
 require('dotenv').config()
+require('express-async-errors');
 const { ENVIRONMENT = 'dev', PORT = 8080 } = process.env;
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');

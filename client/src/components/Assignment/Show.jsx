@@ -1,9 +1,7 @@
-import React from "react";
-
-export default (props) => {
-  console.log('what are my props', props)
+const Show = (props) => {
+  console.log('what are my props', props);
   return (
-    <main className="assignment__show">
+    <article className="assignment__show">
       <p>{props.first_name}</p>
       <p>{props.description}</p>
       <p>{props.url}</p>
@@ -11,8 +9,8 @@ export default (props) => {
       <p>Status: Started!</p>
       <button>Start!</button>
       <button>Complete!</button>
+    </article>
+  );
+};
 
-
-    </main>
-
-  )}
+export default Show;

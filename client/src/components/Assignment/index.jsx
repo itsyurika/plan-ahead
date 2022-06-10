@@ -5,7 +5,7 @@ const Assignment = (props) => {
 
   return (
     <article className='assignment'>
-      <Show {...props} />
+      {(props?.id && <Show {...props} />) || <Empty />}
 
     </article>
   );
