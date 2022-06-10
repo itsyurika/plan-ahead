@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAllStudents } = require('../prisma');
+const { getAllStudents, createStudent } = require('../prisma');
 
 module.exports = () => {
   router.get('/', (req, res) => {
@@ -8,5 +8,12 @@ module.exports = () => {
         res.json(students);
       });
   });
+
+  router.post('/', (req, res) => { // todo new student
+    createStudent()
+  });
+
+
+
   return router;
 };
