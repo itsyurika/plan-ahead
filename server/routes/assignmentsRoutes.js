@@ -10,7 +10,8 @@ module.exports = () => {
   });
 
   router.post('/', (req, res) => {
-    createAssignment(); // todo add arguments
+    console.log(req.body)
+    createAssignment(req.body); // todo add arguments
   });
 
   return router;

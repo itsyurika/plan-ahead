@@ -27,16 +27,8 @@ const getAllStudents = () => {
 
 
 
-const createAssignment = async () => {
-  await prisma.assignments.create({
-    data: {
-      name: 'assignment1',
-      teacher_id:  1,
-      subject_id:  2,
-      description: 'neeew assignment',
-      url: 'www.google.ca',
-    },
-  })
+const createAssignment = async (data) => {
+  await prisma.assignments.create({data})
 };
 
 

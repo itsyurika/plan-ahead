@@ -3,6 +3,7 @@ import axios from "axios";
 import Assignment from "components/Assignment";
 import './styles/App.scss';
 import 'normalize.css';
+import CreateAssignment from "components/CreateAssignment";
 
 
 
@@ -15,7 +16,7 @@ function App() {
       .then((res) => {
         setAssignments(res.data);
       });
-    // axios.post('/assignments');
+    // 
 
   }, []);
 
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       {assignmentsList}
+      <CreateAssignment />
     </div>
   );
 }
