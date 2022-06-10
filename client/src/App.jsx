@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Assignment from "components/Assignment";
 import './styles/App.scss';
 import 'normalize.css';
+
+import Assignment from "components/Assignment";
 import CreateAssignment from "components/CreateAssignment";
 
 
-
 // = main component =
-function App() {
+const App = () => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
@@ -16,11 +16,9 @@ function App() {
       .then((res) => {
         setAssignments(res.data);
       });
-    // 
-
   }, []);
 
-  const assignmentsList = assignments.map((item) => <Assignment key={item.id} {...item} />)
+  const assignmentsList = assignments.map((item) => <Assignment key={item.id} {...item} />);
 
 
 
@@ -28,7 +26,6 @@ function App() {
     <div className="App">
       {assignmentsList}
       <CreateAssignment />
-      
     </div>
   );
 }

@@ -1,19 +1,15 @@
 const router = require('express').Router();
-const { getAllStudents, createStudent } = require('../prisma');
 
-module.exports = () => {
-  router.get('/', (req, res) => {
-    getAllStudents()
-      .then((students) => {
-        res.json(students);
-      });
+module.exports = (prisma) => {
+  router.get('/', async (req, res) => {
+    const students = await prisma.student.findMany();
+    res.json(students);
   });
 
-  router.post('/', (req, res) => {
-    createStudent()
+  router.post('/', async (req, res) => {
+    const student = await prisma.student.create({ data: req.body });
+    res.json(student);
   });
-
-
 
   return router;
 };

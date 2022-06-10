@@ -9,8 +9,8 @@ datasource db {
 
 model Teacher {
   id          Int          @id @default(autoincrement())
-  first_name  String       @db.VarChar(255)
-  last_name   String       @db.VarChar(255)
+  firstName   String       @db.VarChar(255) @map("first_name")
+  lastName    String       @db.VarChar(255) @map("last_name")
   email       String       @db.VarChar(255)
   password    String?      @db.VarChar(255)
   assignments Assignment[] @relation("assignmentsToteachers")
@@ -20,11 +20,11 @@ model Teacher {
 
 model Student {
   id                 Int                 @id @default(autoincrement())
-  first_name         String              @db.VarChar(255)
-  last_name          String              @db.VarChar(255)
+  firstName          String              @db.VarChar(255) @map("first_name")
+  lastName           String              @db.VarChar(255) @map("last_name")
   email              String              @db.VarChar(255)
   password           String?             @db.VarChar(255)
-  StudentAssignments StudentAssignment[]
+  studentAssignments StudentAssignment[]
 
   @@map("students")
 }
@@ -46,7 +46,7 @@ model Assignment {
   url                String              @db.VarChar(255)
   subjects           Subject             @relation("assignmentsTosubjects", fields: [subject_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   teachers           Teacher             @relation("assignmentsToteachers", fields: [teacher_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  StudentAssignments StudentAssignment[]
+  studentAssignments StudentAssignment[]
 
   @@map("assignments")
 }

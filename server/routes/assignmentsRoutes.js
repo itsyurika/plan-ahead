@@ -1,22 +1,15 @@
 const router = require('express').Router();
-const { createAssignment, getAllAssignments, getStudentAssignments } = require('../prisma');
 
-module.exports = () => {
-  router.get('/', (req, res) => {
-    // getAllAssignments()
-    //   .then((assignments) => {
-    //     res.json(assignments);
-    //   });
-    getStudentAssignments(1) // todo replace hardcoded student id
-      .then((assignments) => {
-        res.json(assignments);
-      });
+module.exports = (prisma) => {
+  router.get('/', async (req, res) => {
+    console.log('did it get?', assignments);
+    const assignments = await prisma.assignment.findMany();
+    res.json(assignments);
   });
 
-
-
-  router.post('/', (req, res) => {
-    createAssignment(req.body);
+  router.post('/', async (req, res) => {
+    const assignment = await prisma.assignment.create({ data: req.body });
+    res.json(assignment);
   });
 
   return router;
