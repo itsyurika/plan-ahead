@@ -45,12 +45,10 @@ const getAllAssignments = () => {
 const getStudentAssignments = (id) => {
   console.log("id:", id)
   return prisma.students.findMany({
-    where: {
-      id: id
-    },
-    // include: {
-    //   assignments: true
-    // },
+
+    include: {
+      assignments: true
+    }
     // include: {
     //   assignments: true
     // }
