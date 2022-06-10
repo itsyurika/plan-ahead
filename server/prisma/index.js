@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-
 const createStudent = async () => {
   await prisma.students.create({
     data: {
@@ -43,7 +42,6 @@ const getAllAssignments = () => {
 };
 
 const getStudentAssignments = (id) => {
-  console.log("id:", id);
   return prisma.studentAssignments.findMany({
     where: {
       student_id: id

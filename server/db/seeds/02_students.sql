@@ -1,5 +1,3 @@
--- seeds/01_students.sql
--- students seeds
 INSERT INTO students (first_name, last_name, email, password) VALUES ('pickle', 'rickle', 'rick.sandchez@gmail.com', 'picklerick');
 INSERT INTO students (first_name, last_name, email, password) VALUES ('picklerick2', 'picklerick', 'lisa.simpson@gmail.com', 'ehhhhh');
 INSERT INTO students (first_name, last_name, email, password) VALUES ('picklerick3', 'picklerick', 'link@yahoo.com', 'hyrule');
