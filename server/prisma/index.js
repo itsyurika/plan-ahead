@@ -11,7 +11,7 @@ const createStudent = async () => {
       email: 'alice@prisma.io',
       password: 'heeey',
     },
-  })
+  });
 };
 
 
@@ -28,7 +28,7 @@ const getAllStudents = () => {
 
 
 const createAssignment = async (data) => {
-  await prisma.assignments.create({data})
+  await prisma.assignments.create({ data });
 };
 
 
@@ -43,15 +43,14 @@ const getAllAssignments = () => {
 };
 
 const getStudentAssignments = (id) => {
-  console.log("id:", id)
-  return prisma.students.findMany({
-
+  console.log("id:", id);
+  return prisma.studentAssignments.findMany({
+    where: {
+      student_id: id
+    },
     include: {
-      assignments: true
-    }
-    // include: {
-    //   assignments: true
-    // }
+      assignment: true
+    },
   })
     .catch((e) => {
       throw e;
@@ -62,4 +61,4 @@ const getStudentAssignments = (id) => {
 };
 
 
-module.exports = { getAllStudents, createStudent, createAssignment,  getAllAssignments, getStudentAssignments  };
+module.exports = { getAllStudents, createStudent, createAssignment, getAllAssignments, getStudentAssignments };

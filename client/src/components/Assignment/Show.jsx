@@ -1,6 +1,7 @@
 import React from "react";
 
 export default (props) => {
+  console.log('what are my props', props)
   return (
     <main className="assignment__show">
       <p>{props.first_name}</p>
@@ -11,7 +12,7 @@ export default (props) => {
       <button>Start!</button>
       <button>Complete!</button>
 
-      
+
     </main>
 
   )}
