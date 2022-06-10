@@ -1,10 +1,8 @@
--- schema/02_create_urls.sql
-DROP TABLE IF EXISTS urls CASCADE;
--- CREATE URLS
-CREATE TABLE urls (
+-- schema/01_create_users.sql
+DROP TABLE IF EXISTS users CASCADE;
+-- CREATE USERS
+CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  user_id integer REFERENCES users(id) ON DELETE CASCADE NOT NULL,
-  long_url character varying(255) NOT NULL,
-  short_url character varying(255) NOT NULL,
-  favorite boolean NOT NULL DEFAULT false
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255)
 );
