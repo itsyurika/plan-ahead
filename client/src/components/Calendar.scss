@@ -1,9 +1,9 @@
 $title-height: 3em;
 $days-height: 3em;
 $time-width: 3em;
-$time-height: 3em;
+$time-height: 6em;
 $grid-color: #dadce0;
-$calendar-template: $time-width 10px repeat(7, 1fr);
+$calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
 
 * {
@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 90vw;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
   position: absolute;
@@ -48,6 +48,9 @@ body {
   border-left: 1px solid $grid-color;
 }
 
+.wknd {
+}
+
 .content {
   display: grid;
   grid-template-columns: $calendar-template;
@@ -63,7 +66,27 @@ body {
   bottom: -1ex;
   color: #70757a;
   padding-right: 2px;
+  &.label {
+    transform: rotate(-90deg);
+    grid-row: 1 / span 1;
+    grid-column: 0 / span 4;
+    min-width: 10em;
+  }
 }
+
+.col {
+  &.label {
+    margin: auto ;
+    vertical-align: center;
+    writing-mode: vertical-lr;
+    transform: scale(-1, -1);
+    border-style: none;
+
+    // grid-row: 1 / span 4;
+    // grid-column: 1 / span 4;
+  }
+}
+
 
 .col {
   border-right: 1px solid $grid-color;
@@ -74,7 +97,7 @@ body {
 .filler-col {
   grid-row: 1 / -1;
   grid-column: 2;
-  border-right: 1px solid $grid-color;
+  border-right: 1px solid $grid-color;  
 }
 
 .row {
