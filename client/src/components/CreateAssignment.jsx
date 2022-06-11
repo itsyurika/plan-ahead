@@ -18,11 +18,11 @@ const CreateAssignment = (props) => {
     <section className='assignment__form'>
       <h3>Create Assignment</h3>
       <form onSubmit={(e) => e.preventDefault()} >
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input value={description} onChange={(e) => setDescription(e.target.value)} />
-        <input value={url} onChange={(e) => setUrl(e.target.value)} />
-        <input value={teacherId} onChange={(e) => setTeacherId(+e.target.value)} />
-        <input value={subjectId} onChange={(e) => setSubjectId(+e.target.value)} />
+        <input value={title} placeholder="title" onChange={(e) => setTitle(e.target.value)} />
+        <input value={description} placeholder="description" onChange={(e) => setDescription(e.target.value)} />
+        <input value={url} placeholder="google link" onChange={(e) => setUrl(e.target.value)} />
+        <input value={teacherId} placeholder="teacherId" onChange={(e) => setTeacherId(+e.target.value)} />
+        <input value={subjectId} placeholder="subjectId" onChange={(e) => setSubjectId(+e.target.value)} />
       </form>
       <button onClick={confirm} type='Submit'>Create</button>
     </section>
