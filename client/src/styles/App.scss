@@ -17,3 +17,30 @@ section.assignment__form {
     margin: 1rem 0;
   }
 }
+
+article.assignment__view {
+  background-color: $default;
+  max-width: 90%;
+  padding: .5rem;
+  margin: 1rem 0;
+  border: 1px solid rgb(43, 192, 226);
+  border-radius: 0.4rem;
+
+  p {
+    margin: .5rem 0;
+  }
+
+  button {
+    margin-right: .5rem;
+  }
+
+  &header {}
+
+  &.math {
+    background-color: $math;
+  }
+
+  &.history {
+    background-color: $history;
+  }
+}

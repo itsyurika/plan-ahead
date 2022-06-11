@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
 import { assignmentsSelector } from './helpers/selectors';
 import axios from "axios";
-import classnames from 'classnames';
 import './styles/App.scss';
 import 'normalize.css';
 
 
-import Assignment from "components/Assignment";
 import Calendar from "components/Calendar";
+import Assignment from "components/Assignment";
+import AssignmentView from "components/AssignmentView";
 
 const App = () => {
   // = state =
-  const [teacher, setTeacher] = useState(0);
   const [student, setStudent] = useState(1);
   const [assignments, setAssignments] = useState([]);
-  const [assignment, setAssignment] = useState(0);
+  const [focused, setFocused] = useState(null);
 
   useEffect(() => {
     axios.get('/assignments')
@@ -23,14 +22,20 @@ const App = () => {
       });
   }, []);
 
+
   // = helpers =
   const studentAssignments = assignmentsSelector(assignments, student);
-  const assignmentsList = studentAssignments.map((item) => <Assignment key={item.id} {...item} onClick={(id) => setAssignment(id)} />);
+  const assignmentsList = focused
+    ? studentAssignments.find((item) => item.id === focused)
+    : studentAssignments.map((item) => <Assignment key={item.id} {...item} onClick={() => setFocused(item.id)} />);
+
 
   // = render main page =
   return (
     <main className="App">
-      {(assignment && <AssignmentView />) || <Calendar>{assignmentsList}</Calendar>}
+      {focused
+        ? <AssignmentView {...assignmentsList} onClick={() => setFocused(null)} />
+        : <Calendar>{assignmentsList}</Calendar>}
     </main>
   );
 };

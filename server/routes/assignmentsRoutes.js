@@ -2,8 +2,6 @@ const router = require('express').Router();
 
 module.exports = (prisma) => {
   router.get('/', async (req, res) => {
-    const studentId = req.body;
-    // const studentAssignment = { where: { studentId } };
     const assignments = await prisma.assignment.findMany({
       include: { studentAssignments: true, subject: true },
     });
