@@ -6,7 +6,7 @@ const Show = (props) => {
     >
       <header><h3>{props.title}</h3></header>
       <p>{props.subject.name}</p>
-      <p>Status: {props.status}</p>
+      <p>{props.status}</p>
     </article>
   );
 };

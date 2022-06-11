@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { buildTeacherCards, buildStudentCards, getTablePosition } from './helpers/selectors';
+import { buildStudentCards, getTablePositions } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
 
 
 import Calendar from "components/Calendar";
-import AssignmentView from "components/AssignmentView";
+import AssignmentShow from "components/AssignmentShow";
 
 const App = () => {
   // = state =
@@ -37,21 +37,21 @@ const App = () => {
   };
 
   // const teacherAssignments = buildTeacherCards(assignments, studentId);
-  const studentAssignments = buildStudentCards(assignments, student);
-  const assignmentCards = getTablePosition(studentAssignments);
-  const focusedAssignment = assignmentCards.find((item) => item.id === focused);
+  const assignmentList = teacher ? assignments : buildStudentCards(assignments, student);
+  const updatedList = getTablePositions(assignmentList);
+  const focusedAssignment = updatedList.find((item) => item.id === focused);
 
   // = render main page =
   return (
     <main className="App">
       {focused
-        ? <AssignmentView
+        ? <AssignmentShow
           {...focusedAssignment}
           onStart={startAssignment}
           onComplete={completeAssignment}
           onBack={() => setFocused(null)}
         />
-        : <Calendar assignments={assignmentCards} onFocus={(id) => setFocused(id)} />}
+        : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
     </main>
   );
 };

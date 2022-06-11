@@ -1,7 +1,7 @@
 import './Calendar.scss';
 
 import Assignment from "./Slot";
-import CreateAssignment from "components/CreateAssignment";
+import AssignmentForm from "components/AssignmentForm";
 
 const Calendar = (props) => {
   const buildCards = (assignments) => {
@@ -55,7 +55,7 @@ const Calendar = (props) => {
 
 
 
-      <CreateAssignment />
+      <AssignmentForm />
     </div>);
 };
 
