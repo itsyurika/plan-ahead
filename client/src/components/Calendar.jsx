@@ -1,11 +1,9 @@
 import './Calendar.scss';
 
-import Assignment from "./TimeSlot";
+import Assignment from "./Slot";
 import CreateAssignment from "components/CreateAssignment";
 
 const Calendar = (props) => {
-  console.log('what assignments', props.assignments);
-
   const buildCards = (assignments) => {
     return assignments.map((assignment) => {
       return (
@@ -34,24 +32,24 @@ const Calendar = (props) => {
         <div className="day wknd">Sun 10</div>
       </div>
       <div className="content">
-        <div className="time" style={{ "grid-row": "1" }}></div>
-        <div className="time label" style={{ "grid-row": "2" }}></div>
-        <div className="time" style={{ "grid-row": "3" }}></div>
-        <div className="time" style={{ "grid-row": "4" }}></div>
+        <div className="time" style={{ "gridRow": "1" }}></div>
+        <div className="time label" style={{ "gridRow": "2" }}></div>
+        <div className="time" style={{ "gridRow": "3" }}></div>
+        <div className="time" style={{ "gridRow": "4" }}></div>
         <div className="filler-col"></div>
 
-        <div className="col label" style={{ "grid-column": "1" }}>Week 3 June 20-26</div>
-        <div className="col" style={{ "grid-column": "3" }}></div>
-        <div className="col" style={{ "grid-column": "4" }}></div>
-        <div className="col" style={{ "grid-column": "5" }}></div>
-        <div className="col" style={{ "grid-column": "6" }}></div>
-        <div className="col" style={{ "grid-column": "7" }}></div>
-        <div className="col weekend" style={{ "grid-column": "8" }}></div>
-        <div className="col weekend" style={{ "grid-column": "9" }}></div>
-        <div className="row" style={{ "grid-row": "1" }}></div>
-        <div className="row" style={{ "grid-row": "2" }}></div>
-        <div className="row" style={{ "grid-row": "3" }}></div>
-        <div className="row" style={{ "grid-row": "4" }}></div>
+        <div className="col label" style={{ "gridColumn": "1" }}>Week 3 June 20-26</div>
+        <div className="col" style={{ "gridColumn": "3" }}></div>
+        <div className="col" style={{ "gridColumn": "4" }}></div>
+        <div className="col" style={{ "gridColumn": "5" }}></div>
+        <div className="col" style={{ "gridColumn": "6" }}></div>
+        <div className="col" style={{ "gridColumn": "7" }}></div>
+        <div className="col weekend" style={{ "gridColumn": "8" }}></div>
+        <div className="col weekend" style={{ "gridColumn": "9" }}></div>
+        <div className="row" style={{ "gridRow": "1" }}></div>
+        <div className="row" style={{ "gridRow": "2" }}></div>
+        <div className="row" style={{ "gridRow": "3" }}></div>
+        <div className="row" style={{ "gridRow": "4" }}></div>
         {buildCards(props.assignments)}
       </div>
 

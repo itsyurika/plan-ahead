@@ -3,8 +3,7 @@ export const buildCards = (assignments, id) => {
     ...item,
     column: new Date(item.defaultDueDate).getDay() + 2, // monday column starts at 3
     assigned: item.studentAssignments.find(({ studentId }) => studentId === id),
-  })
-  );
+  }));
 
   const count = {};
   newCards.forEach((item) => {
@@ -13,5 +12,5 @@ export const buildCards = (assignments, id) => {
     count[item.column]++;
   });
 
-  return newCards;
+  return newCards.filter((item) => item.assigned);
 };
