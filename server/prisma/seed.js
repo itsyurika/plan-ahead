@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const fixtures = require('./fixtures');
+const fixtures = require('./seedData');
 
 const prisma = new PrismaClient();
 

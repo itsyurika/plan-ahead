@@ -36,9 +36,9 @@ model Assignment {
   title              String              @db.VarChar(255)
   description        String              @db.VarChar(255)
   url                String              @db.VarChar(255)
-  // defaultDueDate     DateTime?            @db.Date
+  defaultDueDate     DateTime?            @db.Date
   teacher            Teacher             @relation("assignmentsToteachers", fields: [teacherId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  teacherId          Int 
+  teacherId          Int
   subject            Subject             @relation("assignmentsTosubjects", fields: [subjectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   subjectId          Int
   studentAssignments StudentAssignment[]

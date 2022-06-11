@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { assignmentsSelector } from './helpers/selectors';
+import { buildCards } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
@@ -25,7 +25,7 @@ const App = () => {
 
 
   // = helpers =
-  const studentAssignments = assignmentsSelector(assignments, student);
+  const studentAssignments = buildCards(assignments, student);
   const assignmentsList = focused
     ? studentAssignments.find((item) => item.id === focused)
     : studentAssignments.map((item) => <TimeSlot key={item.id} {...item} onClick={() => setFocused(item.id)} />);
@@ -36,7 +36,7 @@ const App = () => {
     <main className="App">
       {focused
         ? <AssignmentView {...assignmentsList} onClick={() => setFocused(null)} />
-        : <Calendar timeSlot={studentAssignments[0]} onClick={() => setFocused(student)}>{assignmentsList}</Calendar>}
+        : <Calendar assignments={studentAssignments} onClick={() => setFocused(student)} />}
     </main>
   );
 };
