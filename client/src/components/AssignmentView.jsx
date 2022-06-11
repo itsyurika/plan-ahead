@@ -1,5 +1,4 @@
 const AssignmentView = (props) => {
-  console.log('current assignment', props);
   return (
     <article
       className={`assignment__view ${props.subject.name.toLowerCase()}`}
