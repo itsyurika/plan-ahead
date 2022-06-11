@@ -1,7 +1,8 @@
 import CreateAssignment from "components/CreateAssignment";
 import './Calendar.scss';
+import Assignment from "./TimeSlot";
 
-const Calendar = () => {
+const Calendar = (props) => {
   return (
 <div className="container">
   <div className="title">February 2019 Week 6</div>
@@ -36,6 +37,9 @@ const Calendar = () => {
     <div className="row" style={{"grid-row": "3"}}></div>
     <div className="row" style={{"grid-row": "4"}}></div>
     <div className="event event1 calendar1">Event 1</div>
+    <div className="event event3 calendar2">
+    <Assignment {...props.timeSlot} onClick={props.onClick}/>
+    </div>
     <div className="event event2 calendar2">Event 2</div>
   </div>
 

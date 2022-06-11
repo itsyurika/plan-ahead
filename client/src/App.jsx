@@ -36,7 +36,7 @@ const App = () => {
     <main className="App">
       {focused
         ? <AssignmentView {...assignmentsList} onClick={() => setFocused(null)} />
-        : <Calendar>{assignmentsList}</Calendar>}
+        : <Calendar timeSlot={studentAssignments[0]} onClick={() => setFocused(student)}>{assignmentsList}</Calendar>}
     </main>
   );
 };
