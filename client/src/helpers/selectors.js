@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const buildTeacherCards = (assignments, id) => {
   const newCards = assignments.map((item) => ({
     ...item,

@@ -9,8 +9,8 @@ const AssignmentView = (props) => {
       <p>{props.description}</p>
       <p>{props.url}</p>
       <p>Status: {props.status}</p>
-      <button onClick={props.onStart}>Start</button>
-      <button onClick={props.onComplete}>Complete</button>
+      <button disabled={props.status === 'Started' || 'Complete' ? true : false}onClick={props.onStart}>Start</button>
+      <button disabled={props.status === 'Complete' ? true : false} onClick={props.onComplete}>Complete</button>
       <button onClick={props.onBack}>Back</button>
     </article>
   );

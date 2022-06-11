@@ -29,10 +29,10 @@ const App = () => {
 
 
   // = helpers =
-  const startAssignment = (id) => {
+  const startAssignment = () => {
     axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: studentId });
   };
-  const completeAssignment = (id) => {
+  const completeAssignment = () => {
     axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
   };
 
@@ -48,7 +48,7 @@ const App = () => {
         ? <AssignmentView
           {...focusedAssignment}
           onStart={startAssignment}
-          onComplete={() => { completeAssignment(focused); }}
+          onComplete={completeAssignment}
           onBack={() => setFocused(null)}
         />
         : <Calendar assignments={assignmentCards} onFocus={(id) => setFocused(id)} />}
