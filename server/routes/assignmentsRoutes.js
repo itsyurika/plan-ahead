@@ -25,7 +25,6 @@ module.exports = (prisma) => {
     };
 
     const updatedAssign = await studentAssignment.update(options);
-    console.log('updated', updatedAssign);
     res.json(updatedAssign);
   });
 
