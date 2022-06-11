@@ -23,10 +23,10 @@ const App = () => {
 
 
   return (
-    <div className="App">
+    <main className="App">
       {assignmentsList}
       <CreateAssignment />
-    </div>
+    </main>
   );
 }
 

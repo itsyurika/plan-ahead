@@ -1,14 +1,14 @@
 const Show = (props) => {
-  console.log('what are my props', props);
   return (
     <article className="assignment__show">
-      <p>{props.first_name}</p>
+      <header><h3>{props.title}</h3></header>
+      <p>{props.subject?.name}</p>
       <p>{props.description}</p>
       <p>{props.url}</p>
-      <p>Math</p>
-      <p>Status: Started!</p>
-      <button>Start!</button>
-      <button>Complete!</button>
+      <p>Status: {props.startDate ? 'started' : 'not started'}</p>
+      <button>Cancel</button>
+      <button>Start</button>
+      <button>Complete</button>
     </article>
   );
 };

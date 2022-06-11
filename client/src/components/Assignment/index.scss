@@ -1,0 +1,17 @@
+article.assignment__show {
+  max-width: 40rem;
+  padding: .5rem;
+  margin: 1rem 0;
+  border: 1px solid blueviolet;
+
+  p {
+    margin: .5rem 0;
+  }
+  button {
+    margin-right: .5rem;
+  }
+
+  &header {
+
+  }
+}
