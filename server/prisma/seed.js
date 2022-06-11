@@ -3,7 +3,6 @@ const fixtures = require('./fixtures');
 
 const prisma = new PrismaClient();
 
-
 const main = async () => {
   for await (const [name, data] of Object.entries(fixtures)) {
     console.log('- seeding', name);
@@ -11,7 +10,6 @@ const main = async () => {
     console.log('done');
   };
 };
-
 
 main()
   .catch((e) => { console.error(e); process.exit(); })

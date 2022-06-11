@@ -1,6 +1,6 @@
 const Show = (props) => {
   return (
-    <article className="assignment__show">
+    <article className={`assignment__show ${props.subject.name.toLowerCase()}`}>
       <header><h3>{props.title}</h3></header>
       <p>{props.subject.name}</p>
       <p>{props.description}</p>
