@@ -1,8 +1,12 @@
+@import "styles/variables.scss";
+
 article.assignment__show {
+  background-color: rgb(229, 238, 240);
   max-width: 40rem;
   padding: .5rem;
   margin: 1rem 0;
-  border: 1px solid blueviolet;
+  border: 1px solid rgb(43, 192, 226);
+  border-radius: 0.4rem;
 
   p {
     margin: .5rem 0;

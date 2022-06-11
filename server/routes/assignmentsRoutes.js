@@ -2,10 +2,10 @@ const router = require('express').Router();
 
 module.exports = (prisma) => {
   router.get('/', async (req, res) => {
-    // const studentId = req.body;
+    const studentId = req.body;
     // const studentAssignment = { where: { studentId } };
     const assignments = await prisma.assignment.findMany({
-      include: { subject: true }
+      include: { studentAssignments: true, subject: true },
     });
     res.json(assignments);
   });
@@ -17,9 +17,3 @@ module.exports = (prisma) => {
 
   return router;
 };
-
-
-// prisma.studentAssignments.findMany({
-//   where: { student_id },
-//   include: { assignment: true },
-// })
