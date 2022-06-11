@@ -1,11 +1,12 @@
 // = imports =
 require('dotenv').config()
-const { ENVIRONMENT = 'dev', PORT = 8080 } = process.env;
+const { ENVIRONMENT = 'dev', PORT = 3001 } = process.env;
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+// = import routes =
 const assignmentsRoutes = require('./routes/assignmentsRoutes');
 const studentsRoutes = require('./routes/studentsRoutes');
 

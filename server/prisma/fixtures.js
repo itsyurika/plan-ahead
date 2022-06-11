@@ -27,7 +27,7 @@ const assignment = [
 const studentAssignment = [
   { id: 1, dueDate: new Date('2022-04-27'), dateStarted: new Date('2022-04-24'), dateCompleted: null, studentId: 1, assignmentId: 1 },
   { id: 2, dueDate: new Date('2022-04-23'), dateStarted: new Date('2022-04-21'), dateCompleted: new Date('2022-04-22'), studentId: 1, assignmentId: 3 },
-  { id: 3, dueDate: new Date('2022-04-29'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 1 },
+  { id: 3, dueDate: new Date('2022-04-29'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
   { id: 4, dueDate: new Date('2022-04-29'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
   { id: 5, dueDate: new Date('2022-04-29'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
 ];

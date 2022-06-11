@@ -2,14 +2,14 @@
   "name": "studenet-planner",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "prisma": {
     "seed": "node prisma/seed.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon -L app"
+    "start": "node index.js",
+    "dev": "nodemon -L index"
   },
   "keywords": [],
   "author": "",

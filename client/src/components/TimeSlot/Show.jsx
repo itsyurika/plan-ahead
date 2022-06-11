@@ -6,7 +6,7 @@ const Show = (props) => {
     >
       <header><h3>{props.title}</h3></header>
       <p>{props.subject.name}</p>
-      <p>Status: {props.startDate ? 'started' : 'not started'}</p>
+      <p>Status: {props.studentAssignments[0]?.dateStarted ? 'started' : 'not started'}</p>
     </article>
   );
 };
