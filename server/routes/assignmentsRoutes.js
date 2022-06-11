@@ -15,3 +15,7 @@ module.exports = (prisma) => {
 };
 
 
+// prisma.studentAssignments.findMany({
+//   where: { student_id },
+//   include: { assignment: true },
+// })

@@ -6,6 +6,7 @@ const { PrismaClient } = require('@prisma/client');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
 const assignmentsRoutes = require('./routes/assignmentsRoutes');
 const studentsRoutes = require('./routes/studentsRoutes');
 
@@ -14,16 +15,14 @@ const studentsRoutes = require('./routes/studentsRoutes');
 const app = express();
 const prisma = new PrismaClient();
 
-
-// = middleware =
 app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
 
+app.use('/assignments', assignmentsRoutes(prisma))
+app.use('/students', studentsRoutes(prisma))
 
-// = routes=
-app.use('/assignments', assignmentsRoutes(prisma));
-app.use('/students', studentsRoutes(prisma));
 
+// = endpoints =
 app.get('/', (req, res) => {
 	res.json({greetings: 'hello world?'});
 })

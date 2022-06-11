@@ -1,6 +1,3 @@
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'rick.sandchez@gmail.com', 'picklerick');
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'lisa.simpson@gmail.com', 'ehhhhh');
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'link@yahoo.com', 'hyrule');
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'simon_bel123@mail.ca', 'dracula');
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'all_might@academia.jp', 'plusUltra');
-INSERT INTO teachers (first_name, last_name, email, password) VALUES ('picklerick', 'picklerick', 'mario@mushroomkindom.jp', 'plumber79');
+{ firstName: 'pickle 1', lastName: 'rickle 1', email: 'rick.sandchez@gmail.com', password: 'picklerick'}
+{ firstName: 'pickle 2', lastName: 'rickle 2', email: 'lisa.simpson@gmail.com', password: 'ehhhhh'}
+{ firstName: 'pickle 3', lastName: 'rickle 3', email: 'link@yahoo.com', password: 'hyrule'}

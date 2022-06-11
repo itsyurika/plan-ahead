@@ -9,57 +9,48 @@ datasource db {
 
 model Teacher {
   id          Int          @id @default(autoincrement())
-  firstName   String       @db.VarChar(255) @map("first_name")
-  lastName    String       @db.VarChar(255) @map("last_name")
+  firstName   String       @db.VarChar(255)
+  lastName    String       @db.VarChar(255)
   email       String       @db.VarChar(255)
   password    String?      @db.VarChar(255)
   assignments Assignment[] @relation("assignmentsToteachers")
-
-  @@map("teachers")
 }
 
 model Student {
   id                 Int                 @id @default(autoincrement())
-  firstName          String              @db.VarChar(255) @map("first_name")
-  lastName           String              @db.VarChar(255) @map("last_name")
+  firstName          String              @db.VarChar(255)
+  lastName           String              @db.VarChar(255)
   email              String              @db.VarChar(255)
   password           String?             @db.VarChar(255)
   studentAssignments StudentAssignment[]
-
-  @@map("students")
 }
 
 model Subject {
   id          Int          @id @default(autoincrement())
   name        String       @db.VarChar(255)
   assignments Assignment[] @relation("assignmentsTosubjects")
-
-  @@map("subjects")
 }
 
 model Assignment {
   id                 Int                 @id @default(autoincrement())
-  name               String              @db.VarChar(255)
-  teacher_id         Int
-  subject_id         Int
+  title              String              @db.VarChar(255)
   description        String              @db.VarChar(255)
   url                String              @db.VarChar(255)
-  subjects           Subject             @relation("assignmentsTosubjects", fields: [subject_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  teachers           Teacher             @relation("assignmentsToteachers", fields: [teacher_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  teacher            Teacher             @relation("assignmentsToteachers", fields: [teacherId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  teacherId          Int
+  subject            Subject             @relation("assignmentsTosubjects", fields: [subjectId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  subjectId          Int
   studentAssignments StudentAssignment[]
 
-  @@map("assignments")
 }
 
 model StudentAssignment {
-  id             Int        @id @default(autoincrement())
-  due_date       DateTime   @db.Date
-  date_started   DateTime?  @db.Date
-  date_completed DateTime?  @db.Date
-  student_id     Int
-  assignment_id  Int
-  assignment     Assignment @relation(fields: [assignment_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  student        Student    @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@map("student_assignments")
+  id            Int        @id @default(autoincrement())
+  dueDate       DateTime   @db.Date
+  dateStarted   DateTime?  @db.Date
+  dateCompleted DateTime?  @db.Date
+  student       Student    @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  studentId     Int
+  assignment    Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  assignmentId  Int
 }
