@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { buildCards } from './helpers/selectors';
+import { buildTeacherCards, buildStudentCards, getTablePosition } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
@@ -11,28 +11,35 @@ import AssignmentView from "components/AssignmentView";
 const App = () => {
   // = state =
   const [teacher, setTeacher] = useState(null);
-  const [student, setStudent] = useState(1);
+  const [studentId, setStudentId] = useState(1);
+  const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
   useEffect(() => {
-    axios.get('/assignments')
+    Promise.all([
+      axios.get('/assignments'),
+      axios.get('/students/' + studentId),
+    ])
       .then((res) => {
-        setAssignments(res.data);
+        setAssignments(res[0].data);
+        setStudent(res[1].data);
       });
   }, []);
 
 
   // = helpers =
   const startAssignment = (id) => {
-    axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: student });
+    axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: studentId });
   };
   const completeAssignment = (id) => {
-    axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: student });
+    axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
   };
 
-  const studentAssignments = buildCards(assignments, student);
-  const focusedAssignment = studentAssignments.find((item) => item.id === focused);
+  // const teacherAssignments = buildTeacherCards(assignments, studentId);
+  const studentAssignments = buildStudentCards(assignments, student);
+  const assignmentCards = getTablePosition(studentAssignments);
+  const focusedAssignment = assignmentCards.find((item) => item.id === focused);
 
   // = render main page =
   return (
@@ -44,7 +51,7 @@ const App = () => {
           onComplete={() => { completeAssignment(focused); }}
           onBack={() => setFocused(null)}
         />
-        : <Calendar assignments={studentAssignments} onFocus={(id) => setFocused(id)} />}
+        : <Calendar assignments={assignmentCards} onFocus={(id) => setFocused(id)} />}
     </main>
   );
 };

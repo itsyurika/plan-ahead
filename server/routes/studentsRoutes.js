@@ -7,7 +7,7 @@ module.exports = (prisma) => {
   });
 
   router.get('/:id', async (req, res) => {
-    const student = await prisma.student.findUnique({ where: { id: req.params.id }, include: { studentAssignments: true } });
+    const student = await prisma.student.findUnique({ where: { id: +req.params.id }, include: { studentAssignments: true } });
     res.json(student);
   });
 

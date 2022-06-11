@@ -4,7 +4,7 @@ module.exports = (prisma) => {
   const { assignment, studentAssignment } = prisma;
   router.get('/', async (req, res) => {
     const assignments = await assignment.findMany({
-      include: { studentAssignments: true, subject: true },
+      include: { subject: true },
     });
     res.json(assignments);
   });

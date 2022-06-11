@@ -1,4 +1,6 @@
-export const buildCards = (assignments, id) => {
+import axios from "axios";
+
+export const buildTeacherCards = (assignments, id) => {
   const newCards = assignments.map((item) => ({
     ...item,
     column: new Date(item.defaultDueDate).getDay() + 2, // monday column starts at 3
@@ -12,17 +14,26 @@ export const buildCards = (assignments, id) => {
     count[item.column]++;
   });
 
-  return newCards.filter((item) => item.assigned);
+  return newCards;
 };
 
 
 
-export const buildStudentCards = (assignments, id) => {
+export const buildStudentCards = (assignments, student) => {
+  if (!assignments.length || !student.id) return [];
+  const foundAssignments = student.studentAssignments.map((item) => ({
+    ...assignments.find((assign) => assign.id === item.assignmentId),
+    assigned: { ...item }
+  }));
+
+  return foundAssignments;
+};
+
+export const getTablePosition = (assignments) => {
+  if (!assignments?.length) return [];
   const newCards = assignments.map((item) => ({
     ...item,
     column: new Date(item.defaultDueDate).getDay() + 2, // monday column starts at 3
-    assigned: item.studentAssignments.find(({ studentId }) => studentId === id),
-    status: null,
   }));
 
   const count = {};
@@ -32,5 +43,5 @@ export const buildStudentCards = (assignments, id) => {
     count[item.column]++;
   });
 
-  return newCards.filter((item) => item.assigned);
+  return newCards;
 };
