@@ -51,7 +51,7 @@ body {
 .content {
   display: grid;
   grid-template-columns: $calendar-template;
-  grid-template-rows: repeat(6, $time-height);
+  grid-template-rows: repeat(4, $time-height);
 }
 
 .time {
@@ -67,7 +67,7 @@ body {
 
 .col {
   border-right: 1px solid $grid-color;
-  grid-row: 1 / span 6;
+  grid-row: 1 / span 4;
   grid-column: span 1;
 }
 
