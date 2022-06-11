@@ -21,7 +21,7 @@ const assignment = [
   { id: 3, title: 'assignment3', description: 'my description', url: 'www.plumbus.gl', teacherId: 1, subjectId: 1 },
   { id: 4, title: 'assignment4', description: 'my description', url: 'www.fedaration.com', teacherId: 1, subjectId: 2 },
   { id: 5, title: 'assignment5', description: 'my description', url: 'www.torontopubliclibrary.ca', teacherId: 1, subjectId: 2 },
-  { id: 6, title: 'assignment6', description: 'my description', url: 'www.ontario.ca', teacherId: 2, subjectId: 3 },
+  { id: 6, title: 'assignment6', description: 'my description', url: 'www.ontario.ca', teacherId: 2, subjectId: 2 },
 ];
 
 const studentAssignment = [
