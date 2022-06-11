@@ -4,18 +4,11 @@ import Assignment from "./Slot";
 import AssignmentForm from "components/AssignmentForm";
 
 const Calendar = (props) => {
-  const buildCards = (assignments) => {
-    return assignments.map((assignment) => {
-      return (
-        <div key={assignment.id} className={`card row${assignment.row} column${assignment.column} calendar2`}>
-          <Assignment  {...assignment} onClick={() => {props.onFocus(assignment.id)}} />
-        </div>
-      );
-    });
-  };
-
-
-
+  const cards = props.assignments.map((assign) => (
+    <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
+      <Assignment {...assign} onClick={() => { props.onFocus(assign.id); }} />
+    </div>
+  ));
 
   return (
     <div className="card-container">
@@ -50,7 +43,7 @@ const Calendar = (props) => {
         <div className="row" style={{ "gridRow": "2" }}></div>
         <div className="row" style={{ "gridRow": "3" }}></div>
         <div className="row" style={{ "gridRow": "4" }}></div>
-        {buildCards(props.assignments)}
+        {cards}
       </div>
 
 

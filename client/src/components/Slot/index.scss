@@ -11,19 +11,21 @@ article.assignment__show {
   p {
     margin: .5rem 0;
   }
+
   button {
     margin-right: .5rem;
   }
 
   &header {
-
+    color: aqua;
   }
 
-  &.math {
-    background-color: $math;
+  &.started {
+    background-color: $started;
   }
 
-  &.history {
-    background-color: $history;
+  &.complete {
+    background-color: $complete;
   }
+
 }

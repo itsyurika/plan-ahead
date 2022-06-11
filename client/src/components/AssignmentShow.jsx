@@ -1,6 +1,6 @@
 const AssignmentView = (props) => {
   return (
-    <article className={`assignment__view ${props.subject.name.toLowerCase()}`}>
+    <article className={`assignment__view ${props.status.toLowerCase()}`}>
       <header><h3>{props.title}</h3></header>
       <p>{props.subject.name}</p>
       <p>{props.description}</p>

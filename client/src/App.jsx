@@ -10,8 +10,8 @@ import AssignmentShow from "components/AssignmentShow";
 
 const App = () => {
   // = state =
-  const [teacher, setTeacher] = useState(null);
-  const [studentId, setStudentId] = useState(1);
+  const [teacherId, setTeacherId] = useState(null); // check cookies
+  const [studentId, setStudentId] = useState(1); // check cookies
   const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
@@ -37,7 +37,7 @@ const App = () => {
   };
 
   // const teacherAssignments = buildTeacherCards(assignments, studentId);
-  const assignmentList = teacher ? assignments : buildStudentCards(assignments, student);
+  const assignmentList = teacherId ? assignments : buildStudentCards(assignments, student);
   const updatedList = getTablePositions(assignmentList);
   const focusedAssignment = updatedList.find((item) => item.id === focused);
 
