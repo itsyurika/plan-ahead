@@ -1,5 +1,6 @@
 // = imports =
 require('dotenv').config()
+require('express-async-errors');
 const { ENVIRONMENT = 'dev', PORT = 3001 } = process.env;
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
@@ -20,7 +21,6 @@ app.use(bodyParser.json());
 
 app.use('/assignments', assignmentsRoutes(prisma))
 app.use('/students', studentsRoutes(prisma))
-
 
 // = endpoints =
 app.get('/', (req, res) => {
