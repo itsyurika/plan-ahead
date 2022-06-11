@@ -13,7 +13,7 @@ module.exports = (prisma) => {
       console.log("req body: ", req.body)
       const newAssignment = await assignment.create({ data: req.body });
       res.json(newAssignment);
-  
+
   });
 
   return router;

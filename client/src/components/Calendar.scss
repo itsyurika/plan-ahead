@@ -14,11 +14,12 @@ body {
   background: #fff;
 }
 
-.container {
+.card-container {
   width: 90vw;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
   position: absolute;
+  overflow: auto;
 }
 
 .title {
@@ -46,9 +47,6 @@ body {
 
 .day {
   border-left: 1px solid $grid-color;
-}
-
-.wknd {
 }
 
 .content {
@@ -81,12 +79,8 @@ body {
     writing-mode: vertical-lr;
     transform: scale(-1, -1);
     border-style: none;
-
-    // grid-row: 1 / span 4;
-    // grid-column: 1 / span 4;
   }
 }
-
 
 .col {
   border-right: 1px solid $grid-color;

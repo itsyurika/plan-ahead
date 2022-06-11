@@ -4,12 +4,13 @@ import Assignment from "./TimeSlot";
 import CreateAssignment from "components/CreateAssignment";
 
 const Calendar = (props) => {
+  console.log('what assignments', props.assignments);
 
   const buildCards = (assignments) => {
-    return props.assignments.map((assignment) => {
+    return assignments.map((assignment) => {
       return (
-        <div className={`card row${assignment.row} column${assignment.column} calendar2`}>
-          <Assignment {...assignment} onClick={props.onClick} />
+        <div key={assignment.id} className={`card row${assignment.row} column${assignment.column} calendar2`}>
+          <Assignment  {...assignment} onClick={props.onClick} />
         </div>
       );
     });
@@ -19,7 +20,7 @@ const Calendar = (props) => {
 
 
   return (
-    <div className="container">
+    <div className="card-container">
       <div className="title">February 2019 Week 6</div>
       <div className="days">
         <div className="filler"></div>
@@ -51,7 +52,6 @@ const Calendar = (props) => {
         <div className="row" style={{ "grid-row": "2" }}></div>
         <div className="row" style={{ "grid-row": "3" }}></div>
         <div className="row" style={{ "grid-row": "4" }}></div>
-        <div className="card card1 calendar1">Event 1</div>
         {buildCards(props.assignments)}
       </div>
 
