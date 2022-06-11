@@ -53,4 +53,6 @@ model StudentAssignment {
   studentId     Int
   assignment    Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   assignmentId  Int
+
+  @@unique(fields: [studentId, assignmentId], name: "studentAssignmentId")
 }

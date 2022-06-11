@@ -6,7 +6,6 @@ import 'normalize.css';
 
 
 import Calendar from "components/Calendar";
-import Slot from "components/Slot";
 import AssignmentView from "components/AssignmentView";
 
 const App = () => {
@@ -25,30 +24,27 @@ const App = () => {
 
 
   // = helpers =
-  const startAssignment = () => {
-    axios.put('/assignments')
+  const startAssignment = (id) => {
+    axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: student });
   };
-  const completeAssignment = () => {
-
+  const completeAssignment = (id) => {
+    axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: student });
   };
 
   const studentAssignments = buildCards(assignments, student);
-  const assignmentsList = focused
-    ? studentAssignments.find((item) => item.id === focused)
-    : studentAssignments.map((item) => <Slot key={item.id} {...item} onClick={() => setFocused(item.id)} />);
-
+  const focusedAssignment = studentAssignments.find((item) => item.id === focused);
 
   // = render main page =
   return (
     <main className="App">
       {focused
         ? <AssignmentView
-          {...assignmentsList}
+          {...focusedAssignment}
           onStart={startAssignment}
-          onComplete={completeAssignment}
+          onComplete={() => { completeAssignment(focused); }}
           onBack={() => setFocused(null)}
         />
-        : <Calendar assignments={studentAssignments} onClick={() => setFocused(student)} />}
+        : <Calendar assignments={studentAssignments} onFocus={(id) => setFocused(id)} />}
     </main>
   );
 };

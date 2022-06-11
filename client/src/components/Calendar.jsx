@@ -8,7 +8,7 @@ const Calendar = (props) => {
     return assignments.map((assignment) => {
       return (
         <div key={assignment.id} className={`card row${assignment.row} column${assignment.column} calendar2`}>
-          <Assignment  {...assignment} onClick={props.onClick} />
+          <Assignment  {...assignment} onClick={() => {props.onFocus(assignment.id)}} />
         </div>
       );
     });
