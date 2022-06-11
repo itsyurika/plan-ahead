@@ -8,7 +8,7 @@ const AssignmentView = (props) => {
       <p>{props.subject.name}</p>
       <p>{props.description}</p>
       <p>{props.url}</p>
-      <p>Status: {props.assigned.dateStarted ? 'started' : 'not started'}</p>
+      <p>Status: {props.status}</p>
       <button onClick={props.onStart}>Start</button>
       <button onClick={props.onComplete}>Complete</button>
       <button onClick={props.onBack}>Back</button>

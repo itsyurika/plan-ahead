@@ -17,13 +17,18 @@ export const buildTeacherCards = (assignments, id) => {
   return newCards;
 };
 
-
+const getStatus = (item) => {
+  if (item.dateCompleted) return 'Complete';
+  if (item.dateStarted) return 'Started';
+  return 'Not started';
+};
 
 export const buildStudentCards = (assignments, student) => {
   if (!assignments.length || !student.id) return [];
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
-    assigned: { ...item }
+    assigned: { ...item },
+    status: getStatus(item),
   }));
 
   return foundAssignments;
