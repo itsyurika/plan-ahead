@@ -23,8 +23,18 @@ module.exports = (prisma) => {
         }
       }, data: req.body
     };
-
     const updatedAssign = await studentAssignment.update(options);
+    res.json(updatedAssign);
+  })
+
+    router.put('/:id', async (req, res) => {
+      const options = {
+        where: {
+            id: +req.params.id,
+          }, data: req.body
+      };
+
+    const updatedAssign = await assignment.update(options);
     res.json(updatedAssign);
   });
 
