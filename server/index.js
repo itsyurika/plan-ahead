@@ -1,15 +1,16 @@
 // = imports =
-require('dotenv').config()
+require('dotenv').config();
 require('express-async-errors');
+
 const { ENVIRONMENT = 'dev', PORT = 3001 } = process.env;
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-// = import routes =
-const assignmentsRoutes = require('./routes/assignmentsRoutes');
-const studentsRoutes = require('./routes/studentsRoutes');
+const teachers = require('./routes/teachers');
+const students = require('./routes/students');
+const assignments = require('./routes/assignments');
 
 
 // = server setup =
@@ -19,13 +20,15 @@ const prisma = new PrismaClient();
 app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
 
-app.use('/assignments', assignmentsRoutes(prisma))
-app.use('/students', studentsRoutes(prisma))
+app.use('/teachers', teachers(prisma));
+app.use('/students', students(prisma));
+app.use('/assignments', assignments(prisma));
 
-// = endpoints =
+
+// = generic endpoints =
 app.get('/', (req, res) => {
-	res.json({greetings: 'hello world?'});
-})
+	res.json({ greetings: 'hello world?' });
+});
 
 app.get('*', (req, res) => {
 	res.redirect(404, '/');

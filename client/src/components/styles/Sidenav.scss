@@ -1,0 +1,14 @@
+nav.sidenav {
+  background-color: #232323;
+  color: white;
+  overflow-x: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  button.login {
+    padding: 0.4rem;
+  }
+}

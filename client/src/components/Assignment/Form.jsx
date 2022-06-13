@@ -1,10 +1,7 @@
-import './Form.scss';
 import { useState } from 'react';
 import axios from 'axios';
 
-
 const CreateAssignment = (props) => {
-
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [url, setUrl] = useState(props.url);
@@ -18,8 +15,6 @@ const CreateAssignment = (props) => {
     props.onBack()
     window.location.reload(true); //change to useEffect
   };
-
-
 
   return (
     <section className='assignment__form'>

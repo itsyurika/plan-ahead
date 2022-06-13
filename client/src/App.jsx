@@ -4,21 +4,23 @@ import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
 
-
+import Sidenav from "components/Sidenav";
 import Calendar from "components/Calendar";
-import AssignmentShow from "components/Assignment/Index";
+import Assignment from "components/Assignment";
+import AssignmentForm from "components/Assignment/Form";
 
 const App = () => {
-  // = state =
-  const [teacherId, setTeacherId] = useState(null); // check cookies
-  const [studentId, setStudentId] = useState(1); // check cookies
+  // = state & effects =
+  const [adminMode, setAdminMode] = useState(false);
+  const [teacherId, setTeacherId] = useState(1); // check cookies
+  const [studentId, setStudentId] = useState(2); // check cookies
   const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
   useEffect(() => {
     Promise.all([
-      axios.get('/assignments'),
+      axios.get(`/teachers/${teacherId || 1}/assignments`),
       axios.get('/students/' + studentId),
     ])
       .then((res) => {
@@ -36,22 +38,25 @@ const App = () => {
     axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
   };
 
-  // const teacherAssignments = buildTeacherCards(assignments, studentId);
-  const assignmentList = teacherId ? assignments : buildStudentCards(assignments, student);
+  const assignmentList = adminMode ? assignments : buildStudentCards(assignments, student);
   const updatedList = getTablePositions(assignmentList);
   const focusedAssignment = updatedList.find((item) => item.id === focused);
 
   // = render main page =
   return (
-    <main className="App">
+    <main className="app">
+      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode}/>
       {focused
-        ? <AssignmentShow
+        ? <Assignment
           {...focusedAssignment}
           onStart={startAssignment}
           onComplete={completeAssignment}
           onBack={() => setFocused(null)}
         />
         : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
+
+      {adminMode && <AssignmentForm teacherId={teacherId} />}
+
     </main>
   );
 };
