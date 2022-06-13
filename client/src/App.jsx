@@ -23,6 +23,16 @@ const App = () => {
       });
   }, []);
 
+  // = states from react calendar = //
+  const [showDetails, setShowDetails] = useState(false);
+  const [data, setData] = useState(null);
+
+  const showDetailsHandle = (dayStr) => {
+    setData(dayStr);
+    setShowDetails(true);
+  };
+  // =end of react calendar= 
+
 
   // = helpers =
   const studentAssignments = assignmentsSelector(assignments, student);
@@ -37,6 +47,14 @@ const App = () => {
       {focused
         ? <AssignmentView {...assignmentsList} onClick={() => setFocused(null)} />
         : <Calendar timeSlot={studentAssignments[0]} onClick={() => setFocused(student)}>{assignmentsList}</Calendar>}
+      <div>
+        <h1>Week View Calendar with react</h1>
+        <br />
+        <h2>Example</h2>
+        <Calendar showDetailsHandle={showDetailsHandle} />
+        <br />
+        {showDetails && <Details data={data} />}
+      </div>
     </main>
   );
 };
