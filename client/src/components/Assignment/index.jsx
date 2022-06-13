@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import axios from 'axios'
 import Form from "./Form"
 import DeleteModal from "./DeleteModal"
 
@@ -22,7 +21,6 @@ const AssignmentView = (props) => {
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       <button onClick={() => {setShowEdit((prev) => !prev)}}>Edit</button>
       <button onClick={() => setShowModal(true)}> Delete </button>
-      
       <button onClick={props.onBack}>Back</button>
 
     {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack}/>}
