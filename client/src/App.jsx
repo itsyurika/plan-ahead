@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`/teachers/${teacherId || 1}/assignments`),
+      axios.get(`/teachers/${teacherId}/assignments`),
       axios.get('/students/' + studentId),
     ])
       .then((res) => {
@@ -31,7 +31,7 @@ const App = () => {
 
   // set cookie
   useEffect(() => {
-    // set cookie to admin mode
+    // set local storage to admin mode
 
   }, [adminMode]);
 
