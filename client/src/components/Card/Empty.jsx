@@ -1,8 +1,8 @@
 const Empty = (props) => {
   return (
-    <main className="assignment__add">
+    <main className="card__add">
       <img
-        className="assignment__add-button"
+        className="card__add-button"
         src="images/add.png"
         alt="Add"
         onClick={props.onAdd}

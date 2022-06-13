@@ -1,4 +1,4 @@
-import './index.scss';
+import 'components/styles/Card.scss';
 import Empty from "./Empty";
 import Show from "./Show";
 

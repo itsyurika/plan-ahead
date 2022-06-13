@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Form from "./Form"
+import 'components/styles/Assignment.scss'
 
+import Form from "./Form"
 
 
 const AssignmentView = (props) => {
@@ -11,9 +12,6 @@ const AssignmentView = (props) => {
   const handleShow = () => setShow(true);
 
 // == helpers ==
-
-
-
   return (
     <article className={`assignment__view ${props.status.toLowerCase()}`}>
       <header><h3>{props.title}</h3></header>
@@ -36,7 +34,7 @@ const AssignmentView = (props) => {
     url = {props.url}
     defaultdueDate = {props.defaultDueDate}
      />}
-    
+
 
     </article>
   );
