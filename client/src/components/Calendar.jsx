@@ -45,7 +45,6 @@ const Calendar = (props) => {
         <div className="row" style={{ "gridRow": "4" }}></div>
         {cards}
       </div>
-
     </div>);
 };
 
