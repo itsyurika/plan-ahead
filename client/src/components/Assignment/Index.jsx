@@ -12,6 +12,8 @@ const AssignmentView = (props) => {
 const deleteAssignment = (id) => {
     console.log("got to deleteAssignment")
     axios.delete('/assignments/' + id)
+    props.onBack()
+    window.location.reload(true); //change to useEffect
 };
 
 
@@ -36,6 +38,7 @@ const deleteAssignment = (id) => {
     description = {props.description}
     url = {props.url}
     defaultdueDate = {props.defaultDueDate}
+    onBack = {props.onBack}
      />}
     
 
