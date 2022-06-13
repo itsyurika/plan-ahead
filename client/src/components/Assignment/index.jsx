@@ -1,15 +1,10 @@
 import { useState } from 'react'
-import axios from 'axios'
 import Form from "./Form"
 import DeleteModal from "./DeleteModal"
 
 const AssignmentView = (props) => {
   const [showEdit, setShowEdit] = useState(false)
   const [showModal, setShowModal] = useState(false)
-
-
-
-
 
   return (
     <article className={`assignment__view ${props.status?.toLowerCase()}`}>

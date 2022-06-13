@@ -9,6 +9,11 @@ import Calendar from "components/Calendar";
 import Assignment from "components/Assignment";
 import AssignmentForm from "components/Assignment/Form";
 
+//? import files for calendar react//
+import CalendarReact from "components/CalendarReact";
+import Details from "components/Details";
+//? end of import files for calendar react//
+
 const App = () => {
   // = state & effects =
   const [adminMode, setAdminMode] = useState(false);
@@ -29,11 +34,16 @@ const App = () => {
       });
   }, []);
 
-  // set cookie
-  useEffect(() => {
-    // set cookie to admin mode
+  //? = states from react calendar = //
+  const [showDetails, setShowDetails] = useState(false);
+  const [data, setData] = useState(null);
 
-  }, [adminMode]);
+  const showDetailsHandle = (dayStr) => {
+    setData(dayStr);
+    setShowDetails(true);
+  };
+  //? =end of react calendar=
+
 
   // = helpers =
   const startAssignment = () => {
@@ -61,7 +71,6 @@ const App = () => {
         : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
-
     </main>
   );
 };
