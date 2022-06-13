@@ -1,12 +1,12 @@
 import './Calendar.scss';
 
-import Assignment from "./Slot";
-import AssignmentForm from "components/AssignmentForm";
+import Slot from "./Slot";
+
 
 const Calendar = (props) => {
   const cards = props.assignments.map((assign) => (
     <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
-      <Assignment {...assign} onClick={() => { props.onFocus(assign.id); }} />
+      <Slot {...assign} onClick={() => { props.onFocus(assign.id); }} />
     </div>
   ));
 
@@ -46,9 +46,6 @@ const Calendar = (props) => {
         {cards}
       </div>
 
-
-
-      <AssignmentForm />
     </div>);
 };
 

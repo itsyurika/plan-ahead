@@ -6,7 +6,7 @@ import 'normalize.css';
 
 
 import Calendar from "components/Calendar";
-import AssignmentShow from "components/AssignmentShow";
+import AssignmentShow from "components/Assignment/Index";
 
 const App = () => {
   // = state =
