@@ -12,9 +12,9 @@ const AssignmentView = (props) => {
 
 
   return (
-    <article className={`assignment__view ${props.status.toLowerCase()}`}>
+    <article className={`assignment__view ${props.status?.toLowerCase()}`}>
       <header><h3>{props.title}</h3></header>
-      <p>{props.subject.name}</p>
+      <p>{props.subject?.name}</p>
       <p>{props.description}</p>
       <p>{props.url}</p>
       <p>{props.status}</p>
@@ -22,7 +22,7 @@ const AssignmentView = (props) => {
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       <button onClick={() => {setShowEdit((prev) => !prev)}}>Edit</button>
       <button onClick={() => setShowModal(true)}> Delete </button>
-      
+
       <button onClick={props.onBack}>Back</button>
 
     {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack}/>}
@@ -31,7 +31,7 @@ const AssignmentView = (props) => {
     {showEdit && <Form
     id = {props.id}
     title = {props.title}
-    subject = {props.subject.name}
+    subject = {props.subject?.name}
     description = {props.description}
     url = {props.url}
     defaultdueDate = {props.defaultDueDate}

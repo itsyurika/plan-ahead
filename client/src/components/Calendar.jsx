@@ -1,7 +1,5 @@
 import 'components/styles/Calendar.scss';
-
 import Slot from "./Card";
-
 
 const Calendar = (props) => {
   const cards = props.assignments.map((assign) => (

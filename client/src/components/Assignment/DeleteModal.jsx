@@ -1,20 +1,13 @@
-import './Form.scss';
-import { useState } from 'react';
+import 'components/styles/Assignment.scss';
 import axios from 'axios';
-import Form from "./Form"
-import index from "./index"
 
-
-  const DeleteModal = (props) => {  
-
+  const DeleteModal = (props) => {
     const deleteAssignment = (id) => {
-      console.log("got to deleteAssignment")
       axios.delete('/assignments/' + id)
       props.onBack()
       window.location.reload(true); //change to useEffect
   };
-  
-    console.log(props)
+
     return (
       <div className="modalBackdrop">
         <div className="modalContainer">

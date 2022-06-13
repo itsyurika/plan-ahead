@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCookies } from "react";
 import { buildStudentCards, getTablePositions } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
@@ -11,7 +11,7 @@ import AssignmentForm from "components/Assignment/Form";
 
 const App = () => {
   // = state & effects =
-  const [adminMode, setAdminMode] = useState(true);
+  const [adminMode, setAdminMode] = useState(false);
   const [teacherId, setTeacherId] = useState(1); // check cookies
   const [studentId, setStudentId] = useState(2); // check cookies
   const [student, setStudent] = useState({});
@@ -29,6 +29,11 @@ const App = () => {
       });
   }, []);
 
+  // set cookie
+  useEffect(() => {
+    // set cookie to admin mode
+
+  }, [adminMode]);
 
   // = helpers =
   const startAssignment = () => {
@@ -45,7 +50,7 @@ const App = () => {
   // = render main page =
   return (
     <main className="app">
-      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode}/>
+      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode} />
       {focused
         ? <Assignment
           {...focusedAssignment}
