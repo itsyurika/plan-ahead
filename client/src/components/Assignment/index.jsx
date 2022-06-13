@@ -3,8 +3,9 @@ import Form from "./Form";
 import DeleteModal from "./DeleteModal";
 
 const AssignmentView = (props) => {
-  const [showEdit, setShowEdit] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [edit, setEdit] = useState(true);
 
   return (
     <article className={`assignment__view ${props.status?.toLowerCase()}`}>
@@ -15,13 +16,15 @@ const AssignmentView = (props) => {
       <p>{props.status}</p>
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
-      <button onClick={() => { setShowEdit((prev) => !prev); }}>Edit</button>
+      {edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
+      {!edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Create</button>}
       <button onClick={() => setShowModal(true)}> Delete </button>
       <button onClick={props.onBack}>Back</button>
+      <button onClick={() => { setEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
+
 
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} />}
-
-      {showEdit && <Form
+      {showForm && <Form
         id={props.id}
         title={props.title}
         subject={props.subject?.name}
@@ -29,6 +32,7 @@ const AssignmentView = (props) => {
         url={props.url}
         defaultdueDate={props.defaultDueDate}
         onBack={props.onBack}
+        toggle={props.edit}
       />}
 
     </article>
