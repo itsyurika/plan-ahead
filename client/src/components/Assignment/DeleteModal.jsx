@@ -1,4 +1,4 @@
-import './Form.scss';
+import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import axios from 'axios';
 import Form from "./Form"
