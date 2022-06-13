@@ -16,7 +16,7 @@ const CreateAssignment = (props) => {
     const data = { title, description, url, subjectId };
     axios.put('/assignments/' + props.id, data);
     props.onBack()
-    window.location.reload(true);
+    window.location.reload(true); //change to useEffect
   };
 
 
