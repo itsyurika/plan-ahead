@@ -6,8 +6,6 @@ import Card from "./Card";
 
 import {
   format,
-  subMonths,
-  addMonths,
   startOfWeek,
   addDays,
   isSameDay,
@@ -31,50 +29,42 @@ const Calendar = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const changeWeekHandle = (btnType) => {
-    //console.log("current week", currentWeek);
     if (btnType === "prev") {
-      //console.log(subWeeks(currentMonth, 1));
       setCurrentMonth(subWeeks(currentMonth, 1));
       setCurrentWeek(getWeek(subWeeks(currentMonth, 1)));
     }
     if (btnType === "next") {
-      //console.log(addWeeks(currentMonth, 1));
       setCurrentMonth(addWeeks(currentMonth, 1));
       setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
     }
   };
 
 
-
   const renderHeader = () => {
     const dateFormat = "eeee MMM do";
-    // console.log("selected day", selectedDate);
     return (
-      <div className="header row flex-middle">
+      <header className="header row flex-middle">
         <div className="col col-start">
           <div className="icon" onClick={() => changeWeekHandle("prev")}>
-            prev week
+            Previous
           </div>
         </div>
         <div className="col col-center">
           <span>Today is {format(new Date(), dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={() => changeWeekHandle("next")}>
-          <div className="icon">next week</div>
+          <div className="icon">Next</div>
         </div>
-      </div>
+      </header>
     );
   };
+
 
   const renderDays = () => {
     const dateFormat = "EEE";
     const days = [];
     let startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    days.push(
-      <div className="col col-center" >
-        Placeholder
-      </div>
-    );
+    days.push(<div className="col col-center" ></div>);
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="col col-center" key={i}>
@@ -88,11 +78,9 @@ const Calendar = (props) => {
   const renderCells = () => {
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
     const endDate = lastDayOfWeek(addWeeks((currentMonth), 1), { weekStartsOn: 1 });
-    const dateFormat = "d";
     const rows = [];
     let days = [];
     let day = startDate;
-    let formattedDate = "";
     while (day <= endDate) {
       days.push(
         <div
@@ -100,25 +88,11 @@ const Calendar = (props) => {
           key={day}
 
         >
-          <span className="label">placeholder</span>
+          <span className="label">Week 1</span>
         </div>
       );
       for (let i = 0; i < 7; i++) {
-        formattedDate = format(day, dateFormat);
-        days.push(
-          <div
-            className={`col cell ${isSameDay(day, new Date())
-              ? "today"
-              : ""
-              }`}
-            key={day}
-
-          >
-            <span className="number">{formattedDate}</span>
-            <Card {...props.assignments[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
-
-          </div>
-        );
+        days.push(<div className={`col cell`} key={day}>  <Card onAdd={props.onAdd} />  </div>);
         day = addDays(day, 1);
       }
 
@@ -131,23 +105,12 @@ const Calendar = (props) => {
     }
     return <div className="body">{rows}</div>;
   };
-  //? End of React Calendar component //
 
 
+  // render calendar
   return (
     <section className="calendar">
       <header>February 2019 Week 6</header>
-      <div className="days-header">
-        <div className="filler"></div>
-        <div className="filler"></div>
-        <div className="day">Mon 4</div>
-        <div className="day">Tue 5</div>
-        <div className="day">Wed 6</div>
-        <div className="day">Thu 7</div>
-        <div className="day current">Fri 8</div>
-        <div className="day wknd">Sat 9</div>
-        <div className="day wknd">Sun 10</div>
-      </div>
 
 
       {renderHeader()}
@@ -156,27 +119,6 @@ const Calendar = (props) => {
 
       {renderCells()}
 
-      <div className="cells-container">
-        <div className="time" style={{ "gridRow": "1" }}></div>
-        <div className="time label" style={{ "gridRow": "2" }}></div>
-        <div className="time" style={{ "gridRow": "3" }}></div>
-        <div className="time" style={{ "gridRow": "4" }}></div>
-        <div className="filler-col"></div>
-
-        <div className="col label" style={{ "gridColumn": "1" }}>Week 3 June 20-26</div>
-        <div className="col" style={{ "gridColumn": "3" }}></div>
-        <div className="col" style={{ "gridColumn": "4" }}></div>
-        <div className="col" style={{ "gridColumn": "5" }}></div>
-        <div className="col" style={{ "gridColumn": "6" }}></div>
-        <div className="col" style={{ "gridColumn": "7" }}></div>
-        <div className="col weekend" style={{ "gridColumn": "8" }}></div>
-        <div className="col weekend" style={{ "gridColumn": "9" }}></div>
-        <div className="row" style={{ "gridRow": "1" }}></div>
-        <div className="row" style={{ "gridRow": "2" }}></div>
-        <div className="row" style={{ "gridRow": "3" }}></div>
-        <div className="row" style={{ "gridRow": "4" }}></div>
-        {cards}
-      </div>
     </section>);
 };
 

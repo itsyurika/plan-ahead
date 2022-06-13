@@ -29,3 +29,9 @@ article.card__show {
     background-color: $complete;
   }
 }
+
+article.card__empty {
+  .card__add-button {
+    margin: auto;
+  }
+}

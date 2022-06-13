@@ -1,4 +1,4 @@
-import { useState, useEffect, useCookies } from "react";
+import { useState, useEffect } from "react";
 import { buildStudentCards, getTablePositions } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
@@ -8,11 +8,6 @@ import Sidenav from "components/Sidenav";
 import Calendar from "components/Calendar";
 import Assignment from "components/Assignment";
 import AssignmentForm from "components/Assignment/Form";
-
-//? import files for calendar react//
-import CalendarReact from "components/CalendarReact";
-import Details from "components/Details";
-//? end of import files for calendar react//
 
 const App = () => {
   // = state & effects =
@@ -33,17 +28,6 @@ const App = () => {
         setStudent(res[1].data);
       });
   }, []);
-
-  //? = states from react calendar = //
-  const [showDetails, setShowDetails] = useState(false);
-  const [data, setData] = useState(null);
-
-  const showDetailsHandle = (dayStr) => {
-    setData(dayStr);
-    setShowDetails(true);
-  };
-  //? =end of react calendar=
-
 
   // = helpers =
   const startAssignment = () => {

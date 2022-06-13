@@ -1,34 +1,4 @@
 @import "styles/variables.scss";
-
-.App {
-  font-family: sans-serif;
-  text-align: center;
-  min-height: 700px;
-  background-color: $bg-light;
-  margin: 0;
-  padding: 20px;
-  width: 100%;
-}
-/* FONT IMPORTS */
-
-.icon {
-  font-family: "Material Icons", serif;
-  font-style: normal;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "liga";
-}
-
 /* VARIABLES */
 
 :root {
@@ -40,85 +10,49 @@
   --neutral-color: #fff;
 }
 
-/* GENERAL */
 
-* {
-  box-sizing: border-box;
+section.calendar {
+
+  >header {
+    width: 100%;
+    padding: 1.75em 0;
+  }
+
+  .row {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .row-middle {
+    align-items: center;
+  }
+
+  .col {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .col-start {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .col-center {
+    padding: 0.5rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .col-end {
+    justify-content: flex-end;
+    text-align: right;
+  }
 }
-
-body {
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1em;
-  font-weight: 300;
-  line-height: 1.5;
-  color: var(--text-color);
-  background: var(--bg-color);
-  position: relative;
-}
-
-header {
-  display: block;
-  width: 100%;
-  padding: 1.75em 0;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--neutral-color);
-}
-
-header #logo {
-  font-size: 175%;
-  text-align: center;
-  color: var(--main-color);
-  line-height: 1;
-}
-
-header #logo .icon {
-  padding-right: 0.25em;
-}
-
-main {
-  display: block;
-  margin: 0 auto;
-  margin-top: 5em;
-  max-width: 50em;
-}
-
-/* GRID */
-
-.row {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.row-middle {
-  align-items: center;
-}
-
-.col {
-  flex-grow: 1;
-  flex-basis: 0;
-  max-width: 100%;
-}
-
-.col-start {
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.col-center {
-  justify-content: center;
-  text-align: center;
-}
-
-.col-end {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-/* Calendar */
 
 .calendar {
   display: block;
@@ -142,7 +76,6 @@ main {
 }
 
 .calendar .header .icon:hover {
-  /*transform: scale(1.75);*/
   transition: 0.25s ease-out;
   color: var(--main-color);
 }
@@ -165,10 +98,8 @@ main {
 }
 
 .calendar .body .cell {
-  position: relative;
   height: 4em;
-  border-right: 1px solid var(--border-color);
-  overflow: hidden;
+  overflow: auto;
   cursor: pointer;
   background: var(--neutral-color);
   transition: 0.25s ease-out;
@@ -180,23 +111,16 @@ main {
   transition: 0.5s ease-out;
 }
 
-// .calendar .body .selected {
-//   border-left: 10px solid transparent;
-//   border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
-//   border-image-slice: 1;
-// }
 .calendar .body .today {
   border: 2px solid transparent;
   border-image: linear-gradient(45deg, #ff1a79 0%, #eb82b3 40%);
   border-image-slice: 1;
 }
+
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* .calendar .body .row:last-child {
-  border-bottom: none;
-} */
 
 .calendar .body .cell:last-child {
   border-right: none;
@@ -234,10 +158,6 @@ main {
   opacity: 0.05;
   transition: 0.5s ease-in;
 }
-.calendar .body .cell.today .bg {
-  color: #ff1a79;
-  opacity: 0.05;
-}
 
 .calendar .body .col {
   flex-grow: 0;
@@ -246,8 +166,9 @@ main {
 }
 
 .calendar .body .label {
+
   font-size: 0.7em;
-  margin: auto ;
+  margin: auto;
   vertical-align: center;
   writing-mode: vertical-lr;
   transform: scale(-1, -1);
