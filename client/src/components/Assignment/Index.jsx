@@ -2,9 +2,16 @@ import { useState } from 'react'
 import Form from "./Form"
 
 
-const AssignmentView = (props) => {
 
+const AssignmentView = (props) => {
+  console.log(props)
   const [showEdit, setShowEdit] = useState(false)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+// == helpers ==
+
 
 
   return (
@@ -20,7 +27,16 @@ const AssignmentView = (props) => {
       <button >Delete</button>
       <button onClick={props.onBack}>Back</button>
 
-    {showEdit && <Form />} 
+
+    {showEdit && <Form
+    id = {props.id}
+    title = {props.title}
+    subject = {props.subject.name}
+    description = {props.description}
+    url = {props.url}
+    defaultdueDate = {props.defaultDueDate}
+     />}
+    
 
     </article>
   );
