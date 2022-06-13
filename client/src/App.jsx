@@ -13,7 +13,7 @@ const App = () => {
   // = state & effects =
   const [adminMode, setAdminMode] = useState(false);
   const [teacherId, setTeacherId] = useState(1); // check cookies
-  const [studentId, setStudentId] = useState(2); // check cookies
+  const [studentId, setStudentId] = useState(1); // check cookies
   const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
