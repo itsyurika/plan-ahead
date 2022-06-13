@@ -1,20 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
 import Form from "./Form"
-
+import DeleteModal from "./DeleteModal"
 
 const AssignmentView = (props) => {
-  console.log(props)
   const [showEdit, setShowEdit] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
 
-// == helpers ==
-const deleteAssignment = (id) => {
-    console.log("got to deleteAssignment")
-    axios.delete('/assignments/' + id)
-    props.onBack()
-    window.location.reload(true); //change to useEffect
-};
 
 
 
@@ -28,8 +21,12 @@ const deleteAssignment = (id) => {
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       <button onClick={() => {setShowEdit((prev) => !prev)}}>Edit</button>
-      <button onClick={() => {deleteAssignment(props.id)}}>Delete</button>
+      <button onClick={() => setShowModal(true)}> Delete </button>
+      
       <button onClick={props.onBack}>Back</button>
+
+    {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack}/>}
+
 
     {showEdit && <Form
     id = {props.id}
@@ -40,7 +37,6 @@ const deleteAssignment = (id) => {
     defaultdueDate = {props.defaultDueDate}
     onBack = {props.onBack}
      />}
-    
 
     </article>
   );
