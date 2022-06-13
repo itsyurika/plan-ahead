@@ -241,6 +241,15 @@ main {
 
 .calendar .body .col {
   flex-grow: 0;
-  flex-basis: calc(100% / 7);
-  width: calc(100% / 7);
+  flex-basis: calc(100% / 8);
+  width: calc(100% / 8);
+}
+
+.calendar .body .label {
+  font-size: 0.7em;
+  margin: auto ;
+  vertical-align: center;
+  writing-mode: vertical-lr;
+  transform: scale(-1, -1);
+  border-style: none;
 }

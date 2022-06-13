@@ -68,7 +68,11 @@ const Calendar = (props) => {
     const dateFormat = "EEE";
     const days = [];
     let startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    
+    days.push(
+      <div className="col col-center" >
+      Placeholder
+    </div>
+    )
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="col col-center" key={i}>
@@ -88,6 +92,15 @@ const Calendar = (props) => {
     let day = startDate;
     let formattedDate = "";
     while (day <= endDate) {
+      days.push(
+        <div
+            className={`col cell`}
+            key={day}
+            
+          >
+            <span className="label">placeholder</span>
+          </div>
+      )
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
         days.push(
@@ -101,6 +114,8 @@ const Calendar = (props) => {
             
           >
             <span className="number">{formattedDate}</span>
+      <Slot {...props.assignments[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+
           </div>
         );
         day = addDays(day, 1);
