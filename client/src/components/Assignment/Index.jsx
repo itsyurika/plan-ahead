@@ -1,16 +1,18 @@
 import { useState } from 'react'
+import axios from 'axios'
 import Form from "./Form"
-
 
 
 const AssignmentView = (props) => {
   console.log(props)
   const [showEdit, setShowEdit] = useState(false)
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
 
 // == helpers ==
+const deleteAssignment = (id) => {
+    console.log("got to deleteAssignment")
+    axios.delete('/assignments/' + id)
+};
 
 
 
@@ -24,9 +26,8 @@ const AssignmentView = (props) => {
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       <button onClick={() => {setShowEdit((prev) => !prev)}}>Edit</button>
-      <button >Delete</button>
+      <button onClick={() => {deleteAssignment(props.id)}}>Delete</button>
       <button onClick={props.onBack}>Back</button>
-
 
     {showEdit && <Form
     id = {props.id}
