@@ -1,3 +1,5 @@
+import { isSameDay, parseISO } from "date-fns";
+
 // = local helpers =
 const getStatus = (item) => {
   if (item.dateCompleted) return 'Complete';
@@ -23,6 +25,16 @@ export const getTablePositions = (assignments) => {
   });
 
   return newCards;
+};
+
+export const getAssignmentsForDay = (assignments, day) => {
+  if (!assignments?.length) return [];
+
+  const assignForDay = assignments.filter((item) => 
+    isSameDay(parseISO(item.assigned.dueDate), day)
+  );
+
+  return assignForDay;
 };
 
 export const buildStudentCards = (assignments, student) => {

@@ -166,13 +166,21 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 4em;
+  height: 10em;
   border-right: 1px solid var(--border-color);
-  overflow: hidden;
+  overflow: scroll;
   cursor: pointer;
   background: var(--neutral-color);
   transition: 0.25s ease-out;
   font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.calendar .body .cell .slot {
+  height: 2.5em;
+  font-size: 0.5em;
 }
 
 .calendar .body .cell:hover {

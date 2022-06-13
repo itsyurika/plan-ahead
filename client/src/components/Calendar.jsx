@@ -14,6 +14,7 @@ import {
 } from "date-fns";
 import './CalendarReact.scss';
 import Slot from "./Slot";
+import { getAssignmentsForDay } from "helpers/selectors";
 
 
 const Calendar = (props) => {
@@ -41,7 +42,6 @@ const Calendar = (props) => {
       setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
     }
   };
-
 
 
   const renderHeader = () => {
@@ -95,14 +95,14 @@ const Calendar = (props) => {
       days.push(
         <div
             className={`col cell`}
-            key={day}
-            
+            key={day}       
           >
             <span className="label">placeholder</span>
           </div>
       )
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
+        let assnForDay = getAssignmentsForDay(props.assignments, day)
         days.push(
           <div
             className={`col cell ${
@@ -111,11 +111,22 @@ const Calendar = (props) => {
                 : ""
             }`}
             key={day}
-            
           >
             <span className="number">{formattedDate}</span>
-      <Slot {...props.assignments[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
-
+            <div className="slot">
+            <Slot {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            </div>   
+            <div className="slot">
+            <Slot {...assnForDay[1]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            </div>  
+            <div className="slot">
+            <Slot {...assnForDay[2]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            </div>  
+            <div className="slot">
+            <Slot {...assnForDay[3]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            </div> 
+            
+      
           </div>
         );
         day = addDays(day, 1);
