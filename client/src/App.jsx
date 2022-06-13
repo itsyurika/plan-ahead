@@ -51,7 +51,7 @@ const App = () => {
         <h1>Week View Calendar with react</h1>
         <br />
         <h2>Example</h2>
-        <Calendar showDetailsHandle={showDetailsHandle} />
+        <CalendarReact showDetailsHandle={showDetailsHandle} />
         <br />
         {showDetails && <Details data={data} />}
       </div>
