@@ -13,14 +13,14 @@ const App = () => {
   // = state & effects =
   const [adminMode, setAdminMode] = useState(false);
   const [teacherId, setTeacherId] = useState(1); // check cookies
-  const [studentId, setStudentId] = useState(2); // check cookies
+  const [studentId, setStudentId] = useState(1); // check cookies
   const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
   useEffect(() => {
     Promise.all([
-      axios.get(`/teachers/${teacherId || 1}/assignments`),
+      axios.get(`/teachers/${teacherId}/assignments`),
       axios.get('/students/' + studentId),
     ])
       .then((res) => {
@@ -28,6 +28,12 @@ const App = () => {
         setStudent(res[1].data);
       });
   }, []);
+
+  // set cookie
+  useEffect(() => {
+    // set local storage to admin mode
+
+  }, [adminMode]);
 
   // = helpers =
   const startAssignment = () => {

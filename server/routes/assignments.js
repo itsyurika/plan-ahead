@@ -9,6 +9,7 @@ module.exports = (prisma) => {
   });
 
   router.post('/', async (req, res) => {
+    console.log("req.body:", req.body)
     const newAssignment = await assignment.create({ data: req.body });
     res.json(newAssignment);
   });
