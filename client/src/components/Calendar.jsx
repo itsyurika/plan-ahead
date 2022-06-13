@@ -14,8 +14,6 @@ import {
   addWeeks,
   subWeeks
 } from "date-fns";
-import './CalendarReact.scss';
-import Slot from "./Slot";
 import { getAssignmentsForDay } from "helpers/selectors";
 
 
@@ -94,7 +92,6 @@ const Calendar = (props) => {
           </div>
       )
       for (let i = 0; i < 7; i++) {
-        formattedDate = format(day, dateFormat);
         let assnForDay = getAssignmentsForDay(props.assignments, day)
         days.push(
           <div
@@ -105,18 +102,17 @@ const Calendar = (props) => {
             }`}
             key={day}
           >
-            <span className="number">{formattedDate}</span>
-            <div className="slot">
-            <Slot {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            <div className="card">
+            <Card {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
-            <div className="slot">
-            <Slot {...assnForDay[1]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            <div className="card">
+            <Card {...assnForDay[1]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
-            <div className="slot">
-            <Slot {...assnForDay[2]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            <div className="card">
+            <Card {...assnForDay[2]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
-            <div className="slot">
-            <Slot {...assnForDay[3]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+            <div className="card">
+            <Card {...assnForDay[3]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
 
 
