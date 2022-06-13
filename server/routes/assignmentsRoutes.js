@@ -14,6 +14,17 @@ module.exports = (prisma) => {
     res.json(newAssignment);
   });
 
+  router.delete('/:id', async (req, res) => {
+    console.log("Assignment: " + req.params.id + " is deleted 🗑️")
+    await assignment.delete({
+      where: {
+        id: +req.params.id
+      }
+    });
+    
+  })
+
+
   router.patch('/:id', async (req, res) => {
     const options = {
       where: {
