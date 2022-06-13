@@ -18,7 +18,7 @@ const CreateAssignment = (props) => {
   };
 
   const saveNew = () => {
-    const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 09 2022 12:00:00') };
+    const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
     axios.post('/assignments/', data);
     props.onBack()
     window.location.reload(true); //change to useEffect
@@ -38,6 +38,7 @@ const CreateAssignment = (props) => {
       {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
       {!isEdit && <button onClick={saveNew} type='Submit'>Save</button>}
       <button onClick={() => {setIsEdit((prev) => !prev)}}>Toggle</button> // Just here to test functionality.
+
     </section>
   );
 };
