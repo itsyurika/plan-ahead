@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-
 const CreateAssignment = (props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -11,7 +10,8 @@ const CreateAssignment = (props) => {
 
   // = helpers =
   const confirm = () => {
-    axios.post('/assignments', { title, description, url, teacherId, subjectId });
+    const data = { title, description, url, teacherId, subjectId, defaultDueDate: new Date('Jun 07 2022 19:00:00') };
+    axios.post('/assignments', data);
   };
 
   return (

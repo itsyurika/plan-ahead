@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon -L index"
+    "dev": "nodemon -L index",
+    "db:reset": "npx prisma migrate reset --force"
   },
   "keywords": [],
   "author": "",

@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
-import { assignmentsSelector } from './helpers/selectors';
+import { buildStudentCards, getTablePositions } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
 
 
 import Calendar from "components/Calendar";
-import TimeSlot from "components/TimeSlot";
-import AssignmentView from "components/AssignmentView";
+import AssignmentShow from "components/Assignment/Index";
 
 const App = () => {
   // = state =
-  const [teacher, setTeacher] = useState(null);
-  const [student, setStudent] = useState(1);
+  const [teacherId, setTeacherId] = useState(null); // check cookies
+  const [studentId, setStudentId] = useState(1); // check cookies
+  const [student, setStudent] = useState({});
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
   useEffect(() => {
-    axios.get('/assignments')
+    Promise.all([
+      axios.get('/assignments'),
+      axios.get('/students/' + studentId),
+    ])
       .then((res) => {
-        setAssignments(res.data);
+        setAssignments(res[0].data);
+        setStudent(res[1].data);
       });
   }, []);
 
@@ -35,26 +39,29 @@ const App = () => {
 
 
   // = helpers =
-  const studentAssignments = assignmentsSelector(assignments, student);
-  const assignmentsList = focused
-    ? studentAssignments.find((item) => item.id === focused)
-    : studentAssignments.map((item) => <TimeSlot key={item.id} {...item} onClick={() => setFocused(item.id)} />);
+  const startAssignment = () => {
+    axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: studentId });
+  };
+  const completeAssignment = () => {
+    axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
+  };
 
+  // const teacherAssignments = buildTeacherCards(assignments, studentId);
+  const assignmentList = teacherId ? assignments : buildStudentCards(assignments, student);
+  const updatedList = getTablePositions(assignmentList);
+  const focusedAssignment = updatedList.find((item) => item.id === focused);
 
   // = render main page =
   return (
     <main className="App">
       {focused
-        ? <AssignmentView {...assignmentsList} onClick={() => setFocused(null)} />
-        : <Calendar timeSlot={studentAssignments[0]} onClick={() => setFocused(student)}>{assignmentsList}</Calendar>}
-      <div>
-        <h1>Week View Calendar with react</h1>
-        <br />
-        <h2>Example</h2>
-        <CalendarReact showDetailsHandle={showDetailsHandle} />
-        <br />
-        {showDetails && <Details data={data} />}
-      </div>
+        ? <AssignmentShow
+          {...focusedAssignment}
+          onStart={startAssignment}
+          onComplete={completeAssignment}
+          onBack={() => setFocused(null)}
+        />
+        : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
     </main>
   );
 };

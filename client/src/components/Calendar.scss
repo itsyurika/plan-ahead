@@ -14,11 +14,12 @@ body {
   background: #fff;
 }
 
-.container {
+.card-container {
   width: 90vw;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
   position: absolute;
+  overflow: auto;
 }
 
 .title {
@@ -46,9 +47,6 @@ body {
 
 .day {
   border-left: 1px solid $grid-color;
-}
-
-.wknd {
 }
 
 .content {
@@ -81,12 +79,8 @@ body {
     writing-mode: vertical-lr;
     transform: scale(-1, -1);
     border-style: none;
-
-    // grid-row: 1 / span 4;
-    // grid-column: 1 / span 4;
   }
 }
-
 
 .col {
   border-right: 1px solid $grid-color;
@@ -97,19 +91,12 @@ body {
 .filler-col {
   grid-row: 1 / -1;
   grid-column: 2;
-  border-right: 1px solid $grid-color;  
+  border-right: 1px solid $grid-color;
 }
 
 .row {
   grid-column: 2 / -1;
   border-bottom: 1px solid $grid-color;
-}
-
-.event {
-  border-radius: 5px;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 80%;
 }
 
 .weekend {
@@ -126,20 +113,43 @@ body {
   border-color: #81cdf2;
 }
 
-.event1 {
-  grid-column: 3;
-  grid-row: 3 / span 1;
-}
+.card {
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 80%;
 
-.event2 {
-  grid-column: 5;
-  grid-row: 1 / span 1;
-}
+    &.row1 {
+      grid-row: 1;
+    }
 
+    &.row2 {
+      grid-row: 2;
+    }
 
-.event3 {
-  grid-column: 4;
-  grid-row: 2 / span 1;
+    &.row3 {
+      grid-row: 3;
+    }
+
+    &.row4 {
+      grid-row: 4;
+    }
+
+    &.column3 {
+      grid-column: 3;
+    }
+    &.column4 {
+      grid-column: 4;
+    }
+    &.column5 {
+      grid-column: 5;
+    }
+    &.column6 {
+      grid-column: 6;
+    }
+    &.column7 {
+      grid-column: 7;
+    }
 }
 
 .current-time {

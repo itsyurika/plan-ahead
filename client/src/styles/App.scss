@@ -34,13 +34,15 @@ article.assignment__view {
     margin-right: .5rem;
   }
 
-  &header {}
-
-  &.math {
-    background-color: $math;
+  &header {
+    color: aqua;
   }
 
-  &.history {
-    background-color: $history;
+  &.started {
+    background-color: $started;
+  }
+
+  &.complete {
+    background-color: $complete;
   }
 }
