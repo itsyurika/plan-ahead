@@ -5,8 +5,14 @@ import './styles/App.scss';
 import 'normalize.css';
 
 
+
 import Calendar from "components/Calendar";
 import AssignmentShow from "components/Assignment/Index";
+
+//? import files for calendar react//
+import CalendarReact from "components/CalendarReact";
+import Details from "components/Details";
+//? end of import files for calendar react//
 
 const App = () => {
   // = state =
@@ -27,7 +33,7 @@ const App = () => {
       });
   }, []);
 
-  // = states from react calendar = //
+  //? = states from react calendar = //
   const [showDetails, setShowDetails] = useState(false);
   const [data, setData] = useState(null);
 
@@ -35,7 +41,7 @@ const App = () => {
     setData(dayStr);
     setShowDetails(true);
   };
-  // =end of react calendar= 
+  //? =end of react calendar= 
 
 
   // = helpers =
@@ -54,6 +60,7 @@ const App = () => {
   // = render main page =
   return (
     <main className="App">
+      <div>
       {focused
         ? <AssignmentShow
           {...focusedAssignment}
@@ -62,6 +69,14 @@ const App = () => {
           onBack={() => setFocused(null)}
         />
         : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
+        </div>
+      {/* <div>
+        
+        <CalendarReact showDetailsHandle={showDetailsHandle} />
+        <br />
+        {showDetails && <Details data={data} />}
+      </div> */}
+      
     </main>
   );
 };
