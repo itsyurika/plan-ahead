@@ -43,7 +43,8 @@ $weights: (
   black: 900,
 );
 
-@each $weight, $value in $weights {
+@each $weight,
+$value in $weights {
   .text--#{$weight} {
     font-weight: $value;
   }

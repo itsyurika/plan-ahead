@@ -56,7 +56,6 @@ section.calendar {
 
 .calendar {
   display: block;
-  position: relative;
   width: 100%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
@@ -98,12 +97,8 @@ section.calendar {
 }
 
 .calendar .body .cell {
-  height: 4em;
-  overflow: auto;
+  height: 6rem;
   cursor: pointer;
-  background: var(--neutral-color);
-  transition: 0.25s ease-out;
-  font-size: 1.5em;
 }
 
 .calendar .body .cell:hover {
@@ -146,7 +141,6 @@ section.calendar {
   color: var(--main-color);
   opacity: 0;
   font-size: 8em;
-  position: absolute;
   top: -0.2em;
   right: -0.05em;
   transition: 0.25s ease-out;
@@ -166,8 +160,8 @@ section.calendar {
 }
 
 .calendar .body .label {
-
-  font-size: 0.7em;
+  font-size: 1rem;
+  display:block;
   margin: auto;
   vertical-align: center;
   writing-mode: vertical-lr;
