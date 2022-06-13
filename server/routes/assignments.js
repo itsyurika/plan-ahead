@@ -1,11 +1,10 @@
 const router = require('express').Router();
 
 module.exports = (prisma) => {
-  const { assignment, studentAssignment } = prisma;
+  const { assignment } = prisma;
+
   router.get('/', async (req, res) => {
-    const assignments = await assignment.findMany({
-      include: { subject: true },
-    });
+    const assignments = await assignment.findMany({ include: { subject: true }, });
     res.json(assignments);
   });
 
@@ -16,12 +15,7 @@ module.exports = (prisma) => {
 
   router.patch('/:id', async (req, res) => {
     const options = {
-      where: {
-        studentAssignmentId: {
-          assignmentId: +req.params.id,
-          studentId: +req.body.studentId
-        }
-      }, data: req.body
+      where: { id: req.params.id }, data: req.body
     };
 
     const updatedAssign = await studentAssignment.update(options);

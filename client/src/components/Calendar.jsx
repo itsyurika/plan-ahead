@@ -11,8 +11,8 @@ const Calendar = (props) => {
   ));
 
   return (
-    <div className="card-container">
-      <div className="title">February 2019 Week 6</div>
+    <section className="calendar">
+      <header>February 2019 Week 6</header>
       <div className="days">
         <div className="filler"></div>
         <div className="filler"></div>
@@ -45,7 +45,7 @@ const Calendar = (props) => {
         <div className="row" style={{ "gridRow": "4" }}></div>
         {cards}
       </div>
-    </div>);
+    </section>);
 };
 
 export default Calendar;

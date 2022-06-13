@@ -2,122 +2,114 @@ $title-height: 3em;
 $days-height: 3em;
 $time-width: 3em;
 $time-height: 6em;
-$grid-color: #dadce0;
+$outline: #dadce0;
 $calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: #fff;
-}
-
-.card-container {
+.calendar {
+  background-color: #fff;
   width: 90vw;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
-  position: absolute;
   overflow: auto;
-}
 
-.title {
-  background: #217346;
-  text-align: center;
-  display: grid;
-  place-content: center;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.days {
-  background: #f3f2f1;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  grid-template-columns: $calendar-template;
-  position: sticky;
-  top: $title-height;
-  z-index: 10;
-  border-bottom: 2px solid $grid-color;
-}
-
-.day {
-  border-left: 1px solid $grid-color;
-}
-
-.content {
-  display: grid;
-  grid-template-columns: $calendar-template;
-  grid-template-rows: repeat(4, $time-height);
-}
-
-.time {
-  grid-column: 1;
-  text-align: right;
-  align-self: end;
-  font-size: 80%;
-  position: relative;
-  bottom: -1ex;
-  color: #70757a;
-  padding-right: 2px;
-  &.label {
-    transform: rotate(-90deg);
-    grid-row: 1 / span 1;
-    grid-column: 0 / span 4;
-    min-width: 10em;
+  >header {
+    background: #217346;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
-}
 
-.col {
-  &.label {
-    margin: auto ;
-    vertical-align: center;
-    writing-mode: vertical-lr;
-    transform: scale(-1, -1);
-    border-style: none;
+  .days {
+    background: #f3f2f1;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    grid-template-columns: $calendar-template;
+    position: sticky;
+    top: $title-height;
+    z-index: 10;
+    border-bottom: 2px solid $outline;
   }
-}
 
-.col {
-  border-right: 1px solid $grid-color;
-  grid-row: 1 / span 4;
-  grid-column: span 1;
-}
+  .day {
+    border-left: 1px solid $outline;
+  }
 
-.filler-col {
-  grid-row: 1 / -1;
-  grid-column: 2;
-  border-right: 1px solid $grid-color;
-}
+  .content {
+    display: grid;
+    grid-template-columns: $calendar-template;
+    grid-template-rows: repeat(4, $time-height);
+  }
 
-.row {
-  grid-column: 2 / -1;
-  border-bottom: 1px solid $grid-color;
-}
+  .time {
+    grid-column: 1;
+    text-align: right;
+    align-self: end;
+    font-size: 80%;
+    position: relative;
+    bottom: -1ex;
+    color: #70757a;
+    padding-right: 2px;
 
-.weekend {
-  background-color: #f1f3f4;
-}
+    &.label {
+      transform: rotate(-90deg);
+      grid-row: 1 / span 1;
+      grid-column: 0 / span 4;
+      min-width: 10em;
+    }
+  }
 
-.calendar1 {
-  background-color: #d7dbef;
-  border-color: #bcc3e5;
-}
+  .col {
+    &.label {
+      margin: auto;
+      vertical-align: center;
+      writing-mode: vertical-lr;
+      transform: scale(-1, -1);
+      border-style: none;
+    }
+  }
 
-.calendar2 {
-  background-color: #b3e1f7;
-  border-color: #81cdf2;
-}
+  .col {
+    border-right: 1px solid $outline;
+    grid-row: 1 / span 4;
+    grid-column: span 1;
+  }
 
-.card {
-  border-radius: 5px;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 80%;
+  .filler-col {
+    grid-row: 1 / -1;
+    grid-column: 2;
+    border-right: 1px solid $outline;
+  }
+
+  .row {
+    grid-column: 2 / -1;
+    border-bottom: 1px solid $outline;
+  }
+
+  .weekend {
+    background-color: #f1f3f4;
+  }
+
+  .calendar1 {
+    background-color: #d7dbef;
+    border-color: #bcc3e5;
+  }
+
+  .calendar2 {
+    background-color: #b3e1f7;
+    border-color: #81cdf2;
+  }
+
+  .card {
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 80%;
 
     &.row1 {
       grid-row: 1;
@@ -138,39 +130,44 @@ body {
     &.column3 {
       grid-column: 3;
     }
+
     &.column4 {
       grid-column: 4;
     }
+
     &.column5 {
       grid-column: 5;
     }
+
     &.column6 {
       grid-column: 6;
     }
+
     &.column7 {
       grid-column: 7;
     }
-}
+  }
 
-.current-time {
-  grid-column: 7;
-  grid-row: 10;
-  border-top: 2px solid $current-time-color;
-  position: relative;
-  top: calc(50% - 1px);
-}
+  .current-time {
+    grid-column: 7;
+    grid-row: 10;
+    border-top: 2px solid $current-time-color;
+    position: relative;
+    top: calc(50% - 1px);
+  }
 
-.circle {
-  width: 12px;
-  height: 12px;
-  border: 1px solid $current-time-color;
-  border-radius: 50%;
-  background: $current-time-color;
-  position: relative;
-  top: -6px;
-  left: -6px;
-}
+  .circle {
+    width: 12px;
+    height: 12px;
+    border: 1px solid $current-time-color;
+    border-radius: 50%;
+    background: $current-time-color;
+    position: relative;
+    top: -6px;
+    left: -6px;
+  }
 
-.current {
-  font-weight: bold;
+  .current {
+    font-weight: bold;
+  }
 }
