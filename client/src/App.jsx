@@ -1,4 +1,4 @@
-import { findAssigned} from './helpers/selectors';
+import { findAssigned } from './helpers/selectors';
 import { useStatusChange } from './hooks/useStatusChange';
 import './styles/App.scss';
 import 'normalize.css';

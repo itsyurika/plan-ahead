@@ -51,11 +51,11 @@ export function useStatusChange () {
     axios.patch(`/students/${studentId}/assignments/${id}`, { dateStarted: new Date() })
       .then((res) => {
         console.log("state.student: ", state.student);
-        const studentAssignments = state.student.submissions.map((item) => (
+        const studentAssignments = state.student.studentAssignments.map((item) => (
           item.assignmentId === id ? { ...res.data } : { ...item }
         ));
         setState((prev) => ({...prev,
-          student: {...prev.student, submissions: studentAssignments}
+          student: {...prev.student, studentAssignments: studentAssignments}
         }))
       });
   };
@@ -63,11 +63,11 @@ export function useStatusChange () {
   const completeAssignment = (id, studentId) => {
     axios.patch(`/students/${studentId}/assignments/${state.focused}`, { dateCompleted: new Date() })
       .then((res) => {
-        const studentAssignments = state.student.submissions.map((item) => (
+        const studentAssignments = state.student.studentAssignments.map((item) => (
           item.assignmentId === id ? { ...res.data } : { ...item }
         ));
         setState((prev) => ({...prev,
-          student: {...prev.student, submissions: studentAssignments}
+          student: {...prev.student, studentAssignments: studentAssignments}
         }))
       });
   };
