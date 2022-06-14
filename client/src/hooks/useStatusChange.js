@@ -3,13 +3,6 @@ import axios from "axios";
 
 
 export function useStatusChange () {
-  // const [adminMode, setAdminMode] = useState(false);
-  // const [teacherId, setTeacherId] = useState(1); // check cookies
-  // const [studentId, setStudentId] = useState(1); // check cookies
-  // const [student, setStudent] = useState({});
-  // const [assignments, setAssignments] = useState([]);
-  // const [focused, setFocused] = useState(null);
-  // const [assnStatus, setAssnStatus] = useState(null);
 
   const initialState = {
     adminMode: false,
@@ -32,7 +25,7 @@ export function useStatusChange () {
       .then((res) => {
         setState((prev) => ({...prev, 
           assignments: res[0].data,
-          students: res[1].data
+          student: res[1].data
         }));
       }).catch((error) => {
         console.log("error occurred whilte fetching data: ", error);
@@ -40,15 +33,44 @@ export function useStatusChange () {
   }, []);
 
 
-  const startAssignment = (focused, studentId) => {
-    console.log("studentID : ", studentId);
-    return axios.patch(`/students/${studentId}/assignments/${focused}`, { dateStarted: new Date() })
-  };
-  
-   const completeAssignment = (focused, studentId) => {
-    return axios.patch(`/students/${studentId}/assignments/${focused}`, { dateCompleted: new Date()})
+  const setFocused = (id) => {
+    setState((prev) => 
+      ({...prev,
+        focused: id
+      })
+    )
+  }
+
+  const setAdminMode = (prevValue) => {
+    setState((prev) => ({...prev,
+    adminMode: !prevValue
+    }) )
   };
 
+  const startAssignment = (id, studentId) => {
+    axios.patch(`/students/${studentId}/assignments/${id}`, { dateStarted: new Date() })
+      .then((res) => {
+        console.log("state.student: ", state.student);
+        const studentAssignments = state.student.submissions.map((item) => (
+          item.assignmentId === id ? { ...res.data } : { ...item }
+        ));
+        setState((prev) => ({...prev,
+          student: {...prev.student, submissions: studentAssignments}
+        }))
+      });
+  };
+
+  const completeAssignment = (id, studentId) => {
+    axios.patch(`/students/${studentId}/assignments/${state.focused}`, { dateCompleted: new Date() })
+      .then((res) => {
+        const studentAssignments = state.student.submissions.map((item) => (
+          item.assignmentId === id ? { ...res.data } : { ...item }
+        ));
+        setState((prev) => ({...prev,
+          student: {...prev.student, submissions: studentAssignments}
+        }))
+      });
+  };
 
   const handleStart = () => {
     startAssignment(state.focused, state.studentId)
@@ -70,7 +92,7 @@ export function useStatusChange () {
   }
   
 
-  return {state, setFocused, startAssignment, completeAssignment, handleStart}
+  return {state, setFocused, setAdminMode, startAssignment, completeAssignment, handleStart}
 
 }
 

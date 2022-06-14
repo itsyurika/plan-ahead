@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
-import { findAssigned, getTablePositions } from './helpers/selectors';
-import { useStatusChange } from './hooks/useStatusChange'
-import axios from "axios";
+import { findAssigned} from './helpers/selectors';
+import { useStatusChange } from './hooks/useStatusChange';
 import './styles/App.scss';
 import 'normalize.css';
 
@@ -14,40 +12,39 @@ const App = () => {
 
   const {
     state,
-    startAssignment,
-    handleStart,
-    completeAssignment
     setFocused,
+    setAdminMode,
+    startAssignment,
+    completeAssignment,
   } = useStatusChange();
-
-  // set cookie
-  useEffect(() => {
-    // set local storage to admin mode
-
-  }, []);
-
-  // = helpers =
-
+  
+  const {
+    focused,
+    adminMode,
+    studentId,
+    teacherId
+  } = state
 
   const assignmentList = findAssigned(state.assignments, !state.adminMode && state.student);
-  const focusedAssignment = assignmentList.find((item) => item.id === state.studentfocused);
+  const focusedAssignment = assignmentList.find((item) => item.id === state.focused);
+
 
   // = render main page =
   return (
     <main className="app">
-      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={state.adminMode} />
-      {state.focused
+      <Sidenav onLogin={() => { setAdminMode(adminMode) }} admin={adminMode} />
+      {focused
         && <Assignment
           {...focusedAssignment}
-          onStart={handleStart}
-          onComplete={() => completeAssignment(state.focused, state.studentId)}
+          onStart={() => { startAssignment(focused, studentId); }}
+          onComplete={() => { completeAssignment(focused, studentId); }}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
-          adminMode = {state.adminMode}
+          adminMode={adminMode}
         />}
-      <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />
+      <Calendar assignments={assignmentList} onAdd={() => { console.log('clicked add'); }} onFocus={(id) => setFocused(id)} />
 
-      {state.adminMode && <AssignmentForm teacherId={state.teacherId} />}
+      {adminMode && <AssignmentForm teacherId={teacherId} />}
     </main>
   );
 };
