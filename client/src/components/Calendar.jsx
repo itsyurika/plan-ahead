@@ -13,7 +13,6 @@ import {
 
 import Card from "components/Card";
 
-
 const Calendar = (props) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);

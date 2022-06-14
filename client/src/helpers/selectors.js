@@ -12,17 +12,12 @@ const getStatus = (item) => {
 export const findAssigned = (assignments, student) => {
   if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: item.defaultDueDate } }));
 
-  const foundAssignments = student.studentAssignments.map((item) => ({
+  return student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
     assigned: { ...item },
     status: getStatus(item),
-  })
-  );
-
-  return foundAssignments;
+  }));
 };
-
-
 
 export const getDatesForWeek = (date) => {
   const startDate = startOfWeek(date, { weekStartsOn: 1 });

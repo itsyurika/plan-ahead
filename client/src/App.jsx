@@ -19,11 +19,6 @@ const App = () => {
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
-  const {
-    startAssignment,
-    completeAssignment
-  } = useStatusChange();
-
   useEffect(() => {
     Promise.all([
       axios.get(`/teachers/${teacherId}/assignments`),
@@ -38,19 +33,29 @@ const App = () => {
   }, []);
 
   // = helpers =
-  const handleStart = () => {
-    startAssignment(focused, studentId)
+  const startAssignment = (id, studentId) => {
+    axios.patch(`/students/${studentId}/assignments/${id}`, { dateStarted: new Date() })
       .then((res) => {
-        setAssignments((prev) => {
-          const updatedAssignments = prev.map((item) => {
-            if (item.id === focused) {
-              return { ...item, assigned: { ...res.data } };
-            } else {
-              return { ...item };
-            }
-          });
-          return updatedAssignments;
-        });
+        const studentAssignments = student.studentAssignments.map((item) => (
+          item.assignmentId === id ? { ...res.data } : { ...item }
+        ));
+        setStudent((prev) => ({
+          ...prev,
+          studentAssignments,
+        }));
+      });
+  };
+
+  const completeAssignment = (id, studentId) => {
+    axios.patch(`/students/${studentId}/assignments/${focused}`, { dateCompleted: new Date() })
+      .then((res) => {
+        const studentAssignments = student.studentAssignments.map((item) => (
+          item.assignmentId === id ? { ...res.data } : { ...item }
+        ));
+        setStudent((prev) => ({
+          ...prev,
+          studentAssignments,
+        }));
       });
   };
 
@@ -66,8 +71,8 @@ const App = () => {
       {focused
         && <Assignment
           {...focusedAssignment}
-          onStart={handleStart}
-          onComplete={(date) => completeAssignment(focused, studentId)}
+          onStart={() => { startAssignment(focused, studentId); }}
+          onComplete={() => { completeAssignment(focused, studentId); }}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
           adminMode={adminMode}

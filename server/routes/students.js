@@ -19,7 +19,6 @@ module.exports = (prisma) => {
     res.json(student);
   });
 
-
   // = assignments routes =
   // update student's assignment
   router.patch('/:id/assignments/:assignmentId', async (req, res) => {
