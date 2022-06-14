@@ -48,6 +48,7 @@ section.calendar {
     place-content: center;
     text-align: center;
     grid-template-columns: $calendar-template;
+    border-bottom: 2px solid $outline;
   }
 
   .day {

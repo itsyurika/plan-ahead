@@ -39,9 +39,9 @@ const Calendar = (props) => {
     );
   };
 
-  const renderHeader = () => {
+  const renderHeader = (date) => {
     const daysHeader = [];
-    const startDate = startOfWeek(selectedDate, { weekStartsOn: 1 });
+    const startDate = startOfWeek(date, { weekStartsOn: 1 });
     for (let i = 0; i < 7; i++) {
       daysHeader.push(
         <div className="col col-center" key={i}>
@@ -49,11 +49,11 @@ const Calendar = (props) => {
         </div>
       );
     }
-    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(selectedDate)}</div>{daysHeader}</header>;
+    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(date)}</div>{daysHeader}</header>;
   };
 
-  const renderRows = () => {
-    const dates = getDatesForWeek(selectedDate);
+  const renderCells = (date) => {
+    const dates = getDatesForWeek(date);
     const sorted = sortAssignmentsByDay(props.assignments, dates);
 
     const totalRows = 4;
@@ -96,8 +96,11 @@ const Calendar = (props) => {
           <div className="icon">Next</div>
         </div>
       </header>
-      {renderHeader()}
-      {renderRows()}
+      {renderHeader(selectedDate)}
+      {renderCells(selectedDate)}
+
+      {renderHeader(addWeeks(selectedDate, 1))}
+      {renderCells(addWeeks(selectedDate, 1))}
     </section>
   );
 };
