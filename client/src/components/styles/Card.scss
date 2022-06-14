@@ -2,7 +2,8 @@
 
 article.card__show {
   background-color: $default;
-  width: 100%;
+  max-width: 40rem;
+  min-width: 100px;
   height: 100%;
   padding: .5rem;
   border: 1px solid rgb(43, 192, 226);
@@ -27,11 +28,11 @@ article.card__show {
   &.complete {
     background-color: $complete;
   }
-}
-
-article.card__empty {
-  .card__add-button {
-    display: block;
-    margin: auto;
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    box-shadow:
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.02),
+  100px 100px 80px rgba(0, 0, 0, 0.04);
   }
 }

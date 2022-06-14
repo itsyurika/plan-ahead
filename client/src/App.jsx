@@ -51,13 +51,15 @@ const App = () => {
     <main className="app">
       <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode} />
       {focused
-        ? <Assignment
+        && <Assignment
           {...focusedAssignment}
           onStart={startAssignment}
           onComplete={completeAssignment}
           onBack={() => setFocused(null)}
-        />
-        : <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />}
+          setAdmin={() => setAdminMode(true)}
+          adminMode = {adminMode}
+        />}
+      <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
     </main>
