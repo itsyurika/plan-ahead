@@ -8,18 +8,20 @@ const AssignmentView = (props) => {
   const [edit, setEdit] = useState(true);
 
   return (
-  <article className='modalBackdrop'>
-    <div className='form-modalContainer'>
-      <div className={`assignment__view ${props.status?.toLowerCase()}`}>
-      <header><h3>{props.title}</h3></header>
+
+  <article >
+  <div className='modalBackdrop'>
+    <div className={`form-modalContainer ${props.status?.toLowerCase()}`}>
+      <header id="assignment-header"><h3>{props.title}</h3></header>
+      <br />
       <p>{props.subject?.name}</p>
-      <br></br>
+      <br />
       <p>{props.description}</p>
-      <br></br>
+      <br />
       <p>{props.url}</p>
-      <br></br>
+      <br />
       <p>{props.status}</p>
-      <br></br>
+      <br />
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       {edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
@@ -28,8 +30,6 @@ const AssignmentView = (props) => {
       <button onClick={props.onBack}>Back</button>
       <button onClick={() => { setEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
 
-
-      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} />}
       {showForm && <Form
         id={props.id}
         title={props.title}
@@ -42,6 +42,7 @@ const AssignmentView = (props) => {
       />}
       </div>
       </div>
+      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} />}
     </article>
   );
 };

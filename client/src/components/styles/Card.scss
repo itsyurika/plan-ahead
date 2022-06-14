@@ -29,7 +29,10 @@ article.card__show {
     background-color: $complete;
   }
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     z-index: 1;
+    box-shadow:
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.02),
+  100px 100px 80px rgba(0, 0, 0, 0.04);
   }
 }
