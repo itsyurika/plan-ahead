@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { findAssigned, getTablePositions } from './helpers/selectors';
-import { useStatusChange } from './hooks/useStatusChange'
+import { useStatusChange } from './hooks/useStatusChange';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
@@ -34,20 +34,13 @@ const App = () => {
         setStudent(res[1].data);
       }).catch((error) => {
         console.log("error occurred whilte fetching data: ", error);
-      })
+      });
   }, []);
 
-  // set cookie
-  useEffect(() => {
-    // set local storage to admin mode
-
-  }, [adminMode]);
-
   // = helpers =
-  
-
   const assignmentList = findAssigned(assignments, !adminMode && student);
   const focusedAssignment = assignmentList.find((item) => item.id === focused);
+
 
   // = render main page =
   return (
@@ -60,9 +53,9 @@ const App = () => {
           onComplete={() => completeAssignment(focused, studentId)}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
-          adminMode = {adminMode}
+          adminMode={adminMode}
         />}
-      <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />
+      <Calendar assignments={assignmentList} onAdd={() => { console.log('clicked add'); }} onFocus={(id) => setFocused(id)} />
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
     </main>

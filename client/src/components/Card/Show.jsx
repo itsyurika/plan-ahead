@@ -1,14 +1,4 @@
-import classNames from "classnames";
-
 const Show = (props) => {
-  console.log("props for creating show slot card: ", props);
-  const { dateStarted, dateCompleted } = props.assigned;
-
-  const showClass = classNames("card__show", {
-    "complete": dateCompleted,
-    "started": dateStarted && !dateCompleted 
-  })
-
   return (
     <article
       className={`card__show ${props.status?.toLowerCase()}`}

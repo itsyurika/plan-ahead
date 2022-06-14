@@ -10,17 +10,15 @@ const getStatus = (item) => {
 
 // = exported helpers =
 export const findAssigned = (assignments, student) => {
-  if (!student.id) return assignments.map((item) => ({ ...item, assigned: {dueDate: item.defaultDueDate} }));
+  if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: item.defaultDueDate } }));
 
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
     assigned: { ...item },
-    status: getStatus(item)
-
+    status: getStatus(item),
   })
   );
 
-  console.log("found assignments from buildStudentCards:", foundAssignments )
   return foundAssignments;
 };
 
