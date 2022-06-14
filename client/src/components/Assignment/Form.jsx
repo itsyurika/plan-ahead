@@ -39,8 +39,11 @@ const CreateAssignment = (props) => {
 
         <select id="selectList" onChange={(e) => setSubjectId(+e.target.value)}>
           <option>Subjects</option>
-          <option value='2'>History</option>
-          <option value='1'>Math</option>
+          <option value='1'>Art</option>
+          <option value='2'>English</option>
+          <option value='3'>History</option>
+          <option value='4'>Math</option>
+          <option value='5'>Science</option>
         </select>
 
       </form>
