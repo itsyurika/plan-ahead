@@ -11,79 +11,43 @@ import Assignment from "components/Assignment";
 import AssignmentForm from "components/Assignment/Form";
 
 const App = () => {
-  // = state & effects =
-  const [adminMode, setAdminMode] = useState(false);
-  const [teacherId, setTeacherId] = useState(1); // check cookies
-  const [studentId, setStudentId] = useState(1); // check cookies
-  const [student, setStudent] = useState({});
-  const [assignments, setAssignments] = useState([]);
-  const [focused, setFocused] = useState(null);
 
   const {
+    state,
     startAssignment,
+    handleStart,
     completeAssignment
+    setFocused,
   } = useStatusChange();
-
-  useEffect(() => {
-    Promise.all([
-      axios.get(`/teachers/${teacherId}/assignments`),
-      axios.get('/students/' + studentId),
-    ])
-      .then((res) => {
-        setAssignments(res[0].data);
-        setStudent(res[1].data);
-      }).catch((error) => {
-        console.log("error occurred whilte fetching data: ", error);
-      })
-  }, []);
 
   // set cookie
   useEffect(() => {
     // set local storage to admin mode
 
-  }, [assignments]);
+  }, []);
 
   // = helpers =
 
-  const handleStart = () => {
-    startAssignment(focused, studentId)
-    .then((res) => {
-      console.log("res from handleStart: ", res);
-      setAssignments((prev) => {
-        console.log("logging prev: ", prev);
-        const updatedAssignments = prev.map((item) => {
-          if (item.id===focused) {
-            return {...item, assigned: {...res.data}}
-          } else {
-            return {...item}
-          } 
-        })
-        console.log("updatedAssignment: ", updatedAssignments);
-        return updatedAssignments;
-    })
-  })
-  }
-  
 
-  const assignmentList = findAssigned(assignments, !adminMode && student);
-  const focusedAssignment = assignmentList.find((item) => item.id === focused);
+  const assignmentList = findAssigned(state.assignments, !state.adminMode && state.student);
+  const focusedAssignment = assignmentList.find((item) => item.id === state.studentfocused);
 
   // = render main page =
   return (
     <main className="app">
-      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode} />
-      {focused
+      <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={state.adminMode} />
+      {state.focused
         && <Assignment
           {...focusedAssignment}
           onStart={handleStart}
-          onComplete={(date) => completeAssignment(focused, studentId)}
+          onComplete={() => completeAssignment(state.focused, state.studentId)}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
-          adminMode = {adminMode}
+          adminMode = {state.adminMode}
         />}
       <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />
 
-      {adminMode && <AssignmentForm teacherId={teacherId} />}
+      {state.adminMode && <AssignmentForm teacherId={state.teacherId} />}
     </main>
   );
 };
