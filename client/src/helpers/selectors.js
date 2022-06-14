@@ -1,4 +1,4 @@
-import { isSameDay, parseISO, addDays, startOfWeek } from "date-fns";
+import { isSameDay, parseISO, addDays, startOfWeek } from 'date-fns';
 
 // = local helpers =
 const getStatus = (submission) => {

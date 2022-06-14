@@ -42,9 +42,9 @@ const CreateAssignment = (props) => {
           <option value='2'>History</option>
           <option value='1'>Math</option>
         </select>
-      
+
       </form>
-      
+
       {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
       {!isEdit && <button onClick={saveNew} type='Submit'>Save</button>}
       <button onClick={() => {setIsEdit((prev) => !prev)}}>Toggle</button> // Just here to test functionality.
