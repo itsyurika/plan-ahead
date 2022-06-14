@@ -5,13 +5,13 @@ import DeleteModal from "./DeleteModal";
 const AssignmentView = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [edit, setEdit] = useState(true);
 
   return (
 
   <article >
   <div className='modalBackdrop'>
     <div className={`form-modalContainer ${props.status?.toLowerCase()}`}>
+      <div id="cancel-X" onClick={props.onBack}>x</div>
       <header id="assignment-header"><h3>{props.title}</h3></header>
       <br />
       <p>{props.subject?.name}</p>
@@ -22,13 +22,12 @@ const AssignmentView = (props) => {
       <br />
       <p>{props.status}</p>
       <br />
-      <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
-      <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
-      {edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
-      {!edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Create</button>}
-      <button onClick={() => setShowModal(true)}> Delete </button>
-      <button onClick={props.onBack}>Back</button>
-      <button onClick={() => { setEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
+      {!props.adminMode &&
+      <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>}
+      {!props.adminMode && <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>}
+      {props.adminMode && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
+      {props.adminMode && <button onClick={() => setShowModal(true)}> Delete </button>}
+
 
       {showForm && <Form
         id={props.id}

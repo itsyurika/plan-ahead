@@ -57,6 +57,7 @@ const App = () => {
           onStart={startAssignment}
           onComplete={completeAssignment}
           onBack={() => setFocused(null)}
+          adminMode = {adminMode}
         />}
       <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />
 

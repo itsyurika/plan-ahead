@@ -60,7 +60,7 @@ z-index: 4;
   width: 600px;
   background-color: $default;
   color: #262422;
-  border: solid 5px blueviolet;
+  border: 5px solid blueviolet;
   border-radius: 10px;
   padding: 2rem;
   box-shadow:
@@ -74,6 +74,10 @@ z-index: 4;
   53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
   100px 100px 80px rgba(0, 0, 0, 0.07);
   z-index: 3;
+
+  button {
+    margin-right: .5rem;
+  }
   
     &.started {
       background-color: $started;
@@ -82,4 +86,14 @@ z-index: 4;
       background-color: $complete;
     }
   
+}
+
+#cancel-X {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 32px;
+  padding-left: 5px;
+  margin: 0px 5px 5px 0px;
+  cursor: pointer;
 }

@@ -11,9 +11,10 @@ import axios from 'axios';
     return (
       <div className="del-modalBackdrop">
         <div className="del-modalContainer">
+          <div id="cancel-X" onClick={props.closeModal}>x</div>
+          <br />
           <p>Please confirm that you would like to delete {props.title}</p>
           <button onClick={() => {deleteAssignment(props.id)}}>Delete</button>
-          <button onClick={props.closeModal}>Close</button>
         </div>
       </div>
     );
