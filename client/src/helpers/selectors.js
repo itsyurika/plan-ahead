@@ -20,7 +20,6 @@ export const findAssigned = (assignments, student) => {
   })
   );
 
-  console.log("found assignments from buildStudentCards:", foundAssignments )
   return foundAssignments;
 };
 

@@ -1,7 +1,6 @@
 import classNames from "classnames";
 
 const Show = (props) => {
-  console.log("props for creating show slot card: ", props);
   const { dateStarted, dateCompleted } = props.assigned;
 
   const showClass = classNames("card__show", {

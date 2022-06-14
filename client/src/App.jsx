@@ -41,18 +41,27 @@ const App = () => {
   useEffect(() => {
     // set local storage to admin mode
 
-  }, [adminMode]);
+  }, [assignments]);
 
   // = helpers =
 
-  const handleStart = (date) => {
+  const handleStart = () => {
     startAssignment(focused, studentId)
     .then((res) => {
+      console.log("res from handleStart: ", res);
       setAssignments((prev) => {
-        ...prev, 
-        prev[focused].assigned: {...res} 
-      })
+        console.log("logging prev: ", prev);
+        const updatedAssignments = prev.map((item) => {
+          if (item.id===focused) {
+            return {...item, assigned: {...res.data}}
+          } else {
+            return {...item}
+          } 
+        })
+        console.log("updatedAssignment: ", updatedAssignments);
+        return updatedAssignments;
     })
+  })
   }
   
 
