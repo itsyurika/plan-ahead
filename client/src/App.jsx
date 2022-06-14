@@ -38,6 +38,23 @@ const App = () => {
   }, []);
 
   // = helpers =
+  const handleStart = () => {
+    startAssignment(focused, studentId)
+      .then((res) => {
+        setAssignments((prev) => {
+          const updatedAssignments = prev.map((item) => {
+            if (item.id === focused) {
+              return { ...item, assigned: { ...res.data } };
+            } else {
+              return { ...item };
+            }
+          });
+          return updatedAssignments;
+        });
+      });
+  };
+
+
   const assignmentList = findAssigned(assignments, !adminMode && student);
   const focusedAssignment = assignmentList.find((item) => item.id === focused);
 
@@ -49,8 +66,8 @@ const App = () => {
       {focused
         && <Assignment
           {...focusedAssignment}
-          onStart={() => startAssignment(focused, studentId)}
-          onComplete={() => completeAssignment(focused, studentId)}
+          onStart={handleStart}
+          onComplete={(date) => completeAssignment(focused, studentId)}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
           adminMode={adminMode}

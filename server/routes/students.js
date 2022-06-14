@@ -27,7 +27,7 @@ module.exports = (prisma) => {
       where: {
         studentAssignmentId: {
           assignmentId: +req.params.assignmentId,
-          studentId: +req.body.id
+          studentId: +req.params.id
         }
       }, data: req.body
     };

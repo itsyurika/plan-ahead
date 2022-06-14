@@ -29,11 +29,11 @@ const assignment = [
 ];
 
 const studentAssignment = [
-  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 1 },
-  { dueDate: new Date('2022-06-17T06:00:00'), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-14T06:00:00'), studentId: 1, assignmentId: 3 },
-  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
-  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
-  { dueDate: new Date('2022-06-17T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
+  { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 1 },
+  { dueDate: addDays((new Date()), 2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 3 },
+  { dueDate: addDays((new Date()), 2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
+  { dueDate: addDays((new Date('2022-06-16T06:00:00')), 4), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
+  { dueDate: addDays((new Date('2022-06-17T06:00:00')), 5), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
 ];
 
 module.exports = { teacher, student, subject, assignment, studentAssignment };
