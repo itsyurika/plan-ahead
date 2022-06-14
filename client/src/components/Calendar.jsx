@@ -1,44 +1,27 @@
-import { useState } from "react";
 import 'components/styles/Calendar.scss';
 import 'components/styles/CalendarReact.scss';
-import { getAssignmentsForDay } from "helpers/selectors";
-import Card from "components/Card";
-
+import { useState } from "react";
+import { getDatesForWeek, sortAssignmentsByDay } from "helpers/selectors";
 import {
   format,
-  getMonth,
   getWeekOfMonth,
   addDays,
   addWeeks,
   subWeeks,
   startOfWeek,
-  isSameDay,
-  parseISO,
 } from "date-fns";
+
+import Card from "components/Card";
+
 
 
 const Calendar = (props) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
 
+
+
   // = helpers =
-  const cards = props.assignments.map((assign) => (
-    <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
-      <Card {...assign} onClick={() => { props.onFocus(assign.id); }} />
-    </div>
-  ));
-
-  const getDatesForWeek = (date) => {
-    const startDate = startOfWeek(date, { weekStartsOn: 1 });
-    return [...Array(5)].map((_, i) => addDays(startDate, i));
-  };
-
-  const sortAssignmentsByDay = (assignments, week) => {
-    const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate || a.defaultDueDate) - parseISO(b.assigned.dueDate || b.defaultDueDate));
-    return week.map((day) => sorted.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day))
-    );
-  };
-
   const renderHeader = (date) => {
     const daysHeader = [];
     const startDate = startOfWeek(date, { weekStartsOn: 1 });
@@ -52,7 +35,7 @@ const Calendar = (props) => {
     return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(date)}</div>{daysHeader}</header>;
   };
 
-  const renderCells = (date) => {
+  const renderRows = (date) => {
     const dates = getDatesForWeek(date);
     const sorted = sortAssignmentsByDay(props.assignments, dates);
 
@@ -67,7 +50,7 @@ const Calendar = (props) => {
         {sorted.map((day, j) => (
           <div className={'col cell'} key={j} >
             <div className="card">
-              <Card {...day[i]} />
+              <Card {...day[i]} onClick={() => { props.onFocus(day[i].id); }} />
             </div>
           </div>
         ))}
@@ -97,10 +80,10 @@ const Calendar = (props) => {
         </div>
       </header>
       {renderHeader(selectedDate)}
-      {renderCells(selectedDate)}
+      {renderRows(selectedDate)}
 
       {renderHeader(addWeeks(selectedDate, 1))}
-      {renderCells(addWeeks(selectedDate, 1))}
+      {renderRows(addWeeks(selectedDate, 1))}
     </section>
   );
 };

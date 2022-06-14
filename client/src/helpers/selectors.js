@@ -1,4 +1,4 @@
-import { isSameDay, parseISO } from "date-fns";
+import { isSameDay, parseISO, addDays, startOfWeek } from "date-fns";
 
 // = local helpers =
 const getStatus = (item) => {
@@ -9,18 +9,8 @@ const getStatus = (item) => {
 
 
 // = exported helpers =
-export const getAssignmentsForDay = (assignments, day) => {
-  if (!assignments.length) return [];
-
-  const assignForDay = assignments.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day));
-
-  return assignForDay;
-};
-
-
-
-export const buildStudentCards = (assignments, student) => {
-  if (!assignments.length || !student.id) return [];
+export const findAssigned = (assignments, student) => {
+  if (!assignments.length || !student.id) return assignments.map((item) => ({ ...item, assigned: {} }));
 
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
@@ -29,4 +19,17 @@ export const buildStudentCards = (assignments, student) => {
   }));
 
   return foundAssignments;
+};
+
+
+
+export const getDatesForWeek = (date) => {
+  const startDate = startOfWeek(date, { weekStartsOn: 1 });
+  return [...Array(5)].map((_, i) => addDays(startDate, i));
+};
+
+export const sortAssignmentsByDay = (assignments, week) => {
+  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate || a.defaultDueDate) - parseISO(b.assigned.dueDate || b.defaultDueDate));
+  return week.map((day) => sorted.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day))
+  );
 };

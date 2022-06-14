@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { buildStudentCards, getTablePositions } from './helpers/selectors';
+import { findAssigned, getTablePositions } from './helpers/selectors';
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
@@ -43,7 +43,7 @@ const App = () => {
     axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
   };
 
-  const assignmentList = adminMode ? assignments : buildStudentCards(assignments, student);
+  const assignmentList = findAssigned(assignments, !adminMode && student);
   const focusedAssignment = assignmentList.find((item) => item.id === focused);
 
   // = render main page =
