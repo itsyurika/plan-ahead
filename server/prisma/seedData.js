@@ -25,8 +25,8 @@ const assignment = [
 ];
 
 const studentAssignment = [
-  { dueDate: new Date('Jun 07 2022 12:00:00'), dateStarted: new Date('Jun 01 2022 12:00:00'), dateCompleted: null, studentId: 1, assignmentId: 1 },
-  { dueDate: new Date('Jun 08 2022 12:00:00'), dateStarted: new Date('Jun 01 2022 12:00:00'), dateCompleted: new Date('Jun 02 2022 12:00:00'), studentId: 1, assignmentId: 3 },
+  { dueDate: new Date('Jun 07 2022 12:00:00'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 1 },
+  { dueDate: new Date('Jun 08 2022 12:00:00'), dateStarted: new Date('Jun 01 2022 12:00:00'), dateCompleted: null, studentId: 1, assignmentId: 3 },
   { dueDate: new Date('Jun 07 2022 12:00:00'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
   { dueDate: new Date('Jun 07 2022 12:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
   { dueDate: new Date('Jun 08 2022 12:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },

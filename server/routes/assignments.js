@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 module.exports = (prisma) => {
-  const { assignment } = prisma;
+  const { assignment, studentAssignment } = prisma;
 
   router.get('/', async (req, res) => {
     const assignments = await assignment.findMany({ include: { subject: true }, });
@@ -26,8 +26,9 @@ module.exports = (prisma) => {
 
 
   router.patch('/:id', async (req, res) => {
+    console.log("assignment updated with the following data: ", req.body)
     const options = {
-      where: { id: req.params.id }, data: req.body
+      where: { id: +req.params.id }, data: req.body
     };
     const updatedAssign = await studentAssignment.update(options);
     res.json(updatedAssign);

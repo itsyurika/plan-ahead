@@ -1,12 +1,18 @@
 import 'components/styles/Calendar.scss';
 import Slot from "./Card";
+import { useState } from 'react';
+
 
 const Calendar = (props) => {
+
+  // const [individualAssignments, setIndividualAssignments] = useState[props.assignments];
+
   const cards = props.assignments.map((assign) => (
     <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
       <Slot {...assign} onClick={() => { props.onFocus(assign.id); }} />
     </div>
   ));
+
 
   return (
     <section className="calendar">

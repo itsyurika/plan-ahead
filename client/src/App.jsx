@@ -1,5 +1,6 @@
 import { useState, useEffect, useCookies } from "react";
 import { buildStudentCards, getTablePositions } from './helpers/selectors';
+import { useStatusChange } from './hooks/useStatusChange'
 import axios from "axios";
 import './styles/App.scss';
 import 'normalize.css';
@@ -18,6 +19,11 @@ const App = () => {
   const [assignments, setAssignments] = useState([]);
   const [focused, setFocused] = useState(null);
 
+  const {
+    startAssignment,
+    completeAssignment
+  } = useStatusChange();
+
   useEffect(() => {
     Promise.all([
       axios.get(`/teachers/${teacherId}/assignments`),
@@ -26,7 +32,9 @@ const App = () => {
       .then((res) => {
         setAssignments(res[0].data);
         setStudent(res[1].data);
-      });
+      }).catch((error) => {
+        console.log("error occurred whilte fetching data: ", error);
+      })
   }, []);
 
   // set cookie
@@ -36,12 +44,7 @@ const App = () => {
   }, [adminMode]);
 
   // = helpers =
-  const startAssignment = () => {
-    axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: studentId });
-  };
-  const completeAssignment = () => {
-    axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId });
-  };
+  
 
   const assignmentList = adminMode ? assignments : buildStudentCards(assignments, student);
   const updatedList = getTablePositions(assignmentList);
@@ -54,8 +57,8 @@ const App = () => {
       {focused
         ? <Assignment
           {...focusedAssignment}
-          onStart={startAssignment}
-          onComplete={completeAssignment}
+          onStart={() => startAssignment(focused, studentId)}
+          onComplete={() => completeAssignment(focused, studentId)}
           onBack={() => setFocused(null)}
         />
         : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}

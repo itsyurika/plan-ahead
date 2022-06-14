@@ -1,10 +1,3 @@
-// = local helpers =
-const getStatus = (item) => {
-  if (item.dateCompleted) return 'Complete';
-  if (item.dateStarted) return 'Started';
-  return 'Not started';
-};
-
 
 // = exported helpers =
 export const getTablePositions = (assignments) => {
@@ -21,18 +14,20 @@ export const getTablePositions = (assignments) => {
     item.row = count[item.column];
     count[item.column]++;
   });
+  console.log("assignments from getTablePositions: ", newCards);
 
   return newCards;
 };
 
 export const buildStudentCards = (assignments, student) => {
   if (!assignments.length || !student.id) return [];
-
+  console.log("student assignments list: ", student.studentAssignments);
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
-    assigned: { ...item },
-    status: getStatus(item),
-  }));
+    assigned: { ...item }
+  })
+  );
 
+  console.log("found assignments from buildStudentCards:", foundAssignments )
   return foundAssignments;
 };
