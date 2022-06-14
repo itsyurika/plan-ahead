@@ -1,3 +1,11 @@
+@import "~normalize.css/normalize.css";
+@import "styles/variables.scss";
+
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   * {
     box-sizing: border-box;
@@ -23,4 +31,38 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+$weights: (
+  light: 300,
+  regular: 400,
+  semi-bold: 600,
+  bold: 700,
+  black: 900,
+);
+
+@each $weight,
+$value in $weights {
+  .text--#{$weight} {
+    font-weight: $value;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

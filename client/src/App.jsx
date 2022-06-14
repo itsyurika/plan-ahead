@@ -1,5 +1,5 @@
-import { useState, useEffect, useCookies } from "react";
-import { buildStudentCards, getTablePositions } from './helpers/selectors';
+import { useState, useEffect } from "react";
+import { findAssigned, getTablePositions } from './helpers/selectors';
 import { useStatusChange } from './hooks/useStatusChange'
 import axios from "axios";
 import './styles/App.scss';
@@ -46,25 +46,25 @@ const App = () => {
   // = helpers =
   
 
-  const assignmentList = adminMode ? assignments : buildStudentCards(assignments, student);
-  const updatedList = getTablePositions(assignmentList);
-  const focusedAssignment = updatedList.find((item) => item.id === focused);
+  const assignmentList = findAssigned(assignments, !adminMode && student);
+  const focusedAssignment = assignmentList.find((item) => item.id === focused);
 
   // = render main page =
   return (
     <main className="app">
       <Sidenav onLogin={() => { setAdminMode((prev) => !prev); }} admin={adminMode} />
       {focused
-        ? <Assignment
+        && <Assignment
           {...focusedAssignment}
           onStart={() => startAssignment(focused, studentId)}
           onComplete={() => completeAssignment(focused, studentId)}
           onBack={() => setFocused(null)}
-        />
-        : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
+          setAdmin={() => setAdminMode(true)}
+          adminMode = {adminMode}
+        />}
+      <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
-
     </main>
   );
 };

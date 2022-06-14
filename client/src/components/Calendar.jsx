@@ -1,55 +1,97 @@
 import 'components/styles/Calendar.scss';
-import Slot from "./Card";
-import { useState } from 'react';
+import 'components/styles/CalendarReact.scss';
+import { useState } from "react";
+import { getDatesForWeek, sortAssignmentsByDay } from "helpers/selectors";
+import {
+  format,
+  getWeekOfMonth,
+  addDays,
+  addWeeks,
+  subWeeks,
+  startOfWeek,
+} from "date-fns";
+
+import Card from "components/Card";
 
 
 const Calendar = (props) => {
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);
 
-  // const [individualAssignments, setIndividualAssignments] = useState[props.assignments];
+  // = helpers =
+  const renderHeader = (date) => {
+    const daysHeader = [];
+    const startDate = startOfWeek(date, { weekStartsOn: 1 });
 
-  const cards = props.assignments.map((assign) => (
-    <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
-      <Slot {...assign} onClick={() => { props.onFocus(assign.id); }} />
-    </div>
-  ));
+    for (let i = 0; i < 7; i++) {
+      daysHeader.push(
+        <div className="col col-center" key={i}>
+          {format(addDays(startDate, i), 'dd eeee')}
+        </div>
+      );
+    }
+    return (
+      <header className="days row days-header">
+        <div className="col col-center">Week {getWeekOfMonth(date)}</div>
+        {daysHeader}
+      </header>
+    );
+  };
+
+  const renderRows = (date) => {
+    const dates = getDatesForWeek(date);
+    const sorted = sortAssignmentsByDay(props.assignments, dates);
+    const rows = [];
+    const totalRows = 4;
+
+    for (let i = 0; i < totalRows; i++) {
+      rows.push(
+        <div className="row" key={i}>
+          <div className={`col cell`} key={i}>
+            <span className={`label`}></span>
+          </div>
+
+          {sorted.map((day, j) => (
+            <div className={'col cell'} key={j}>
+              <div className="card">
+                <Card row={i} {...day[i]} onClick={() => { props.onFocus(day[i].id); }} onAdd={() => {console.log('clicked add');}} />
+              </div>
+            </div>
+          ))}
+
+        </div>
+      );
+    }
+
+    return rows;
+  };
 
 
+  // render calendar
   return (
     <section className="calendar">
-      <header>February 2019 Week 6</header>
-      <div className="days-header">
-        <div className="filler"></div>
-        <div className="filler"></div>
-        <div className="day">Mon 4</div>
-        <div className="day">Tue 5</div>
-        <div className="day">Wed 6</div>
-        <div className="day">Thu 7</div>
-        <div className="day current">Fri 8</div>
-        <div className="day wknd">Sat 9</div>
-        <div className="day wknd">Sun 10</div>
-      </div>
-      <div className="cells-container">
-        <div className="time" style={{ "gridRow": "1" }}></div>
-        <div className="time label" style={{ "gridRow": "2" }}></div>
-        <div className="time" style={{ "gridRow": "3" }}></div>
-        <div className="time" style={{ "gridRow": "4" }}></div>
-        <div className="filler-col"></div>
+      <header>
+        <div className="col col-start">
+          <div className="icon" onClick={() => { setSelectedDate(subWeeks(selectedDate, 1)); }}>
+            Previous
+          </div>
+        </div>
 
-        <div className="col label" style={{ "gridColumn": "1" }}>Week 3 June 20-26</div>
-        <div className="col" style={{ "gridColumn": "3" }}></div>
-        <div className="col" style={{ "gridColumn": "4" }}></div>
-        <div className="col" style={{ "gridColumn": "5" }}></div>
-        <div className="col" style={{ "gridColumn": "6" }}></div>
-        <div className="col" style={{ "gridColumn": "7" }}></div>
-        <div className="col weekend" style={{ "gridColumn": "8" }}></div>
-        <div className="col weekend" style={{ "gridColumn": "9" }}></div>
-        <div className="row" style={{ "gridRow": "1" }}></div>
-        <div className="row" style={{ "gridRow": "2" }}></div>
-        <div className="row" style={{ "gridRow": "3" }}></div>
-        <div className="row" style={{ "gridRow": "4" }}></div>
-        {cards}
-      </div>
-    </section>);
+        <div className="col col-center icon" onClick={() => { setSelectedDate(new Date()); }}>
+          <p>Today is</p> <p>{format(today, 'eeee MMM do')}</p>
+        </div>
+        <div className="col col-end" onClick={() => { setSelectedDate(addWeeks(selectedDate, 1)); }}>
+          <div className="icon">Next</div>
+        </div>
+      </header>
+
+      {renderHeader(selectedDate)}
+      {renderRows(selectedDate)}
+
+      {renderHeader(addWeeks(selectedDate, 1))}
+      {renderRows(addWeeks(selectedDate, 1))}
+    </section>
+  );
 };
 
 export default Calendar;

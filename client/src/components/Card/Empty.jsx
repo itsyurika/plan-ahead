@@ -1,13 +1,13 @@
 const Empty = (props) => {
   return (
-    <main className="card__add">
-      <img
+    <article className="card__empty">
+      {props.row === 0 && <img
         className="card__add-button"
-        src="images/add.png"
+        src="/images/add.png"
         alt="Add"
         onClick={props.onAdd}
-      />
-    </main>
+      />}
+    </article>
   );
 };
 

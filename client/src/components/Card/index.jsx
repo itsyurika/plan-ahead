@@ -6,7 +6,7 @@ const Assignment = (props) => {
 
   return (
     <>
-      {(props?.id && <Show {...props} />) || <Empty />}
+      {(props?.id && <Show {...props} />) || <Empty {...props} />}
     </>
   );
 };

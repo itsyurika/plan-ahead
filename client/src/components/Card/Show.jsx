@@ -11,15 +11,12 @@ const Show = (props) => {
 
   return (
     <article
-      className={showClass}
+      className={`card__show ${props.status?.toLowerCase()}`}
       onClick={props.onClick}
     >
       <header><h3>{props.title}</h3></header>
       <p>{props.subject?.name}</p>
-      {dateCompleted && <p>Complete!</p>}
-      {dateStarted && !dateCompleted && <p>Started!</p>}
-      {!dateStarted && !dateCompleted && <p>Not started!</p>}
-
+      <p>{props.status}</p>
     </article>
   );
 };

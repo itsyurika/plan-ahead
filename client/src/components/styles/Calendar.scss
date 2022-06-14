@@ -5,23 +5,47 @@ $time-height: 6em;
 $outline: #dadce0;
 $calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
+$radius: 10px;
+$card-height: 5rem;
 
-.calendar {
+section.calendar {
   background-color: #fff;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
-  overflow: auto;
+  border-radius: $radius;
+  overflow: hidden;
 
   >header {
     background: #217346;
-    text-align: center;
     color: #fff;
-    top: 0;
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 700;
+    align-items: center;
+    padding: 1.5em;
+
+    .icon {
+      cursor: pointer;
+      transition: 0.15s ease-out;
+    }
+
+    .icon:first-of-type {
+      margin-left: 1em;
+    }
+
+    .icon:last-of-type {
+      margin-right: 1em;
+    }
+
+    .icon:hover {
+      transition: 0.25s ease-out;
+      color: var(--main-color);
+    }
   }
 
-  .days-header {
+  header.days-header {
     background: #f3f2f1;
-    display: grid;
+    display: flex;
     place-content: center;
     text-align: center;
     grid-template-columns: $calendar-template;
@@ -32,10 +56,10 @@ $current-time-color: #ea4335;
     border-left: 1px solid $outline;
   }
 
-  .cells-container {
-    display: grid;
-    grid-template-columns: $calendar-template;
-    grid-template-rows: repeat(4, $time-height);
+  .cards-container {
+    display: flex;
+    // grid-template-columns: $calendar-template;
+    // grid-template-rows: repeat(4, $time-height);
   }
 
   .time {
@@ -97,6 +121,7 @@ $current-time-color: #ea4335;
   }
 
   .card {
+    min-height: $card-height;
     border-radius: 5px;
     margin: 5px;
     font-weight: bold;

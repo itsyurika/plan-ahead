@@ -1,33 +1,38 @@
+import { isSameDay, parseISO, addDays, startOfWeek } from "date-fns";
 
-// = exported helpers =
-export const getTablePositions = (assignments) => {
-  if (!assignments?.length) return [];
-
-  const newCards = assignments.map((item) => ({
-    ...item,
-    column: new Date(item.defaultDueDate).getDay() + 2, // monday column starts at 3
-  }));
-
-  const count = {};
-  newCards.forEach((item) => {
-    if (!count[item.column]) count[item.column] = 1;
-    item.row = count[item.column];
-    count[item.column]++;
-  });
-  console.log("assignments from getTablePositions: ", newCards);
-
-  return newCards;
+// = local helpers =
+const getStatus = (item) => {
+  if (item.dateCompleted) return 'Complete';
+  if (item.dateStarted) return 'Started';
+  return 'Not started';
 };
 
-export const buildStudentCards = (assignments, student) => {
-  if (!assignments.length || !student.id) return [];
-  console.log("student assignments list: ", student.studentAssignments);
+
+// = exported helpers =
+export const findAssigned = (assignments, student) => {
+  if (!student.id) return assignments.map((item) => ({ ...item, assigned: {dueDate: item.defaultDueDate} }));
+
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
-    assigned: { ...item }
+    assigned: { ...item },
+    status: getStatus(item)
+
   })
   );
 
   console.log("found assignments from buildStudentCards:", foundAssignments )
   return foundAssignments;
+};
+
+
+
+export const getDatesForWeek = (date) => {
+  const startDate = startOfWeek(date, { weekStartsOn: 1 });
+  return [...Array(5)].map((_, i) => addDays(startDate, i));
+};
+
+export const sortAssignmentsByDay = (assignments, week) => {
+  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate || a.defaultDueDate) - parseISO(b.assigned.dueDate || b.defaultDueDate));
+  return week.map((day) => sorted.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day))
+  );
 };
