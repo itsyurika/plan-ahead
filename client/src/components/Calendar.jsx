@@ -13,6 +13,8 @@ import {
   subWeeks,
   startOfWeek,
   lastDayOfWeek,
+  isSameDay,
+  parseISO,
 } from "date-fns";
 
 const headerFormat = "eeee MMM do";
@@ -21,9 +23,6 @@ const dayFormat = "ee eeee";
 const Calendar = (props) => {
   const [today, setToday] = useState(new Date);
 
-  console.log('today', today, 'month', getMonth(today), 'week', getWeekOfMonth(today));
-
-
   // = helpers =
   const cards = props.assignments.map((assign) => (
     <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
@@ -31,10 +30,18 @@ const Calendar = (props) => {
     </div>
   ));
 
-  const getDatesForWeek = () => {
-    const startDate = startOfWeek(today, { weekStartsOn: 1 });
+  const getDatesForWeek = (date) => {
+    const startDate = startOfWeek(date, { weekStartsOn: 1 });
     return [...Array(5)].map((k, i) => addDays(startDate, i));
   };
+
+  const sortAssignmentsByDay = (assignments, week) => {
+    const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate || a.defaultDueDate) - parseISO(b.assigned.dueDate || b.defaultDueDate));
+    return week.map((day) => sorted.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day))
+    );
+  };
+
+  console.log('ok but did it work?', sortAssignmentsByDay(props.assignments, getDatesForWeek(today)));
 
   const renderDays = () => {
     const daysHeader = [];
@@ -52,7 +59,6 @@ const Calendar = (props) => {
     const startDate = startOfWeek(today, { weekStartsOn: 1 });
     const endDate = lastDayOfWeek(today, { weekStartsOn: 1 });
 
-    console.log('start date', startDate, 'end', endDate);
     const rows = [];
     let days = [];
     let day = startDate;
