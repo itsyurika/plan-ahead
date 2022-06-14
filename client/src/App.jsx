@@ -43,7 +43,7 @@ const App = () => {
   };
 
   const updateSubmission = (data) => {
-    axios.patch(`/students/${studentId}/assignments/${focused}`, data)
+    axios.patch(`/submissions/${focusedAssignment.assigned.id}`, data)
       .then(updateStudentState)
       .catch((e) => { console.error(e); });
   };
