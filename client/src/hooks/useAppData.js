@@ -44,7 +44,7 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-  const assignmentList = findAssigned(state.assignments, !state.adminMode && state.student);
+  const assignmentList = findAssigned(state.assignments, !state.isAdmin && state.student);
   const focusedAssignment = assignmentList.find((item) => item.id === state.focused);
 
   return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, isAdmin: state.isAdmin };
