@@ -3,7 +3,7 @@ const Empty = (props) => {
     <article className="card__empty">
       <img
         className="card__add-button"
-        src="images/add.png"
+        src="/images/add.png"
         alt="Add"
         onClick={props.onAdd}
       />

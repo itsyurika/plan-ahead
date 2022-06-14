@@ -17,6 +17,12 @@ export const getAssignmentsForDay = (assignments, day) => {
   return assignForDay;
 };
 
+export const sortAssignmentsByDay = (assignments) => {
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', ]
+  const sorted = {  };
+
+};
+
 export const buildStudentCards = (assignments, student) => {
   if (!assignments.length || !student.id) return [];
 

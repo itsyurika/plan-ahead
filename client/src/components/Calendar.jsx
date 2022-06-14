@@ -2,29 +2,30 @@ import { useState } from "react";
 import 'components/styles/Calendar.scss';
 import 'components/styles/CalendarReact.scss';
 import { getAssignmentsForDay } from "helpers/selectors";
-import Cell from "./Cell";
+import Card from "components/Card";
 
 import {
   format,
   startOfWeek,
   addDays,
   lastDayOfWeek,
+  getMonth,
   getWeek,
   addWeeks,
   subWeeks
 } from "date-fns";
 
 const headerFormat = "eeee MMM do";
-const dayFormat = "eeee";
+const dayFormat = "ee eeee";
 
 const Calendar = (props) => {
   const cards = props.assignments.map((assign) => (
     <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
-      <Cell {...assign} onClick={() => { props.onFocus(assign.id); }} />
+      <Card {...assign} onClick={() => { props.onFocus(assign.id); }} />
     </div>
   ));
 
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(getMonth(new Date));
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
 
   const showPrev = () => {
@@ -47,7 +48,7 @@ const Calendar = (props) => {
           {format(addDays(startDate, i), dayFormat)}
         </div>);
     }
-    return <header className="days row"><div className="col col-center">{daysHeader}</div></header>;
+    return <header className="days row days-header"><div className="col col-center"></div>{daysHeader}</header>;
   };
 
 
@@ -55,7 +56,7 @@ const Calendar = (props) => {
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
     const endDate = lastDayOfWeek(addWeeks((currentMonth), 1), { weekStartsOn: 1 });
     const rows = [];
-    const days = [];
+    let days = [];
     let day = startDate;
     while (day <= endDate) {
       days.push(
@@ -63,16 +64,16 @@ const Calendar = (props) => {
           className={`col cell`}
           key={day}
         >
-          <span className="label">Week 1</span>
+          <span className="label">Week {currentWeek}</span>
         </div>
       );
 
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 5; i++) {
         let assnForDay = getAssignmentsForDay(props.assignments, day);
         days.push(
-          <div className={'col cell'} key={day}   >
+          <div className={'col cell'} key={format(day, 'ee')}   >
             <div className="card">
-              <Cell {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+              <Card {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
           </div>
         );
@@ -84,7 +85,7 @@ const Calendar = (props) => {
           {days}
         </div>
       );
-      days.length = 0;
+      days = [];
     }
     return <div className="body">{rows}</div>;
   };
@@ -106,10 +107,9 @@ const Calendar = (props) => {
           <div className="icon">Next</div>
         </div>
       </header>
-      <table>
         {renderDays()}
         {renderCells()}
-      </table>
+
     </section>
   );
 };

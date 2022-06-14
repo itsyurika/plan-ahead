@@ -1,5 +1,4 @@
 @import "styles/variables.scss";
-/* VARIABLES */
 
 :root {
   --main-color: #1a8fff;
@@ -10,9 +9,7 @@
   --neutral-color: #fff;
 }
 
-
 section.calendar {
-
 
   .row {
     display: flex;
@@ -130,7 +127,6 @@ section.calendar {
   font-size: 1rem;
   display: block;
   margin: auto;
-  vertical-align: center;
   writing-mode: vertical-lr;
   transform: scale(-1, -1);
   border-style: none;

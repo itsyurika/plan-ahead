@@ -7,7 +7,7 @@ $calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
 $radius: 10px;
 
-.calendar {
+section.calendar {
   background-color: #fff;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
@@ -52,9 +52,9 @@ $radius: 10px;
     }
   }
 
-  .days-header {
+  header.days-header {
     background: #f3f2f1;
-    display: grid;
+    display: flex;
     place-content: center;
     text-align: center;
     grid-template-columns: $calendar-template;
@@ -65,10 +65,10 @@ $radius: 10px;
     border-left: 1px solid $outline;
   }
 
-  .cells-container {
-    display: grid;
-    grid-template-columns: $calendar-template;
-    grid-template-rows: repeat(4, $time-height);
+  .cards-container {
+    display: flex;
+    // grid-template-columns: $calendar-template;
+    // grid-template-rows: repeat(4, $time-height);
   }
 
   .time {
