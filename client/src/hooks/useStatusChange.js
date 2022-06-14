@@ -6,14 +6,15 @@ export function useStatusChange () {
   const [assnStatus, setAssnStatus] = useState(null);
 
   const startAssignment = (focused, studentId) => {
-    return axios.patch('/assignments/' + focused, { dateStarted: new Date(), studentId: studentId })
+    console.log("studentID : ", studentId);
+    return axios.patch(`/students/${studentId}/assignments/${focused}`, { dateStarted: new Date() })
     .then((response) => {
       setAssnStatus('Started')
     })
   };
   
    const completeAssignment = (focused, studentId) => {
-    return axios.patch('/assignments/' + focused, { dateCompleted: new Date(), studentId: studentId })
+    return axios.patch(`/students/${studentId}/assignments/${focused}`, { dateCompleted: new Date()})
     .then((response) => {
       setAssnStatus('Completed')
     })
