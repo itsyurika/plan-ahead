@@ -12,7 +12,6 @@ const CreateAssignment = (props) => {
 
 
 
-
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
@@ -26,7 +25,7 @@ const CreateAssignment = (props) => {
     const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
     axios.post('/assignments/', data);
     props.onBack()
-    //window.location.reload(true); //change to useEffect
+    window.location.reload(true); //change to useEffect
   };
 
   return (
@@ -37,7 +36,13 @@ const CreateAssignment = (props) => {
         <input spellCheck='true' size='30' value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
         <textarea id="edit-description" rows='8' spellCheck='true' value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
         <input type='url' size='30' value={url} placeholder="Google Classroom Link" onChange={(e) => setUrl(e.target.value)} />
-        <input value={subjectId} placeholder='subjectId' onChange={(e) => setSubjectId(+e.target.value)} />
+
+        <select id="selectList" onChange={(e) => setSubjectId(+e.target.value)}>
+          <option>Subjects</option>
+          <option value='2'>History</option>
+          <option value='1'>Math</option>
+        </select>
+      
       </form>
       
       {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
