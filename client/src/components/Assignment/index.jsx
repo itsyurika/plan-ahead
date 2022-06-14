@@ -11,7 +11,7 @@ const AssignmentView = (props) => {
   <article >
   <div className='modalBackdrop'>
     <div className={`form-modalContainer ${props.status?.toLowerCase()}`}>
-      <div id="cancel-X" onClick={props.onBack}>x</div>
+      <div id="cancel-X" onClick={props.onBack}>&#10006;</div>
       <header id="assignment-header"><h3>{props.title}</h3></header>
       <br />
       <p>{props.subject?.name}</p>
@@ -25,8 +25,8 @@ const AssignmentView = (props) => {
       {!props.adminMode &&
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>}
       {!props.adminMode && <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>}
-      {props.adminMode && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
-      {props.adminMode && <button onClick={() => setShowModal(true)}> Delete </button>}
+      {props.adminMode && !showForm && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
+      {props.adminMode && !showForm && <button onClick={() => setShowModal(true)}> Delete </button>}
 
 
       {showForm && <Form
