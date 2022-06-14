@@ -20,20 +20,20 @@ const subject = [
 ];
 
 const assignment = [
-  { defaultDueDate: new Date('2022-06-07T06:00:00.00-05'), title: 'assignment1', description: 'my description', url: 'www.google.ca', teacherId: 1, subjectId: 1 },
-  { defaultDueDate: new Date('2022-06-07T06:00:00.00-05'), title: 'assignment2', description: 'my description', url: 'www.intergalacticebay.gl', teacherId: 1, subjectId: 1 },
-  { defaultDueDate: new Date('2022-06-08T06:00:00.00-05'), title: 'assignment3', description: 'my description', url: 'www.plumbus.gl', teacherId: 1, subjectId: 1 },
-  { defaultDueDate: new Date('2022-06-08T06:00:00.00-05'), title: 'assignment4', description: 'my description', url: 'www.fedaration.com', teacherId: 1, subjectId: 2 },
-  { defaultDueDate: new Date('2022-06-09T06:00:00.00-05'), title: 'assignment5', description: 'my description', url: 'www.torontopubliclibrary.ca', teacherId: 1, subjectId: 2 },
-  { defaultDueDate: new Date('2022-06-09T06:00:00.00-05'), title: 'assignment6', description: 'my description', url: 'www.ontario.ca', teacherId: 2, subjectId: 2 },
+  { defaultDueDate: new Date('2022-06-16T06:00:00'), title: 'assignment1', description: 'my description', url: 'www.google.ca', teacherId: 1, subjectId: 1 },
+  { defaultDueDate: new Date('2022-06-16T06:00:00'), title: 'assignment2', description: 'my description', url: 'www.intergalacticebay.gl', teacherId: 1, subjectId: 1 },
+  { defaultDueDate: new Date('2022-06-17T06:00:00'), title: 'assignment3', description: 'my description', url: 'www.plumbus.gl', teacherId: 1, subjectId: 1 },
+  { defaultDueDate: new Date('2022-06-17T06:00:00'), title: 'assignment4', description: 'my description', url: 'www.fedaration.com', teacherId: 1, subjectId: 2 },
+  { defaultDueDate: new Date('2022-06-09T06:00:00'), title: 'assignment5', description: 'my description', url: 'www.torontopubliclibrary.ca', teacherId: 1, subjectId: 2 },
+  { defaultDueDate: new Date('2022-06-09T06:00:00'), title: 'assignment6', description: 'my description', url: 'www.ontario.ca', teacherId: 2, subjectId: 2 },
 ];
 
 const studentAssignment = [
-  { dueDate: new Date('2022-06-07T06:00:00.00-05'), dateStarted: new Date('2022-06-01T06:00:00.00-05'), dateCompleted: null, studentId: 1, assignmentId: 1 },
-  { dueDate: new Date('2022-06-08T06:00:00.00-05'), dateStarted: new Date('2022-06-01T06:00:00.00-05'), dateCompleted: new Date('2022-06-02T06:00:00.00-05'), studentId: 1, assignmentId: 3 },
-  { dueDate: new Date('2022-06-07T06:00:00.00-05'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
-  { dueDate: new Date('2022-06-07T06:00:00.00-05'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
-  { dueDate: new Date('2022-06-08T06:00:00.00-05'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
+  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 1 },
+  { dueDate: new Date('2022-06-17T06:00:00'), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-14T06:00:00'), studentId: 1, assignmentId: 3 },
+  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
+  { dueDate: new Date('2022-06-16T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 2 },
+  { dueDate: new Date('2022-06-17T06:00:00'), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
 ];
 
 module.exports = { teacher, student, subject, assignment, studentAssignment };

@@ -12,32 +12,39 @@ import {
   getMonth,
   getWeek,
   addWeeks,
-  subWeeks
+  subWeeks,
+  getWeekOfMonth,
 } from "date-fns";
 
 const headerFormat = "eeee MMM do";
 const dayFormat = "ee eeee";
 
 const Calendar = (props) => {
+  const [today, setToday] = useState(new Date);
+  const [currentMonth, setCurrentMonth] = useState(getMonth(today));
+  const [currentWeek, setCurrentWeek] = useState(getWeekOfMonth(today));
+
+  console.log('today', today, 'month', currentMonth, 'week', currentWeek);
+
+
+  // = helpers =
   const cards = props.assignments.map((assign) => (
     <div key={assign.id} className={`card row${assign.row} column${assign.column} calendar2`}>
       <Card {...assign} onClick={() => { props.onFocus(assign.id); }} />
     </div>
   ));
 
-  const [currentMonth, setCurrentMonth] = useState(getMonth(new Date));
-  const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
-
   const showPrev = () => {
+    setToday(subWeeks(today, 1))
     setCurrentMonth(subWeeks(currentMonth, 1));
     setCurrentWeek(getWeek(subWeeks(currentMonth, 1)));
   };
 
   const showNext = () => {
+    setToday(addWeeks(today, 1))
     setCurrentMonth(addWeeks(currentMonth, 1));
     setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
   };
-
 
   const renderDays = () => {
     const daysHeader = [];
@@ -48,13 +55,14 @@ const Calendar = (props) => {
           {format(addDays(startDate, i), dayFormat)}
         </div>);
     }
-    return <header className="days row days-header"><div className="col col-center"></div>{daysHeader}</header>;
+    return <header className="days row days-header"><div className="col col-center">Week {currentWeek}</div>{daysHeader}</header>;
   };
 
-
   const renderCells = () => {
-    const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    const endDate = lastDayOfWeek(addWeeks((currentMonth), 1), { weekStartsOn: 1 });
+    const startDate = startOfWeek(today, { weekStartsOn: 1 });
+    const endDate = lastDayOfWeek(today, { weekStartsOn: 1 });
+
+    console.log('start date', startDate, 'end', endDate);
     const rows = [];
     let days = [];
     let day = startDate;
@@ -64,7 +72,7 @@ const Calendar = (props) => {
           className={`col cell`}
           key={day}
         >
-          <span className="label">Week {currentWeek}</span>
+          <span className={`label col-span-${days.length}`}></span>
         </div>
       );
 
@@ -101,7 +109,7 @@ const Calendar = (props) => {
           </div>
         </div>
         <div className="col col-center">
-          <span>Today is {format(new Date(), headerFormat)}</span>
+          <span>Today is {format(today, headerFormat)}</span>
         </div>
         <div className="col col-end" onClick={showNext}>
           <div className="icon">Next</div>
