@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import 'components/styles/Assignment.scss';
 
 const CreateAssignment = (props) => {
   const [title, setTitle] = useState(props.title);

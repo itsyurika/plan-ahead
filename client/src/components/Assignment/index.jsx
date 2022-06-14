@@ -8,12 +8,18 @@ const AssignmentView = (props) => {
   const [edit, setEdit] = useState(true);
 
   return (
-    <article className={`assignment__view ${props.status?.toLowerCase()}`}>
+  <article className='modalBackdrop'>
+    <div className='form-modalContainer'>
+      <div className={`assignment__view ${props.status?.toLowerCase()}`}>
       <header><h3>{props.title}</h3></header>
       <p>{props.subject?.name}</p>
+      <br></br>
       <p>{props.description}</p>
+      <br></br>
       <p>{props.url}</p>
+      <br></br>
       <p>{props.status}</p>
+      <br></br>
       <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
       <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
       {edit && <button onClick={() => { setShowForm((prev) => !prev); }}>Edit</button>}
@@ -34,7 +40,8 @@ const AssignmentView = (props) => {
         onBack={props.onBack}
         toggle={props.edit}
       />}
-
+      </div>
+      </div>
     </article>
   );
 };
