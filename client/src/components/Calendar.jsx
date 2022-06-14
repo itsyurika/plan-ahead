@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'components/styles/Calendar.scss';
 import 'components/styles/CalendarReact.scss';
 import { getAssignmentsForDay } from "helpers/selectors";
@@ -6,14 +6,13 @@ import Card from "components/Card";
 
 import {
   format,
-  startOfWeek,
-  addDays,
-  lastDayOfWeek,
   getMonth,
-  getWeek,
+  getWeekOfMonth,
+  addDays,
   addWeeks,
   subWeeks,
-  getWeekOfMonth,
+  startOfWeek,
+  lastDayOfWeek,
 } from "date-fns";
 
 const headerFormat = "eeee MMM do";
@@ -21,10 +20,8 @@ const dayFormat = "ee eeee";
 
 const Calendar = (props) => {
   const [today, setToday] = useState(new Date);
-  const [currentMonth, setCurrentMonth] = useState(getMonth(today));
-  const [currentWeek, setCurrentWeek] = useState(getWeekOfMonth(today));
 
-  console.log('today', today, 'month', currentMonth, 'week', currentWeek);
+  console.log('today', today, 'month', getMonth(today), 'week', getWeekOfMonth(today));
 
 
   // = helpers =
@@ -34,28 +31,21 @@ const Calendar = (props) => {
     </div>
   ));
 
-  const showPrev = () => {
-    setToday(subWeeks(today, 1))
-    setCurrentMonth(subWeeks(currentMonth, 1));
-    setCurrentWeek(getWeek(subWeeks(currentMonth, 1)));
-  };
-
-  const showNext = () => {
-    setToday(addWeeks(today, 1))
-    setCurrentMonth(addWeeks(currentMonth, 1));
-    setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
+  const getDatesForWeek = () => {
+    const startDate = startOfWeek(today, { weekStartsOn: 1 });
+    return [...Array(5)].map((k, i) => addDays(startDate, i));
   };
 
   const renderDays = () => {
     const daysHeader = [];
-    const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
+    const startDate = startOfWeek(getMonth(today), { weekStartsOn: 1 });
     for (let i = 0; i < 7; i++) {
       daysHeader.push(
         <div className="col col-center" key={i}>
           {format(addDays(startDate, i), dayFormat)}
         </div>);
     }
-    return <header className="days row days-header"><div className="col col-center">Week {currentWeek}</div>{daysHeader}</header>;
+    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(today)}</div>{daysHeader}</header>;
   };
 
   const renderCells = () => {
@@ -104,20 +94,19 @@ const Calendar = (props) => {
     <section className="calendar">
       <header>
         <div className="col col-start">
-          <div className="icon" onClick={showPrev}>
+          <div className="icon" onClick={() => { setToday(subWeeks(today, 1)); }}>
             Previous
           </div>
         </div>
         <div className="col col-center">
           <span>Today is {format(today, headerFormat)}</span>
         </div>
-        <div className="col col-end" onClick={showNext}>
+        <div className="col col-end" onClick={() => { setToday(addWeeks(today, 1)); }}>
           <div className="icon">Next</div>
         </div>
       </header>
-        {renderDays()}
-        {renderCells()}
-
+      {renderDays()}
+      {renderCells()}
     </section>
   );
 };
