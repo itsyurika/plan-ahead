@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import 'components/styles/Calendar.scss';
 import 'components/styles/CalendarReact.scss';
 import { getAssignmentsForDay } from "helpers/selectors";
@@ -12,16 +12,14 @@ import {
   addWeeks,
   subWeeks,
   startOfWeek,
-  lastDayOfWeek,
   isSameDay,
   parseISO,
 } from "date-fns";
 
-const headerFormat = "eeee MMM do";
-const dayFormat = "ee eeee";
 
 const Calendar = (props) => {
-  const [today, setToday] = useState(new Date);
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);
 
   // = helpers =
   const cards = props.assignments.map((assign) => (
@@ -32,7 +30,7 @@ const Calendar = (props) => {
 
   const getDatesForWeek = (date) => {
     const startDate = startOfWeek(date, { weekStartsOn: 1 });
-    return [...Array(5)].map((k, i) => addDays(startDate, i));
+    return [...Array(5)].map((_, i) => addDays(startDate, i));
   };
 
   const sortAssignmentsByDay = (assignments, week) => {
@@ -41,57 +39,43 @@ const Calendar = (props) => {
     );
   };
 
-  console.log('ok but did it work?', sortAssignmentsByDay(props.assignments, getDatesForWeek(today)));
-
-  const renderDays = () => {
+  const renderHeader = () => {
     const daysHeader = [];
-    const startDate = startOfWeek(getMonth(today), { weekStartsOn: 1 });
+    const startDate = startOfWeek(selectedDate, { weekStartsOn: 1 });
     for (let i = 0; i < 7; i++) {
       daysHeader.push(
         <div className="col col-center" key={i}>
-          {format(addDays(startDate, i), dayFormat)}
-        </div>);
+          {format(addDays(startDate, i), 'dd eeee')}
+        </div>
+      );
     }
-    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(today)}</div>{daysHeader}</header>;
+    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(selectedDate)}</div>{daysHeader}</header>;
   };
 
-  const renderCells = () => {
-    const startDate = startOfWeek(today, { weekStartsOn: 1 });
-    const endDate = lastDayOfWeek(today, { weekStartsOn: 1 });
+  const renderRows = () => {
+    const dates = getDatesForWeek(selectedDate);
+    const sorted = sortAssignmentsByDay(props.assignments, dates);
 
+    const totalRows = 4;
     const rows = [];
-    let days = [];
-    let day = startDate;
-    while (day <= endDate) {
-      days.push(
-        <div
-          className={`col cell`}
-          key={day}
-        >
-          <span className={`label col-span-${days.length}`}></span>
+    for (let i = 0; i < totalRows; i++) {
+      rows.push(<div className="row" key={i}>
+        <div className={`col cell`} key={i} >
+          <span className={`label`}></span>
         </div>
-      );
 
-      for (let i = 0; i < 5; i++) {
-        let assnForDay = getAssignmentsForDay(props.assignments, day);
-        days.push(
-          <div className={'col cell'} key={format(day, 'ee')}   >
+        {sorted.map((day, j) => (
+          <div className={'col cell'} key={j} >
             <div className="card">
-              <Card {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
+              <Card {...day[i]} />
             </div>
           </div>
-        );
-        day = addDays(day, 1);
-      }
+        ))}
 
-      rows.push(
-        <div className="row" key={day}>
-          {days}
-        </div>
-      );
-      days = [];
+      </div>);
     }
-    return <div className="body">{rows}</div>;
+
+    return rows;
   };
 
 
@@ -100,19 +84,20 @@ const Calendar = (props) => {
     <section className="calendar">
       <header>
         <div className="col col-start">
-          <div className="icon" onClick={() => { setToday(subWeeks(today, 1)); }}>
+          <div className="icon" onClick={() => { setSelectedDate(subWeeks(selectedDate, 1)); }}>
             Previous
           </div>
         </div>
-        <div className="col col-center">
-          <span>Today is {format(today, headerFormat)}</span>
+
+        <div className="col col-center icon" onClick={() => { setSelectedDate(new Date()); }}>
+          <p>Today is</p> <p>{format(today, 'eeee MMM do')}</p>
         </div>
-        <div className="col col-end" onClick={() => { setToday(addWeeks(today, 1)); }}>
+        <div className="col col-end" onClick={() => { setSelectedDate(addWeeks(selectedDate, 1)); }}>
           <div className="icon">Next</div>
         </div>
       </header>
-      {renderDays()}
-      {renderCells()}
+      {renderHeader()}
+      {renderRows()}
     </section>
   );
 };

@@ -16,22 +16,12 @@ section.calendar {
 
   >header {
     background: #217346;
-    text-align: center;
     color: #fff;
-    top: 0;
-
-    text-transform: uppercase;
-    font-weight: 700;
-    border-bottom: 1px solid var(--border-color);
     display: flex;
-    align-items: center;
-
-
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 115%;
-    padding: 1.5em 0;
-    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+    padding: 1.5em;
 
     .icon {
       cursor: pointer;
@@ -58,7 +48,6 @@ section.calendar {
     place-content: center;
     text-align: center;
     grid-template-columns: $calendar-template;
-    border-bottom: 2px solid $outline;
   }
 
   .day {
