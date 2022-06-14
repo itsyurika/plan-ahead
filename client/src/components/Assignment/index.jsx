@@ -38,10 +38,12 @@ const AssignmentView = (props) => {
         defaultdueDate={props.defaultDueDate}
         onBack={props.onBack}
         toggle={props.edit}
+        adminMode={props.adminMode}
+
       />}
       </div>
       </div>
-      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} />}
+      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} adminMode={props.adminMode}/>}
     </article>
   );
 };
