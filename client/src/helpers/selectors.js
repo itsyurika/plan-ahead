@@ -10,7 +10,7 @@ const getStatus = (item) => {
 
 // = exported helpers =
 export const findAssigned = (assignments, student) => {
-  if (!assignments.length || !student.id) return assignments.map((item) => ({ ...item, assigned: {} }));
+  if (!student.id) return assignments.map((item) => ({ ...item, assigned: {dueDate: item.defaultDueDate} }));
 
   const foundAssignments = student.studentAssignments.map((item) => ({
     ...assignments.find((assign) => assign.id === item.assignmentId),
