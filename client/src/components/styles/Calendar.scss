@@ -6,6 +6,7 @@ $outline: #dadce0;
 $calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
 $radius: 10px;
+$card-height: 5rem;
 
 section.calendar {
   background-color: #fff;
@@ -120,6 +121,7 @@ section.calendar {
   }
 
   .card {
+    min-height: $card-height;
     border-radius: 5px;
     margin: 5px;
     font-weight: bold;

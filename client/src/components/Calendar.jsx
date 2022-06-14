@@ -42,7 +42,7 @@ const Calendar = (props) => {
     const dates = getDatesForWeek(date);
     const sorted = sortAssignmentsByDay(props.assignments, dates);
     const rows = [];
-    const totalRows = 2;
+    const totalRows = 4;
 
     for (let i = 0; i < totalRows; i++) {
       rows.push(
@@ -54,7 +54,7 @@ const Calendar = (props) => {
           {sorted.map((day, j) => (
             <div className={'col cell'} key={j}>
               <div className="card">
-                <Card {...day[i]} onClick={() => { props.onFocus(day[i].id); }} />
+                <Card row={i} {...day[i]} onClick={() => { props.onFocus(day[i].id); }} onAdd={() => {console.log('clicked add');}} />
               </div>
             </div>
           ))}
