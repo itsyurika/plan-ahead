@@ -22,7 +22,7 @@ model Student {
   lastName           String              @db.VarChar(255)
   email              String              @db.VarChar(255)
   password           String              @db.VarChar(255)
-  studentAssignments StudentAssignment[]
+  submissions Submission[]
 }
 
 model Subject {
@@ -41,10 +41,10 @@ model Assignment {
   teacherId          Int
   subject            Subject             @relation("assignmentsTosubjects", fields: [subjectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   subjectId          Int
-  studentAssignments StudentAssignment[]
+  submissions Submission[]
 }
 
-model StudentAssignment {
+model Submission {
   id            Int        @id @default(autoincrement())
   dueDate       DateTime   @db.Date
   dateStarted   DateTime?  @db.Date
@@ -54,5 +54,5 @@ model StudentAssignment {
   assignment    Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   assignmentId  Int
 
-  @@unique(fields: [studentId, assignmentId], name: "studentAssignmentId")
+  @@unique(fields: [studentId, assignmentId], name: "SubmissionId")
 }
