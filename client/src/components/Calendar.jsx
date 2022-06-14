@@ -42,7 +42,7 @@ const Calendar = (props) => {
     const dates = getDatesForWeek(date);
     const sorted = sortAssignmentsByDay(props.assignments, dates);
     const rows = [];
-    const totalRows = 4;
+    const totalRows = 2;
 
     for (let i = 0; i < totalRows; i++) {
       rows.push(
