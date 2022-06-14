@@ -14,17 +14,15 @@ import {
 import Card from "components/Card";
 
 
-
 const Calendar = (props) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
-
-
 
   // = helpers =
   const renderHeader = (date) => {
     const daysHeader = [];
     const startDate = startOfWeek(date, { weekStartsOn: 1 });
+
     for (let i = 0; i < 7; i++) {
       daysHeader.push(
         <div className="col col-center" key={i}>
@@ -32,30 +30,37 @@ const Calendar = (props) => {
         </div>
       );
     }
-    return <header className="days row days-header"><div className="col col-center">Week {getWeekOfMonth(date)}</div>{daysHeader}</header>;
+    return (
+      <header className="days row days-header">
+        <div className="col col-center">Week {getWeekOfMonth(date)}</div>
+        {daysHeader}
+      </header>
+    );
   };
 
   const renderRows = (date) => {
     const dates = getDatesForWeek(date);
     const sorted = sortAssignmentsByDay(props.assignments, dates);
-
-    const totalRows = 4;
     const rows = [];
+    const totalRows = 4;
+
     for (let i = 0; i < totalRows; i++) {
-      rows.push(<div className="row" key={i}>
-        <div className={`col cell`} key={i} >
-          <span className={`label`}></span>
-        </div>
-
-        {sorted.map((day, j) => (
-          <div className={'col cell'} key={j} >
-            <div className="card">
-              <Card {...day[i]} onClick={() => { props.onFocus(day[i].id); }} />
-            </div>
+      rows.push(
+        <div className="row" key={i}>
+          <div className={`col cell`} key={i}>
+            <span className={`label`}></span>
           </div>
-        ))}
 
-      </div>);
+          {sorted.map((day, j) => (
+            <div className={'col cell'} key={j}>
+              <div className="card">
+                <Card {...day[i]} onClick={() => { props.onFocus(day[i].id); }} />
+              </div>
+            </div>
+          ))}
+
+        </div>
+      );
     }
 
     return rows;
@@ -79,6 +84,7 @@ const Calendar = (props) => {
           <div className="icon">Next</div>
         </div>
       </header>
+
       {renderHeader(selectedDate)}
       {renderRows(selectedDate)}
 
