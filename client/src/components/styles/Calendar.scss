@@ -5,18 +5,53 @@ $time-height: 6em;
 $outline: #dadce0;
 $calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
 $current-time-color: #ea4335;
+$radius: 10px;
 
 .calendar {
   background-color: #fff;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
-  overflow: auto;
+  border-radius: $radius;
+  overflow: hidden;
 
   >header {
     background: #217346;
     text-align: center;
     color: #fff;
     top: 0;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+
+
+
+
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 115%;
+    padding: 1.5em 0;
+    border-bottom: 1px solid var(--border-color);
+
+    .icon {
+      cursor: pointer;
+      transition: 0.15s ease-out;
+    }
+
+    .icon:first-of-type {
+      margin-left: 1em;
+    }
+
+    .icon:last-of-type {
+      margin-right: 1em;
+    }
+
+    .icon:hover {
+      transition: 0.25s ease-out;
+      color: var(--main-color);
+    }
   }
 
   .days-header {

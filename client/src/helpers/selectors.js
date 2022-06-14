@@ -9,30 +9,10 @@ const getStatus = (item) => {
 
 
 // = exported helpers =
-export const getTablePositions = (assignments) => {
-  if (!assignments?.length) return [];
-
-  const newCards = assignments.map((item) => ({
-    ...item,
-    column: new Date(item.defaultDueDate).getDay() + 2, // monday column starts at 3
-  }));
-
-  const count = {};
-  newCards.forEach((item) => {
-    if (!count[item.column]) count[item.column] = 1;
-    item.row = count[item.column];
-    count[item.column]++;
-  });
-
-  return newCards;
-};
-
 export const getAssignmentsForDay = (assignments, day) => {
-  if (!assignments?.length) return [];
+  if (!assignments.length) return [];
 
-  const assignForDay = assignments.filter((item) => 
-    isSameDay(parseISO(item.assigned.dueDate), day)
-  );
+  const assignForDay = assignments.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day));
 
   return assignForDay;
 };

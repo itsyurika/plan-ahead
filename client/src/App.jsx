@@ -44,8 +44,7 @@ const App = () => {
   };
 
   const assignmentList = adminMode ? assignments : buildStudentCards(assignments, student);
-  const updatedList = getTablePositions(assignmentList);
-  const focusedAssignment = updatedList.find((item) => item.id === focused);
+  const focusedAssignment = assignmentList.find((item) => item.id === focused);
 
   // = render main page =
   return (
@@ -58,7 +57,7 @@ const App = () => {
           onComplete={completeAssignment}
           onBack={() => setFocused(null)}
         />
-        : <Calendar assignments={updatedList} onFocus={(id) => setFocused(id)} />}
+        : <Calendar assignments={assignmentList} onFocus={(id) => setFocused(id)} />}
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
     </main>
