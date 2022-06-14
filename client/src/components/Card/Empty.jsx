@@ -1,7 +1,7 @@
 const Empty = (props) => {
   return (
     <article className="card__empty">
-      {props.row === 0 && <img
+      {!props.row && <img
         className="card__add-button"
         src="/images/add.png"
         alt="Add"

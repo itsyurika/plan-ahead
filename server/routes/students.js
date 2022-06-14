@@ -9,7 +9,7 @@ module.exports = (prisma) => {
   });
 
   router.get('/:id', async (req, res) => {
-    const student = await prisma.student.findUnique({ where: { id: +req.params.id }, include: { studentAssignments: true } });
+    const student = await prisma.student.findUnique({ where: { id: +req.params.id }, include: { submissions: true } });
     res.json(student);
   });
 
@@ -19,21 +19,6 @@ module.exports = (prisma) => {
     res.json(student);
   });
 
-  // = assignments routes =
-  // update student's assignment
-  router.patch('/:id/assignments/:assignmentId', async (req, res) => {
-    const options = {
-      where: {
-        studentAssignmentId: {
-          assignmentId: +req.params.assignmentId,
-          studentId: +req.params.id
-        }
-      }, data: req.body
-    };
-
-    const updatedAssign = await prisma.studentAssignment.update(options);
-    res.json(updatedAssign);
-  });
 
   prisma.$disconnect();
   return router;

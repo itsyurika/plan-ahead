@@ -50,9 +50,9 @@ const Calendar = (props) => {
             <span className={`label`}></span>
           </div>
 
-          {sorted.map((day, j) => (
+          {sorted.map((list, j) => (
             <div className={'card col cell'} key={j}>
-              <Card row={i} {...day[i]} onClick={() => { props.onFocus(day[i].id); }} onAdd={props.onAdd} />
+              <Card row={i} {...list[i]} onClick={() => { props.onFocus(list[i].id); }} onAdd={() => props.onAdd(dates[j])} />
             </div>
           ))}
 

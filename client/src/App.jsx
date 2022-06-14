@@ -27,38 +27,26 @@ const App = () => {
       .then((res) => {
         setAssignments(res[0].data);
         setStudent(res[1].data);
-      }).catch((error) => {
-        console.log("error occurred whilte fetching data: ", error);
-      });
+      })
+      .catch((e) => { console.error(e); });
   }, []);
 
+
   // = helpers =
-  const startAssignment = (id, studentId) => {
-    axios.patch(`/students/${studentId}/assignments/${id}`, { dateStarted: new Date() })
-      .then((res) => {
-        const studentAssignments = student.studentAssignments.map((item) => (
-          item.assignmentId === id ? { ...res.data } : { ...item }
-        ));
-        setStudent((prev) => ({
-          ...prev,
-          studentAssignments,
-        }));
-      });
+  const updateStudentState = (res) => {
+    setStudent((prev) => ({
+      ...prev,
+      submissions: student.submissions.map((submission) => (
+        submission.id === res.data.id ? { ...res.data } : { ...submission }
+      )),
+    }));
   };
 
-  const completeAssignment = (id, studentId) => {
-    axios.patch(`/students/${studentId}/assignments/${focused}`, { dateCompleted: new Date() })
-      .then((res) => {
-        const studentAssignments = student.studentAssignments.map((item) => (
-          item.assignmentId === id ? { ...res.data } : { ...item }
-        ));
-        setStudent((prev) => ({
-          ...prev,
-          studentAssignments,
-        }));
-      });
+  const updateSubmission = (data) => {
+    axios.patch(`/students/${studentId}/assignments/${focused}`, data)
+      .then(updateStudentState)
+      .catch((e) => { console.error(e); });
   };
-
 
   const assignmentList = findAssigned(assignments, !adminMode && student);
   const focusedAssignment = assignmentList.find((item) => item.id === focused);
@@ -71,13 +59,13 @@ const App = () => {
       {focused
         && <Assignment
           {...focusedAssignment}
-          onStart={() => { startAssignment(focused, studentId); }}
-          onComplete={() => { completeAssignment(focused, studentId); }}
+          onStart={() => { updateSubmission({ dateStarted: new Date() }); }}
+          onComplete={() => { updateSubmission({ dateCompleted: new Date() }); }}
           onBack={() => setFocused(null)}
           setAdmin={() => setAdminMode(true)}
           adminMode={adminMode}
         />}
-      <Calendar assignments={assignmentList} onAdd={() => { console.log('clicked add'); }} onFocus={(id) => setFocused(id)} />
+      <Calendar assignments={assignmentList} onAdd={(day) => { console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
 
       {adminMode && <AssignmentForm teacherId={teacherId} />}
     </main>

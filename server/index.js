@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const teachers = require('./routes/teachers');
 const students = require('./routes/students');
 const assignments = require('./routes/assignments');
+const submissions = require('./routes/submissions');
 
 
 // = server setup =
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/teachers', teachers(prisma));
 app.use('/students', students(prisma));
 app.use('/assignments', assignments(prisma));
+app.use('/submissions', submissions(prisma));
 
 
 // = generic endpoints =

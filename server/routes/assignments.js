@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 module.exports = (prisma) => {
-  const { assignment, studentAssignment } = prisma;
+  const { assignment, submission } = prisma;
 
   router.get('/', async (req, res) => {
     const assignments = await assignment.findMany({ include: { subject: true }, });
@@ -30,7 +30,7 @@ module.exports = (prisma) => {
     const options = {
       where: { id: +req.params.id }, data: req.body
     };
-    const updatedAssign = await studentAssignment.update(options);
+    const updatedAssign = await submission.update(options);
     res.json(updatedAssign);
   });
 
@@ -44,6 +44,6 @@ module.exports = (prisma) => {
     const updatedAssign = await assignment.update(options);
     res.json(updatedAssign);
   });
-
+  prisma.$disconnect();
   return router;
 };

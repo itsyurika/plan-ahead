@@ -28,7 +28,7 @@ const assignment = [
   { defaultDueDate: new Date('2022-06-09T06:00:00'), title: 'assignment6', description: 'my description', url: 'www.ontario.ca', teacherId: 2, subjectId: 2 },
 ];
 
-const studentAssignment = [
+const submission = [
   { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 1 },
   { dueDate: addDays((new Date()), 2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 3 },
   { dueDate: addDays((new Date()), 2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 2 },
@@ -36,4 +36,4 @@ const studentAssignment = [
   { dueDate: addDays((new Date('2022-06-17T06:00:00')), 5), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 4 },
 ];
 
-module.exports = { teacher, student, subject, assignment, studentAssignment };
+module.exports = { teacher, student, subject, assignment, submission };
