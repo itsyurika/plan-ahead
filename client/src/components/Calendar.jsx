@@ -24,7 +24,6 @@ const Calendar = (props) => {
     </div>
   ));
 
-  //? React Calendar component //
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
 
@@ -36,38 +35,27 @@ const Calendar = (props) => {
   const showNext = () => {
     setCurrentMonth(addWeeks(currentMonth, 1));
     setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
-
   };
-
 
 
   const renderDays = () => {
-    const days = [];
+    const daysHeader = [];
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    days.push(<thead className="col col-center" ></thead>);
-    for (let i = 0; i < 5; i++) {
-      days.push(
-        <th className="col col-center" key={i}>
+    for (let i = 0; i < 7; i++) {
+      daysHeader.push(
+        <div className="col col-center" key={i}>
           {format(addDays(startDate, i), dayFormat)}
-        </th>
-      );
+        </div>);
     }
-    days.push(<>
-      <th className="col col-center" key={5}>
-        {format(addDays(startDate, 5), dayFormat)}
-      </th>
-      <th className="col col-center" key={6}>
-        {format(addDays(startDate, 6), dayFormat)}
-      </th></>
-    );
-    return <div className="days row">{days}</div>;
+    return <header className="days row"><div className="col col-center">{daysHeader}</div></header>;
   };
+
 
   const renderCells = () => {
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
     const endDate = lastDayOfWeek(addWeeks((currentMonth), 1), { weekStartsOn: 1 });
     const rows = [];
-    let days = [];
+    const days = [];
     let day = startDate;
     while (day <= endDate) {
       days.push(
@@ -78,6 +66,7 @@ const Calendar = (props) => {
           <span className="label">Week 1</span>
         </div>
       );
+
       for (let i = 0; i < 7; i++) {
         let assnForDay = getAssignmentsForDay(props.assignments, day);
         days.push(
@@ -85,7 +74,6 @@ const Calendar = (props) => {
             <div className="card">
               <Cell {...assnForDay[0]} onClick={() => { props.onFocus(props.assignments[0].id); }} />
             </div>
-
           </div>
         );
         day = addDays(day, 1);
@@ -96,7 +84,7 @@ const Calendar = (props) => {
           {days}
         </div>
       );
-      days = [];
+      days.length = 0;
     }
     return <div className="body">{rows}</div>;
   };
@@ -118,9 +106,10 @@ const Calendar = (props) => {
           <div className="icon">Next</div>
         </div>
       </header>
-
-      {renderDays()}
-      {renderCells()}
+      <table>
+        {renderDays()}
+        {renderCells()}
+      </table>
     </section>
   );
 };
