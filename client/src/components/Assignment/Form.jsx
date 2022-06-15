@@ -2,6 +2,7 @@ import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import axios from 'axios';
 import DeleteModal from "./DeleteModal";
+import { lastDayOfDecade } from 'date-fns';
 
 const CreateAssignment = (props) => {
   const [title, setTitle] = useState(props.title);
@@ -18,6 +19,7 @@ const CreateAssignment = (props) => {
     const data = { title, description, url, subjectId };
     axios.put('/assignments/' + props.id, data);
     props.onBack();
+    window.location.reload(true)
   };
 
   const saveNew = () => {
@@ -27,7 +29,9 @@ const CreateAssignment = (props) => {
         axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
       })
       .catch((e) => { console.error(e); });
+      console.log("made it to saveNew")
     props.onBack();
+    window.location.reload(true)
   };
 
   const validation = () => {
@@ -44,9 +48,21 @@ const CreateAssignment = (props) => {
       setError("Please select a subject.");
     } else {
       setError(false);
-      return saveNew();
+      save();
+      
+      
     }
+
   };
+  
+
+  const save = () => {
+    if(props.id) {
+      saveEdit();
+    } else {
+      saveNew();
+    }
+  }
 
 
 
@@ -68,7 +84,7 @@ const CreateAssignment = (props) => {
           <option value='4'>Math</option>
           <option value='5'>Science</option>
         </select>
-        {<button onClick={props.id ? saveEdit : validation} type='Submit'>Save</button>}
+        {<button onClick={validation} type='Submit'>Save</button>}
         {props.id && <button onClick={() => { setShowModal(true); }}>Delete</button>}
       </form>
 
