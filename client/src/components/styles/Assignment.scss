@@ -54,12 +54,13 @@ article.assignment__show {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  width: 600px;
+  height: auto;
+  width: 80vw;
   background-color: $default;
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2rem 6rem 6rem 2rem;
   box-shadow:
     1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
     3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
@@ -74,6 +75,9 @@ article.assignment__show {
 
   button {
     margin-right: .5rem;
+  }
+  &.notstarted {
+    background-color: $default;
   }
 
   &.started {
@@ -95,3 +99,127 @@ article.assignment__show {
   margin: 0px 5px 5px 0px;
   cursor: pointer;
 }
+
+#error {
+  margin-top: 3px;
+  color: red;
+  font-weight: bold;
+}
+
+.assignment_header {
+  background: green;
+  color: $default;
+  padding: 1rem;
+  background-image: linear-gradient(to right, green 60%, $default);
+  color: $default;
+
+  &.started {
+    background-image: linear-gradient(to right, green 60%, $started);
+    color: $started;
+  }
+  &.complete {
+    background-image: linear-gradient(to right, green 60%, $complete);
+    color: $complete;
+  }
+}
+
+#assn-subj {
+font-family: sans-serif;
+font-size: 26px;
+font-weight: bold;
+}
+
+.assn-desc {
+font-family: Helvetica, sans-serif;
+font-size: 24px;
+padding: 0.5rem;
+background-image: linear-gradient(to right, red 10%, $default 30%);
+color: $default;
+
+&.started {
+  background-image: linear-gradient(to right, red 10%, $started 30%);
+  color: $started;
+}
+&.complete {
+  background-image: linear-gradient(to right, red 10%, $complete 30%);
+color: $complete;
+}
+
+}
+
+#desc {
+  font-size: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid darkgray;
+}
+
+#assn-link {
+font-family: Arial, sans-serif;
+cursor: pointer;
+}
+
+#assn-prog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border-top: 2px solid darkgray;
+  padding: 2rem;
+}
+
+#prog-status {
+  font-size: 20px;
+  font-style: italic;
+}
+
+#status-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.start-btn {
+  background-color: #45a748; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  vertical-align: top;
+  box-shadow: 2px 1px 2px gray;
+  margin: 4px 10px 4px 10px;
+
+  &:hover {
+    background-color: #377f45;
+  }
+  &:active {
+    box-shadow: 0 0 0 white;
+    margin: 2px 8px 6px 12px;
+  }
+}
+
+.undo-btn {
+  background-color: #e60000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  vertical-align: top;
+  box-shadow: 2px 1px 2px gray;
+  margin: 4px 10px 4px 10px;
+
+  &:hover {
+    background-color: #940000;
+  }
+  &:active {
+    box-shadow: 0 0 0 white;
+    margin: 2px 8px 6px 12px;
+  }
+}
+

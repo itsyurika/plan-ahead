@@ -1,7 +1,7 @@
 const Show = (props) => {
   return (
     <main
-      className={`card__show ${props.status?.toLowerCase()}`}
+      className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}
       onClick={props.onClick}
     >
       <header><h3>{props.title}</h3></header>
