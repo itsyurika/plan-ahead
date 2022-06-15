@@ -30,8 +30,8 @@ const CreateAssignment = (props) => {
 
   return (
     <section className='assignment__form'>
-      {isEdit && <h3>Edit Assignment</h3>}
-      {!isEdit && <h3>Create Assignment</h3>}
+      {props.id && <h3>Edit Assignment</h3>}
+      {!props.id && <h3>Create Assignment</h3>}
       <form onSubmit={(e) => e.preventDefault()} >
         <input spellCheck='true' size='30' value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
         <textarea id="edit-description" rows='8' spellCheck='true' value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
