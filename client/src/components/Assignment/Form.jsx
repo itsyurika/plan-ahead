@@ -16,7 +16,7 @@ const CreateAssignment = (props) => {
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
-    // axios.put('/assignments/' + props.id, data);
+    axios.put('/assignments/' + props.id, data);
     props.onBack();
   };
 
