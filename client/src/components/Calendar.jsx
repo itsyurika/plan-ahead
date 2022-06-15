@@ -67,7 +67,7 @@ const Calendar = (props) => {
   // render calendar
   return (
     <section className="calendar">
-      <header>
+      <header id="calendar_header">
         <div className="col col-start">
           <div className="icon" onClick={() => { setSelectedDate(subWeeks(selectedDate, 1)); }}>
             Previous

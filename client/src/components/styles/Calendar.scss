@@ -9,11 +9,16 @@ $radius: 10px;
 $card-height: 5rem;
 
 section.calendar {
+  margin: 0 auto;
   background-color: #fff;
   display: grid;
   grid-template-rows: $title-height $days-height auto;
   border-radius: $radius;
   overflow: hidden;
+
+  #calendar_header {
+    // padding: 1rem;
+    height: 4rem;}
 
   >header {
     background: #217346;

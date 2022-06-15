@@ -1,5 +1,6 @@
 @import "styles/variables.scss";
 $nav-width: 5rem;
+$nav-height: 5rem;
 
 body {
   background-color: $bg-light;
@@ -11,19 +12,9 @@ a {
   text-decoration: none;
 }
 
-nav.sidenav {
-  height: 100%;
-  width: $nav-width;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
-
 main.app {
-  left: $nav-width/2;
-  margin: $nav-width/3 auto;
-  width: 90vw;
+  margin: 0 auto;
+  width: 80vw;
 }
 
 section.calendar {

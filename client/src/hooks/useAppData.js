@@ -43,5 +43,5 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin };
+  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student};
 };
