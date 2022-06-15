@@ -28,6 +28,7 @@ const CreateAssignment = (props) => {
 
     axios.put('/assignments/' + props.id, { title, description, url, subjectId });
     props.onBack();
+    window.location.reload(true)
   };
 
   const saveNew = () => {
@@ -38,6 +39,7 @@ const CreateAssignment = (props) => {
         axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
       });
     props.onBack();
+    window.location.reload(true)
   };
 
 
