@@ -4,7 +4,7 @@ import { findAssigned } from 'helpers/selectors';
 
 export function useAppData() {
   const [state, setState] = useState({
-    isAdmin: false,
+    admin: false,
     teacherId: 1,
     studentId: 1,
     student: {},
@@ -22,30 +22,26 @@ export function useAppData() {
       }).catch((e) => { console.error(e); });
   }, []);
 
-  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
-  const setAdmin = () => { setState((prev) => ({ ...prev, isAdmin: !prev.isAdmin, })); };
 
+  const assignmentList = findAssigned(state.assignments, !state.admin && state.student);
+  const focusedAssignment = assignmentList.find((assignment) => assignment.id === state.focused);
+
+  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
+  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
 
   const updateStudentState = (res) => {
     setState((prev) => {
-      const student = {
-        ...prev.student,
-        submissions: state.student.submissions.map((submission) => (
-          submission.id === res.data.id ? { ...res.data } : { ...submission }
-        ))
-      };
+      const submissions = state.student.submissions.map((submission) => submission.id === res.data.id ? { ...res.data } : { ...submission });
+      const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
   };
 
-  const updateSubmission = (data) => {
-    axios.patch(`/submissions/${focusedAssignment.assigned.id}`, data)
+  const updateSubmission = (id, data) => {
+    axios.patch(`/submissions/${id}`, data)
       .then(updateStudentState)
       .catch((e) => { console.error(e); });
   };
 
-  const assignmentList = findAssigned(state.assignments, !state.isAdmin && state.student);
-  const focusedAssignment = assignmentList.find((item) => item.id === state.focused);
-
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, isAdmin: state.isAdmin };
+  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin };
 };

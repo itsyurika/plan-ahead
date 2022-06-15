@@ -1,5 +1,10 @@
 @import "styles/variables.scss";
-@import "styles/App.scss";
+
+article.assignment__show {
+  p {
+    margin: 1rem 0;
+  }
+}
 
 #edit-description {
   width: 400px;
@@ -10,11 +15,11 @@
   position: absolute;
   width: 92vw;
   height: 95vh;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
-  align-items: center;  
-  backdrop-filter: blur(5px); 
+  align-items: center;
+  backdrop-filter: blur(5px);
   z-index: 2;
 }
 
@@ -24,9 +29,9 @@
   height: 95vh;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   z-index: 2;
-  backdrop-filter: blur(2px); 
+  backdrop-filter: blur(2px);
 }
 
 .del-modalContainer {
@@ -40,17 +45,16 @@
   border-radius: 10px;
   padding: 2rem;
   box-shadow:
-  1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-  3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-  10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-  15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-  33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-  53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-  100px 100px 80px rgba(0, 0, 0, 0.07)
-;
-z-index: 4;
+    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
+    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
+    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
+    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+  z-index: 4;
 }
 
 .form-modalContainer {
@@ -65,28 +69,29 @@ z-index: 4;
   border-radius: 10px;
   padding: 2rem;
   box-shadow:
-  1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-  3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-  10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-  15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-  33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-  53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-  100px 100px 80px rgba(0, 0, 0, 0.07);
+    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
+    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
+    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
+    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
   z-index: 3;
 
   button {
     margin-right: .5rem;
   }
-  
-    &.started {
-      background-color: $started;
-    }
-    &.complete {
-      background-color: $complete;
-    }
-  
+
+  &.started {
+    background-color: $started;
+  }
+
+  &.complete {
+    background-color: $complete;
+  }
+
 }
 
 #cancel-X {
