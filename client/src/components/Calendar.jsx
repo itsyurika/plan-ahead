@@ -52,7 +52,7 @@ const Calendar = (props) => {
 
           {sorted.map((list, j) => (
             <div className={'card col cell'} key={j}>
-              <Card showAdd={totalRows === i + 1} {...list[i]} onClick={() => { props.onFocus(list[i].id); }} onAdd={() => props.onAdd(dates[j])} />
+              <Card lastRow={totalRows === i + 1} {...list[i]} onClick={() => { props.onFocus(list[i].id); }} onAdd={() => props.onAdd(dates[j])} />
             </div>
           ))}
 
