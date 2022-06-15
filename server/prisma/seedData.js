@@ -119,7 +119,7 @@ const submission = [
   { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 3 },
   { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 4 },
   { dueDate: addDays((new Date()), -7), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 6 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 7 },
+  { dueDate: addDays((new Date()), -2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 7 },
   { dueDate: addDays((new Date()), -9), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 8 },
   { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 9 },
   { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 10 },
