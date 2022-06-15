@@ -34,10 +34,10 @@ const App = () => {
           day={createDay}
         />}
       <Calendar
-      admin={admin}
-      assignments={assignmentList}
-      onAdd={(day) => { setFocused(-1); setCreateDay(day); }}
-      onFocus={(id) => setFocused(id)} />
+        admin={admin}
+        assignments={assignmentList}
+        onAdd={(day) => { setFocused(-1); setCreateDay(day); }}
+        onFocus={(id) => setFocused(id)} />
     </main>
   );
 };

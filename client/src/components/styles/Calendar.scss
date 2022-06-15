@@ -29,119 +29,147 @@ section.calendar {
     align-items: center;
     padding: 1.5em;
 
-    .icon {
-      cursor: pointer;
-      transition: 0.15s ease-out;
-    }
 
-    .icon:first-of-type {
-      margin-left: 1em;
-    }
-
-    .icon:last-of-type {
-      margin-right: 1em;
-    }
 
     .icon:hover {
       transition: 0.25s ease-out;
       color: var(--main-color);
     }
-  }
 
-  header.days-header {
-    background: #f3f2f1;
-    display: flex;
-    place-content: center;
-    text-align: center;
+    .col-start {
+      justify-content: flex-start;
+      text-align: left;
+    }
 
-    text-transform: uppercase;
-    font-weight: 400;
-    color: var(--text-color-dark);
-    font-size: 70%;
-    padding: 0.75em 0;
-    border-bottom: 1px solid var(--border-color);
-  }
+    .col-center {
+      padding: 0.5rem;
+      justify-content: center;
+      text-align: center;
 
-  .day-label {
-    border-left: 1px solid $outline;
-  }
+      border-left: 1px solid $outline;
+      border-right: 1px solid $outline;
+    }
 
-  .time {
-    text-align: right;
-    align-self: end;
-    font-size: 80%;
-    bottom: -1ex;
-    color: #70757a;
-    padding-right: 2px;
-
-    &.label {
-      transform: rotate(-90deg);
-      min-width: 10em;
+    .col-end {
+      justify-content: flex-end;
+      text-align: right;
     }
   }
 
+  .icon {
+    cursor: pointer;
+    transition: 0.15s ease-out;
+  }
+
   .col {
-    &.label {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .selected {
+    grid-column: 7;
+    grid-row: 10;
+    border: 2px solid $selectedColor !important;
+  }
+
+
+  section.table {
+
+    header.days-header {
+      background: #f3f2f1;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--text-color-dark);
+      font-size: 70%;
+      padding: 0.75em 0;
+      border-bottom: 1px solid var(--border-color);
+
+      .day-label {
+        border-left: 1px solid $outline;
+      }
+    }
+
+
+    .time {
+      text-align: right;
+      align-self: end;
+      font-size: 80%;
+      bottom: -1ex;
+      color: #70757a;
+      padding-right: 2px;
+
+      &.label {
+        transform: rotate(-90deg);
+        min-width: 10em;
+      }
+    }
+
+    .cell {
+      min-width: $cellWidth;
+      min-width: $cellHeight;
+    }
+
+
+    .col.label {
       margin: auto;
       vertical-align: center;
       writing-mode: vertical-lr;
       transform: scale(-1, -1);
       border-style: none;
     }
-  }
 
-  .col {
-    border-right: 1px solid $outline;
-  }
 
-  .filler-col {
-    border-right: 1px solid $outline;
-  }
 
-  .row {
-    border-bottom: 1px solid $outline;
-  }
+    .filler-col {
+      border-right: 1px solid $outline;
+    }
 
-  .weekend {
-    background-color: #f1f3f4;
-  }
+    .row {
+      border-bottom: 1px solid $outline;
+    }
 
-  .calendar1 {
-    background-color: #d7dbef;
-    border-color: #bcc3e5;
-  }
+    .weekend {
+      background-color: #f1f3f4;
+    }
 
-  .calendar2 {
-    background-color: #b3e1f7;
-    border-color: #81cdf2;
-  }
+    .calendar1 {
+      background-color: #d7dbef;
+      border-color: #bcc3e5;
+    }
 
-  .card {
-    min-height: $cardHeight;
-    border-radius: 5px;
-    margin: 5px;
-    font-weight: bold;
-    font-size: 80%;
-  }
+    .calendar2 {
+      background-color: #b3e1f7;
+      border-color: #81cdf2;
+    }
 
-  .selected {
-    grid-column: 7;
-    grid-row: 10;
-    border: 2px solid $selectedColor;
-    top: calc(50% - 1px);
-  }
+    .card {
+      min-height: $cardHeight;
+      border-radius: 5px;
+      margin: 5px;
+      font-weight: bold;
+      font-size: 80%;
+    }
 
-  .circle {
-    width: 12px;
-    height: 12px;
-    border: 1px solid $selectedColor;
-    border-radius: 50%;
-    background: $selectedColor;
-    top: -6px;
-    left: -6px;
-  }
 
-  .current {
-    font-weight: bold;
+    .circle {
+      width: 12px;
+      height: 12px;
+      border: 1px solid $selectedColor;
+      border-radius: 50%;
+      background: $selectedColor;
+      top: -6px;
+      left: -6px;
+    }
+
+    .current {
+      font-weight: bold;
+    }
+
   }
 }

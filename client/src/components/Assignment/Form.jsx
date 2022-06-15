@@ -11,7 +11,7 @@ const CreateAssignment = (props) => {
   const [subjectId, setSubjectId] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
- console.log("props", props)
+  console.log("props", props);
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
@@ -42,7 +42,7 @@ const CreateAssignment = (props) => {
           <option value='5'>Science</option>
         </select>
         {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-        <button onClick={() => {setShowModal(true)}}>Delete</button>
+        <button onClick={() => { setShowModal(true); }}>Delete</button>
       </form>
 
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}

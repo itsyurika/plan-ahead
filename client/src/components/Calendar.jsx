@@ -26,14 +26,14 @@ const Calendar = (props) => {
     for (let i = 0; i < 7; i++) {
       const current = addDays(startDate, i);
       daysHeader.push(
-        <div className={`col col-center day-label ${isSameDay(current, today) ? 'selected' : ''}`} key={i}>
+        <div className={`col day-label ${isSameDay(current, today) ? 'selected' : ''}`} key={i}>
           {format(current, 'dd eeee')}
         </div>
       );
     }
     return (
       <header className='row days-header'>
-        <div className='col col-center'>Week {getWeekOfMonth(date)}</div>
+        <div className='col'>Week {getWeekOfMonth(date)}</div>
         {daysHeader}
       </header>
     );
@@ -48,12 +48,12 @@ const Calendar = (props) => {
     for (let i = 0; i < totalRows; i++) {
       rows.push(
         <div className='row' key={i}>
-          <div className={`col cell`} key={i}>
+          <div className={`cell`} key={i}>
             <span className={`label`}></span>
           </div>
 
           {sorted.map((list, j) => (
-            <div className={`card col cell`} key={j}>
+            <div className={`card`} key={j}>
               <Card
                 {...list[i]}
                 admin={props.admin}
@@ -72,10 +72,10 @@ const Calendar = (props) => {
 
   const renderTable = (date) => {
     return (
-      <>
+      <section className='table'>
         {buildHeader(date)}
         {buildRows(date)}
-      </>
+      </section>
     );
   };
 
