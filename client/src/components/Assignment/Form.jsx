@@ -18,15 +18,12 @@ const CreateAssignment = (props) => {
     const data = { title, description, url, subjectId };
     axios.put('/assignments/' + props.id, data);
     props.onBack();
-    window.location.reload(true);
-    //change to useEffect
   };
 
   const saveNew = () => {
     const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
     axios.post('/assignments/', data);
     props.onBack();
-    window.location.reload(true); //change to useEffect
   };
 
 
