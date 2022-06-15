@@ -11,7 +11,7 @@ const CreateAssignment = (props) => {
   const [subjectId, setSubjectId] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
-
+ console.log("props", props)
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
@@ -20,12 +20,10 @@ const CreateAssignment = (props) => {
   };
 
   const saveNew = () => {
-    const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
-    // axios.post('/assignments/', data);
+    const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date(props.day) };
+    axios.post('/assignments/', data);
     props.onBack();
   };
-
-
 
   return (
     <section className='assignment__form'>
@@ -43,12 +41,13 @@ const CreateAssignment = (props) => {
           <option value='4'>Math</option>
           <option value='5'>Science</option>
         </select>
+        {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
+        <button onClick={() => {setShowModal(true)}}>Delete</button>
       </form>
 
-      {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
-      {props.admin && <button onClick={() => setShowModal(true)}>Delete</button>}
+
+
     </section>
   );
 };

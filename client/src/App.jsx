@@ -1,6 +1,7 @@
 import './styles/App.scss';
 import 'normalize.css';
 import { useAppData } from './hooks/useAppData';
+import { useState } from 'react';
 
 import Sidenav from "components/Sidenav";
 import Calendar from "components/Calendar";
@@ -16,6 +17,7 @@ const App = () => {
     updateSubmission,
   } = useAppData();
 
+  const [createDay, setCreateDay] = useState("")
 
   return (
     <main className="app">
@@ -29,8 +31,9 @@ const App = () => {
           onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
           admin={admin}
+          day = {createDay}
         />}
-      <Calendar assignments={assignmentList} onAdd={(day) => { setFocused(-1); console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
+      <Calendar assignments={assignmentList} onAdd={(day) => { setFocused(-1); setCreateDay(day); }} onFocus={(id) => setFocused(id)} />
     </main>
   );
 };

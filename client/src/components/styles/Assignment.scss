@@ -14,7 +14,7 @@ article.assignment__show {
 .modalBackdrop {
   position: absolute;
   width: 92vw;
-  height: 95vh;
+  height: 99vh;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
@@ -23,20 +23,12 @@ article.assignment__show {
   z-index: 2;
 }
 
-.del-modalBackdrop {
-  position: absolute;
-  width: 92vw;
-  height: 95vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(2px);
-}
-
 .del-modalContainer {
-  height: 200px;
-  width: 590px;
+  position: absolute;
+  top: -21rem;
+  left: 0px;
+  height: auto;
+  width: auto;
   background-color: tomato;
   color: white;
   font-size: 20px;
