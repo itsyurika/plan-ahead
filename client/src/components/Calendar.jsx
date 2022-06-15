@@ -46,7 +46,7 @@ const Calendar = (props) => {
 
     for (let i = 0; i < totalRows; i++) {
       rows.push(
-        <div className='row' key={i}>
+        <div className='card-row' key={i}>
           <div className={`col filler`}>
             <p className={`label`}></p>
           </div>
@@ -61,8 +61,9 @@ const Calendar = (props) => {
                 onAdd={() => props.onAdd(dates[j])} />
             </div>
           ))}
-          <div className={`col weekend`}> </div>
-          <div className={`col weekend`}> </div>
+
+          <div className={`col`}></div>
+          <div className={`col`}></div>
         </div>
       );
     }

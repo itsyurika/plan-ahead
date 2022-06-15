@@ -1,5 +1,8 @@
+@import "styles/variables.scss";
+
 $title-height: 3em;
-$outline: #dadce0;
+$outline-light: #dadce0;
+$outline-dark: #b3bac6;
 $selected-color: #ea4335;
 $radius: 10px;
 $cell-width: 5rem;
@@ -23,15 +26,14 @@ section.calendar {
     transition: 0.15s ease-out;
   }
 
+  // current day
   .selected {
-    grid-column: 7;
-    grid-row: 10;
     border: 2px solid $selected-color  !important;
     border-radius: 4px;
     font-weight: bold;
   }
 
-  // main calendar header
+  // main (green) calendar header
   >header {
     background: #217346;
     color: #fff;
@@ -63,8 +65,8 @@ section.calendar {
       justify-content: center;
       text-align: center;
 
-      border-left: 1px solid $outline;
-      border-right: 1px solid $outline;
+      border-left: 1px solid $outline-light;
+      border-right: 1px solid $outline-light;
     }
 
     .col-end {
@@ -80,44 +82,51 @@ section.calendar {
     flex-direction: column;
     background-color: #fff;
     margin-bottom: 2em;
-    border-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    overflow: hidden;
 
-
+    // table 1
     &:first-of-type {
       border-color: #bcc3e5;
 
       .days-header {
-        border-color: inherit;
         background: #d7dbef;
       }
     }
 
+    // table 2
     &:last-of-type {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
       border-color: #81cdf2;
 
       header.days-header {
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-        border-color: inherit;
         background: #b3e1f7;
       }
     }
 
     header.days-header {
       display: flex;
-      flex-direction: row;
       justify-content: center;
+      align-items: center;
       text-align: center;
-
       text-transform: uppercase;
       font-weight: 400;
-      color: var(--text-color-dark);
       font-size: 70%;
       padding: 0.75em 0;
-      border-bottom: 1px solid var(--border-color);
 
-      .day-label {
-        border-left: 1px solid $outline;
+      white-space: nowrap;
+
+      .col {
+        min-height: 2em;
+        border-left: 1px solid $outline-dark;
+
+        // disable left side border
+        &:first-of-type,
+        &.selected+.col {
+          border: none;
+        }
       }
     }
 
@@ -126,19 +135,22 @@ section.calendar {
       flex-basis: 0;
       padding: 0.2em;
 
+      // weekend column width
+      &:nth-last-child(-n+2) {
+        flex-grow: .5;
+      }
+
+      // main column width
+      &.card-container,
       &.day-label {
         width: calc($cell-width + 1vw);
       }
 
-      &.card-container {
-        height: calc($cell-height + 1vh);
-      }
-
+      // first column width
       &.filler {
         font-size: 1rem;
         font-weight: 500;
         flex-grow: .4;
-        border-right: 1px solid $outline;
 
         &.label {
           text-align: right;
@@ -156,20 +168,36 @@ section.calendar {
           transform: scale(-1, -1);
           border-style: none;
         }
+      }
+    }
 
-        &.weekend {
+    // rows styling
+    .card-row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .col {
+        height: calc($cell-height + 1vh);
+        border-right: 1px solid $outline-light;
+        border-bottom: 1px solid $outline-light;
+
+
+        // weekend background colours
+        &:nth-last-child(-n+2) {
           background-color: #f1f3f4;
+        }
+
+        // disable right side border
+        &:last-of-type {
+          border-right: none;
         }
       }
 
-
-    }
-
-    .row {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid $outline;
+      // disable last bottom border
+      &:last-of-type .col {
+        border-bottom: none;
+      }
     }
   }
 }
