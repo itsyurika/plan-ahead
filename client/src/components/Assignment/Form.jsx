@@ -9,20 +9,19 @@ const CreateAssignment = (props) => {
   const [url, setUrl] = useState(props.url);
   const [teacherId, setTeacherId] = useState(1);
   const [subjectId, setSubjectId] = useState(1);
-  const [isEdit, setIsEdit] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
 
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
-    axios.put('/assignments/' + props.id, data);
+    // axios.put('/assignments/' + props.id, data);
     props.onBack();
   };
 
   const saveNew = () => {
     const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
-    axios.post('/assignments/', data);
+    // axios.post('/assignments/', data);
     props.onBack();
   };
 
@@ -30,8 +29,7 @@ const CreateAssignment = (props) => {
 
   return (
     <section className='assignment__form'>
-      {props.id && <h3>Edit Assignment</h3>}
-      {!props.id && <h3>Create Assignment</h3>}
+      {<h3>{props.id ? 'Edit' : 'Create'} Assignment</h3>}
       <form onSubmit={(e) => e.preventDefault()} >
         <input spellCheck='true' size='30' value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
         <textarea id="edit-description" rows='8' spellCheck='true' value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
@@ -45,17 +43,12 @@ const CreateAssignment = (props) => {
           <option value='4'>Math</option>
           <option value='5'>Science</option>
         </select>
-
       </form>
 
-      {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
-      {!isEdit && <button onClick={saveNew} type='Submit'>Save</button>}
-      <button onClick={() => { setIsEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
-
+      {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
 
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
-      {props.admin && <button onClick={() => setShowModal(true)}> Delete </button>}
-
+      {props.admin && <button onClick={() => setShowModal(true)}>Delete</button>}
     </section>
   );
 };

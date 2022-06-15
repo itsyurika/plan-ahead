@@ -1,17 +1,22 @@
-$title-height: 3em;
-$days-height: 3em;
-$time-width: 3em;
-$time-height: 6em;
+$titleHeight: 3em;
 $outline: #dadce0;
-$calendar-template: $time-width 0px 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
-$current-time-color: #ea4335;
+$selectedColor: #ea4335;
 $radius: 10px;
-$card-height: 5rem;
+$cardHeight: 5rem;
+$cellWidth: 5rem;
+$cellHeight: 5rem;
+
+:root {
+  --main-color: #1a8fff;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}
 
 section.calendar {
   background-color: #fff;
-  display: grid;
-  grid-template-rows: $title-height $days-height auto;
   border-radius: $radius;
   overflow: hidden;
 
@@ -48,22 +53,20 @@ section.calendar {
     display: flex;
     place-content: center;
     text-align: center;
-    grid-template-columns: $calendar-template;
-    border-bottom: 2px solid $outline;
+
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--text-color-dark);
+    font-size: 70%;
+    padding: 0.75em 0;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .day {
+  .day-label {
     border-left: 1px solid $outline;
   }
 
-  .cards-container {
-    display: flex;
-    // grid-template-columns: $calendar-template;
-    // grid-template-rows: repeat(4, $time-height);
-  }
-
   .time {
-    grid-column: 1;
     text-align: right;
     align-self: end;
     font-size: 80%;
@@ -73,8 +76,6 @@ section.calendar {
 
     &.label {
       transform: rotate(-90deg);
-      grid-row: 1 / span 1;
-      grid-column: 0 / span 4;
       min-width: 10em;
     }
   }
@@ -91,18 +92,13 @@ section.calendar {
 
   .col {
     border-right: 1px solid $outline;
-    grid-row: 1 / span 4;
-    grid-column: span 1;
   }
 
   .filler-col {
-    grid-row: 1 / -1;
-    grid-column: 2;
     border-right: 1px solid $outline;
   }
 
   .row {
-    grid-column: 2 / -1;
     border-bottom: 1px solid $outline;
   }
 
@@ -121,62 +117,26 @@ section.calendar {
   }
 
   .card {
-    min-height: $card-height;
+    min-height: $cardHeight;
     border-radius: 5px;
     margin: 5px;
     font-weight: bold;
     font-size: 80%;
-
-    &.row1 {
-      grid-row: 1;
-    }
-
-    &.row2 {
-      grid-row: 2;
-    }
-
-    &.row3 {
-      grid-row: 3;
-    }
-
-    &.row4 {
-      grid-row: 4;
-    }
-
-    &.column3 {
-      grid-column: 3;
-    }
-
-    &.column4 {
-      grid-column: 4;
-    }
-
-    &.column5 {
-      grid-column: 5;
-    }
-
-    &.column6 {
-      grid-column: 6;
-    }
-
-    &.column7 {
-      grid-column: 7;
-    }
   }
 
-  .current-time {
+  .selected {
     grid-column: 7;
     grid-row: 10;
-    border-top: 2px solid $current-time-color;
+    border: 2px solid $selectedColor;
     top: calc(50% - 1px);
   }
 
   .circle {
     width: 12px;
     height: 12px;
-    border: 1px solid $current-time-color;
+    border: 1px solid $selectedColor;
     border-radius: 50%;
-    background: $current-time-color;
+    background: $selectedColor;
     top: -6px;
     left: -6px;
   }
