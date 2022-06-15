@@ -17,7 +17,7 @@ const App = () => {
     updateSubmission,
   } = useAppData();
 
-  const [createDay, setCreateDay] = useState("")
+  const [createDay, setCreateDay] = useState("");
 
   return (
     <main className="app">
@@ -31,9 +31,13 @@ const App = () => {
           onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
           admin={admin}
-          day = {createDay}
+          day={createDay}
         />}
-      <Calendar assignments={assignmentList} onAdd={(day) => { setFocused(-1); setCreateDay(day); }} onFocus={(id) => setFocused(id)} />
+      <Calendar
+      admin={admin}
+      assignments={assignmentList}
+      onAdd={(day) => { setFocused(-1); setCreateDay(day); }}
+      onFocus={(id) => setFocused(id)} />
     </main>
   );
 };

@@ -56,6 +56,7 @@ const Calendar = (props) => {
             <div className={`card col cell`} key={j}>
               <Card
                 {...list[i]}
+                admin={props.admin}
                 lastRow={totalRows === i + 1}
                 onClick={() => { props.onFocus(list[i].id); }}
                 onAdd={() => props.onAdd(dates[j])} />
