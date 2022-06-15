@@ -11,8 +11,10 @@ const AssignmentView = (props) => {
         <p>{props.url}</p>
         <p>{props.status}</p>
 
-        {props.status !== 'Not Started' &&< button onClick={props.onCancel}>Cancel</button>}
-        {props.status === 'Not Started' &&< button onClick={props.onStart}>Start</button>}
+        {props.status === 'Started' &&< button onClick={props.onCancelStarted}>Undo Started</button>}
+        {props.status === 'Complete' &&< button onClick={props.onCancelComplete}>Cancel Submission</button>}
+
+        {props.status === 'Not started' &&< button onClick={props.onStart}>Start</button>}
         {props.status === 'Started' && < button onClick={props.onComplete}>Complete</button>}
 
         {props.admin && <Form {...props} />}
