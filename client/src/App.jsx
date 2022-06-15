@@ -12,22 +12,21 @@ const App = () => {
     assignmentList,
     setFocused,
     setAdmin,
-    isAdmin,
+    admin,
     updateSubmission,
   } = useAppData();
 
-  // = render main page =
+
   return (
     <main className="app">
-      <Sidenav onLogin={setAdmin} isAdmin={isAdmin} />
-      {focusedAssignment
-        && <Assignment
+      <Sidenav onLogin={setAdmin} admin={admin} />
+      {focusedAssignment &&
+        <Assignment
           {...focusedAssignment}
-          onStart={() => { updateSubmission({ dateStarted: new Date() }); }}
-          onComplete={() => { updateSubmission({ dateCompleted: new Date() }); }}
+          onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
+          onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
           onBack={() => setFocused(null)}
-          setAdmin={setAdmin}
-          isAdmin={isAdmin}
+          admin={admin}
         />}
       <Calendar assignments={assignmentList} onAdd={(day) => { console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
     </main>

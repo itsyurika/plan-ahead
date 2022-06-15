@@ -1,6 +1,7 @@
+import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import axios from 'axios';
-import 'components/styles/Assignment.scss';
+import DeleteModal from "./DeleteModal";
 
 const CreateAssignment = (props) => {
   const [title, setTitle] = useState(props.title);
@@ -8,15 +9,15 @@ const CreateAssignment = (props) => {
   const [url, setUrl] = useState(props.url);
   const [teacherId, setTeacherId] = useState(1);
   const [subjectId, setSubjectId] = useState(1);
-  const [isEdit, setIsEdit] = useState(true)
-
+  const [isEdit, setIsEdit] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
 
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
     axios.put('/assignments/' + props.id, data);
-    props.onBack()
+    props.onBack();
     window.location.reload(true);
     //change to useEffect
   };
@@ -24,9 +25,11 @@ const CreateAssignment = (props) => {
   const saveNew = () => {
     const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
     axios.post('/assignments/', data);
-    props.onBack()
+    props.onBack();
     window.location.reload(true); //change to useEffect
   };
+
+
 
   return (
     <section className='assignment__form'>
@@ -39,8 +42,8 @@ const CreateAssignment = (props) => {
 
         <select id="selectList" onChange={(e) => setSubjectId(+e.target.value)}>
           <option>Subjects</option>
-          <option value='1'>Art</option>
-          <option value='2'>English</option>
+          <option value='1'>Art</option>
+          <option value='2'>English</option>
           <option value='3'>History</option>
           <option value='4'>Math</option>
           <option value='5'>Science</option>
@@ -50,7 +53,11 @@ const CreateAssignment = (props) => {
 
       {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
       {!isEdit && <button onClick={saveNew} type='Submit'>Save</button>}
-      <button onClick={() => {setIsEdit((prev) => !prev)}}>Toggle</button> // Just here to test functionality.
+      <button onClick={() => { setIsEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
+
+
+      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
+      {props.admin && <button onClick={() => setShowModal(true)}> Delete </button>}
 
     </section>
   );
