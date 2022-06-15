@@ -25,6 +25,8 @@ const App = () => {
           {...focusedAssignment}
           onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
           onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
+          onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
+          onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
           admin={admin}
         />}
