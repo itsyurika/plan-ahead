@@ -10,6 +10,7 @@ export function useAppData() {
     student: {},
     assignments: [],
     focused: null,
+    day: null,
   });
 
   useEffect(() => {
@@ -24,10 +25,14 @@ export function useAppData() {
 
 
   const assignmentList = findAssigned(state.assignments, !state.admin && state.student);
-  const focusedAssignment = state.focused === -1 ? { } : assignmentList.find((assignment) => assignment.id === state.focused);
-
+  const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+
+  const createForm = (day) => {
+    setState((prev) => ({...prev, day}))
+    setFocused(-1);
+  };
 
   const updateStudentState = (res) => {
     setState((prev) => {
@@ -43,5 +48,5 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin };
+  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, createForm };
 };
