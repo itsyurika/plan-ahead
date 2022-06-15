@@ -50,12 +50,11 @@ export function useStatusChange () {
   const startAssignment = (id, studentId) => {
     axios.patch(`/students/${studentId}/assignments/${id}`, { dateStarted: new Date() })
       .then((res) => {
-        console.log("state.student: ", state.student);
-        const studentAssignments = state.student.studentAssignments.map((item) => (
+        const studentAssignments = state.student.submissions.map((item) => (
           item.assignmentId === id ? { ...res.data } : { ...item }
         ));
         setState((prev) => ({...prev,
-          student: {...prev.student, studentAssignments: studentAssignments}
+          student: {...prev.student, submissions: studentAssignments}
         }))
       });
   };
@@ -63,36 +62,16 @@ export function useStatusChange () {
   const completeAssignment = (id, studentId) => {
     axios.patch(`/students/${studentId}/assignments/${state.focused}`, { dateCompleted: new Date() })
       .then((res) => {
-        const studentAssignments = state.student.studentAssignments.map((item) => (
+        const studentAssignments = state.student.submissions.map((item) => (
           item.assignmentId === id ? { ...res.data } : { ...item }
         ));
         setState((prev) => ({...prev,
-          student: {...prev.student, studentAssignments: studentAssignments}
+          student: {...prev.student, submissions: studentAssignments}
         }))
       });
   };
 
-  const handleStart = () => {
-    startAssignment(state.focused, state.studentId)
-    .then((res) => {
-      console.log("res from handleStart: ", res);
-      setState((prev) => {
-        console.log("logging prev: ", prev);
-        const updatedAssignments = prev.map((item) => {
-          if (item.id===state.focused) {
-            return {...item, assigned: {...res.data}}
-          } else {
-            return {...item}
-          } 
-        })
-        console.log("updatedAssignment: ", updatedAssignments);
-        return {...prev, updatedAssignments}
-    })
-  })
-  }
-  
-
-  return {state, setFocused, setAdminMode, startAssignment, completeAssignment, handleStart}
+  return {state, setFocused, setAdminMode, startAssignment, completeAssignment}
 
 }
 
