@@ -7,10 +7,10 @@ const AssignmentView = (props) => {
       <div className={`form-modalContainer ${props.status?.toLowerCase()}`}>
         <div id="cancel-X" onClick={props.onBack}>&#10006;</div>
         <header id="assignment-header"><h3>{props.title}</h3></header>
-        <p>{props.subject?.name}</p>
-        <p>{props.description}</p>
-        <p>{props.url}</p>
-        <p>{props.status}</p>
+        <p id="assn-subj">{props.subject?.name}</p>
+        <p id="assn-desc">Description:<br/>{props.description}</p>
+        <p id="assn-link">Link: {props.url}</p>
+        <p id="assn-prog">Your Progress: {props.status}</p>
 
         {props.status && props.status !== 'Not Started' &&< button onClick={props.onCancel}>Cancel</button>}
         {props.status === 'Not Started' &&< button onClick={props.onStart}>Start</button>}

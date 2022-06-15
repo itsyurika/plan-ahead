@@ -11,7 +11,7 @@ const CreateAssignment = (props) => {
   const [subjectId, setSubjectId] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
- console.log("props", props)
+
   // = helpers =
   const saveEdit = () => {
     const data = { title, description, url, subjectId };
@@ -25,6 +25,7 @@ const CreateAssignment = (props) => {
     props.onBack();
   };
 
+// == output ==
   return (
     <section className='assignment__form'>
       {<h3>{props.id ? 'Edit' : 'Create'} Assignment</h3>}
