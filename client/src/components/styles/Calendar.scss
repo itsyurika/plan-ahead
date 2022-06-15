@@ -5,7 +5,7 @@ $outline-light: #dadce0;
 $outline-dark: #b3bac6;
 $selected-color: #ea4335;
 $radius: 10px;
-$cell-width: 5rem;
+$cell-width: 8rem;
 $cell-height: 8rem;
 
 :root {
@@ -136,8 +136,8 @@ section.calendar {
       padding: 0.2em;
 
       // weekend column width
-      &:nth-last-child(-n+2) {
-        flex-grow: .5;
+      &:nth-last-child(-n+2), &.filler {
+        flex-grow: .4;
       }
 
       // main column width
@@ -150,7 +150,7 @@ section.calendar {
       &.filler {
         font-size: 1rem;
         font-weight: 500;
-        flex-grow: .4;
+
 
         &.label {
           text-align: right;

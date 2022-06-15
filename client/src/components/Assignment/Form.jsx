@@ -22,7 +22,11 @@ const CreateAssignment = (props) => {
 
   const saveNew = () => {
     const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date(props.day) };
-    axios.post('/assignments/', data);
+    axios.post('/assignments', data)
+      .then((res) => {
+        axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
+      })
+      .catch((e) => { console.error(e); });
     props.onBack();
   };
 
@@ -39,14 +43,14 @@ const CreateAssignment = (props) => {
     } else if (!subjectId) {
       setError("Please select a subject.");
     } else {
-      setError(false)
+      setError(false);
       return saveNew();
     }
   };
 
 
 
-// == output ==
+  // == output ==
   return (
     <section className='assignment__form'>
       {<h3>{props.id ? 'Edit' : 'Create'} Assignment</h3>}
@@ -65,7 +69,7 @@ const CreateAssignment = (props) => {
           <option value='5'>Science</option>
         </select>
         {<button onClick={props.id ? saveEdit : validation} type='Submit'>Save</button>}
-        {props.id && <button onClick={() => {setShowModal(true)}}>Delete</button>}
+        {props.id && <button onClick={() => { setShowModal(true); }}>Delete</button>}
       </form>
 
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
