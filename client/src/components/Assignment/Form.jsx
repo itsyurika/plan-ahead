@@ -5,9 +5,9 @@ import DeleteModal from './DeleteModal';
 import { format, parseISO } from 'date-fns';
 
 const CreateAssignment = (props) => {
-  const [title, setTitle] = useState(props.title);
-  const [description, setDescription] = useState(props.description);
-  const [url, setUrl] = useState(props.url);
+  const [title, setTitle] = useState(props.title || '');
+  const [description, setDescription] = useState(props.description || '');
+  const [url, setUrl] = useState(props.url || '');
   const [subjectId, setSubjectId] = useState(props.subjectId || 0);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
