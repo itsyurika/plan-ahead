@@ -19,7 +19,8 @@ const CreateAssignment = (props) => {
     if (!url) return setError('Please enter google classroom link.');
     if (!subjectId) return setError('Please select a subject.');
 
-    return !setError(null);
+    setError(null);
+    return true;
   };
 
   const saveEdit = () => {
