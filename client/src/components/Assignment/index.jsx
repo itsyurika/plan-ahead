@@ -11,8 +11,8 @@ const AssignmentView = (props) => {
         <p>{props.url}</p>
         <p>{props.status}</p>
 
-        <button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>
-        <button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>
+        {!props.admin &&< button disabled={['Started', 'Complete'].includes(props.status)} onClick={props.onStart}>Start</button>}
+        {!props.admin &&< button disabled={props.status === 'Complete'} onClick={props.onComplete}>Complete</button>}
 
         {props.admin && <Form {...props} />}
       </div>

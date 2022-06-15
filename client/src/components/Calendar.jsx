@@ -31,7 +31,7 @@ const Calendar = (props) => {
     }
     return (
       <header className="days row days-header">
-        <div className="col col-center">Week {getWeekOfMonth(date) % 4 + 1}</div>
+        <div className="col col-center">Week {getWeekOfMonth(date)}</div>
         {daysHeader}
       </header>
     );
