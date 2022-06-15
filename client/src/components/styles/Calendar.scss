@@ -194,7 +194,8 @@ section.calendar {
         }
       }
 
-      // disable last bottom border
+      // disable bottom border
+      .filler,
       &:last-of-type .col {
         border-bottom: none;
       }

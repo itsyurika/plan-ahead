@@ -32,7 +32,7 @@ const Calendar = (props) => {
 
     return (
       <header className='row days-header'>
-        <div className='col filler'>Week {Math.ceil(date.getDate() / 7)}</div>
+        <div className='col filler'>{format(date, 'MMMM')}</div>
         {daysHeader}
       </header>
     );
@@ -43,12 +43,13 @@ const Calendar = (props) => {
     const sorted = sortAssignmentsByDay(props.assignments, dates);
     const rows = [];
     const totalRows = 4;
+    const label = 'Week ' + Math.ceil(date.getDate() / 7)
 
     for (let i = 0; i < totalRows; i++) {
       rows.push(
         <div className='card-row' key={i}>
           <div className={`col filler`}>
-            <p className={`label`}></p>
+            <p className={`label`}>{i === 0 && label}</p>
           </div>
 
           {sorted.map((list, j) => (
