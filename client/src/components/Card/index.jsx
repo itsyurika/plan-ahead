@@ -5,7 +5,9 @@ import Show from "./Show";
 const Assignment = (props) => {
 
   return (
-    <>{(props.id && <Show {...props} />) || <Empty {...props} />}</>
+    <article className='card'>
+      {(props.id && <Show {...props} />) || <Empty {...props} />}
+    </article>
   );
 };
 

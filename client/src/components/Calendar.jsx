@@ -1,13 +1,11 @@
+// import 'components/styles/CalendarReact.scss';
 import 'components/styles/Calendar.scss';
-import 'components/styles/CalendarReact.scss';
 import { useState } from 'react';
 import { getDatesForWeek, sortAssignmentsByDay } from 'helpers/selectors';
 import {
   format,
-  getWeekOfMonth,
   addDays,
   addWeeks,
-  subWeeks,
   startOfWeek,
   isSameDay,
 } from 'date-fns';
@@ -24,16 +22,17 @@ const Calendar = (props) => {
     const startDate = startOfWeek(date, { weekStartsOn: 1 });
 
     for (let i = 0; i < 7; i++) {
-      const current = addDays(startDate, i);
+      const day = addDays(startDate, i);
       daysHeader.push(
-        <div className={`col day-label ${isSameDay(current, today) ? 'selected' : ''}`} key={i}>
-          {format(current, 'dd eeee')}
+        <div className={`col day-label ${isSameDay(day, today) ? 'selected' : ''}`} key={i}>
+          {format(day, 'dd eeee')}
         </div>
       );
     }
+
     return (
       <header className='row days-header'>
-        <div className='col'>Week {getWeekOfMonth(date)}</div>
+        <div className='col filler'>Week {Math.ceil(date.getDate() / 7)}</div>
         {daysHeader}
       </header>
     );
@@ -48,12 +47,12 @@ const Calendar = (props) => {
     for (let i = 0; i < totalRows; i++) {
       rows.push(
         <div className='row' key={i}>
-          <div className={`cell`} key={i}>
-            <span className={`label`}></span>
+          <div className={`col filler`}>
+            <p className={`label`}></p>
           </div>
 
           {sorted.map((list, j) => (
-            <div className={`card`} key={j}>
+            <div className={`col card-container`} key={j}>
               <Card
                 {...list[i]}
                 admin={props.admin}
@@ -62,7 +61,8 @@ const Calendar = (props) => {
                 onAdd={() => props.onAdd(dates[j])} />
             </div>
           ))}
-
+          <div className={`col weekend`}> </div>
+          <div className={`col weekend`}> </div>
         </div>
       );
     }
@@ -84,7 +84,7 @@ const Calendar = (props) => {
     <section className='calendar'>
       <header>
         <div className='col col-start'>
-          <div className='icon' onClick={() => { setSelectedDate(subWeeks(selectedDate, 1)); }}>
+          <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
             Previous
           </div>
         </div>
@@ -99,7 +99,6 @@ const Calendar = (props) => {
 
       {renderTable(selectedDate)}
       {renderTable(addWeeks(selectedDate, 1))}
-
     </section>
   );
 };
