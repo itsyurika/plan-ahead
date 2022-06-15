@@ -24,7 +24,7 @@ export function useAppData() {
 
 
   const assignmentList = findAssigned(state.assignments, !state.admin && state.student);
-  const focusedAssignment = assignmentList.find((assignment) => assignment.id === state.focused);
+  const focusedAssignment = state.focused === -1 ? {} : assignmentList.find((assignment) => assignment.id === state.focused);
 
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };

@@ -28,7 +28,7 @@ const App = () => {
           onBack={() => setFocused(null)}
           admin={admin}
         />}
-      <Calendar assignments={assignmentList} onAdd={(day) => { console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
+      <Calendar assignments={assignmentList} onAdd={(day) => { setFocused(-1); console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
     </main>
   );
 };
