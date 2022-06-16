@@ -9,7 +9,7 @@ const DeleteModal = (props) => {
   };
 
   return (
-    <div className="del-modalBackdrop">
+    <div className="modalBackdrop del">
       <div className="del-modalContainer">
         <div id="cancel-X" onClick={props.closeModal}>&#10006;</div>
         <br />

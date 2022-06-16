@@ -5,21 +5,41 @@
   padding: 0;
 }
 
+.outerwrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 article.assignment__show {
   p {
     margin: 1rem 0;
   }
 }
-
+#edit-title {
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
 #edit-description {
-  width: 400px;
-  padding: 2px;
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
+
+#edit-url {
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
 }
 
 .modalBackdrop {
   position: absolute;
-  width: 92vw;
-  height: 99vh;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
@@ -28,10 +48,12 @@ article.assignment__show {
   z-index: 2;
 }
 
+
+
 .del-modalContainer {
   position: absolute;
-  top: -21rem;
-  left: 0px;
+  top: 25%;
+  left: 25%;
   height: auto;
   width: auto;
   background-color: tomato;
@@ -55,13 +77,16 @@ article.assignment__show {
 }
 
 .form-modalContainer {
-  position: relative;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
   height: auto;
   width: 80vw;
-  background-color: $default;
+  background-color:hsla(50,75%,97%,1);
+  background-image:
+  radial-gradient(at 50% 50%, hsla(65,100%,95%,1) 0px, transparent 50%),
+  radial-gradient(at 6% 80%, hsla(194,100%,96%,1) 0px, transparent 50%);
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
@@ -83,14 +108,17 @@ article.assignment__show {
   }
   &.notstarted {
     background-color: $default;
+    background-image: none;
   }
 
   &.started {
     background-color: $started;
+    background-image: none;
   }
 
   &.complete {
     background-color: $complete;
+    background-image: none;
   }
 
 }
@@ -228,3 +256,32 @@ cursor: pointer;
   }
 }
 
+.assignment__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.due-drop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+}
+
+#selectList {
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
+
+.due-date {
+  border-radius: 6px;
+  padding: 3px 5px 3px 5px;
+  background: red;
+  color: $default;
+}
