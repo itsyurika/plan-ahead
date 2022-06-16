@@ -72,8 +72,8 @@ const CreateAssignment = (props) => {
 
 
       <div className='btn-center'>
-        {<button class='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-        {props.id && <button class='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
+        {<button className='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
+        {props.id && <button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
       </div>
 
       </form>
