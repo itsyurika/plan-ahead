@@ -1,7 +1,6 @@
 import 'components/styles/Navbar.scss';
 
 const Navbar = (props) => {
-console.log(props);
   return (
     <header id='navbar'>
       <nav className='navbar-container container'>

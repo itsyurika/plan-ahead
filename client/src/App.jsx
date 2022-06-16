@@ -6,6 +6,7 @@ import Navbar from 'components/Navbar';
 import SideNav from "components/Sidenav";
 import Calendar from "components/Calendar";
 import Assignment from "components/Assignment";
+import Popup from 'components/Popup';
 
 
 const App = () => {
@@ -17,7 +18,9 @@ const App = () => {
     admin,
     student,
     updateSubmission,
-    createForm
+    createForm,
+    isPopupOpen,
+    togglePopup
   } = useAppData();
 
   return (
@@ -25,6 +28,7 @@ const App = () => {
       <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} />
 
       <main className="app">
+        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()}/>
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
         {focusedAssignment &&
           <Assignment
