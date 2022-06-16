@@ -4,9 +4,8 @@ $title-height: 3em;
 $outline-light: #dadce0;
 $outline-dark: #b3bac6;
 $selected-color: #ea4335;
-$radius: 10px;
-$cell-width: 8rem;
-$cell-height: 8rem;
+
+
 
 :root {
   --main-color: #1a8fff;
@@ -23,7 +22,7 @@ section.calendar {
 
   .icon {
     cursor: pointer;
-    transition: 0.15s ;
+    transition: 0.15s;
   }
 
   // current day
@@ -81,6 +80,7 @@ section.calendar {
     display: flex;
     justify-content: center;
 
+
     background-color: #fff;
     margin-bottom: 2em;
     border-bottom-left-radius: inherit;
@@ -114,13 +114,14 @@ section.calendar {
       font-weight: 400;
       font-size: 70%;
       white-space: nowrap;
+      padding-top: 10%;
 
       .col {
         height: 100%;
         border-left: 1px solid $outline-dark;
 
         // disable left side border
-        // &:first-of-type,
+
         // &.selected+.col {
         //   border: none;
         // }
@@ -129,16 +130,19 @@ section.calendar {
 
     .day-column {
       flex-grow: 1;
-      flex-basis: $cell-width;
+      flex-basis: 0;
+      margin: 0.2em 0;
+      min-width: $cell-width;
 
       display: flex;
       flex-direction: column;
+      border-left: 1px solid $outline-light;
 
       .card-container {
+        min-height: $cell-height;
         flex-grow: 1;
-        flex-basis: $cell-height;
-        outline: 1px solid $outline-light;
-
+        flex-basis: 0;
+        border-bottom: 1px solid $outline-light;
       }
 
 
@@ -150,6 +154,7 @@ section.calendar {
 
       // first column width
       &.filler {
+        border-left: none;
         font-size: 1rem;
         font-weight: 500;
       }
