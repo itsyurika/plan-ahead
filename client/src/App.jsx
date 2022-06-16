@@ -26,10 +26,22 @@ const App = () => {
     setView,
   } = useAppData();
 
+  console.log("assnList", assignmentList)
 
   return (
     <div id="outer-container">
-      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} showComplete={() => setView('complete')} showCalendar={() => setView(null)} showPastDue={() => setView('pastDue')} />
+      <SideNav 
+      pageWrapId={"app"} 
+      outerContainerId={"outer-container"} 
+      showCalendar={() => setView(null)} 
+      showComplete={() => setView('complete')} 
+      showPastDue={() => setView('pastDue')} 
+      showArt={() => setView('art')} 
+      showEnglish={() => setView('english')}
+      showHistory={() => setView('history')}
+      showMath={() => setView('math')}
+      showScience={() => setView('science')}
+      />
 
       <main className="app">
         <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => console.log("clicked me!")}/>
