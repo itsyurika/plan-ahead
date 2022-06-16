@@ -23,7 +23,6 @@ article.card {
     text-align: center;
 
     white-space: wrap;
-    border: 1px solid rgb(43, 192, 226);
     border-radius: $radius;
     cursor: pointer;
 
@@ -33,6 +32,20 @@ article.card {
 
     &header {
       color: aqua;
+    }
+
+
+    &.default {
+      border: 2px solid rgb(43, 192, 226);
+      }
+  
+
+    &.red {
+    border: 2px solid #da121c;
+    }
+
+    &.yellow {
+    border: 2px solid #febe2e;
     }
 
     &.started {
