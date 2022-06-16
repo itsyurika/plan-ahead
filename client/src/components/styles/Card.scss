@@ -16,12 +16,11 @@ article.card {
     padding: .5em;
     border: 1px solid rgb(43, 192, 226);
     border-radius: 0.4rem;
-    overflow: hidden;
+    overflow: auto;
     justify-content: space-around;
+    align-items: center;
+    white-space: wrap;
 
-    p {
-      margin: .5rem 0;
-    }
 
     button {
       margin-right: .5rem;
