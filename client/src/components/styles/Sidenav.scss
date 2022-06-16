@@ -15,12 +15,15 @@
   transition: color 0.2s;
 }
 
+
+
 .bm-item ul {
   list-style: square inside;
 }
 
 .bm-item li {
   margin: 1rem 0;
+  cursor: pointer;
 }
 
 /* Change color on hover */
@@ -60,8 +63,13 @@
   background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  h2 {
+    cursor: pointer;
+  }
+  h2:hover {
+    color: white;
 }
-
+}
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
@@ -76,3 +84,4 @@
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+

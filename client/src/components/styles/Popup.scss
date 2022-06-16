@@ -6,6 +6,8 @@
   --color5: #e3adcb;
   --color6: #ee8faa;
   --color7: #9b7ecb;
+  --color8: #00427d;
+  --color9: #005d82;
 
 }
 
@@ -62,4 +64,13 @@
     }
   }
 
+}
+
+.list-group {
+  > *:hover {
+    cursor: pointer;
+  }
+  li:hover {
+    color: var(--color9);
+  }
 }
