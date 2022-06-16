@@ -2,12 +2,8 @@ import 'components/styles/Header.scss';
 import 'components/styles/Calendar.scss';
 
 import { useState } from 'react';
-import { getDatesForWeek, sortAssignmentsByDay } from 'helpers/selectors';
-import {
-  format,
-  addWeeks,
-  isSameDay,
-} from 'date-fns';
+import { format, addWeeks, isSameDay, } from 'date-fns';
+import { getDatesForWeek, sortAssignmentsByDay } from 'hooks/helpers';
 
 import Column from 'components/Column';
 

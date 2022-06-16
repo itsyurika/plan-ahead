@@ -47,7 +47,7 @@ section.calendar {
       &.selected {
         z-index: 1;
         font-weight: bold;
-        outline: 3px solid $selected-color;
+        outline: 3px solid $selected;
         outline-offset: -3px;
         border-radius: $radius;
 

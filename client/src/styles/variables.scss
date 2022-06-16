@@ -10,14 +10,21 @@ $text-dark: #455d3e;
 // colors
 $outline-light: #dadce0;
 $outline-dark: #b3bac6;
-$selected-color: #ff516b;
+$selected: #ff516b;
+$confirm: #10ac84;
+$danger: #ee5253;
+$error: #ff9f43;
 
 // card bgs
+$transparent: rgba(0, 0, 0, 0);
 $default: #fdfbf0;
 $complete: #eff4f5;
 $started: #f7f1f5;
 
-$transparent: rgba(0, 0, 0, 0);
+// styles
+$active-opacity: 1;
+$inactive-opacity: 0.15;
+
 // sizing
 $font-scale: calc(0.6em + 0.3vw + 0.3vh);
 $radius: 1em;

@@ -1,5 +1,33 @@
 @import "styles/variables.scss";
 
+:root {
+  --navbar-bg-color: transparent;
+  --navbar-text-color: #455d3e;
+  --navbar-text-color-focus: #748c70;
+}
+
+// Top nav bar
+header.navbar {
+  padding: 2rem 0;
+  --navbar-height: 3rem;
+  height: var(--navbar-height);
+  width: 80vw;
+  background-color: var(--navbar-bg-color);
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 100%;
+  }
+}
+
+
+// Calendar Header
 section.calendar {
   border-radius: $radius;
   overflow: hidden;
@@ -9,7 +37,6 @@ section.calendar {
     transition: 150ms;
   }
 
-  // main (green) calendar header
   >header {
     background: var(--header-color);
     color: #fff;

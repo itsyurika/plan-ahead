@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { findAssigned } from 'helpers/selectors';
-import { parseISO } from 'date-fns';
+import { findAssigned } from 'hooks/helpers';
+import { parseISO, isBefore } from 'date-fns';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -26,31 +26,28 @@ export function useAppData() {
       }).catch((e) => { console.error(e); });
   }, []);
 
-
   const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
 
   const filterList = (assignment) => {
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && parseISO(assignment.assigned.dueDate) < new Date();
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
-  }
-
+  };
 
 
   const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
-
   const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
 
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
 
   const createForm = (day) => {
-    setState((prev) => ({...prev, day}))
+    setState((prev) => ({ ...prev, day }));
     setFocused(-1);
   };
 
   const togglePopup = () => {
-    setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen}));
-  }
+    setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen }));
+  };
 
   const updateStudentState = (res) => {
     setState((prev) => {
@@ -67,11 +64,10 @@ export function useAppData() {
   };
 
   const setView = (view) => {
-  setState((prev) => ({ ...prev, view}));
-  } 
+    setState((prev) => ({ ...prev, view }));
+  };
 
-
-
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm, isPopupOpen: state.isPopupOpen, togglePopup, view: state.view, setView, };
+  const { admin, student, isPopupOpen, view } = state;
+  return { setFocused, setAdmin, updateSubmission, createForm, togglePopup, setView, assignmentList, focusedAssignment, admin, student, isPopupOpen, view };
 };
 
