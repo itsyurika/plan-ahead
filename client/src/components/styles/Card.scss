@@ -5,7 +5,9 @@ article.card {
   height: 100%;
   padding: .1em;
 
+
   .card__show {
+    transition: 20ms;
     background-color: $default;
     min-width: 100px;
     height: 100%;
@@ -35,6 +37,7 @@ article.card {
     }
 
     &:hover {
+
       transform: scale(1.1) !important;
       z-index: 1;
       box-shadow:
