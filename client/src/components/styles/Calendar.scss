@@ -12,7 +12,7 @@ section.calendar {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     margin-bottom: 2em;
-    overflow: hidden;
+    overflow: visible;
 
     // table 1
     &:first-of-type {
