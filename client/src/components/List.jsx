@@ -4,10 +4,26 @@ import Assignment from "components/Assignment";
 
 const List = (props) => {
 
+  console.log("propsview:", props.view)
+
+  const viewName = () => {
+    if (props.view === 'pastDue') return 'Past Due'
+    if (props.view === 'complete') return 'Completed'
+    if (props.view === 'art') return 'Art';
+    if (props.view === 'english') return 'English';
+    if (props.view === 'history') return 'History';
+    if (props.view === 'math') return 'Math';
+    if (props.view === 'science') return 'Science';
+  };
+
   return (
+
+
+    
+
   
     <section className='list__view'>
-      <h1> Completed Assignments </h1>
+      <h1> {viewName()} Assignments </h1>
         <ul id='ul-view'>
           {props.assignmentList.map((assignment) => {
       
