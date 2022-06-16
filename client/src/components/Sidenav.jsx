@@ -8,23 +8,21 @@ const Sidenav = (props) => {
     <Menu {...props}>
 
       <div>
-        <a href="/">
-          <h2 onClick={props.calendarView}>Return to Calendar</h2>
-        </a>
+          <h2 onClick={props.showCalendar}>Return to Calendar</h2>
       </div>
       <div>
         <ul> <h3>Subjects</h3>
-          <li><a href='#'>Art</a></li>
-          <li><a href='#'>English</a></li>
-          <li><a href='#'>History</a></li>
-          <li><a href='#'>Math</a></li>
-          <li><a href='#'>Science</a></li>
+          <li>Art</li>
+          <li>English</li>
+          <li>History</li>
+          <li>Math</li>
+          <li>Science</li>
         </ul>
       </div>
       <div>
         <ul> <h3>Assignments</h3>
-          <li><a href='#'>Past Due</a></li>
-          <li onClick={props.updateComplete} >Completed</li>
+          <li onClick={props.showPastDue}>Past Due</li>
+          <li onClick={props.showComplete} >Completed</li>
         </ul>
       </div>
     </Menu>

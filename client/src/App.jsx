@@ -22,18 +22,14 @@ const App = () => {
     createForm,
     isPopupOpen,
     togglePopup,
-    complete,
-    updateComplete,
-    list,
-    calendarView
+    view,
+    setView,
   } = useAppData();
 
-  console.log("complete state",complete)
-  console.log("list state", list)
 
   return (
     <div id="outer-container">
-      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} complete={complete} updateComplete={() => updateComplete()} list={list} calendarView={() => calendarView()} />
+      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} showComplete={() => setView('complete')} showCalendar={() => setView(null)} showPastDue={() => setView('pastDue')} />
 
       <main className="app">
         <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} />
@@ -48,12 +44,12 @@ const App = () => {
             onBack={() => setFocused(null)}
             admin={admin}
           />}
-        {!list && <Calendar
+        {!view && <Calendar
           admin={admin}
           assignments={assignmentList}
           onAdd={createForm}
           onFocus={(id) => setFocused(id)} />}
-        {list && complete && <List
+        {view && <List
           student={student} 
           assignmentList={assignmentList}            
           admin={admin}
@@ -61,7 +57,10 @@ const App = () => {
           onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
           onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
-          onBack={() => setFocused(null)}/>}
+          onBack={() => setFocused(null)}
+          view={view}
+          />}
+
           
       </main>
     </div>

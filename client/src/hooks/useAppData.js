@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { findAssigned } from 'helpers/selectors';
+import { parseISO } from 'date-fns';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -12,8 +13,7 @@ export function useAppData() {
     focused: null,
     day: null,
     isPopupOpen: true,
-    complete: false,
-    list: false
+    view: false
   });
 
   useEffect(() => {
@@ -27,8 +27,19 @@ export function useAppData() {
   }, []);
 
 
-  const assignmentList = findAssigned(state.assignments, !state.admin && state.student);
+  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
+
+  const filterList = (assignment) => {
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && parseISO(assignment.assigned.dueDate) < new Date();
+    if (state.view === 'complete') return assignment.assigned.dateCompleted;
+  }
+
+
+
+  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
+
   const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
+
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
 
@@ -55,16 +66,12 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-    const updateComplete = () => {
-    setState((prev) => ({ ...prev, complete: true}));
-    setState((prev) => ({ ...prev, list: true}));
+  const setView = (view) => {
+  setState((prev) => ({ ...prev, view}));
   } 
 
-  const calendarView = () => {
-    setState((prev) => ({ ...prev, complete: false}));
-    setState((prev) => ({ ...prev, list: false}));
-  }
 
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm, isPopupOpen: state.isPopupOpen, togglePopup, complete: state.complete, updateComplete, list: state.list, calendarView };
+
+  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm, isPopupOpen: state.isPopupOpen, togglePopup, view: state.view, setView, };
 };
 
