@@ -341,8 +341,13 @@ article.assignment__view {
 .due-date {
   border-radius: 6px;
   padding: 3px 5px 3px 5px;
-  background: red;
   color: $default;
+  &.due {
+    background: green;
+  }
+  &.pastDue {
+    background: red;
+  }
 }
 
 #del-warning {

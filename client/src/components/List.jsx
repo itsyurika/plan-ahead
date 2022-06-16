@@ -4,8 +4,6 @@ import Assignment from "components/Assignment";
 
 const List = (props) => {
 
-  console.log("propsview:", props.view)
-
   const viewName = () => {
     if (props.view === 'pastDue') return 'Past Due'
     if (props.view === 'complete') return 'Completed'
@@ -18,10 +16,6 @@ const List = (props) => {
 
   return (
 
-
-    
-
-  
     <section className='list__view'>
       <h1> {viewName()} Assignments </h1>
         <ul id='ul-view'>
