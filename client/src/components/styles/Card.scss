@@ -1,6 +1,7 @@
 @import "styles/variables.scss";
 
 article.card {
+  display: grid;
   position: relative;
   z-index: 10;
   width: 100%;
@@ -9,6 +10,8 @@ article.card {
 
 
   .card__show {
+    display: flex;
+    flex-direction: column;
     transition: 50ms;
     background-color: $default;
     min-width: 100px;
@@ -17,11 +20,8 @@ article.card {
     border: 1px solid rgb(43, 192, 226);
     border-radius: 0.4rem;
     overflow: hidden;
+    justify-content: space-around;
 
-
-    p {
-      margin: .5rem 0;
-    }
 
     button {
       margin-right: .5rem;
@@ -49,13 +49,20 @@ article.card {
   }
 
 
-  &.card__empty {
+  .card__empty {
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    align-items: center;
+    margin: auto;
+  }
+
+  .card__add-button {
+    max-width: 60%;
+    opacity: 0.5;
 
     &:hover {
       transform: scale(1.1);
+      opacity: 1;
     }
   }
 }

@@ -135,9 +135,8 @@ section.calendar {
       flex-direction: column;
 
       .card-container {
-        flex-grow: 1;
-        flex-basis: $cell-height;
-        outline: 1px solid $outline-light;
+       height: $cell-height;
+       outline: 1px solid $outline-light;
 
       }
 
