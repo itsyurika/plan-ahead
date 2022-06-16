@@ -11,6 +11,10 @@ const List = (props) => {
           <li className='card-li' key={assignment.id}>
             <Assignment
               {...assignment} view={props.view}
+              onStart={() => { props.updateStatus(assignment.assigned.id, { dateStarted: new Date() }); }}
+              onComplete={() => { props.updateStatus(assignment.assigned.id, { dateCompleted: new Date() }); }}
+              onCancelStarted={() => { props.updateStatus(assignment.assigned.id, { dateStarted: null }); }}
+              onCancelComplete={() => { props.updateStatus(assignment.assigned.id, { dateCompleted: null }); }}
             />
           </li>
         ))}

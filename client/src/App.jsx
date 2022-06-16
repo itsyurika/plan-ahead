@@ -20,7 +20,9 @@ const App = () => {
     isPopupOpen,
     setFocused,
     setAdmin,
-    updateSubmission,
+    postAssignment,
+    putAssignment,
+    patchSubmission,
     showCreateForm,
     togglePopup,
     setView,
@@ -29,21 +31,29 @@ const App = () => {
 
   return (
     <div id="outer-container">
-      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} showComplete={() => setView('complete')} showCalendar={() => setView(null)} showPastDue={() => setView('pastDue')} />
+      <SideNav
+        pageWrapId={"app"}
+        outerContainerId={"outer-container"}
+        showCalendar={() => setView(null)}
+        showPastDue={() => setView('pastDue')}
+        showComplete={() => setView('complete')}
+      />
 
       <main className="app">
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => console.log("clicked me!")} />
+        <Popup isPopupOpen={isPopupOpen}
+          onClose={() => togglePopup()}
+          showPastDue={() => console.log("clicked me!")}
+        />
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
-        {focusedAssignment &&
-          <Modal
-            {...focusedAssignment}
-            onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
-            onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
-            onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
-            onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
-            onBack={() => setFocused(null)}
-            admin={admin}
-          />}
+        {focusedAssignment && <Modal {...focusedAssignment}
+          onNew={postAssignment}
+          onEdit={putAssignment}
+          onStart={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
+          onComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
+          onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
+          onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
+          onBack={() => setFocused(null)}
+        />}
         {!view && <Calendar
           admin={admin}
           assignments={assignmentList}
@@ -53,15 +63,10 @@ const App = () => {
           student={student}
           assignmentList={assignmentList}
           admin={admin}
-          onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
-          onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
-          onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
-          onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
+          updateStatus={patchSubmission}
           onBack={() => setFocused(null)}
           view={view}
         />}
-
-
       </main>
     </div>
   );

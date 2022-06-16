@@ -19,12 +19,13 @@ const Calendar = (props) => {
 
     const columns = dates.map((date, i) => (
       <Column key={i}
-        selected={isSameDay(date, today) ? 'selected' : ''}
+        day={date}
         admin={props.admin}
-        lastRow={totalRows === i + 1}
+        cards={sorted[i]}
+        totalRows={totalRows}
         onFocus={props.onFocus}
         onAdd={() => props.onAdd(date)}
-        day={date} cards={sorted[i]} totalRows={totalRows}
+        selected={isSameDay(date, today) ? 'selected' : ''}
       />));
 
     return (

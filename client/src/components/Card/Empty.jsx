@@ -2,7 +2,7 @@ const Empty = (props) => {
   return (
     <main className="card__empty">
       <img
-        hidden={!(props.lastRow && props.admin)}
+        hidden={!props.lastRow || !props.admin}
         className="card__add-button"
         src="/images/add.png"
         alt="Add"

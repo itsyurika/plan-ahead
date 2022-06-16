@@ -25,24 +25,13 @@ const CreateAssignment = (props) => {
 
   const saveEdit = () => {
     if (!valid()) return;
-
-    axios.put('/assignments/' + props.id, { title, description, url, subjectId })
-      .then((res) => {
-        // update state
-      });
+    props.onEdit(props.id, { title, description, url, subjectId });
     props.onBack();
   };
 
   const saveNew = () => {
     if (!valid()) return;
-
-    axios.post('/assignments', { title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day })
-      .then((res) => {
-        axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
-      })
-      .then((res) => {
-        // update state
-      });
+    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day });
     props.onBack();
   };
 
@@ -67,17 +56,17 @@ const CreateAssignment = (props) => {
         <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input id='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
         <div className="due-drop">
-        <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
-        <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
-          {options}
-        </select>
+          <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+          <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
+            {options}
+          </select>
         </div>
 
 
-      <div className='btn-center'>
-        {<button className='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-        {props.id && <button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
-      </div>
+        <div className='btn-center'>
+          {<button className='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
+          {props.id && <button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
+        </div>
 
       </form>
 

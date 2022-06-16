@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { findAssigned } from 'hooks/helpers';
 import { parseISO, isBefore } from 'date-fns';
+import { findAssigned } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -10,8 +10,8 @@ export function useAppData() {
     studentId: 1,
     student: {},
     assignments: [],
+    newAssignment: {},
     focused: null,
-    day: null,
     isPopupOpen: true,
     view: false
   });
@@ -34,7 +34,7 @@ export function useAppData() {
   };
 
   const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
-  const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
+  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
@@ -42,25 +42,85 @@ export function useAppData() {
   const setView = (view) => { setState((prev) => ({ ...prev, view })); };
 
   const showCreateForm = (day) => {
-    setState((prev) => ({ ...prev, day }));
+    setState((prev) => ({
+      ...prev,
+      newAssignment: {
+        day,
+        admin: state.admin,
+        teacherId: state.teacherId,
+      },
+    }));
     setFocused(-1);
   };
 
-  const updateStudentState = (res) => {
+
+
+  // update state
+  const addAssignment = (data) => {
     setState((prev) => {
-      const submissions = state.student.submissions.map((submission) => submission.id === res.data.id ? { ...res.data } : { ...submission });
+      const assignments = [...state.assignments, { ...data }];
+      return { ...prev, assignments, };
+    });
+    return data;
+  };
+
+  const updateAssignmentState = (data) => {
+    setState((prev) => {
+      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
+      return { ...prev, assignments, };
+    });
+    return data;
+  };
+
+  const updateSubmissionState = (data) => {
+    setState((prev) => {
+      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
+    return data;
   };
 
-  const updateSubmission = (id, data) => {
-    axios.patch(`/submissions/${id}`, data)
-      .then(updateStudentState)
-      .catch((e) => { console.error(e); });
+
+  // api requests
+  const postAssignment = async (body) => {
+    const { data: assignment } = await axios.post('/assignments', body);
+    addAssignment(assignment);
+    postSubmission(assignment);
   };
 
-  const { admin, student, isPopupOpen, view } = state;
-  return { setFocused, setAdmin, updateSubmission,  showCreateForm, togglePopup, setView, assignmentList, focusedAssignment, admin, student, isPopupOpen, view };
+  const putAssignment = async (id, body) => {
+    const { data: assignment } = await axios.put(`/assignments/${id}`, body);
+    updateAssignmentState(assignment);
+  };
+
+  const postSubmission = async (body) => {
+    const { data: submission } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
+    updateSubmissionState(submission);
+  };
+
+  const patchSubmission = async (id, body) => {
+    const { data: submission } = await axios.patch(`/submissions/${id}`, body);
+    updateSubmissionState(submission);
+  };
+
+
+  return {
+    // from state
+    admin: state.admin,
+    student: state.student,
+    isPopupOpen: state.isPopupOpen,
+    view: state.view,
+
+    assignmentList,
+    focusedAssignment,
+    setFocused,
+    setAdmin,
+    setView,
+    showCreateForm,
+    togglePopup,
+    postAssignment,
+    putAssignment,
+    patchSubmission,
+  };
 };
-
