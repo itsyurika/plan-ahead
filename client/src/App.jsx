@@ -12,17 +12,17 @@ import List from 'components/List';
 
 const App = () => {
   const {
-    focusedAssignment,
-    assignmentList,
-    setFocused,
-    setAdmin,
     admin,
     student,
-    updateSubmission,
-    createForm,
-    isPopupOpen,
-    togglePopup,
     view,
+    assignmentList,
+    focusedAssignment,
+    isPopupOpen,
+    setFocused,
+    setAdmin,
+    updateSubmission,
+    showCreateForm,
+    togglePopup,
     setView,
   } = useAppData();
 
@@ -47,7 +47,7 @@ const App = () => {
         {!view && <Calendar
           admin={admin}
           assignments={assignmentList}
-          onAdd={createForm}
+          onAdd={showCreateForm}
           onFocus={(id) => setFocused(id)} />}
         {view && <List
           student={student}

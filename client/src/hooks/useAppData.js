@@ -33,20 +33,17 @@ export function useAppData() {
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
   };
 
-
   const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
   const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
 
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+  const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
+  const setView = (view) => { setState((prev) => ({ ...prev, view })); };
 
-  const createForm = (day) => {
+  const showCreateForm = (day) => {
     setState((prev) => ({ ...prev, day }));
     setFocused(-1);
-  };
-
-  const togglePopup = () => {
-    setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen }));
   };
 
   const updateStudentState = (res) => {
@@ -63,11 +60,7 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-  const setView = (view) => {
-    setState((prev) => ({ ...prev, view }));
-  };
-
   const { admin, student, isPopupOpen, view } = state;
-  return { setFocused, setAdmin, updateSubmission, createForm, togglePopup, setView, assignmentList, focusedAssignment, admin, student, isPopupOpen, view };
+  return { setFocused, setAdmin, updateSubmission,  showCreateForm, togglePopup, setView, assignmentList, focusedAssignment, admin, student, isPopupOpen, view };
 };
 

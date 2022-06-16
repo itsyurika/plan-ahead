@@ -16,7 +16,7 @@ const AssignmentView = (props) => {
         <p id="assn-prog">Your Progress:&nbsp;&nbsp;<span id="prog-status"> {props.status}! </span></p>
 
       </div>}
-      {(props.view !== 'complete') && < Status {...props} />}
+      {(props.view !== 'complete') && <Status {...props} />}
       {props.admin && <Form {...props} />}
     </div>
 
