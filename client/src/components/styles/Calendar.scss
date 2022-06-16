@@ -20,7 +20,7 @@ section.calendar {
     &:first-of-type {
       border-color: #bcc3e5;
 
-      header.day-label {
+      header.cell.label {
         background: #d7dbef;
       }
     }
@@ -31,50 +31,56 @@ section.calendar {
       border-top-right-radius: inherit;
       border-color: #81cdf2;
 
-      header.day-label {
+      header.cell.label {
         background: #b3e1f7;
       }
     }
 
     // flex coloumns
-    .day-column {
+    .table__column {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       flex-basis: 0;
 
-      margin: 0.2em 0;
+      // margin: 0.2em 0;
       min-width: $cell-width;
 
       // current day
       &.selected {
-        font-weight: bold;
-        outline: 2px solid $selected-color;
         z-index: 1;
-        border-radius: $radius;
+        font-weight: bold;
+        outline: 3px solid $selected-color;
+        outline-offset: -3px;
+        border-radius: $radius*2;
 
-        // disable default border for selected column
-        &.selected,
-        +.col {
-          border-left: none;
+        // disable default border for selected column and next sibling
+        >.cell,
+        +.table__column .cell {
+          border-left: none !important;
         }
       }
 
       // table header
-      >header.col {
-        flex-grow: 0;
-        // height: 5em;
-        flex-basis: 3em;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: 400;
-        font-size: 70%;
-        padding-top: 0.4em;
+      >header.cell.label {
+        flex-grow: 0; // fix height
+        height: 6vh;
         border-left: 1px solid $outline-dark;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >p {
+          display: flex;
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: 80%;
+        }
       }
 
       // middle columns
-      .card-container {
+      >.card-cell {
         min-height: $cell-height;
         flex-grow: 1;
         flex-basis: 0;
@@ -86,11 +92,18 @@ section.calendar {
       &:first-of-type {
         min-width: 0; // resets flex basis
         flex-grow: .5; // width
-        font-weight: 500;
 
-
-        >header.col {
+        >header.cell {
           border: none;
+
+          p {
+            font-size: 100%;
+            font-weight: bold;
+          }
+        }
+
+        >div.label >p {
+
         }
       }
 
@@ -101,7 +114,7 @@ section.calendar {
       }
 
       // weekend background colours
-      &:nth-last-child(-n+2) .card-container {
+      &:nth-last-child(-n+2)>.card-cell {
         background-color: #f1f3f4;
 
         img {
@@ -114,5 +127,6 @@ section.calendar {
         border-bottom: none;
       }
     }
+
   }
 }
