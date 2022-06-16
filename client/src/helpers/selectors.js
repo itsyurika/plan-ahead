@@ -21,7 +21,7 @@ export const findAssigned = (assignments, student) => {
 
 export const getDatesForWeek = (date) => {
   const startDate = startOfWeek(date, { weekStartsOn: 1 });
-  return [...Array(5)].map((_, i) => addDays(startDate, i));
+  return [...Array(7)].map((_, i) => addDays(startDate, i));
 };
 
 export const sortAssignmentsByDay = (assignments, week) => {

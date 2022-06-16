@@ -10,6 +10,7 @@ import {
   isSameDay,
 } from 'date-fns';
 
+import DayColumn from 'components/DayColumn';
 import Card from 'components/Card';
 
 const Calendar = (props) => {
@@ -18,6 +19,39 @@ const Calendar = (props) => {
   const [selectedDate, setSelectedDate] = useState(today);
 
   // = helpers =
+  const renderTable = (date) => {
+    const dates = getDatesForWeek(date);
+    const sorted = sortAssignmentsByDay(props.assignments, dates);
+
+    const columns = dates.map((date, i) => (
+      <DayColumn key={i}
+        selected={isSameDay(date, today) ? 'selected' : ''}
+        admin={props.admin}
+        lastRow={totalRows === i + 1}
+        onFocus={props.onFocus}
+        onAdd={() => props.onAdd(date)}
+        day={date} cards={sorted[i]} totalRows={totalRows}
+      />));
+
+
+
+    return (
+      <section className='table'>
+        <main className={'day-column filler'}>
+          <header className={'cell day-label'}>
+            {format(date, 'MMMM')}
+          </header>
+
+          <div className='cell label filler'>
+            {'Week ' + Math.ceil(date.getDate() / 7)}
+          </div>
+        </main>
+
+        {columns}
+      </section>
+    );
+  };
+
   const buildHeader = (date) => {
     const daysHeader = [];
     const startDate = startOfWeek(date, { weekStartsOn: 1 });
@@ -77,14 +111,6 @@ const Calendar = (props) => {
     );
   };
 
-  const renderTable = (date) => {
-    return (
-      <section className='table'>
-        {buildHeader(date)}
-        {buildRows(date)}
-      </section>
-    );
-  };
 
   // render calendar
   return (
