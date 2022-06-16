@@ -23,7 +23,7 @@ article.card {
 
     white-space: wrap;
     border: 1px solid rgb(43, 192, 226);
-    border-radius: 0.4rem;
+    border-radius: $radius;
     cursor: pointer;
 
     button {

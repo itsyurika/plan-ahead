@@ -48,7 +48,7 @@ section.calendar {
         font-weight: bold;
         outline: 3px solid $selected-color;
         outline-offset: -3px;
-        border-radius: $radius*2;
+        border-radius: $radius;
 
         // disable default border for selected column and next sibling
         >.cell,
@@ -59,7 +59,8 @@ section.calendar {
 
       // table header
       >header.cell.label {
-        // white-space: nowrap; // disable word-break
+        word-break: nowrap; // disable word-break
+        font-size: calc(0.2rem + 0.8vw);
         overflow: hidden;
         text-align: center;
         flex-grow: 0; // fix height
@@ -67,6 +68,7 @@ section.calendar {
         border-left: 1px solid $outline-dark;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
