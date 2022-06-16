@@ -1,9 +1,7 @@
 import 'components/styles/Sidenav.scss';
 import Menu from 'react-burger-menu/lib/menus/slide';
-import { useState } from 'react';
 
 const Sidenav = (props) => {
-
   return (
     <Menu {...props}>
 

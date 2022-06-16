@@ -32,7 +32,7 @@ const App = () => {
       <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} showComplete={() => setView('complete')} showCalendar={() => setView(null)} showPastDue={() => setView('pastDue')} />
 
       <main className="app">
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => console.log("clicked me!")}/>
+        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')}/>
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
         {focusedAssignment &&
           <Modal
