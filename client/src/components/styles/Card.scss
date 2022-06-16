@@ -60,7 +60,7 @@ article.card {
     align-items: center;
 
     img.card__add-button {
-      width: 30%;
+      width: calc(24px + 1.8vw); // set min width and scale with vp
       cursor: pointer;
       transition: 50ms;
       opacity: 0.5;
