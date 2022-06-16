@@ -49,17 +49,17 @@ const CreateAssignment = (props) => {
 
   // == output ==
   return (
+
     <section className='assignment__form'>
-      {<h3>{props.id ? 'Edit' : 'Create'} Assignment</h3>}
+      {<h2>{props.id ? 'Edit' : 'Create'} Assignment</h2>}
       <h5 id='error'>{error}</h5>
 
       <form onSubmit={(e) => e.preventDefault()} >
-        <input spellCheck='true' size='30' placeholder='Title' value={title} onChange={(e) => { setTitle(e.target.value); }} />
-        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => { setDescription(e.target.value); }} />
-        <input size='30' placeholder='Google Classroom Link' value={url} onChange={(e) => { setUrl(e.target.value); }} />
-
-        <p>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
-
+        <input id='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
+        <input id='edit-url' placeholder='Google Classroom Link' type='url' value={url} onChange={(e) => setUrl(e.target.value)} />
+        <div className="due-drop">
+        <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
         <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
           <option>Subjects</option>
           <option value='1'>Art</option>
@@ -68,15 +68,21 @@ const CreateAssignment = (props) => {
           <option value='4'>Math</option>
           <option value='5'>Science</option>
         </select>
+        </div>
 
-        {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-        {props.id && <button onClick={() => { setShowModal(true); }}>Delete</button>}
+
+      <div className='btn-center'>
+        {<button class='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
+        {props.id && <button class='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
+      </div>
+
       </form>
 
       {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
 
 
     </section>
+
   );
 };
 
