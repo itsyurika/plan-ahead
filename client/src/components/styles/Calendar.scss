@@ -5,6 +5,7 @@ section.calendar {
 
   // individual tables
   section.table {
+    width: 100.1% !important; // fix for table being 1 pixel too small
     display: flex;
     justify-content: center;
 
@@ -77,6 +78,7 @@ section.calendar {
           text-transform: uppercase;
           font-weight: 500;
           font-size: 80%;
+          padding: 0.2vh;
         }
       }
 
@@ -105,10 +107,19 @@ section.calendar {
 
         >div.label {
           margin: auto;
+          white-space: nowrap;
+          flex-wrap: wrap;
           color: #70757a;
-          transform: rotate(-90deg);
+          font-size: calc($font-scale*1.2);
+          text-align: center;
+          // rotate text
           writing-mode: vertical-rl;
           transform: scale(-1, -1);
+
+          p:last-of-type {
+            padding-right: 0.2vw;
+            font-weight: 600;
+          }
         }
       }
 
