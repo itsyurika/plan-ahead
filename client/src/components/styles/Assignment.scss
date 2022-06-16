@@ -1,8 +1,11 @@
 @import "styles/variables.scss";
 
-* {
-  margin: 0;
-  padding: 0;
+
+.outerwrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
 }
 
 article.assignment__show {
@@ -11,27 +14,53 @@ article.assignment__show {
   }
 }
 
+#edit-title {
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
+
 #edit-description {
-  width: 400px;
-  padding: 2px;
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
+
+#edit-url {
+  width: 30rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
 }
 
 .modalBackdrop {
   position: absolute;
-  width: 92vw;
-  height: 99vh;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
   z-index: 2;
+
+  &.del {
+    display: flex;
+    right: 0;
+    bottom: 0;
+    width: 79.5vw;
+    height: 69.5vh;
+
+  }
 }
 
 .del-modalContainer {
   position: absolute;
-  top: -21rem;
-  left: 0px;
+  display: flex;
+  top: 25%;
+  left: auto;
   height: auto;
   width: auto;
   background-color: tomato;
@@ -52,20 +81,27 @@ article.assignment__show {
     53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
     100px 100px 80px rgba(0, 0, 0, 0.07);
   z-index: 4;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
 }
 
 .form-modalContainer {
-  position: relative;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
   height: auto;
   width: 80vw;
-  background-color: $default;
+  background-color: hsla(50, 75%, 97%, 1);
+  background-image:
+    radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
+    radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
-  padding: 2rem 6rem 6rem 2rem;
+  padding: 2rem 6rem 6rem 6rem;
   box-shadow:
     1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
     3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
@@ -81,16 +117,20 @@ article.assignment__show {
   button {
     margin-right: .5rem;
   }
+
   &.notstarted {
     background-color: $default;
+    background-image: none;
   }
 
   &.started {
     background-color: $started;
+    background-image: none;
   }
 
   &.complete {
     background-color: $complete;
+    background-image: none;
   }
 
 }
@@ -122,6 +162,7 @@ article.assignment__show {
     background-image: linear-gradient(to right, green 60%, $started);
     color: $started;
   }
+
   &.complete {
     background-image: linear-gradient(to right, green 60%, $complete);
     color: $complete;
@@ -129,26 +170,27 @@ article.assignment__show {
 }
 
 #assn-subj {
-font-family: sans-serif;
-font-size: 26px;
-font-weight: bold;
+  font-family: sans-serif;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .assn-desc {
-font-family: Helvetica, sans-serif;
-font-size: 24px;
-padding: 0.5rem;
-background-image: linear-gradient(to right, red 10%, $default 30%);
-color: $default;
+  font-family: Helvetica, sans-serif;
+  font-size: 24px;
+  padding: 0.5rem;
+  background-image: linear-gradient(to right, red 10%, $default 30%);
+  color: $default;
 
-&.started {
-  background-image: linear-gradient(to right, red 10%, $started 30%);
-  color: $started;
-}
-&.complete {
-  background-image: linear-gradient(to right, red 10%, $complete 30%);
-color: $complete;
-}
+  &.started {
+    background-image: linear-gradient(to right, red 10%, $started 30%);
+    color: $started;
+  }
+
+  &.complete {
+    background-image: linear-gradient(to right, red 10%, $complete 30%);
+    color: $complete;
+  }
 
 }
 
@@ -159,8 +201,8 @@ color: $complete;
 }
 
 #assn-link {
-font-family: Arial, sans-serif;
-cursor: pointer;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
 }
 
 #assn-prog {
@@ -183,7 +225,8 @@ cursor: pointer;
 }
 
 .start-btn {
-  background-color: #45a748; /* Green */
+  background-color: #45a748;
+  /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -199,6 +242,7 @@ cursor: pointer;
   &:hover {
     background-color: #377f45;
   }
+
   &:active {
     box-shadow: 0 0 0 white;
     margin: 2px 8px 6px 12px;
@@ -222,9 +266,71 @@ cursor: pointer;
   &:hover {
     background-color: #940000;
   }
+
   &:active {
     box-shadow: 0 0 0 white;
     margin: 2px 8px 6px 12px;
   }
 }
 
+.del-btn {
+  background-color: #e60000;
+  border: 2px outset firebrick;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  vertical-align: top;
+  box-shadow: 2px 1px 2px gray;
+  margin: 4px 10px 4px 10px;
+
+  &:hover {
+    background-color: #940000;
+  }
+
+  &:active {
+    box-shadow: 0 0 0 white;
+    margin: 2px 8px 6px 12px;
+  }
+}
+
+.assignment__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.due-drop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+}
+
+#selectList {
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid lightblue
+}
+
+.due-date {
+  border-radius: 6px;
+  padding: 3px 5px 3px 5px;
+  background: red;
+  color: $default;
+}
+
+#del-warning {
+  font-size: 32px;
+}
+
+#del-title {
+  font-size: 24px;
+}

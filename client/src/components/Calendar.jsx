@@ -15,7 +15,7 @@ import Card from 'components/Card';
 
 const Calendar = (props) => {
   const today = new Date();
-  const totalRows = 4;
+  const totalRows = 3;
   const [selectedDate, setSelectedDate] = useState(today);
 
   // = helpers =
@@ -32,7 +32,6 @@ const Calendar = (props) => {
         onAdd={() => props.onAdd(date)}
         day={date} cards={sorted[i]} totalRows={totalRows}
       />));
-
 
 
     return (

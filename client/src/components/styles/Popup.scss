@@ -1,0 +1,29 @@
+
+.popup {
+  &.open {
+      background-color: pink;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      z-index: 100;
+
+  }
+}
+
+.popup {
+  &.closed {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background-color: pink;
+    width: 36px;
+    height: 30px;
+
+    ul {
+      display: none;
+    }
+  }
+
+}

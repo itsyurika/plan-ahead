@@ -11,6 +11,7 @@ export function useAppData() {
     assignments: [],
     focused: null,
     day: null,
+    isPopupOpen: true
   });
 
   useEffect(() => {
@@ -34,6 +35,9 @@ export function useAppData() {
     setFocused(-1);
   };
 
+  const togglePopup = () => {
+    setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen}));
+  }
   const updateStudentState = (res) => {
     setState((prev) => {
       const submissions = state.student.submissions.map((submission) => submission.id === res.data.id ? { ...res.data } : { ...submission });
@@ -48,5 +52,5 @@ export function useAppData() {
       .catch((e) => { console.error(e); });
   };
 
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm};
+  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm, isPopupOpen: state.isPopupOpen, togglePopup};
 };
