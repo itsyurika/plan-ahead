@@ -6,7 +6,7 @@ section.calendar {
 
   .icon {
     cursor: pointer;
-    transition: 0.15s;
+    transition: 150ms;
   }
 
   // main (green) calendar header
@@ -20,7 +20,7 @@ section.calendar {
     padding: 1em 1.5em;
 
     .icon:hover {
-      transition: 0.25s ease-out;
+      transition: 250ms ease-out;
       color: var(--hover-color);
     }
 
@@ -38,6 +38,7 @@ section.calendar {
       padding: 0.5rem;
       justify-content: center;
       text-align: center;
+      transition: 50ms !important;
 
       border-left: 1px solid $outline-light;
       border-right: 1px solid $outline-light;

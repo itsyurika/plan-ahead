@@ -42,9 +42,6 @@ section.calendar {
       flex-grow: 1;
       flex-basis: 0;
 
-      // margin: 0.2em 0;
-      min-width: $cell-width;
-
       // current day
       &.selected {
         z-index: 1;
@@ -66,7 +63,7 @@ section.calendar {
         overflow: hidden;
         text-align: center;
         flex-grow: 0; // fix height
-        height: calc(1rem + 4vh);
+        height: calc(1rem + 4vh); // sets min height and scales with viewport
         border-left: 1px solid $outline-dark;
 
         display: flex;

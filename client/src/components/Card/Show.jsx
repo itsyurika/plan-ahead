@@ -4,9 +4,9 @@ const Show = (props) => {
       className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}
       onClick={props.onClick}
     >
-      <header><h3>{props.title}</h3></header>
-      <p>{props.subject?.name}</p>
-      <p>{props.status}</p>
+      <header><h4>{props.title}</h4></header>
+      <h5>{props.subject?.name}</h5>
+      <h5>{props.status}</h5>
     </main>
   );
 };
