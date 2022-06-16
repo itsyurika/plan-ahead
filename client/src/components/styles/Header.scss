@@ -1,0 +1,64 @@
+@import "styles/variables.scss";
+
+
+:root {
+  --main-color: #1a8fff;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}
+
+section.calendar {
+  border-radius: $radius;
+  overflow: hidden;
+
+  .icon {
+    cursor: pointer;
+    transition: 0.15s;
+  }
+
+
+
+  // main (green) calendar header
+  >header {
+    background: #217346;
+    color: #fff;
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 700;
+    align-items: center;
+    padding: 1em 1.5em;
+
+    .icon:hover {
+      transition: 0.25s ease-out;
+      color: var(--main-color);
+    }
+
+    .col {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+    }
+
+    .col-start {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .col-center {
+      padding: 0.5rem;
+      justify-content: center;
+      text-align: center;
+
+      border-left: 1px solid $outline-light;
+      border-right: 1px solid $outline-light;
+    }
+
+    .col-end {
+      justify-content: flex-end;
+      text-align: right;
+    }
+  }
+}
