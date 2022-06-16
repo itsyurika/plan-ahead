@@ -1,7 +1,6 @@
 import './styles/App.scss';
 import 'normalize.css';
 import { useAppData } from './hooks/useAppData';
-import { useState } from 'react';
 
 import Navbar from 'components/Navbar';
 import SideNav from "components/Sidenav";

@@ -4,6 +4,7 @@ import 'components/styles/Assignment.scss';
 
 const AssignmentView = (props) => {
   return (
+    <div className="outerwrapper">
     <article className='assignment__show modalBackdrop'>
       <div className={`form-modalContainer ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
 
@@ -26,6 +27,7 @@ const AssignmentView = (props) => {
         {props.admin && <Form {...props} />}
       </div>
     </article>
+    </div>
   );
 };
 
