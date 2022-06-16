@@ -4,9 +4,14 @@ article.card {
   position: relative;
   z-index: 11;
   padding: .2em;
-
+  margin: auto;
+  width: 100%;
+  height: 100%;
 
   .card__show {
+
+    width: 100%;
+    height: 100%;
     transition: 50ms;
     background-color: $default;
     min-width: 100px;
@@ -51,7 +56,7 @@ article.card {
     justify-content: center;
     margin-top: 5px;
 
-    &:hover {
+    img:hover {
       transform: scale(1.1);
     }
   }

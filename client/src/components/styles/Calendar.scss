@@ -13,8 +13,7 @@ section.calendar {
     border-bottom-right-radius: inherit;
     margin-bottom: 2em;
 
-    white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden; // allows rounded borders
 
     // table 1
     &:first-of-type {
@@ -63,8 +62,11 @@ section.calendar {
 
       // table header
       >header.cell.label {
+        // white-space: nowrap; // disable word-break
+        overflow: hidden;
+        text-align: center;
         flex-grow: 0; // fix height
-        height: 6vh;
+        height: calc(1rem + 4vh);
         border-left: 1px solid $outline-dark;
 
         display: flex;
@@ -102,8 +104,12 @@ section.calendar {
           }
         }
 
-        >div.label >p {
-
+        >div.label {
+          margin: auto;
+          color: #70757a;
+          transform: rotate(-90deg);
+          writing-mode: vertical-rl;
+          transform: scale(-1, -1);
         }
       }
 
