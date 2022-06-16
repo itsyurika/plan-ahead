@@ -1,15 +1,5 @@
 @import "styles/variables.scss";
 
-
-:root {
-  --main-color: #1a8fff;
-  --text-color: #777;
-  --text-color-light: #ccc;
-  --border-color: #eee;
-  --bg-color: #f9f9f9;
-  --neutral-color: #fff;
-}
-
 section.calendar {
   border-radius: $radius;
   overflow: hidden;
@@ -19,11 +9,9 @@ section.calendar {
     transition: 0.15s;
   }
 
-
-
   // main (green) calendar header
   >header {
-    background: #217346;
+    background: var(--header-color);
     color: #fff;
     display: flex;
     text-transform: uppercase;
@@ -33,13 +21,12 @@ section.calendar {
 
     .icon:hover {
       transition: 0.25s ease-out;
-      color: var(--main-color);
+      color: var(--hover-color);
     }
 
     .col {
       flex-grow: 1;
       flex-basis: 0;
-      max-width: 100%;
     }
 
     .col-start {

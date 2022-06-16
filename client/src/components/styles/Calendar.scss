@@ -8,11 +8,12 @@ section.calendar {
     display: flex;
     justify-content: center;
 
-
     background-color: #fff;
-    margin-bottom: 2em;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+    margin-bottom: 2em;
+
+    white-space: nowrap;
     overflow: hidden;
 
     // table 1
@@ -37,14 +38,13 @@ section.calendar {
 
     // flex coloumns
     .day-column {
-      flex-grow: 1;
-      flex-basis: 0;
-      margin: 0.2em 0;
-      min-width: $cell-width;
-
       display: flex;
       flex-direction: column;
-      border-left: 1px solid $outline-light;
+      flex-grow: 1;
+      flex-basis: 0;
+
+      margin: 0.2em 0;
+      min-width: $cell-width;
 
       // current day
       &.selected {
@@ -54,13 +54,17 @@ section.calendar {
         border-radius: $radius;
 
         // disable default border for selected column
-        &.selected, +.col {
+        &.selected,
+        +.col {
           border-left: none;
         }
       }
 
-      header .col {
-        height: 4em;
+      // table header
+      >header.col {
+        flex-grow: 0;
+        // height: 5em;
+        flex-basis: 3em;
         text-align: center;
         text-transform: uppercase;
         font-weight: 400;
@@ -74,23 +78,27 @@ section.calendar {
         min-height: $cell-height;
         flex-grow: 1;
         flex-basis: 0;
+        border-left: 1px solid $outline-light;
         border-bottom: 1px solid $outline-light;
       }
 
-      // first column width
-      &.filler {
-        border-left: none;
-        font-size: 1rem;
+      // first column
+      &:first-of-type {
+        min-width: 0; // resets flex basis
+        flex-grow: .5; // width
         font-weight: 500;
+
+
+        >header.col {
+          border: none;
+        }
       }
 
       // weekend column width
-      &:nth-last-child(-n+2),
-      &.filler {
+      &:nth-last-child(-n+2) {
         min-width: 0;
         flex-grow: .5;
       }
-
 
       // weekend background colours
       &:nth-last-child(-n+2) .card-container {
@@ -102,7 +110,7 @@ section.calendar {
       }
 
       // disable bottom border
-      > :last-of-type {
+      >:last-of-type {
         border-bottom: none;
       }
     }
