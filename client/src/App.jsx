@@ -28,7 +28,7 @@ const App = () => {
       <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} />
 
       <main className="app">
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()}/>
+        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => console.log("clicked me!")}/>
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
         {focusedAssignment &&
           <Assignment

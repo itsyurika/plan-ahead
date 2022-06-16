@@ -1,12 +1,46 @@
+:root {
+  --color1: #e5db6f;
+  --color2: #7fb39d;
+  --color3: #e6e7a7;
+  --color4: #659d9b;
+  --color5: #e3adcb;
+  --color6: #ee8faa;
+  --color7: #9b7ecb;
+
+}
+
+.popup {
+  transition: all 1000ms all linear;
+  // transition-duration: 1s;
+  // transition-property: height, width;
+  // transition-timing-function: linear;
+}
+
+.popup__contents {
+  color: #373a47;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:flex-start;
+
+  > * {
+    margin: 1rem;
+  }
+
+  li {
+    margin: 0.5rem;
+  }
+}
 
 .popup {
   &.open {
-      background-color: pink;
+      background-color: var(--color6);
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 50%;
+      width: 30%;
       z-index: 100;
 
   }
@@ -15,14 +49,16 @@
 .popup {
   &.closed {
     position: fixed;
-    bottom: 25px;
-    left: 25px;
-    background-color: pink;
-    width: 36px;
-    height: 30px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color5);
+    width: 50px;
+    height: 50px;
+    border-radius: 0 25px 0 0;
 
-    ul {
-      display: none;
+    div {
+      visibility: hidden;
+      
     }
   }
 
