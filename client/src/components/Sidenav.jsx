@@ -24,6 +24,7 @@ const Sidenav = (props) => {
           <li onClick={props.showComplete} >Completed</li>
         </ul>
       </div>
+      
     </Menu>
   );
 };
