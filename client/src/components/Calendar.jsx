@@ -1,5 +1,6 @@
-// import 'components/styles/CalendarReact.scss';
+import 'components/styles/Header.scss';
 import 'components/styles/Calendar.scss';
+
 import { useState } from 'react';
 import { getDatesForWeek, sortAssignmentsByDay } from 'helpers/selectors';
 import {
@@ -37,11 +38,11 @@ const Calendar = (props) => {
     return (
       <section className='table'>
         <main className={'day-column filler'}>
-          <header className={'cell day-label'}>
+          <header className={'col day-label'}>
             {format(date, 'MMMM')}
           </header>
 
-          <div className='cell label filler'>
+          <div className='col label filler'>
             {'Week ' + Math.ceil(date.getDate() / 7)}
           </div>
         </main>

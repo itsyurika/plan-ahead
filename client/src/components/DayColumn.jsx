@@ -7,7 +7,7 @@ const DayColumn = (props) => {
 
   return (
     <main className={`day-column ${props.selected}`}>
-      <header className={`cell day-label`}>
+      <header className={`col day-label`}>
         {format(props.day, 'dd eeee')}
       </header>
       {[...Array(props.totalRows)].map((_, i) => (

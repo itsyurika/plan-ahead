@@ -1,10 +1,38 @@
+// bgs
 $bg-light: #e8e7e3;
 $bg-grey: #fdfbf0;
 $bg-light-grey: #f3f2f1;
 
+// text
+$title-height: 3em;
 $text-dark: #455d3e;
 
-// assignment card bgs
+// colors
+$outline-light: #dadce0;
+$outline-dark: #b3bac6;
+$selected-color: #ea4335;
+
+// card bgs
 $default: #fdfbf0;
 $complete: #eff4f5;
 $started: #f7f1f5;
+
+// sizing
+$radius: 10px;
+
+$nav-width: 5rem;
+$nav-height: 5rem;
+
+$cell-width: 8rem;
+$cell-height: 8rem;
+
+// header colors
+:root {
+  --header-color: #217346;
+  --hover-color: #1a8fff;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}

@@ -46,6 +46,14 @@ const CreateAssignment = (props) => {
     props.onBack();
   };
 
+  const options = [ // get from database
+    <option key={0}>Subjects</option>,
+    <option key={1} value='1'>Art</option>,
+    <option key={2} value='2'>English</option>,
+    <option key={3} value='3'>History</option>,
+    <option key={4} value='4'>Math</option>,
+    <option key={5} value='5'>Science</option>,
+  ];
 
   // == output ==
   return (
@@ -61,12 +69,7 @@ const CreateAssignment = (props) => {
         <div className="due-drop">
         <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
         <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
-          <option>Subjects</option>
-          <option value='1'>Art</option>
-          <option value='2'>English</option>
-          <option value='3'>History</option>
-          <option value='4'>Math</option>
-          <option value='5'>Science</option>
+          {options}
         </select>
         </div>
 
@@ -79,7 +82,6 @@ const CreateAssignment = (props) => {
       </form>
 
       {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
-
 
     </section>
 
