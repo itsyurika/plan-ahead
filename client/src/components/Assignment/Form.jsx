@@ -57,7 +57,7 @@ const CreateAssignment = (props) => {
       <form onSubmit={(e) => e.preventDefault()} >
         <input id='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
-        <input id='edit-url' placeholder='Google Classroom Link' type='url' value={url} onChange={(e) => setUrl(e.target.value)} />
+        <input id='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
         <div className="due-drop">
         <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
         <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
