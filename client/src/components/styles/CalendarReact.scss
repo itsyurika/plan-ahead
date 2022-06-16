@@ -1,108 +1,107 @@
-@import "styles/variables.scss";
+// @import "styles/variables.scss";
 
-:root {
-  --main-color: #1a8fff;
-  --text-color: #777;
-  --text-color-light: #ccc;
-  --border-color: #eee;
-  --bg-color: #f9f9f9;
-  --neutral-color: #fff;
-}
+// :root {
+//   --main-color: #1a8fff;
+//   --text-color: #777;
+//   --text-color-light: #ccc;
+//   --border-color: #eee;
+//   --bg-color: #f9f9f9;
+//   --neutral-color: #fff;
+// }
+// section.calendar {
 
-section.calendar {
-
-  .row {
-    display: flex;
-  }
-
-
-}
-
-.calendar {
-  display: block;
-  width: 100%;
-  background: var(--neutral-color);
-  border: 1px solid var(--border-color);
-}
+//   .row {
+//     display: flex;
+//   }
 
 
-.calendar .days {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: var(--text-color-light);
-  font-size: 70%;
-  padding: 0.75em 0;
-  border-bottom: 1px solid var(--border-color);
-}
+// }
 
-.calendar .body .cell {
-  height: 6rem;
-  cursor: pointer;
-}
-
-.calendar .body .cell:hover {
-  background: var(--bg-color);
-  transition: 0.5s ease-out;
-}
-
-.calendar .body .today {
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #ff1a79 0%, #eb82b3 40%);
-  border-image-slice: 1;
-}
-
-.calendar .body .row {
-  border-bottom: 1px solid var(--border-color);
-}
+// .calendar {
+//   display: block;
+//   width: 100%;
+//   background: var(--neutral-color);
+//   border: 1px solid var(--border-color);
+// }
 
 
-.calendar .body .cell:last-child {
-  border-right: none;
-}
+// .calendar .days {
+//   text-transform: uppercase;
+//   font-weight: 400;
+//   color: var(--text-color-light);
+//   font-size: 70%;
+//   padding: 0.75em 0;
+//   border-bottom: 1px solid var(--border-color);
+// }
 
-.calendar .body .cell .number {
-  position: absolute;
-  font-size: 82.5%;
-  line-height: 1;
-  top: 0.75em;
-  right: 0.75em;
-  font-weight: 700;
-}
+// .calendar .body .cell {
+//   height: 6rem;
+//   cursor: pointer;
+// }
 
-.calendar .body .disabled {
-  color: var(--text-color-light);
-  pointer-events: none;
-}
+// .calendar .body .cell:hover {
+//   background: var(--bg-color);
+//   transition: 0.5s ease-out;
+// }
 
-.calendar .body .cell .bg {
-  font-weight: 700;
-  line-height: 1;
-  color: var(--main-color);
-  opacity: 0;
-  font-size: 8em;
-  top: -0.2em;
-  right: -0.05em;
-  transition: 0.25s ease-out;
-  letter-spacing: -0.07em;
-}
+// .calendar .body .today {
+//   border: 2px solid transparent;
+//   border-image: linear-gradient(45deg, #ff1a79 0%, #eb82b3 40%);
+//   border-image-slice: 1;
+// }
 
-.calendar .body .cell:hover .bg,
-.calendar .body .selected .bg {
-  opacity: 0.05;
-  transition: 0.5s ease-in;
-}
+// .calendar .body .row {
+//   border-bottom: 1px solid var(--border-color);
+// }
 
-.calendar .body .col {
-  flex-grow: 0;
-  flex-basis: calc(100% / 8);
-  width: calc(100% / 8);
-}
 
-.calendar .body .label {
-  font-size: 1rem;
-  display: block;
-  margin: auto;
-  writing-mode: vertical-lr;
-  transform: scale(-1, -1);
-  border-style: none;
-}
+// .calendar .body .cell:last-child {
+//   border-right: none;
+// }
+
+// .calendar .body .cell .number {
+//   position: absolute;
+//   font-size: 82.5%;
+//   line-height: 1;
+//   top: 0.75em;
+//   right: 0.75em;
+//   font-weight: 700;
+// }
+
+// .calendar .body .disabled {
+//   color: var(--text-color-light);
+//   pointer-events: none;
+// }
+
+// .calendar .body .cell .bg {
+//   font-weight: 700;
+//   line-height: 1;
+//   color: var(--main-color);
+//   opacity: 0;
+//   font-size: 8em;
+//   top: -0.2em;
+//   right: -0.05em;
+//   transition: 0.25s ease-out;
+//   letter-spacing: -0.07em;
+// }
+
+// .calendar .body .cell:hover .bg,
+// .calendar .body .selected .bg {
+//   opacity: 0.05;
+//   transition: 0.5s ease-in;
+// }
+
+// .calendar .body .col {
+//   flex-grow: 0;
+//   flex-basis: calc(100% / 8);
+//   width: calc(100% / 8);
+// }
+
+// .calendar .body .label {
+//   font-size: 1rem;
+//   display: block;
+//   margin: auto;
+//   writing-mode: vertical-lr;
+//   transform: scale(-1, -1);
+//   border-style: none;
+// }

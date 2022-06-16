@@ -3,9 +3,6 @@
   --navbar-text-color: #455d3e;
   --navbar-text-color-focus: #748c70;
 }
-* {
-  box-sizing: border-box;
-}
 
 #navbar {
   padding: 2rem 0;
@@ -15,7 +12,7 @@
   background-color: var(--navbar-bg-color);
   top: 0;
   left: 0;
-  right: 0;  
+  right: 0;
 }
 
 .container {
@@ -27,5 +24,4 @@
   justify-content: space-between;
   height: 100%;
   align-items: center;
-  
 }

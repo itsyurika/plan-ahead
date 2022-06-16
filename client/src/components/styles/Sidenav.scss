@@ -1,8 +1,3 @@
-html,
-body {
-  margin: 0;
-}
-
 #App {
   font-family: sans-serif;
 
@@ -19,12 +14,15 @@ body {
   color: #d1d1d1;
   transition: color 0.2s;
 }
-.bm-item ul{
+
+.bm-item ul {
   list-style: square inside;
 }
-.bm-item li{
+
+.bm-item li {
   margin: 1rem 0;
 }
+
 /* Change color on hover */
 .bm-item li:hover {
   color: white;

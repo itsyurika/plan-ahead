@@ -26,9 +26,11 @@ const CreateAssignment = (props) => {
   const saveEdit = () => {
     if (!valid()) return;
 
-    axios.put('/assignments/' + props.id, { title, description, url, subjectId });
+    axios.put('/assignments/' + props.id, { title, description, url, subjectId })
+      .then((res) => {
+        // update state
+      });
     props.onBack();
-    window.location.reload(true)
   };
 
   const saveNew = () => {
@@ -37,9 +39,11 @@ const CreateAssignment = (props) => {
     axios.post('/assignments', { title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day })
       .then((res) => {
         axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
+      })
+      .then((res) => {
+        // update state
       });
     props.onBack();
-    window.location.reload(true)
   };
 
 
@@ -50,9 +54,9 @@ const CreateAssignment = (props) => {
       <h5 id='error'>{error}</h5>
 
       <form onSubmit={(e) => e.preventDefault()} >
-        <input spellCheck='true' size='30' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
-        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
-        <input size='30' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
+        <input spellCheck='true' size='30' placeholder='Title' value={title} onChange={(e) => { setTitle(e.target.value); }} />
+        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => { setDescription(e.target.value); }} />
+        <input size='30' placeholder='Google Classroom Link' value={url} onChange={(e) => { setUrl(e.target.value); }} />
 
         <p>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
 
@@ -69,7 +73,7 @@ const CreateAssignment = (props) => {
         {props.id && <button onClick={() => { setShowModal(true); }}>Delete</button>}
       </form>
 
-      {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
+      {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
 
 
     </section>

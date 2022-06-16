@@ -7,6 +7,7 @@ import SideNav from "components/Sidenav";
 import Calendar from "components/Calendar";
 import Assignment from "components/Assignment";
 
+
 const App = () => {
   const {
     focusedAssignment,
@@ -21,27 +22,27 @@ const App = () => {
 
   return (
     <div id="outer-container">
-      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"}/>
+      <SideNav pageWrapId={"app"} outerContainerId={"outer-container"} />
 
-    <main className="app">
-      <Navbar onLogin={setAdmin} admin={admin} student={student}/>
-      {focusedAssignment &&
-        <Assignment
-        {...focusedAssignment}
-        onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
-        onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
-        onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
-        onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
-        onBack={() => setFocused(null)}
-        admin={admin}
-        />}
-      <Calendar
-        admin={admin}
-        assignments={assignmentList}
-        onAdd={createForm}
-        onFocus={(id) => setFocused(id)} />
-    </main>
-        </div>
+      <main className="app">
+        <Navbar onLogin={setAdmin} admin={admin} student={student} />
+        {focusedAssignment &&
+          <Assignment
+            {...focusedAssignment}
+            onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
+            onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
+            onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
+            onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
+            onBack={() => setFocused(null)}
+            admin={admin}
+          />}
+        <Calendar
+          admin={admin}
+          assignments={assignmentList}
+          onAdd={createForm}
+          onFocus={(id) => setFocused(id)} />
+      </main>
+    </div>
   );
 };
 
