@@ -2,13 +2,6 @@
 @import "styles/variables.scss";
 
 body {
-  * {
-    box-sizing: border-box;
-    position: relative;
-    margin: 0;
-    padding: 0;
-  }
-
   margin: 0;
   font-family: -apple-system,
   'BlinkMacSystemFont',
@@ -57,7 +50,6 @@ h6 {
 ol,
 ul,
 li {
-  list-style: none;
   margin: 0;
   padding: 0;
 }
