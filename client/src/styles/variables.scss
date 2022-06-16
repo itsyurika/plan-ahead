@@ -13,9 +13,11 @@ $outline-dark: #b3bac6;
 $selected-color: #ff516b;
 
 // card bgs
-$default: #fdfbf0;
-$complete: #eff4f5;
-$started: #f7f1f5;
+$default: #fdf0f0; //$default: #fdfbf0;  
+$started: #f1f1f7; //$started: #f7f1f5;                   
+$complete: #f0f5ef; //$complete: #eff4f5;                   
+
+
 
 $transparent: rgba(0, 0, 0, 0);
 // sizing

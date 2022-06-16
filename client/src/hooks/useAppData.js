@@ -32,6 +32,11 @@ export function useAppData() {
   const filterList = (assignment) => {
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && parseISO(assignment.assigned.dueDate) < new Date();
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
+    if (state.view === 'art') return assignment.subject.name === 'Art';
+    if (state.view === 'english') return assignment.subject.name === 'English';
+    if (state.view === 'history') return assignment.subject.name === 'History';
+    if (state.view === 'math') return assignment.subject.name === 'Math';
+    if (state.view === 'science') return assignment.subject.name === 'Science';
   }
 
 
