@@ -1,6 +1,5 @@
 import 'components/styles/List.scss';
 import Assignment from "components/Assignment";
-import { useEffect } from 'react';
 
 
 const List = (props) => {
@@ -9,17 +8,18 @@ const List = (props) => {
 const displayAssignments = props.assignmentList.filter((assignment) =>
       assignment.assigned.dateCompleted)
 
+  console.log("display,", displayAssignments)
   return (
+  
 
 <section className='list__view'>
-<h1> Hello </h1>
-<ul>
+<h1> Completed Assignments </h1>
+<ul id='ul-view'>
   {displayAssignments.map((assignment) => {
-    <li>< Assignment {...assignment.assigned}/></li>})}
-  
-  <li>Assn1</li>
-  <li>Assn2</li>
-  <li>Assn3</li>
+    return (
+    <li className='card-li' key={assignment.id} >< Assignment 
+{...assignment}
+    /></li>)})}
 </ul>
 
 

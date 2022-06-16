@@ -5,7 +5,7 @@ import { useAppData } from './hooks/useAppData';
 import Navbar from 'components/Navbar';
 import SideNav from "components/Sidenav";
 import Calendar from "components/Calendar";
-import Assignment from "components/Assignment";
+import Modal from "components/Modal";
 import Popup from 'components/Popup';
 import List from 'components/List';
 
@@ -39,7 +39,7 @@ const App = () => {
         <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} />
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
         {focusedAssignment &&
-          <Assignment
+          <Modal
             {...focusedAssignment}
             onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
             onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
@@ -54,15 +54,15 @@ const App = () => {
           onAdd={createForm}
           onFocus={(id) => setFocused(id)} />}
         {list && complete && <List
-          {...focusedAssignment} 
           student={student} 
           assignmentList={assignmentList}            
+          admin={admin}
           onStart={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
           onComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
           onCancelStarted={() => { updateSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { updateSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
-          onBack={() => setFocused(null)}
-          admin={admin}/>}
+          onBack={() => setFocused(null)}/>}
+          
       </main>
     </div>
   );

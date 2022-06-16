@@ -152,21 +152,10 @@ article.assignment__show {
 }
 
 .assignment_header {
-  background: green;
   color: $default;
   padding: 1rem;
-  background-image: linear-gradient(to right, green 60%, $default);
+  background-image: linear-gradient(to right, green 60%, $transparent);
   color: $default;
-
-  &.started {
-    background-image: linear-gradient(to right, green 60%, $started);
-    color: $started;
-  }
-
-  &.complete {
-    background-image: linear-gradient(to right, green 60%, $complete);
-    color: $complete;
-  }
 }
 
 #assn-subj {
@@ -179,19 +168,8 @@ article.assignment__show {
   font-family: Helvetica, sans-serif;
   font-size: 24px;
   padding: 0.5rem;
-  background-image: linear-gradient(to right, red 10%, $default 30%);
+  background-image: linear-gradient(to right, red 10%, $transparent 30%);
   color: $default;
-
-  &.started {
-    background-image: linear-gradient(to right, red 10%, $started 30%);
-    color: $started;
-  }
-
-  &.complete {
-    background-image: linear-gradient(to right, red 10%, $complete 30%);
-    color: $complete;
-  }
-
 }
 
 #desc {

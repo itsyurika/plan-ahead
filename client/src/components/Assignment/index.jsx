@@ -4,10 +4,8 @@ import 'components/styles/Assignment.scss';
 
 const AssignmentView = (props) => {
   return (
-    <div className='outerwrapper'>
-    <article className='assignment__show modalBackdrop'>
-      <div className={`form-modalContainer ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
 
+      <div>
         <div id="cancel-X" onClick={props.onBack}>&#10006;</div>
         {props.status && <div>
           <header><h1 className={`assignment_header ${props.status.toLowerCase().replace(/\s+/g, '')}`}>{props.title}</h1></header>
@@ -25,9 +23,8 @@ const AssignmentView = (props) => {
         </div>}
 
         {props.admin && <Form {...props} />}
-      </div>
-    </article>
-    </div>
+        </div>
+
   );
 };
 
