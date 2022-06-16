@@ -59,12 +59,12 @@ section.calendar {
 
       // table header
       >header.cell.label {
+        height: calc(2rem + 3vh); // sets min height and scales with viewport
+        font-size: $font-scale;
+        flex-grow: 0; // fix height
         word-break: nowrap; // disable word-break
-        font-size: calc(0.2rem + 0.8vw);
         overflow: hidden;
         text-align: center;
-        flex-grow: 0; // fix height
-        height: calc(1rem + 4vh); // sets min height and scales with viewport
         border-left: 1px solid $outline-dark;
 
         display: flex;
@@ -82,7 +82,7 @@ section.calendar {
 
       // middle columns
       >.card-cell {
-        min-height: $cell-height;
+        min-height: calc($cell-height/2 + 10vh); // sets min height and scales with viewport
         flex-grow: 1;
         flex-basis: 0;
         border-left: 1px solid $outline-light;
