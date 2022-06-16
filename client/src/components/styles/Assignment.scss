@@ -46,14 +46,21 @@ article.assignment__show {
   align-items: center;
   backdrop-filter: blur(5px);
   z-index: 2;
+  &.del {
+    display: flex;
+    right:0;
+    bottom:0;
+    width: 79.5vw;
+    height: 69.5vh;
+    
+  }
 }
-
-
 
 .del-modalContainer {
   position: absolute;
+  display: flex;
   top: 25%;
-  left: 25%;
+  left: auto;
   height: auto;
   width: auto;
   background-color: tomato;
@@ -74,6 +81,10 @@ article.assignment__show {
     53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
     100px 100px 80px rgba(0, 0, 0, 0.07);
   z-index: 4;
+  flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .form-modalContainer {
@@ -90,7 +101,7 @@ article.assignment__show {
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
-  padding: 2rem 6rem 6rem 2rem;
+  padding: 2rem 6rem 6rem 6rem;
   box-shadow:
     1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
     3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
@@ -256,6 +267,29 @@ cursor: pointer;
   }
 }
 
+.del-btn {
+  background-color: #e60000;
+  border: 2px outset firebrick ;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  vertical-align: top;
+  box-shadow: 2px 1px 2px gray;
+  margin: 4px 10px 4px 10px;
+
+  &:hover {
+    background-color: #940000;
+  }
+  &:active {
+    box-shadow: 0 0 0 white;
+    margin: 2px 8px 6px 12px;
+  }
+}
+
 .assignment__form {
   display: flex;
   flex-direction: column;
@@ -284,4 +318,12 @@ cursor: pointer;
   padding: 3px 5px 3px 5px;
   background: red;
   color: $default;
+}
+
+#del-warning {
+  font-size: 32px;
+}
+
+#del-title {
+  font-size: 24px;
 }
