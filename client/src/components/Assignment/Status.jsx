@@ -1,5 +1,6 @@
 
 const Status = (props) => {
+  console.log("status props", props)
 
 return (
         <div id="status-buttons">
