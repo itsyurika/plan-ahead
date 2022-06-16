@@ -54,7 +54,7 @@ const Calendar = (props) => {
           </div>
 
           {sorted.map((list, j) => (
-            <div className={`col card-container ${isSameDay(dates[j], today) ? 'selected' : ''}`} key={j}>
+            <div className={`col card-container`} key={j}>
               <Card
                 {...list[i]}
                 admin={props.admin}

@@ -1,6 +1,7 @@
 import './styles/App.scss';
 import 'normalize.css';
 import { useAppData } from './hooks/useAppData';
+import { useState } from 'react';
 
 import Navbar from 'components/Navbar';
 import SideNav from "components/Sidenav";
@@ -16,8 +17,8 @@ const App = () => {
     admin,
     student,
     updateSubmission,
+    createForm
   } = useAppData();
-
 
   return (
     <div id="outer-container">
@@ -35,7 +36,11 @@ const App = () => {
         onBack={() => setFocused(null)}
         admin={admin}
         />}
-      <Calendar assignments={assignmentList} onAdd={(day) => { setFocused(-1); console.log('clicked add', day); }} onFocus={(id) => setFocused(id)} />
+      <Calendar
+        admin={admin}
+        assignments={assignmentList}
+        onAdd={createForm}
+        onFocus={(id) => setFocused(id)} />
     </main>
         </div>
   );

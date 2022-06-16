@@ -20,12 +20,10 @@ export const findAssigned = (assignments, student) => {
 };
 
 export const getDatesForWeek = (date) => {
-  const startDate = startOfWeek(date);
+  const startDate = startOfWeek(date, { weekStartsOn: 1 });
   return [...Array(5)].map((_, i) => addDays(startDate, i));
 };
 
 export const sortAssignmentsByDay = (assignments, week) => {
-  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate) - parseISO(b.assigned.dueDate));
-  return week.map((day) => sorted.filter((item) => isSameDay(parseISO(item.assigned.dueDate), day))
-  );
+  return week.map((day) => assignments.filter((item) => isSameDay(parseISO(item.assigned.dueDate.slice(0, -1)), day)));
 };

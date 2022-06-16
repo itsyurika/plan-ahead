@@ -1,43 +1,62 @@
 import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import axios from 'axios';
-import DeleteModal from "./DeleteModal";
+import DeleteModal from './DeleteModal';
+import { format, parseISO } from 'date-fns';
 
 const CreateAssignment = (props) => {
-  const [title, setTitle] = useState(props.title);
-  const [description, setDescription] = useState(props.description);
-  const [url, setUrl] = useState(props.url);
-  const [teacherId, setTeacherId] = useState(1);
-  const [subjectId, setSubjectId] = useState(1);
-  const [isEdit, setIsEdit] = useState(true);
+  const [title, setTitle] = useState(props.title || '');
+  const [description, setDescription] = useState(props.description || '');
+  const [url, setUrl] = useState(props.url || '');
+  const [subjectId, setSubjectId] = useState(props.subjectId || 0);
   const [showModal, setShowModal] = useState(false);
-
+  const [error, setError] = useState(null);
 
   // = helpers =
+  const valid = () => {
+    if (!title) return setError('Please enter a title.');
+    if (!description) return setError('Please enter a description.');
+    if (!url) return setError('Please enter google classroom link.');
+    if (!subjectId) return setError('Please select a subject.');
+
+    setError(null);
+    return true;
+  };
+
   const saveEdit = () => {
-    const data = { title, description, url, subjectId };
-    axios.put('/assignments/' + props.id, data);
+    if (!valid()) return;
+
+    axios.put('/assignments/' + props.id, { title, description, url, subjectId });
     props.onBack();
+    window.location.reload(true)
   };
 
   const saveNew = () => {
-    const data = { title, description, url, subjectId, teacherId, defaultDueDate: new Date('Jun 10 2022 12:00:00') };
-    axios.post('/assignments/', data);
+    if (!valid()) return;
+
+    axios.post('/assignments', { title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day })
+      .then((res) => {
+        axios.post('/submissions', { assignmentId: res.data.id, dueDate: res.data.defaultDueDate });
+      });
     props.onBack();
+    window.location.reload(true)
   };
 
 
-
+  // == output ==
   return (
     <section className='assignment__form'>
-      {props.id && <h3>Edit Assignment</h3>}
-      {!props.id && <h3>Create Assignment</h3>}
-      <form onSubmit={(e) => e.preventDefault()} >
-        <input spellCheck='true' size='30' value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
-        <textarea id="edit-description" rows='8' spellCheck='true' value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
-        <input type='url' size='30' value={url} placeholder="Google Classroom Link" onChange={(e) => setUrl(e.target.value)} />
+      {<h3>{props.id ? 'Edit' : 'Create'} Assignment</h3>}
+      <h5 id='error'>{error}</h5>
 
-        <select id="selectList" onChange={(e) => setSubjectId(+e.target.value)}>
+      <form onSubmit={(e) => e.preventDefault()} >
+        <input spellCheck='true' size='30' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
+        <input size='30' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
+
+        <p>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+
+        <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
           <option>Subjects</option>
           <option value='1'>Art</option>
           <option value='2'>English</option>
@@ -46,15 +65,12 @@ const CreateAssignment = (props) => {
           <option value='5'>Science</option>
         </select>
 
+        {<button onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
+        {props.id && <button onClick={() => { setShowModal(true); }}>Delete</button>}
       </form>
 
-      {isEdit && <button onClick={saveEdit} type='Submit'>Save</button>}
-      {!isEdit && <button onClick={saveNew} type='Submit'>Save</button>}
-      <button onClick={() => { setIsEdit((prev) => !prev); }}>Toggle</button> // Just here to test functionality.
-
-
       {showModal && <DeleteModal closeModal={() => setShowModal(false)} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
-      {props.admin && <button onClick={() => setShowModal(true)}> Delete </button>}
+
 
     </section>
   );
