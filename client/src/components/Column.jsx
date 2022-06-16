@@ -1,17 +1,15 @@
 import { format, } from 'date-fns';
-
 import Card from 'components/Card';
 
-
-const DayColumn = (props) => {
-
+const Column = (props) => {
   return (
-    <main className={`day-column ${props.selected}`}>
-      <header className={`cell day-label`}>
-        {format(props.day, 'dd eeee')}
+    <main className={`table__column cards-column ${props.selected}`}>
+      <header className={`cell label`}>
+        <p>{format(props.day, 'dd')}</p>
+        <p>{format(props.day, 'eeee')}</p>
       </header>
       {[...Array(props.totalRows)].map((_, i) => (
-        <div key={i} className={'card-container'}>
+        <div key={i} className={'cell card-cell'}>
           <Card
             {...props.cards[i]}
             onClick={() => props.onFocus(props.cards[i].id)}
@@ -24,4 +22,4 @@ const DayColumn = (props) => {
   );
 };
 
-export default DayColumn;
+export default Column;

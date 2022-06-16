@@ -14,6 +14,46 @@ article.assignment__show {
   }
 }
 
+section.assignment__form {
+  margin: 2rem 0;
+
+  input {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
+article.assignment__view {
+  background-color: $default;
+  max-width: 90%;
+  padding: .5rem;
+  margin: 1rem 0;
+  border: 1px solid blueviolet;
+  border-radius: 0.4rem;
+
+  p {
+    margin: .5rem 0;
+  }
+
+  button {
+    margin-right: .5rem;
+  }
+
+  &header {
+    color: aqua;
+  }
+
+  &.started {
+    background-color: $started;
+  }
+
+  &.complete {
+    background-color: $complete;
+  }
+}
+
+
+
 #edit-title {
   width: 30rem;
   padding: 3px;
