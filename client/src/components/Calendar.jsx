@@ -40,6 +40,7 @@ const Calendar = (props) => {
 
           <div className='cell label'>
             <p>{'Week ' + Math.ceil(date.getDate() / 7)}</p>
+            <p>{format(dates[0], 'MMM dd')} - {format(dates[dates.length - 1], 'MMM dd')}</p>
           </div>
         </main>
 

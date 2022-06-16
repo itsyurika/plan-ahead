@@ -18,7 +18,8 @@ $complete: #eff4f5;
 $started: #f7f1f5;
 
 // sizing
-$radius: 10px;
+$font-scale: calc(0.6em + 0.3vw + 0.3vh);
+$radius: 1em;
 
 $nav-width: 5rem;
 $nav-height: 5rem;

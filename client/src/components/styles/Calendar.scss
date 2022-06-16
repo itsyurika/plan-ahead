@@ -5,6 +5,7 @@ section.calendar {
 
   // individual tables
   section.table {
+    width: 100.1% !important; // fix for table being 1 pixel too small
     display: flex;
     justify-content: center;
 
@@ -48,7 +49,7 @@ section.calendar {
         font-weight: bold;
         outline: 3px solid $selected-color;
         outline-offset: -3px;
-        border-radius: $radius*2;
+        border-radius: $radius;
 
         // disable default border for selected column and next sibling
         >.cell,
@@ -59,14 +60,16 @@ section.calendar {
 
       // table header
       >header.cell.label {
-        // white-space: nowrap; // disable word-break
+        height: calc(2rem + 3vh); // sets min height and scales with viewport
+        font-size: $font-scale;
+        flex-grow: 0; // fix height
+        word-break: nowrap; // disable word-break
         overflow: hidden;
         text-align: center;
-        flex-grow: 0; // fix height
-        height: calc(1rem + 4vh); // sets min height and scales with viewport
         border-left: 1px solid $outline-dark;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
@@ -75,12 +78,13 @@ section.calendar {
           text-transform: uppercase;
           font-weight: 500;
           font-size: 80%;
+          padding: 0.2vh;
         }
       }
 
       // middle columns
       >.card-cell {
-        min-height: $cell-height;
+        min-height: calc($cell-height/2 + 10vh); // sets min height and scales with viewport
         flex-grow: 1;
         flex-basis: 0;
         border-left: 1px solid $outline-light;
@@ -103,10 +107,19 @@ section.calendar {
 
         >div.label {
           margin: auto;
+          white-space: nowrap;
+          flex-wrap: wrap;
           color: #70757a;
-          transform: rotate(-90deg);
+          font-size: calc($font-scale*1.2);
+          text-align: center;
+          // rotate text
           writing-mode: vertical-rl;
           transform: scale(-1, -1);
+
+          p:last-of-type {
+            padding-right: 0.2vw;
+            font-weight: 600;
+          }
         }
       }
 
