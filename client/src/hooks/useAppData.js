@@ -26,33 +26,25 @@ export function useAppData() {
       }).catch((e) => { console.error(e); });
   }, []);
 
-  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
 
   const filterList = (assignment) => {
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
   };
 
-  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
-  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
-  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
-  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+  // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
+  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view) => { setState((prev) => ({ ...prev, view })); };
-
   const showCreateForm = (day) => {
     setState((prev) => ({
-      ...prev,
-      newAssignment: {
-        day,
-        admin: state.admin,
-        teacherId: state.teacherId,
-      },
+      ...prev, newAssignment:
+        { day, teacherId: state.teacherId, },
     }));
     setFocused(-1);
   };
-
 
 
   // update state
@@ -104,6 +96,11 @@ export function useAppData() {
     updateSubmissionState(submission);
   };
 
+
+  // find and filter assignments
+  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
+  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
+  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
   return {
     // from state

@@ -49,6 +49,12 @@ section.calendar {
         outline: 3px solid $selected;
         outline-offset: -3px;
         border-radius: $radius;
+
+        >header.cell p {
+          font-weight: 700 !important;
+          font-size: 90% !important;
+        }
+
         .cell {
           background-color: $bg-selected;
         }

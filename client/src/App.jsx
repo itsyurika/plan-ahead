@@ -28,7 +28,6 @@ const App = () => {
     setView,
   } = useAppData();
 
-
   return (
     <div id="outer-container">
       <SideNav
@@ -44,8 +43,11 @@ const App = () => {
           onClose={() => togglePopup()}
           showPastDue={() => console.log("clicked me!")}
         />
+
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
+
         {focusedAssignment && <Modal {...focusedAssignment}
+          admin={admin}
           onNew={postAssignment}
           onEdit={putAssignment}
           onStart={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
@@ -54,6 +56,7 @@ const App = () => {
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
         />}
+
         {!view && <Calendar
           admin={admin}
           assignments={assignmentList}

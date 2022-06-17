@@ -1,7 +1,6 @@
 import 'components/styles/Assignment.scss';
 import Form from "./Form";
-import Status from "./StatusButtons";
-
+import StatusButtons from "./StatusButtons";
 
 const AssignmentView = (props) => {
   return (
@@ -16,7 +15,7 @@ const AssignmentView = (props) => {
         <p id="assn-prog">Your Progress:&nbsp;&nbsp;<span id="prog-status"> {props.status}! </span></p>
 
       </div>}
-      {props.view !== 'complete' && <Status {...props} />}
+      {(props.view !== 'complete') && <StatusButtons {...props} />}
       {props.admin && <Form {...props} />}
     </div>
 
