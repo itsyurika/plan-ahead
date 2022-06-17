@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { parseISO, isBefore } from 'date-fns';
-import { findAssigned } from 'hooks/helpers';
+import { mapAssigned } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -26,25 +26,12 @@ export function useAppData() {
       }).catch((e) => { console.error(e); });
   }, []);
 
-
-  // view lookup
-  const filterList = (assignment) => {
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
-    if (state.view === 'complete') return assignment.assigned.dateCompleted;
-    if (state.view === 'art') return assignment.subject.name === 'Art';
-    if (state.view === 'english') return assignment.subject.name === 'English';
-    if (state.view === 'history') return assignment.subject.name === 'History';
-    if (state.view === 'math') return assignment.subject.name === 'Math';
-    if (state.view === 'science') return assignment.subject.name === 'Science';
-    if (state.view === 'all') return assignment;
-  }
-
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
   const closePopup = () => { setState((prev) => ({...prev, isPopupOpen: false}))}
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
-  const setView = (view) => { setState((prev) => ({ ...prev, view })); };
+  const setView = (view = null) => { setState((prev) => ({ ...prev, view })); };
   const showCreateForm = (day) => {
     setState((prev) => ({
       ...prev, newAssignment:
@@ -131,10 +118,18 @@ export function useAppData() {
     return submission;
   };
 
+  // view lookup
+  const filterList = (assignment) => {
+    if (state.view === 'all') return true;
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
+    if (state.view === 'complete') return assignment.assigned.dateCompleted;
+    if (state.view) return assignment.subject.name.toLowerCase() === state.view;
+    return true;
+  };
 
   // find and filter assignments
-  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
-  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
+  const foundAssignments = mapAssigned(state.assignments, !state.admin && state.student);
+  const assignmentList = foundAssignments.filter(filterList);
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
   return {

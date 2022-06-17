@@ -54,21 +54,21 @@ article.assignment__view {
 
 
 
-#edit-title {
+.edit-title {
   width: 30rem;
   padding: 3px;
   border-radius: 5px;
   border: 2px solid lightblue
 }
 
-#edit-description {
+.edit-description {
   width: 30rem;
   padding: 3px;
   border-radius: 5px;
   border: 2px solid lightblue
 }
 
-#edit-url {
+.edit-url {
   width: 30rem;
   padding: 3px;
   border-radius: 5px;
@@ -175,7 +175,7 @@ article.assignment__view {
 
 }
 
-#cancel-X {
+.cancel-X {
   position: absolute;
   right: 10px;
   top: 8px;
@@ -185,7 +185,7 @@ article.assignment__view {
   cursor: pointer;
 }
 
-#error {
+.error {
   margin-top: 3px;
   color: red;
   font-weight: bold;
@@ -198,7 +198,7 @@ article.assignment__view {
   color: $default;
 }
 
-#assn-subj {
+.assn-subj {
   font-family: sans-serif;
   font-size: 26px;
   font-weight: bold;
@@ -212,18 +212,18 @@ article.assignment__view {
   color: $default;
 }
 
-#desc {
+.desc {
   font-size: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid darkgray;
 }
 
-#assn-link {
+.assn-link {
   font-family: Arial, sans-serif;
   cursor: pointer;
 }
 
-#assn-prog {
+.assn-prog {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,11 +237,10 @@ article.assignment__view {
   font-style: italic;
 }
 
-.status-buttons {
+.status-form {
   display: flex;
   justify-content: center;
 }
-
 
 
 .assignment__form {
@@ -261,7 +260,7 @@ article.assignment__view {
   justify-content: center;
 }
 
-#selectList {
+.selectList {
   padding: 3px;
   border-radius: 5px;
   border: 2px solid lightblue
@@ -280,11 +279,11 @@ article.assignment__view {
   }
 }
 
-#del-warning {
+.del-warning {
   font-size: 32px;
 }
 
-#del-title {
+.del-title {
   font-size: 24px;
 }
 

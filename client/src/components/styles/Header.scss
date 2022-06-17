@@ -11,18 +11,25 @@ header.navbar {
   padding: 2rem 0;
   --navbar-height: 3rem;
   height: var(--navbar-height);
-  width: 80vw;
   background-color: var(--navbar-bg-color);
-  top: 0;
-  left: 0;
-  right: 0;
+
 
   .navbar-container {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 100%;
     max-width: 100%;
+
+    h2 {
+      cursor: pointer;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+    }
   }
 }
 

@@ -1,4 +1,3 @@
-import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import { format, parseISO } from 'date-fns';
 
@@ -48,34 +47,30 @@ const Form = (props) => {
 
   // == output ==
   return (
-
     <section className='assignment__form'>
-      {<h2>{props.id ? 'Edit' : 'Create'} Assignment</h2>}
-      <h5 id='error'>{error}</h5>
+      {<header><h2>{props.id ? 'Edit' : 'Create'} Assignment</h2></header>}
+      <h5 className='error'>{error}</h5>
 
       <form onSubmit={(e) => { e.preventDefault(); }} >
-        <input id='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
-        <textarea id='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
-        <input id='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
-        <div className="due-drop">
+        <input className='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <textarea className='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
+        <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
+        <div className='due-drop'>
           <p className='due-date due'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
-          <select id='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
+          <select className='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>
         </div>
 
 
         <div className='btn-center'>
-          {<Button style="confirm" action={props.id ? saveEdit : saveNew} >Save</Button>}
-          {props.id && <Button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</Button>}
+          {<Button style='confirm' action={props.id ? saveEdit : saveNew} >Save</Button>}
+          {props.id && <Button style='danger' onClick={() => { setShowModal(true); }}>Delete</Button>}
         </div>
-
       </form>
 
       {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} onDelete={props.onDelete} admin={props.admin} />}
-
     </section>
-
   );
 };
 

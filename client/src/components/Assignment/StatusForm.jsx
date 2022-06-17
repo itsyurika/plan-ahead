@@ -1,5 +1,4 @@
 import Button from 'components/Button';
-import 'components/styles/Assignment.scss';
 
 const Status = (props) => {
   return (

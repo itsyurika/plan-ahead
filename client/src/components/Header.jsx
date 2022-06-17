@@ -1,15 +1,12 @@
 import 'components/styles/Header.scss';
+import Button from './Button';
 
 const Header = (props) => {
   return (
     <header className='navbar'>
       <nav className='navbar-container'>
-        <p>Home</p>
-        <div>
-
-          <h2> {props.admin ? 'Ms. Lee' : props.student.firstName}'s Calendar </h2>
-        </div>
-        <button className='login' onClick={props.onLogin}> {props.admin ? 'Admin' : 'Login'}</button>
+        <h2 onClick={props.setHome}> {props.admin ? 'Ms. Lee' : props.student.firstName}'s Planner </h2>
+        <Button className='login' action={props.onLogin}> {props.admin ? 'Admin' : 'Login'}</Button>
       </nav>
     </header>
   );
