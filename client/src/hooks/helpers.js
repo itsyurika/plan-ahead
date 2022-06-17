@@ -10,7 +10,6 @@ const getStatus = (submission) => {
 
 // = exported helpers =
 export const mapAssigned = (assignments, student) => {
-  console.log('filtering for', student);
   if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: item.defaultDueDate } }));
 
 
