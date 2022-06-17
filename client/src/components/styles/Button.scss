@@ -92,13 +92,18 @@
   cursor: pointer;
   border: none;
   color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
+  padding: 0.6em 1.2em;
   border-radius: $radius/2;
   box-shadow: 2px 1px 2px gray;
-  margin: 4px 10px 4px 10px;
+
+  &.button--undefined { // aka default
+    background-color: rgb(227, 246, 251);
+    color: rgb(7, 77, 86);
+
+    &:hover {
+      background-color: rgb(152, 185, 209);
+    }
+  }
 
   &.button--confirm {
     background-color: $confirm;
