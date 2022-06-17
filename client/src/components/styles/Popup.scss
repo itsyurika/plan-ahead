@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 :root {
   --color1: #e5db6f;
   --color2: #7fb39d;
@@ -13,6 +15,7 @@
 
 .popup {
   transition: all 1000ms all linear;
+  border-radius: $radius;
   // transition-duration: 1s;
   // transition-property: height, width;
   // transition-timing-function: linear;
@@ -63,7 +66,7 @@
 
     div {
       visibility: hidden;
-      
+
     }
   }
 
