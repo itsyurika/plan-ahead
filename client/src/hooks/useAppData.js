@@ -69,6 +69,14 @@ export function useAppData() {
     return data;
   };
 
+  const removeAssignmentFromState = (data) => {
+    setState((prev) => {
+      const assignments = state.assignments.filter((assignment) => assignment.id !== data.id);
+      return { ...prev, assignments, };
+    });
+    return data;
+  };
+
   const addSubmissionToStudentState = (data) => {
     const submission = data.find((submission) => submission.studentId === state.studentId);
     setState((prev) => {
@@ -100,6 +108,12 @@ export function useAppData() {
   const putAssignment = async (id, body) => {
     const { data: assignment } = await axios.put(`/assignments/${id}`, body);
     updateAssignmentState(assignment);
+    return assignment;
+  };
+
+  const deleteAssignment = async (id) => {
+    const { data: assignment } = await axios.delete(`/assignments/${id}`);
+    removeAssignmentFromState(assignment);
     return assignment;
   };
 
@@ -138,6 +152,7 @@ export function useAppData() {
     togglePopup,
     postAssignment,
     putAssignment,
+    deleteAssignment,
     patchSubmission,
   };
 };

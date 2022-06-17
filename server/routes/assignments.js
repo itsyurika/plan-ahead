@@ -22,8 +22,8 @@ module.exports = (prisma) => {
   });
 
   router.delete('/:id', async (req, res) => {
-    await prisma.assignment.delete({ where: { id: +req.params.id } });
-    res.json({ id: +req.params.id });
+    const assignment = await prisma.assignment.delete({ where: { id: +req.params.id } });
+    res.json(assignment);
   });
 
   prisma.$disconnect();

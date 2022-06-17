@@ -1,9 +1,6 @@
-import 'components/styles/Assignment.scss';
-import axios from 'axios';
-
 const DeleteModal = (props) => {
   const deleteAssignment = (id) => {
-    axios.delete('/assignments/' + id);
+    props.onDelete(id);
     props.onBack();
   };
 

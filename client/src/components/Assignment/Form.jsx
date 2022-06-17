@@ -69,7 +69,7 @@ const CreateAssignment = (props) => {
 
       </form>
 
-      {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} admin={props.admin} />}
+      {showModal && <DeleteModal closeModal={() => { setShowModal(false); }} id={props.id} title={props.title} onBack={props.onBack} onDelete={props.onDelete} admin={props.admin} />}
 
     </section>
 
