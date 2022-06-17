@@ -16,7 +16,7 @@ const Show = (props) => {
     if (props.status === 'Complete') return 'complete';
     if (isPastDue(dueDate)) return 'red';
     if ((hrsRemaining(dueDate) < 24)) return 'yellow';
-    // return 'default';
+    return 'default';
   };
 
   const borderColorClass = classNames('default', {
