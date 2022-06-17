@@ -43,6 +43,8 @@ const App = () => {
       showHistory={() => setView('history')}
       showMath={() => setView('math')}
       showScience={() => setView('science')}
+      showAll={() => setView('all')}
+      admin={admin}
       />
 
       <main className="app">

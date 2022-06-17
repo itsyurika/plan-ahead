@@ -15,7 +15,7 @@ article.assignment__show {
 }
 
 section.assignment__form {
-  margin: 2rem 0;
+  margin: 0;
 
   input {
     display: block;
@@ -141,7 +141,7 @@ article.assignment__view {
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
-  padding: 2rem 6rem 6rem 6rem;
+
   box-shadow:
     1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
     3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
@@ -357,4 +357,8 @@ article.assignment__view {
 
 #del-title {
   font-size: 24px;
+}
+
+.index_content {
+  padding: 2rem 2rem 2rem 2rem;
 }

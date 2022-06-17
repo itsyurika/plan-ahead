@@ -1,7 +1,9 @@
 import Button from 'components/Button';
+import 'components/styles/Assignment.scss';
 
 const Status = (props) => {
   return (
+  
     <div id="status-buttons">
       {props.status === 'Not started' && <Button style="confirm" action={props.onStart}>Start</Button>}
       {props.status === 'Complete' && <Button style="warning" action={props.onCancelComplete}>Cancel Submission</Button>}

@@ -36,6 +36,7 @@ export function useAppData() {
     if (state.view === 'history') return assignment.subject.name === 'History';
     if (state.view === 'math') return assignment.subject.name === 'Math';
     if (state.view === 'science') return assignment.subject.name === 'Science';
+    if (state.view === 'all') return assignment;
   }
 
   // set state

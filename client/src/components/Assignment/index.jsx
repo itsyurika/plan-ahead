@@ -10,7 +10,7 @@ const AssignmentView = (props) => {
   };
 
   return (
-    <div>
+    <div className='index_content'>
       <div id="cancel-X" onClick={props.onBack}>&#10006;</div>
       {props.status && <div>
         <header><h1 className={`assignment_header ${props.status.toLowerCase().replace(/\s+/g, '')}`}>{props.title}</h1></header>
