@@ -1,4 +1,5 @@
 import 'components/styles/Table.scss';
+import { format, parseISO } from 'date-fns'
 
 const Table = (props) => {
   console.log("tableprops", props)
@@ -28,24 +29,18 @@ const Table = (props) => {
 
         </tr>
           {props.assignmentList.map(assignment => {
-            return 
-
+            return (
+              
         <tr>
-          <td className='row_values'>Art</td>
-          <td className='row_values'>Portraits</td>
-          <td className='row_values'>July 1</td>
-          <td className='row_values'>Started</td>
-          <td className='row_values'>Url 1</td>          
+          <td className='row_values'>{assignment.subject.name} {console.log(assignment)}</td>
+          <td className='row_values'>{assignment.title}</td>
+          <td className='row_values'>{format(parseISO(assignment.defaultDueDate), 'MMM dd yyyy')}</td>
+          <td className='row_values'>Status</td>
+          <td className='row_values'>{assignment.url}</td>          
         </tr>
-          })}
-        <tr>
-          <td className='row_values'>History</td>
-          <td className='row_values'>World War II</td>
-          <td className='row_values'>June 23</td>
-          <td className='row_values'>Completed</td>  
-          <td className='row_values'>Url 1</td>
-        </tr>
+          )})}
 
+ 
 
         </tbody>
       </table>

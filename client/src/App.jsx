@@ -84,8 +84,9 @@ const App = () => {
           closePopup={() => closePopup()}
         />}
         {view === 'students' && <Table
-          {...focusedAssignment}
+          assignmentList={assignmentList}
           students={students}
+          student={student}
           admin={admin}
           updateStatus={patchSubmission}
           onBack={() => setFocused(null)}
