@@ -12,12 +12,12 @@ module.exports = (prisma) => {
   });
 
   router.put('/:id', async (req, res) => {
-    const updatedAssign = await prisma.assignment.update({ where: { id: +req.params.id, }, data: req.body });
+    const updatedAssign = await prisma.assignment.update({ where: { id: +req.params.id, }, data: req.body, include: { subject: true }, });
     res.json(updatedAssign);
   });
 
   router.patch('/:id', async (req, res) => {
-    const updatedAssign = await prisma.submission.update({ where: { id: +req.params.id }, data: req.body });
+    const updatedAssign = await prisma.submission.update({ where: { id: +req.params.id }, data: req.body, include: { subject: true }, });
     res.json(updatedAssign);
   });
 

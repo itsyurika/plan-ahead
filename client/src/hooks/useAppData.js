@@ -48,20 +48,30 @@ export function useAppData() {
 
 
   // update state
-  const addAssignment = (data) => {
+  const addAssignmentToState = (assignment) => {
     setState((prev) => {
-      const assignments = [...state.assignments, { ...data }];
+      const assignments = [...state.assignments, { ...assignment }];
       return { ...prev, assignments, };
     });
-    return data;
+    return assignment;
   };
 
-  const updateAssignmentState = (data) => {
+  const updateAssignmentState = (assignment) => {
     setState((prev) => {
-      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
+      const assignments = state.assignments.map((assignment) => assignment.id === assignment.id ? { ...assignment } : { ...assignment });
       return { ...prev, assignments, };
     });
-    return data;
+    return assignment;
+  };
+
+  const addSubmissionToStudentState = (submissions) => {
+    const submission = submissions.find((submission) => submission.studentId === state.studentId);
+    setState((prev) => {
+      const submissions = [...state.student.submissions, { ...submission }];
+      const student = { ...prev.student, submissions };
+      return { ...prev, student, };
+    });
+    return submissions;
   };
 
   const updateSubmissionState = (data) => {
@@ -77,23 +87,27 @@ export function useAppData() {
   // api requests
   const postAssignment = async (body) => {
     const { data: assignment } = await axios.post('/assignments', body);
-    addAssignment(assignment);
+    addAssignmentToState(assignment);
     postSubmission(assignment);
+    return assignment;
   };
 
   const putAssignment = async (id, body) => {
     const { data: assignment } = await axios.put(`/assignments/${id}`, body);
     updateAssignmentState(assignment);
+    return assignment;
   };
 
   const postSubmission = async (body) => {
-    const { data: submission } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
-    updateSubmissionState(submission);
+    const { data: submissions } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
+    addSubmissionToStudentState(submissions);
+    return submissions;
   };
 
   const patchSubmission = async (id, body) => {
     const { data: submission } = await axios.patch(`/submissions/${id}`, body);
     updateSubmissionState(submission);
+    return submission;
   };
 
 
@@ -108,6 +122,7 @@ export function useAppData() {
     student: state.student,
     isPopupOpen: state.isPopupOpen,
     view: state.view,
+    // end state
 
     assignmentList,
     focusedAssignment,
