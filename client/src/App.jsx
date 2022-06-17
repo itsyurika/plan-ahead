@@ -26,8 +26,6 @@ const App = () => {
     setView,
   } = useAppData();
 
-  console.log("assnList", assignmentList)
-
   return (
     <div id="outer-container">
       <SideNav 
