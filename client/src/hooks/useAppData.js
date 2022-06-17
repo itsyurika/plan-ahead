@@ -9,6 +9,7 @@ export function useAppData() {
     teacherId: 1,
     studentId: 1,
     student: {},
+    students: [],
     assignments: [],
     newAssignment: {},
     focused: null,
@@ -19,19 +20,21 @@ export function useAppData() {
   useEffect(() => {
     Promise.all([
       axios.get(`/teachers/${state.teacherId}/assignments`),
-      axios.get(`/students/${state.studentId}`),
+      axios.get(`/students/`)
     ])
       .then((res) => {
-        setState({ ...state, assignments: res[0].data, student: res[1].data });
+        setState({ ...state, assignments: res[0].data, students: res[1].data, student: res[1].data[0] });
       }).catch((e) => { console.error(e); });
-  }, [state.teacherId, state.studentId]);
+  }, []);
+
 
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
   const closePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: false })); };
-  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin })); };
+  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view = null) => { setState((prev) => ({ ...prev, view })); };
+  const setStudent = (id) => { setState((prev) => ({ ...prev, student: state.students.find((student) => student.id === id), })); };
   const showCreateForm = (day) => {
     setState((prev) => ({
       ...prev, newAssignment:
@@ -138,11 +141,13 @@ export function useAppData() {
     student: state.student,
     isPopupOpen: state.isPopupOpen,
     view: state.view,
+    students: state.students,
     // end state
 
     assignmentList,
     focusedAssignment,
     setFocused,
+    setStudent,
     setAdmin,
     setView,
     showCreateForm,

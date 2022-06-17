@@ -4,7 +4,7 @@ module.exports = (prisma) => {
 
   // = student routes =
   router.get('/', async (req, res) => {
-    const students = await prisma.student.findMany();
+    const students = await prisma.student.findMany({ include: { submissions: true } });
     res.json(students);
   });
 

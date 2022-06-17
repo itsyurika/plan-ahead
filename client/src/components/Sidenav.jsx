@@ -34,6 +34,12 @@ const Sidenav = (props) => {
             || <li onClick={() => { props.selectView('complete'); }} >Completed</li>}
         </ul>
       </div>
+      {props.admin && <div>
+        <ul> <h3>Teacher</h3>
+          <li onClick={() => {props.selectView('students')}}>Students</li>
+        </ul>
+      </div>}
+
     </Menu>
   );
 };
