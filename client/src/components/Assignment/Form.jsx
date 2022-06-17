@@ -13,6 +13,8 @@ const Form = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
 
+
+
   // = helpers =
   const valid = () => {
     if (!title) return setError('Please enter a title.');
@@ -64,8 +66,8 @@ const Form = (props) => {
 
 
         <div className='buttons'>
+          {props.id && <Button style='danger' action={() => { setShowModal(true); }}>Delete</Button>}
           {<Button style='confirm' action={props.id ? saveEdit : saveNew} >Save</Button>}
-          {props.id && <Button style='danger' onClick={() => { setShowModal(true); }}>Delete</Button>}
         </div>
       </form>
 
