@@ -36,7 +36,7 @@ export function useAppData() {
     if (state.view === 'history') return assignment.subject.name === 'History';
     if (state.view === 'math') return assignment.subject.name === 'Math';
     if (state.view === 'science') return assignment.subject.name === 'Science';
-  }
+  };
 
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
@@ -53,30 +53,30 @@ export function useAppData() {
 
 
   // update state
-  const addAssignmentToState = (assignment) => {
+  const addAssignmentToState = (data) => {
     setState((prev) => {
-      const assignments = [...state.assignments, { ...assignment }];
+      const assignments = [...state.assignments, { ...data }];
       return { ...prev, assignments, };
     });
-    return assignment;
+    return data;
   };
 
-  const updateAssignmentState = (assignment) => {
+  const updateAssignmentState = (data) => {
     setState((prev) => {
-      const assignments = state.assignments.map((assignment) => assignment.id === assignment.id ? { ...assignment } : { ...assignment });
+      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
       return { ...prev, assignments, };
     });
-    return assignment;
+    return data;
   };
 
-  const addSubmissionToStudentState = (submissions) => {
-    const submission = submissions.find((submission) => submission.studentId === state.studentId);
+  const addSubmissionToStudentState = (data) => {
+    const submission = data.find((submission) => submission.studentId === state.studentId);
     setState((prev) => {
       const submissions = [...state.student.submissions, { ...submission }];
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
-    return submissions;
+    return data;
   };
 
   const updateSubmissionState = (data) => {

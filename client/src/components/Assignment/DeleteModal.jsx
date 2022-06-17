@@ -5,7 +5,6 @@ const DeleteModal = (props) => {
   const deleteAssignment = (id) => {
     axios.delete('/assignments/' + id);
     props.onBack();
-    window.location.reload(true); //change to useEffect
   };
 
   return (
