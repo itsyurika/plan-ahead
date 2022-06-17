@@ -2,7 +2,7 @@ import 'components/styles/Table.scss';
 import { format, parseISO } from 'date-fns'
 
 const Table = (props) => {
-console.log('table props', props)
+console.log('student prop', props.student)
 
   return (
     <section className='table__view'>
@@ -18,7 +18,7 @@ console.log('table props', props)
     </div>
 
     <div className='table_wrapper' >
-      <p className='student_display'> {props.students[props.student -1].firstName}'s Assignments </p>
+      <p className='student_display'> {/* props.students[props.student -1].firstName*/}'s Assignments </p>
       <table className='student_table'>
 
         <tbody>
@@ -36,7 +36,7 @@ console.log('table props', props)
         <tr key={assignment.id}>
           <td className='row_values'>{assignment.subject.name}</td>
           <td className='row_values'>{assignment.title}</td>
-          <td className='row_values'>{format(parseISO(assignment.defaultDueDate), 'MMM dd yyyy')}</td>
+          <td className='row_values'>{format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')}</td>
           <td className='row_values'>Status</td>
           <td className='row_values'>{assignment.url}</td>          
         </tr>
