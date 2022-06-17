@@ -4,15 +4,14 @@
   --navbar-bg-color: transparent;
   --navbar-text-color: #455d3e;
   --navbar-text-color-focus: #748c70;
+  --navbar-height: 3rem;
 }
 
 // Top nav bar
 header.navbar {
   padding: 2rem 0;
-  --navbar-height: 3rem;
   height: var(--navbar-height);
   background-color: var(--navbar-bg-color);
-
 
   .navbar-container {
     position: relative;
