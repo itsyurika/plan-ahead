@@ -9,6 +9,7 @@ article.card {
   margin: auto;
   width: 100%;
   height: 100%;
+  user-select: none;
 
 
   .card__show {
@@ -38,7 +39,7 @@ article.card {
     &.complete {
       border: 2px solid rgba(45, 136, 156, 0.5);
       }
-  
+
     &.red {
     border: 2px solid #da121c;
     }
@@ -50,7 +51,7 @@ article.card {
     &.default {
       border: 2px solid rgba(125, 133, 129, 0.5);
       }
-  
+
     &.started {
       background-color: $started;
     }
