@@ -14,8 +14,8 @@ const Column = (props) => {
             {...props.cards[i]}
             onClick={() => props.onFocus(props.cards[i].id)}
             admin={props.admin}
+            onAdd={props.onAdd}
             lastRow={props.totalRows === i + 1}
-            onAdd={() => props.onAdd(props.day)}
           />
         </div>))}
     </main>

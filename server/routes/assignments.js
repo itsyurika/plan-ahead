@@ -1,47 +1,31 @@
 const router = require('express').Router();
 
 module.exports = (prisma) => {
-  const { assignment, submission } = prisma;
-
   router.get('/', async (req, res) => {
-    const assignments = await assignment.findMany({ include: { subject: true }, });
+    const assignments = await prisma.assignment.findMany({ include: { subject: true }, });
     res.json(assignments);
   });
 
   router.post('/', async (req, res) => {
-    const newAssignment = await assignment.create({ data: req.body });
+    const newAssignment = await prisma.assignment.create({ data: req.body, include: { subject: true }, });
     res.json(newAssignment);
   });
 
-  router.delete('/:id', async (req, res) => {
-    console.log("Assignment: " + req.params.id + " is deleted 🗑️");
-    await assignment.delete({
-      where: {
-        id: +req.params.id
-      }
-    });
+  router.put('/:id', async (req, res) => {
+    const updatedAssign = await prisma.assignment.update({ where: { id: +req.params.id, }, data: req.body });
+    res.json(updatedAssign);
   });
-
 
   router.patch('/:id', async (req, res) => {
-    console.log("assignment updated with the following data: ", req.body);
-    const options = {
-      where: { id: +req.params.id }, data: req.body
-    };
-    const updatedAssign = await submission.update(options);
+    const updatedAssign = await prisma.submission.update({ where: { id: +req.params.id }, data: req.body });
     res.json(updatedAssign);
   });
 
-  router.put('/:id', async (req, res) => {
-    const options = {
-      where: {
-        id: +req.params.id,
-      }, data: req.body
-    };
-
-    const updatedAssign = await assignment.update(options);
-    res.json(updatedAssign);
+  router.delete('/:id', async (req, res) => {
+    await prisma.assignment.delete({ where: { id: +req.params.id } });
+    res.json({ id: +req.params.id });
   });
+
   prisma.$disconnect();
   return router;
 };

@@ -1,10 +1,10 @@
-import 'components/styles/Navbar.scss';
+import 'components/styles/Header.scss';
 
-const Navbar = (props) => {
+const Header = (props) => {
   return (
-    <header id='navbar'>
-      <nav className='navbar-container container'>
-        <p></p>
+    <header className='navbar'>
+      <nav className='navbar-container'>
+        <p>Home</p>
         <div>
 
           <h2> {props.admin ? 'Ms. Lee' : props.student.firstName}'s Calendar </h2>
@@ -15,4 +15,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { findAssigned } from 'helpers/selectors';
-import { parseISO } from 'date-fns';
+import { parseISO, isBefore } from 'date-fns';
+import { findAssigned } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -10,8 +10,8 @@ export function useAppData() {
     studentId: 1,
     student: {},
     assignments: [],
+    newAssignment: {},
     focused: null,
-    day: null,
     isPopupOpen: true,
     view: false
   });
@@ -27,10 +27,9 @@ export function useAppData() {
   }, []);
 
 
-  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
-
+  // view lookup
   const filterList = (assignment) => {
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && parseISO(assignment.assigned.dueDate) < new Date();
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
     if (state.view === 'art') return assignment.subject.name === 'Art';
     if (state.view === 'english') return assignment.subject.name === 'English';
@@ -39,44 +38,91 @@ export function useAppData() {
     if (state.view === 'science') return assignment.subject.name === 'Science';
   }
 
-
-
-  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
-
-  const focusedAssignment = state.focused === -1 ? { teacherId: state.teacherId, day: state.day } : assignmentList.find((assignment) => assignment.id === state.focused);
-
-  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
+  // set state
+  const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
-
-  const createForm = (day) => {
-    setState((prev) => ({...prev, day}))
+  const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
+  const setView = (view) => { setState((prev) => ({ ...prev, view })); };
+  const showCreateForm = (day) => {
+    setState((prev) => ({
+      ...prev, newAssignment:
+        { day, teacherId: state.teacherId, },
+    }));
     setFocused(-1);
   };
 
-  const togglePopup = () => {
-    setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen}));
-  }
 
-  const updateStudentState = (res) => {
+  // update state
+  const addAssignment = (data) => {
     setState((prev) => {
-      const submissions = state.student.submissions.map((submission) => submission.id === res.data.id ? { ...res.data } : { ...submission });
+      const assignments = [...state.assignments, { ...data }];
+      return { ...prev, assignments, };
+    });
+    return data;
+  };
+
+  const updateAssignmentState = (data) => {
+    setState((prev) => {
+      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
+      return { ...prev, assignments, };
+    });
+    return data;
+  };
+
+  const updateSubmissionState = (data) => {
+    setState((prev) => {
+      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
+    return data;
   };
 
-  const updateSubmission = (id, data) => {
-    axios.patch(`/submissions/${id}`, data)
-      .then(updateStudentState)
-      .catch((e) => { console.error(e); });
+
+  // api requests
+  const postAssignment = async (body) => {
+    const { data: assignment } = await axios.post('/assignments', body);
+    addAssignment(assignment);
+    postSubmission(assignment);
   };
 
-  const setView = (view) => {
-  setState((prev) => ({ ...prev, view}));
-  } 
+  const putAssignment = async (id, body) => {
+    const { data: assignment } = await axios.put(`/assignments/${id}`, body);
+    updateAssignmentState(assignment);
+  };
+
+  const postSubmission = async (body) => {
+    const { data: submission } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
+    updateSubmissionState(submission);
+  };
+
+  const patchSubmission = async (id, body) => {
+    const { data: submission } = await axios.patch(`/submissions/${id}`, body);
+    updateSubmissionState(submission);
+  };
 
 
+  // find and filter assignments
+  const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
+  const assignmentList = state.view ? foundAssignments.filter(filterList) : foundAssignments;
+  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
-  return { setFocused, setAdmin, updateSubmission, assignmentList, focusedAssignment, admin: state.admin, student:state.student, createForm, isPopupOpen: state.isPopupOpen, togglePopup, view: state.view, setView, };
+  return {
+    // from state
+    admin: state.admin,
+    student: state.student,
+    isPopupOpen: state.isPopupOpen,
+    view: state.view,
+
+    assignmentList,
+    focusedAssignment,
+    setFocused,
+    setAdmin,
+    setView,
+    showCreateForm,
+    togglePopup,
+    postAssignment,
+    putAssignment,
+    patchSubmission,
+  };
 };
-
