@@ -119,6 +119,7 @@ export function useAppData() {
 
   // view lookup
   const filterList = (assignment) => {
+    if (state.view === 'all') return true;
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
