@@ -8,12 +8,15 @@ import Calendar from "components/Calendar";
 import Modal from "components/Modal";
 import Popup from 'components/Popup';
 import List from 'components/List';
+import Table from 'components/Table';
 
 
 const App = () => {
+
   const {
     admin,
     student,
+    students,
     view,
     assignmentList,
     focusedAssignment,
@@ -44,6 +47,7 @@ const App = () => {
       showMath={() => setView('math')}
       showScience={() => setView('science')}
       showAll={() => setView('all')}
+      showStudents={() => setView('students')}
       admin={admin}
       />
 
@@ -70,9 +74,18 @@ const App = () => {
           onFocus={(id) => setFocused(id)} 
           closePopup={() => closePopup()}
           />}
-        {view && <List
+        {view && view !== 'students' && <List
           student={student}
           assignmentList={assignmentList}
+          admin={admin}
+          updateStatus={patchSubmission}
+          onBack={() => setFocused(null)}
+          view={view}
+          closePopup={() => closePopup()}
+        />}
+        {view === 'students' && <Table
+          {...focusedAssignment}
+          students={students}
           admin={admin}
           updateStatus={patchSubmission}
           onBack={() => setFocused(null)}

@@ -24,6 +24,11 @@ const Sidenav = (props) => {
           {props.admin && <li onClick={props.showAll} >All Assignments</li>}
         </ul>
       </div>
+      {props.admin && <div>
+        <ul> <h3>Teacher</h3>
+          <li onClick={props.showStudents}>Students</li>
+        </ul>
+      </div>}
       
     </Menu>
   );

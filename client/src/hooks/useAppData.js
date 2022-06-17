@@ -9,20 +9,22 @@ export function useAppData() {
     teacherId: 1,
     studentId: 1,
     student: {},
+    students: {},
     assignments: [],
     newAssignment: {},
     focused: null,
     isPopupOpen: true,
-    view: false
+    view: false,
   });
 
   useEffect(() => {
     Promise.all([
       axios.get(`/teachers/${state.teacherId}/assignments`),
       axios.get(`/students/${state.studentId}`),
+      axios.get(`/students/`)
     ])
       .then((res) => {
-        setState({ ...state, assignments: res[0].data, student: res[1].data });
+        setState({ ...state, assignments: res[0].data, student: res[1].data , students: res[2].data});
       }).catch((e) => { console.error(e); });
   }, []);
 
@@ -30,14 +32,16 @@ export function useAppData() {
   // view lookup
   const filterList = (assignment) => {
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
-    if (state.view === 'complete') return assignment.assigned.dateCompleted;
+    if (state.view === 'complete' && !state.admin ) return assignment.assigned.dateCompleted;
     if (state.view === 'art') return assignment.subject.name === 'Art';
     if (state.view === 'english') return assignment.subject.name === 'English';
     if (state.view === 'history') return assignment.subject.name === 'History';
     if (state.view === 'math') return assignment.subject.name === 'Math';
     if (state.view === 'science') return assignment.subject.name === 'Science';
-    if (state.view === 'all') return assignment;
+    if (state.view === 'all' && state.admin ) return assignment;
+    if (state.view === 'students' && state.admin ) return assignment;
   }
+
 
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
@@ -131,6 +135,7 @@ export function useAppData() {
     return submission;
   };
 
+  
 
   // find and filter assignments
   const foundAssignments = findAssigned(state.assignments, !state.admin && state.student);
@@ -143,6 +148,7 @@ export function useAppData() {
     student: state.student,
     isPopupOpen: state.isPopupOpen,
     view: state.view,
+    students: state.students,
     // end state
 
     assignmentList,

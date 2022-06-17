@@ -1,0 +1,53 @@
+@import "styles/variables.scss";
+
+.table__view {
+  margin-top: 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.table_wrapper {
+  margin: 2rem;
+  text-align: center;
+  margin-right: 10rem;
+}
+
+.student_display {
+  margin: 1rem;
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+
+.student_table {
+border: 1px solid black;
+padding: 1rem;
+}
+
+.table_rows {
+  padding: 2rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.table_header {
+  border: 1px solid black;
+  min-width: 10vw;
+}
+
+.row_values {
+  padding: 1rem;
+  border: 1px solid black;
+}
