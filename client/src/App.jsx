@@ -22,13 +22,12 @@ const App = () => {
     setAdmin,
     postAssignment,
     putAssignment,
+    deleteAssignment,
     patchSubmission,
     showCreateForm,
     togglePopup,
     setView,
   } = useAppData();
-
-  console.log("assnList", assignmentList)
 
   return (
     <div id="outer-container">
@@ -55,6 +54,7 @@ const App = () => {
           admin={admin}
           onNew={postAssignment}
           onEdit={putAssignment}
+          onDelete={deleteAssignment}
           onStart={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
           onComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
