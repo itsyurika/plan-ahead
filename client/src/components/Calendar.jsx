@@ -29,7 +29,7 @@ const Calendar = (props) => {
       />));
 
     return (
-      <section className='table'>
+      <section className='table' onClick={props.closePopup}>
         <main className={'table__column'}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>

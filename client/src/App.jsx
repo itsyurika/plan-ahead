@@ -26,6 +26,7 @@ const App = () => {
     patchSubmission,
     showCreateForm,
     togglePopup,
+    closePopup,
     setView,
   } = useAppData();
 
@@ -66,7 +67,9 @@ const App = () => {
           admin={admin}
           assignments={assignmentList}
           onAdd={showCreateForm}
-          onFocus={(id) => setFocused(id)} />}
+          onFocus={(id) => setFocused(id)} 
+          closePopup={() => closePopup()}
+          />}
         {view && <List
           student={student}
           assignmentList={assignmentList}
@@ -74,6 +77,7 @@ const App = () => {
           updateStatus={patchSubmission}
           onBack={() => setFocused(null)}
           view={view}
+          closePopup={() => closePopup()}
         />}
       </main>
     </div>

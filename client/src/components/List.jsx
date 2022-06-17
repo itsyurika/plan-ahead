@@ -11,7 +11,7 @@ const List = (props) => {
 
 
   return (
-    <section className='list__view'>
+    <section className='list__view' onClick={props.closePopup}>
       <h1> {viewName()} Assignments </h1>
       <article className='assignment__show'>
         <ul id='ul-view'>

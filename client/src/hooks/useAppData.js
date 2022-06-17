@@ -41,6 +41,7 @@ export function useAppData() {
 
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
+  const closePopup = () => { setState((prev) => ({...prev, isPopupOpen: false}))}
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view) => { setState((prev) => ({ ...prev, view })); };
@@ -155,5 +156,6 @@ export function useAppData() {
     putAssignment,
     deleteAssignment,
     patchSubmission,
+    closePopup
   };
 };
