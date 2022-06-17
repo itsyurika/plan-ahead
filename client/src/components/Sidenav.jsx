@@ -1,9 +1,7 @@
 import 'components/styles/Sidenav.scss';
 import Menu from 'react-burger-menu/lib/menus/slide';
-import { useState } from 'react';
 
 const Sidenav = (props) => {
-
   return (
     <Menu {...props}>
 
@@ -12,11 +10,11 @@ const Sidenav = (props) => {
       </div>
       <div>
         <ul> <h3>Subjects</h3>
-          <li>Art</li>
-          <li>English</li>
-          <li>History</li>
-          <li>Math</li>
-          <li>Science</li>
+          <li onClick={props.showArt}>Art</li>
+          <li onClick={props.showEnglish}>English</li>
+          <li onClick={props.showHistory}>History</li>
+          <li onClick={props.showMath}>Math</li>
+          <li onClick={props.showScience}>Science</li>
         </ul>
       </div>
       <div>
@@ -25,6 +23,7 @@ const Sidenav = (props) => {
           <li onClick={props.showComplete} >Completed</li>
         </ul>
       </div>
+      
     </Menu>
   );
 };
