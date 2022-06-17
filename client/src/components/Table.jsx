@@ -2,21 +2,23 @@ import 'components/styles/Table.scss';
 import { format, parseISO } from 'date-fns'
 
 const Table = (props) => {
-  console.log("tableprops", props)
+console.log('table props', props)
 
   return (
     <section className='table__view'>
     <div className='student_names'>
       <div>Students</div>
           <ul>
+
             {props.students.map((student) => { 
-              return <li key={student.id}> {student.firstName} {student.lastName} </li>
+              return <li key={student.id} onClick={() => props.setStudent(student.id)}>{student.firstName} {student.lastName}</li>
             })}
+
           </ul>
     </div>
 
-    <div className='table_wrapper'>
-      <p className='student_display'> Sarah's Assignments </p>
+    <div className='table_wrapper' >
+      <p className='student_display'> {props.students[props.student -1].firstName}'s Assignments </p>
       <table className='student_table'>
 
         <tbody>
@@ -31,8 +33,8 @@ const Table = (props) => {
           {props.assignmentList.map(assignment => {
             return (
               
-        <tr>
-          <td className='row_values'>{assignment.subject.name} {console.log(assignment)}</td>
+        <tr key={assignment.id}>
+          <td className='row_values'>{assignment.subject.name}</td>
           <td className='row_values'>{assignment.title}</td>
           <td className='row_values'>{format(parseISO(assignment.defaultDueDate), 'MMM dd yyyy')}</td>
           <td className='row_values'>Status</td>

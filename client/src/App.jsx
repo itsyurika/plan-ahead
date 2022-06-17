@@ -22,6 +22,7 @@ const App = () => {
     focusedAssignment,
     isPopupOpen,
     setFocused,
+    setStudent,
     setAdmin,
     postAssignment,
     putAssignment,
@@ -87,11 +88,13 @@ const App = () => {
           assignmentList={assignmentList}
           students={students}
           student={student}
+          setAdmin={setAdmin}
           admin={admin}
           updateStatus={patchSubmission}
           onBack={() => setFocused(null)}
           view={view}
           closePopup={() => closePopup()}
+          setStudent={(id) => setStudent(id)}
         />}
       </main>
     </div>

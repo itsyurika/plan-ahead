@@ -39,7 +39,7 @@ export function useAppData() {
     if (state.view === 'math') return assignment.subject.name === 'Math';
     if (state.view === 'science') return assignment.subject.name === 'Science';
     if (state.view === 'all' && state.admin ) return assignment;
-    if (state.view === 'students' && state.admin ) return assignment;
+    if (state.view === 'students') return assignment;
   }
 
 
@@ -47,6 +47,7 @@ export function useAppData() {
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
   const closePopup = () => { setState((prev) => ({...prev, isPopupOpen: false}))}
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+  const setStudent = (id) => { setState((prev) => ({ ...prev, student: id, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view) => { setState((prev) => ({ ...prev, view })); };
   const showCreateForm = (day) => {
@@ -154,6 +155,7 @@ export function useAppData() {
     assignmentList,
     focusedAssignment,
     setFocused,
+    setStudent,
     setAdmin,
     setView,
     showCreateForm,
