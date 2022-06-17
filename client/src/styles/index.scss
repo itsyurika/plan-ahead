@@ -2,11 +2,6 @@
 @import "styles/variables.scss";
 
 body {
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;
@@ -30,7 +25,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 $weights: (
   light: 300,
