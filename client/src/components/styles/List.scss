@@ -1,3 +1,4 @@
+@import "assignment.scss";
 @import "~normalize.css/normalize.css";
 @import "styles/variables.scss";
 
@@ -16,11 +17,27 @@
   position: relative;
   border-radius: $radius;
   border: none;
+  background-color: $default;
   margin-bottom: 20px;
   border:3px solid black;
   list-style: none;
+  padding: 2rem 3rem 2rem 3rem;
+  width: 80vw;
+
+
+  &.started {
+    background-color: $started;
+  }
+
+  &.complete {
+    background-color: $complete;
+  }
+
 
   #cancel-X {
     display: none;
   }
+
+  
 }
+
