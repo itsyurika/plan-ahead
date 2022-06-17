@@ -59,7 +59,7 @@ const App = () => {
           admin={admin}
           assignments={assignmentList}
           onAdd={showCreateForm}
-          onFocus={(id) => setFocused(id)} 
+          onFocus={(id) => setFocused(id)}
           closePopup={() => closePopup()}
           />}
         {view && <List

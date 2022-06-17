@@ -4,8 +4,8 @@ import Assignment from "components/Assignment";
 const Modal = (props) => {
   return (
     <div className='outerwrapper'>
-      <article className='assignment__show modalBackdrop'>
-        <div className={`form-modalContainer ${props.status?.toLowerCase().replace(/\s+/g, '')}`} >
+      <article className='modalBackdrop'>
+        <div className={`form-modalContainer`} >
           <Assignment  {...props} />
         </div>
       </article>

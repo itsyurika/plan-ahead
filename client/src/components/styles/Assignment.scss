@@ -1,6 +1,5 @@
 @import "styles/variables.scss";
 
-
 .outerwrapper {
   position: fixed;
   left: 0;
@@ -9,8 +8,25 @@
 }
 
 article.assignment__show {
+  padding: 2rem;
+
   p {
     margin: 1rem 0;
+  }
+
+  &.notstarted {
+    background-color: $default;
+    background-image: none;
+  }
+
+  &.started {
+    background-color: $started;
+    background-image: none;
+  }
+
+  &.complete {
+    background-color: $complete;
+    background-image: none;
   }
 }
 
@@ -75,113 +91,11 @@ article.assignment__view {
   border: 2px solid lightblue
 }
 
-.modalBackdrop {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-  z-index: 2;
-
-  &.del {
-    display: flex;
-    right: 0;
-    bottom: 0;
-    width: 79.5vw;
-    height: 69.5vh;
-
-  }
-}
-
-.del-modalContainer {
-  position: absolute;
-  display: flex;
-  top: 25%;
-  left: auto;
-  height: auto;
-  width: auto;
-  background-color: tomato;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  border: solid 5px red;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow:
-    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-    100px 100px 80px rgba(0, 0, 0, 0.07);
-  z-index: 4;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-}
-
-.form-modalContainer {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: auto;
-  height: auto;
-  width: 80vw;
-  background-color: hsla(50, 75%, 97%, 1);
-  background-image:
-    radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
-    radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
-  color: #262422;
-  border: 5px solid blueviolet;
-  border-radius: 10px;
-
-  box-shadow:
-    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-    100px 100px 80px rgba(0, 0, 0, 0.07);
-  z-index: 3;
-
-  button {
-    margin-right: .5rem;
-  }
-
-  &.notstarted {
-    background-color: $default;
-    background-image: none;
-  }
-
-  &.started {
-    background-color: $started;
-    background-image: none;
-  }
-
-  &.complete {
-    background-color: $complete;
-    background-image: none;
-  }
-
-}
-
 .cancel-X {
   position: absolute;
-  right: 10px;
-  top: 8px;
+  right: 0.5em;
+  top: 0.2em;
   font-size: 32px;
-  padding-left: 5px;
-  margin: 0px 5px 5px 0px;
   cursor: pointer;
 }
 
@@ -191,11 +105,11 @@ article.assignment__view {
   font-weight: bold;
 }
 
-.assignment_header {
+.assignment-header {
   color: $default;
   padding: 1rem;
-  background-image: linear-gradient(to right, green 60%, $transparent);
-  color: $default;
+  background-image: linear-gradient(to right, $confirm 60%, $transparent);
+  border-radius: $radius/4;
 }
 
 .assn-subj {
@@ -208,8 +122,9 @@ article.assignment__view {
   font-family: Helvetica, sans-serif;
   font-size: 24px;
   padding: 0.5rem;
-  background-image: linear-gradient(to right, red 10%, $transparent 30%);
+  background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
   color: $default;
+  border-radius: $radius/4;
 }
 
 .desc {
@@ -237,11 +152,10 @@ article.assignment__view {
   font-style: italic;
 }
 
-.status-form {
+.status__form {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-
 
 .assignment__form {
   display: flex;
@@ -255,9 +169,10 @@ article.assignment__view {
   align-items: center;
 }
 
-.btn-center {
+.buttons {
+  margin-top: 1em;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .selectList {
@@ -267,15 +182,17 @@ article.assignment__view {
 }
 
 .due-date {
+  padding: 0.6em 0.8em;
   border-radius: 6px;
-  padding: 3px 5px 3px 5px;
   color: $default;
   text-align: center;
+
   &.due {
-    background: green;
+    background: $confirm;
   }
+
   &.pastDue {
-    background: red;
+    background: $danger;
   }
 }
 
@@ -285,8 +202,4 @@ article.assignment__view {
 
 .del-title {
   font-size: 24px;
-}
-
-.index_content {
-  padding: 2rem 2rem 2rem 2rem;
 }

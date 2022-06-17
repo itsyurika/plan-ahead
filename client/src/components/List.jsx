@@ -19,10 +19,10 @@ const List = (props) => {
               {!props.admin && < Assignment
                 {...assignment}
                 view={props.view}
-                onStart={() => { props.updateSubmission(assignment.assigned.id, { dateStarted: new Date() }); }}
-                onComplete={() => { props.updateSubmission(assignment.assigned.id, { dateCompleted: new Date() }); }}
-                onCancelStarted={() => { props.updateSubmission(assignment.assigned.id, { dateStarted: null }); }}
-                onCancelComplete={() => { props.updateSubmission(assignment.assigned.id, { dateCompleted: null }); }}
+                onStart={() => { props.updateStatus(assignment.assigned.id, { dateStarted: new Date() }); }}
+                onComplete={() => { props.updateStatus(assignment.assigned.id, { dateCompleted: new Date() }); }}
+                onCancelStarted={() => { props.updateStatus(assignment.assigned.id, { dateStarted: null }); }}
+                onCancelComplete={() => { props.updateStatus(assignment.assigned.id, { dateCompleted: null }); }}
               />}
 
               {props.admin &&

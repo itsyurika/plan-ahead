@@ -63,7 +63,7 @@ const Form = (props) => {
         </div>
 
 
-        <div className='btn-center'>
+        <div className='buttons'>
           {<Button style='confirm' action={props.id ? saveEdit : saveNew} >Save</Button>}
           {props.id && <Button style='danger' onClick={() => { setShowModal(true); }}>Delete</Button>}
         </div>

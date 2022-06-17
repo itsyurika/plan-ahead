@@ -2,7 +2,7 @@ import Button from 'components/Button';
 
 const Status = (props) => {
   return (
-    <div className='status-form' >
+    <div className='status__form' >
       {props.status === 'Not started' && <Button style="confirm" action={props.onStart}>Start</Button>}
       {props.status === 'Complete' && <Button style="warning" action={props.onCancelComplete}>Cancel Submission</Button>}
       {props.status === 'Started' && <>
