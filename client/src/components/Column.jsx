@@ -16,6 +16,7 @@ const Column = (props) => {
             admin={props.admin}
             onAdd={props.onAdd}
             lastRow={props.totalRows === i + 1}
+            day={props.day}
           />
         </div>))}
     </main>
