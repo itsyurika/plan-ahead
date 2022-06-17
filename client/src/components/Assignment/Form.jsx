@@ -1,9 +1,12 @@
 import 'components/styles/Assignment.scss';
 import { useState } from 'react';
-import DeleteModal from './DeleteModal';
 import { format, parseISO } from 'date-fns';
 
-const CreateAssignment = (props) => {
+import DeleteModal from './DeleteModal';
+import Button from 'components/Button';
+
+
+const Form = (props) => {
   const [title, setTitle] = useState(props.title || '');
   const [description, setDescription] = useState(props.description || '');
   const [url, setUrl] = useState(props.url || '');
@@ -63,8 +66,8 @@ const CreateAssignment = (props) => {
 
 
         <div className='btn-center'>
-          {<button className='start-btn' onClick={props.id ? saveEdit : saveNew} type='Submit'>Save</button>}
-          {props.id && <button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</button>}
+          {<Button style="confirm" action={props.id ? saveEdit : saveNew} >Save</Button>}
+          {props.id && <Button className='undo-btn' onClick={() => { setShowModal(true); }}>Delete</Button>}
         </div>
 
       </form>
@@ -76,4 +79,4 @@ const CreateAssignment = (props) => {
   );
 };
 
-export default CreateAssignment;
+export default Form;

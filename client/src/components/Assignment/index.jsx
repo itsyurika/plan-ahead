@@ -1,6 +1,6 @@
 import 'components/styles/Assignment.scss';
 import Form from "./Form";
-import StatusButtons from "./StatusButtons";
+import StatusForm from "./StatusForm";
 import { format, parseISO } from 'date-fns';
 
 const AssignmentView = (props) => {
@@ -19,10 +19,10 @@ const AssignmentView = (props) => {
         <p id="desc">{props.description}</p>
         <p id="assn-link">Link: {props.url}</p>
         <p className={`due-date ${dueDateColour()}`}>Due: {format(props.day || parseISO(props.assigned.dueDate), 'MMM dd yyyy')}</p>
-        <p id="assn-prog">Your Progress:&nbsp;&nbsp;<span id="prog-status"> {props.status}! </span></p>
+        <p id="assn-prog">Your Progress:&nbsp;&nbsp;<span className="prog-status"> {props.status}! </span></p>
 
       </div>}
-      {(props.view !== 'complete') && <StatusButtons {...props} />}
+      {(props.view !== 'complete') && <StatusForm {...props} />}
       {props.admin && <Form {...props} />}
     </div>
   );
