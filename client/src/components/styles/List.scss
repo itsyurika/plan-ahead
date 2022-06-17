@@ -14,11 +14,42 @@
 .card-li {
   overflow: hidden;
   margin-bottom: 20px;
-  outline: 3px solid $outline-dark;
+  outline: 3px solid blueviolet;
   border-radius: $radius;
   list-style: none; // removes bullet
 
   #cancel-X {
     display: none;
   }
+}
+
+
+.admin_list {
+  overflow: auto;
+  height: auto;
+  width: 80vw;
+  background-color: hsla(50, 75%, 97%, 1);
+  background-image:
+    radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
+    radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
+  color: #262422;
+  border-radius: 10px;
+  padding: 2rem 2rem 2rem 2rem;
+  box-shadow:
+    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
+    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
+    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
+    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+  &button {
+    display: none;
+  }
+}
+
+.list_content {
+  width: 70vw;
 }

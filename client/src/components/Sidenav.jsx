@@ -20,7 +20,8 @@ const Sidenav = (props) => {
       <div>
         <ul> <h3>Assignments</h3>
           <li onClick={props.showPastDue}>Past Due</li>
-          <li onClick={props.showComplete} >Completed</li>
+          {!props.admin && <li onClick={props.showComplete} >Completed</li>}
+          {props.admin && <li onClick={props.showAll} >All Assignments</li>}
         </ul>
       </div>
       

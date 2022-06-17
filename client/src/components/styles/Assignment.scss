@@ -15,7 +15,7 @@ article.assignment__show {
 }
 
 section.assignment__form {
-  margin: 2rem 0;
+  margin: 0;
 
   input {
     display: block;
@@ -141,7 +141,7 @@ article.assignment__view {
   color: #262422;
   border: 5px solid blueviolet;
   border-radius: 10px;
-  padding: 2rem 6rem 6rem 6rem;
+
   box-shadow:
     1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
     3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
@@ -232,88 +232,17 @@ article.assignment__view {
   padding: 2rem;
 }
 
-#prog-status {
+.prog-status {
   font-size: 20px;
   font-style: italic;
 }
 
-#status-buttons {
+.status-buttons {
   display: flex;
   justify-content: center;
 }
 
-.start-btn {
-  background-color: #45a748;
-  /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  vertical-align: top;
-  box-shadow: 2px 1px 2px gray;
-  margin: 4px 10px 4px 10px;
 
-  &:hover {
-    background-color: #377f45;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 white;
-    margin: 2px 8px 6px 12px;
-  }
-}
-
-.undo-btn {
-  background-color: #e60000;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  vertical-align: top;
-  box-shadow: 2px 1px 2px gray;
-  margin: 4px 10px 4px 10px;
-
-  &:hover {
-    background-color: #940000;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 white;
-    margin: 2px 8px 6px 12px;
-  }
-}
-
-.del-btn {
-  background-color: #e60000;
-  border: 2px outset firebrick;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  vertical-align: top;
-  box-shadow: 2px 1px 2px gray;
-  margin: 4px 10px 4px 10px;
-
-  &:hover {
-    background-color: #940000;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 white;
-    margin: 2px 8px 6px 12px;
-  }
-}
 
 .assignment__form {
   display: flex;
@@ -357,4 +286,8 @@ article.assignment__view {
 
 #del-title {
   font-size: 24px;
+}
+
+.index_content {
+  padding: 2rem 2rem 2rem 2rem;
 }

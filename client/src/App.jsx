@@ -22,6 +22,7 @@ const App = () => {
     setAdmin,
     postAssignment,
     putAssignment,
+    deleteAssignment,
     patchSubmission,
     showCreateForm,
     togglePopup,
@@ -41,6 +42,8 @@ const App = () => {
       showHistory={() => setView('history')}
       showMath={() => setView('math')}
       showScience={() => setView('science')}
+      showAll={() => setView('all')}
+      admin={admin}
       />
 
       <main className="app">
@@ -51,6 +54,7 @@ const App = () => {
           admin={admin}
           onNew={postAssignment}
           onEdit={putAssignment}
+          onDelete={deleteAssignment}
           onStart={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
           onComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
