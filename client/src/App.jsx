@@ -30,24 +30,16 @@ const App = () => {
   } = useAppData();
 
   return (
-    <div id="outer-container">
+    <div id='outer-container'>
       <SideNav
-      pageWrapId={"app"}
-      outerContainerId={"outer-container"}
-      showCalendar={() => setView(null)}
-      showComplete={() => setView('complete')}
-      showPastDue={() => setView('pastDue')}
-      showArt={() => setView('art')}
-      showEnglish={() => setView('english')}
-      showHistory={() => setView('history')}
-      showMath={() => setView('math')}
-      showScience={() => setView('science')}
-      showAll={() => setView('all')}
-      admin={admin}
+        pageWrapId={'app'}
+        outerContainerId={'outer-container'}
+        selectView={(name) => { setView(name); }}
+        admin={admin}
       />
 
-      <main className="app">
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')}/>
+      <main className='app'>
+        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')} />
         <Navbar onLogin={setAdmin} admin={admin} student={student} />
 
         {focusedAssignment && <Modal {...focusedAssignment}
