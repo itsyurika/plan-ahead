@@ -4,8 +4,18 @@ body {
   background-color: $bg-light;
   color: $text-dark;
 
-  header, button {
+  header,
+  button {
     user-select: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none; // hides scrollbar
   }
 }
 
@@ -17,4 +27,3 @@ main.app {
 section.calendar {
   margin: 0 auto;
 }
-

@@ -91,13 +91,7 @@ article.assignment__view {
   border: 2px solid lightblue
 }
 
-.cancel-X {
-  position: absolute;
-  right: 0.5em;
-  top: 0.2em;
-  font-size: 32px;
-  cursor: pointer;
-}
+
 
 .error {
   margin-top: 3px;
@@ -172,7 +166,7 @@ article.assignment__view {
 .buttons {
   margin-top: 1em;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .selectList {

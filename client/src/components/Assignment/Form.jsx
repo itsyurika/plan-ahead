@@ -56,7 +56,7 @@ const Form = (props) => {
         <textarea className='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
         <div className='due-drop'>
-          <p className='due-date due'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+          <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
           <select className='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>
@@ -64,8 +64,8 @@ const Form = (props) => {
 
 
         <div className='buttons'>
-          {<Button style='confirm' action={props.id ? saveEdit : saveNew} >Save</Button>}
           {props.id && <Button style='danger' onClick={() => { setShowModal(true); }}>Delete</Button>}
+          {<Button style='confirm' action={props.id ? saveEdit : saveNew} >Save</Button>}
         </div>
       </form>
 

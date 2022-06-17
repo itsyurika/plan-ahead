@@ -1,6 +1,5 @@
 import 'components/styles/List.scss';
 import Assignment from "components/Assignment";
-import ListItem from "components/Assignment/ListItem";
 
 const List = (props) => {
   const viewName = () => {
@@ -11,7 +10,7 @@ const List = (props) => {
   return (
     <section className='list__view' onClick={props.closePopup}>
       <h1> {viewName()} Assignments </h1>
-      <article className='assignment__show'>
+      <article className='list-item'>
         <ul className='ul-view'>
 
           {props.assignmentList.map((assignment) => (
@@ -26,8 +25,8 @@ const List = (props) => {
               />}
 
               {props.admin &&
-                <div className='admin_list'>
-                  <ListItem {...props} {...assignment} />
+                <div className='admin-list'>
+                  <Assignment {...props} {...assignment} />
                 </div>}
 
             </li>)
