@@ -1,6 +1,5 @@
 @import "styles/variables.scss";
 
-
 .list__view {
   display: flex;
   flex-direction: column;
@@ -23,7 +22,6 @@
   }
 }
 
-
 .admin_list {
   overflow: auto;
   height: auto;
@@ -45,6 +43,7 @@
     33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
     53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
     100px 100px 80px rgba(0, 0, 0, 0.07);
+
   &button {
     display: none;
   }

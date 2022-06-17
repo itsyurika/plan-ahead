@@ -1,4 +1,3 @@
-import 'components/styles/Assignment.scss';
 import { useState } from 'react';
 import { format, parseISO } from 'date-fns';
 
@@ -49,7 +48,7 @@ const Form = (props) => {
   // == output ==
   return (
     <section className='assignment__form'>
-      {<h2>{props.id ? 'Edit' : 'Create'} Assignment</h2>}
+      {<header><h2>{props.id ? 'Edit' : 'Create'} Assignment</h2></header>}
       <h5 className='error'>{error}</h5>
 
       <form onSubmit={(e) => { e.preventDefault(); }} >
