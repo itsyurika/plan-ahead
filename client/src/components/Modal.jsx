@@ -3,13 +3,13 @@ import Assignment from "components/Assignment";
 
 const Modal = (props) => {
   return (
-    <div className='outerwrapper'>
-      <article className='modalBackdrop'>
-        <div className={`form-modalContainer`} >
+    <article className='outerwrapper'>
+      <div className='modalBackdrop'>
+        <div className='form-modalContainer' >
           <Assignment  {...props} />
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
   );
 };
 
