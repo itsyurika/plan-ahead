@@ -14,13 +14,13 @@ const List = (props) => {
     <section className='list__view'>
       <h1> {viewName()} Assignments </h1>
       <article className='assignment__show'>
-        <ul id='ul-view'>
-          
+        <ul className='ul-view'>
+
           {props.assignmentList.map((assignment) => {
-      
+
           return (
-          
-           <li className={`card-li ${viewName}`} key={assignment.id} > {!props.admin && < Assignment 
+
+           <li className={`card-li ${viewName}`} key={assignment.id} > {!props.admin && < Assignment
             {...assignment }
             view={props.view}
             onStart={() => { props.updateSubmission(assignment.assigned.id, { dateStarted: new Date() }); }}
@@ -29,10 +29,10 @@ const List = (props) => {
             onCancelComplete={() => { props.updateSubmission(assignment.assigned.id, { dateCompleted: null }); }}
           />}
 
-              {props.admin && 
+              {props.admin &&
                 <div className='admin_list'>
                 <AdminList {...props} {...assignment} />
-                </div>          
+                </div>
               }
 
           </li>)})}
@@ -48,5 +48,5 @@ const List = (props) => {
 export default List;
 
 
-          
+
 

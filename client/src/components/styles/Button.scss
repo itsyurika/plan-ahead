@@ -8,21 +8,21 @@
   cursor: pointer;
 }
 
-@mixin button-inactive--opacity {
-  @include fade;
-  opacity: 0.7;
-}
+// @mixin button-inactive--opacity {
+//   @include fade;
+//   opacity: 0.7;
+// }
 
-@mixin button-active--opacity {
-  @include button-active;
-  opacity: 1;
-}
+// @mixin button-active--opacity {
+//   @include button-active;
+//   opacity: 1;
+// }
 
-@mixin border-card($color) {
-  background-color: rgba($color, $inactive-opacity);
-  color: $color;
-  border: 2px solid $color;
-}
+// @mixin border-card($color) {
+//   background-color: rgba($color, $inactive-opacity);
+//   color: $color;
+//   border: 2px solid $color;
+// }
 
 
 // .button {
@@ -88,23 +88,23 @@
 
 
 .button {
+  transition: 0.2s ease-out;
+  cursor: pointer;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  border-radius: 5px;
-  vertical-align: top;
+  border-radius: $radius/2;
   box-shadow: 2px 1px 2px gray;
   margin: 4px 10px 4px 10px;
 
   &.button--confirm {
-    background-color: #45a748;
+    background-color: $confirm;
 
     &:hover {
-      background-color: #377f45;
+      background-color: $confirm-dim;
     }
   }
 
@@ -112,15 +112,15 @@
     background-color: $warning;
 
     &:hover {
-      background-color: $warning;
+      background-color: $warning-dim;
     }
   }
 
   &.button--danger {
-    background-color: #e60000;
+    background-color: $danger;
 
     &:hover {
-      background-color: #940000;
+      background-color: $danger-dim;
     }
   }
 }
