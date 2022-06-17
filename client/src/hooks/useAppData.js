@@ -13,7 +13,7 @@ export function useAppData() {
     newAssignment: {},
     focused: null,
     isPopupOpen: true,
-    view: false
+    view: null,
   });
 
   useEffect(() => {
@@ -24,12 +24,12 @@ export function useAppData() {
       .then((res) => {
         setState({ ...state, assignments: res[0].data, student: res[1].data });
       }).catch((e) => { console.error(e); });
-  }, []);
+  }, [state.teacherId, state.studentId]);
 
   // set state
   const togglePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: !prev.isPopupOpen })); };
-  const closePopup = () => { setState((prev) => ({...prev, isPopupOpen: false}))}
-  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
+  const closePopup = () => { setState((prev) => ({ ...prev, isPopupOpen: false })); };
+  const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view = null) => { setState((prev) => ({ ...prev, view })); };
   const showCreateForm = (day) => {
@@ -120,15 +120,15 @@ export function useAppData() {
 
   // view lookup
   const filterList = (assignment) => {
-    if (state.view === 'all') return true;
+    if (['all', 'students'].includes(state.view)) return true;
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
-    return true;
+    return true; // state.view = null, calendar view
   };
 
   // find and filter assignments
-  const foundAssignments = mapAssigned(state.assignments, !state.admin && state.student);
+  const foundAssignments = mapAssigned(state.assignments, (!state.admin || state.view === 'students') && state.student);
   const assignmentList = foundAssignments.filter(filterList);
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
