@@ -17,7 +17,7 @@ const AssignmentView = (props) => {
         <p id="assn-subj">{props.subject.name}</p>
         <p className={`assn-desc ${props.status.toLowerCase().replace(/\s+/g, '')}`}>Description:</p>
         <p id="desc">{props.description}</p>
-        <p id="assn-link">Link: {props.url}</p>
+        <p id="assn-link"><a href={props.url}>Link to Google Classroom</a></p>
         <p className={`due-date ${dueDateColour()}`}>Due: {format(props.day || parseISO(props.assigned.dueDate), 'MMM dd yyyy')}</p>
         <p id="assn-prog">Your Progress:&nbsp;&nbsp;<span id="prog-status"> {props.status}! </span></p>
 
