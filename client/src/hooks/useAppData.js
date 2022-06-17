@@ -69,12 +69,13 @@ export function useAppData() {
     return data;
   };
 
-  const addSubmissionToStudentState = (data) => {
+  const addSubmissionToStudentsState = (data) => {
     const submission = data.find((submission) => submission.studentId === state.studentId);
     setState((prev) => {
       const submissions = [...state.student.submissions, { ...submission }];
       const student = { ...prev.student, submissions };
-      return { ...prev, student, };
+      const students = state.students.map((student) => ({ ...student, submissions: [...student.submissions, submission] }));
+      return { ...prev, student, students };
     });
     return data;
   };
@@ -111,7 +112,7 @@ export function useAppData() {
 
   const postSubmission = async (body) => {
     const { data: submissions } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
-    addSubmissionToStudentState(submissions);
+    addSubmissionToStudentsState(submissions);
     return submissions;
   };
 
