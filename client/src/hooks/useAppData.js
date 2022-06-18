@@ -124,11 +124,11 @@ export function useAppData() {
 
   // view lookup
   const filterList = (assignment) => {
-    if (['all', 'students'].includes(state.view)) return true;
+    if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
     if (state.view === 'complete') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
-    return true; // state.view = null, calendar view
+    return false; // no valid view ?
   };
 
   // find and filter assignments

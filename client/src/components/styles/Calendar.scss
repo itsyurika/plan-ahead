@@ -68,7 +68,7 @@ section.calendar {
 
       // table header
       >header.cell.label {
-        height: calc(2rem + 3vh); // sets min height and scales with viewport
+        height: calc(1.8rem + 3vh); // sets min height and scales with viewport
         font-size: $font-scale;
         flex-grow: 0; // fix height
         word-break: nowrap; // disable word-break
@@ -102,7 +102,7 @@ section.calendar {
       // first column
       &:first-of-type {
         min-width: 0; // resets flex basis
-        flex-grow: .5; // width
+        flex-grow: .4; // width
 
         >header.cell {
           border: none;

@@ -5,7 +5,9 @@ body {
   color: $text-dark;
 
   header,
-  button {
+  button,
+  .bm-item,
+  .popup {
     user-select: none;
   }
 
