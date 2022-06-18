@@ -24,6 +24,8 @@ const AssignmentView = (props) => {
         <div className='status'>
           <p className={`due-date ${dueDateColour()}`}>Due: {format(props.day || parseISO(props.assigned.dueDate), 'MMM dd yyyy')}</p>
           <p className='assn-prog'>Your Progress:&nbsp;&nbsp;<span className='prog-status'> {props.status}!</span> </p>
+          {props.assigned.dateCompleted && <img className={'star-img'}src="/images/star.png" />}
+          {!props.assigned.dateCompleted && props.assigned.dateStarted && <img className={'bear-img'}src="/images/bear.png" />}
         </div>
         {(props.view !== 'complete') && <StatusForm {...props} />}
       </div >}
