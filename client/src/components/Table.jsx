@@ -7,11 +7,11 @@ const Table = (props) => {
     
     <section className='table__view'>
       <div className='student_names'>
-        <div>Students</div>
+        <div className='student_header'>Students</div>
         <ul>
 
           {props.students.map((student) => (
-            <li key={student.id} onClick={() => props.setStudent(student.id)}>
+            <li className='student_li' key={student.id} onClick={() => props.setStudent(student.id)}>
               {student.firstName} {student.lastName}
             </li>
           ))}
@@ -37,8 +37,8 @@ const Table = (props) => {
                   <td className='row_values'>{assignment.subject.name}</td>
                   <td className='row_values'>{assignment.title}</td>
                   <td className='row_values'>{format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')}</td>
-                  <td className='row_values'>{assignment.status}</td>
-                  <td className='row_values'>{assignment.url}</td>
+                  <td className={`row_values ${assignment.status}`}>{assignment.status}</td>
+                  <td className='row_values link'><a href={assignment.url} target="_blank" rel="noopener noreferrer">Link to Google Classroom</a></td>
                 </tr>
               );
             })}
