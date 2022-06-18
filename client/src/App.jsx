@@ -10,7 +10,6 @@ import Popup from 'components/Popup';
 import List from 'components/List';
 import Table from 'components/Table';
 
-
 const App = () => {
   const {
     admin,
@@ -31,6 +30,7 @@ const App = () => {
     togglePopup,
     closePopup,
     setView,
+    send_sms,
   } = useAppData();
 
   return (
@@ -43,7 +43,7 @@ const App = () => {
       />
 
       <main className='app'>
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')} />
+        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')} onRemind={() => send_sms()} />
         <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
 
         {focusedAssignment && <Modal {...focusedAssignment}
@@ -83,7 +83,7 @@ const App = () => {
           updateStatus={patchSubmission}
           onBack={() => setFocused(null)}
           view={view}
-          closePopup={() => closePopup()}
+          closePopup={() => closePopup}
           setStudent={(id) => setStudent(id)}
         />}
       </main>

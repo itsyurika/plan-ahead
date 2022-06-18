@@ -43,7 +43,6 @@ export function useAppData() {
     setFocused(-1);
   };
 
-
   // update state
   const addAssignmentToState = (data) => {
     setState((prev) => {
@@ -136,6 +135,11 @@ export function useAppData() {
   const assignmentList = foundAssignments.filter(filterList);
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
+  //send reminder 
+  const send_sms = async() => {
+    await axios.get(`/sendAlerts`)
+  }  
+
   return {
     // from state
     admin: state.admin,
@@ -157,6 +161,7 @@ export function useAppData() {
     putAssignment,
     deleteAssignment,
     patchSubmission,
-    closePopup
+    closePopup,
+    send_sms
   };
 };
