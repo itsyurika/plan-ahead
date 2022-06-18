@@ -4,23 +4,26 @@ import { format, parseISO } from 'date-fns';
 
 import Status from './Status';
 
-const AssignmentView = (props) => {  const dueDateColour = () => {
-  if (parseISO(props.defaultDueDate) < new Date()) return 'pastDue';
-  return 'due';
-};
+const AssignmentView = (props) => {
+  const dueDateColour = () => {
+    if (parseISO(props.defaultDueDate) < new Date()) return 'pastDue';
+    return 'due';
+  };
 
-return (
-  <article className='assignment__show'>
-      <header><h1 className='assignment-header'>{props.title}</h1></header>
-      <p className='assn-subj'>{props.subject.name}</p>
-      <p className='assn-desc'>Description:</p>
-      <p className='desc'>{props.description}</p>
-      <p className='assn-link'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></p>
-      <p className={`due-date ${dueDateColour()}`}>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+  return (
+    <article className='assignment__show'>
+      <header><h1 className='title'>{props.title}</h1></header>
+      <p className='subject'>{props.subject.name}</p>
+      <div className='description'>
+        <header>Details</header>
+        <p>{props.description}</p>
+      </div>
+      <p className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></p>
+      <div className={`due-date ${dueDateColour()}`}><span>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
 
       {(props.view !== 'complete') && <Status {...props} />}
-  </article>
-);
+    </article>
+  );
 };
 
 export default AssignmentView;

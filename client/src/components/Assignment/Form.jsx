@@ -59,7 +59,7 @@ const Form = (props) => {
         <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
         <div className='due-drop'>
           <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
-          <select className='selectList' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
+          <select className='subjects-dropdown' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>
         </div>

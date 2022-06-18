@@ -19,13 +19,48 @@ article.assignment__view {
       margin: 1rem 0;
     }
 
+    .title {
+      color: $default;
+      padding: 1rem;
+      background-image: linear-gradient(to right, $confirm 60%, $transparent);
+      border-radius: $radius/4;
+    }
+
+    .subject {
+      font-family: sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .description {
+      >header {
+        font-family: Helvetica, sans-serif;
+        font-size: 24px;
+        padding: 0.5rem;
+        background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
+        color: $default;
+        border-radius: $radius/4;
+      }
+
+      >p {
+        font-size: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid darkgray;
+      }
+    }
+
+    .classroom-url {
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
     &.notstarted {
-      background-color: $default;
+      background-color: $default ;
       background-image: none;
     }
 
     &.started {
-      background-color: $started;
+      background-color: $started  !important;
       background-image: none;
     }
 
@@ -35,82 +70,34 @@ article.assignment__view {
     }
   }
 
+
   section.assignment__form {
-    input {
+    .error {
+      margin-top: 1em;
+      font-size: 1rem;
+      color: $danger;
+    }
+
+    input,
+    textarea {
       display: block;
+      width: 30rem;
+      padding: 3px;
+      border-radius: 5px;
+      border: 2px solid lightblue;
       margin: 1rem 0;
     }
+
+    select {
+      padding: 3px;
+      border-radius: 5px;
+      border: 2px solid lightblue
+    }
   }
-
-
-
 }
 
 
-
-
-
-.edit-title {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.edit-description {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.edit-url {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.error {
-  margin-top: 3px;
-  color: red;
-  font-weight: bold;
-}
-
-.assignment-header {
-  color: $default;
-  padding: 1rem;
-  background-image: linear-gradient(to right, $confirm 60%, $transparent);
-  border-radius: $radius/4;
-}
-
-.assn-subj {
-  font-family: sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-}
-
-.assn-desc {
-  font-family: Helvetica, sans-serif;
-  font-size: 24px;
-  padding: 0.5rem;
-  background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
-  color: $default;
-  border-radius: $radius/4;
-}
-
-.desc {
-  font-size: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid darkgray;
-}
-
-.assn-link {
-  font-family: Arial, sans-serif;
-  cursor: pointer;
-}
-
-.assn-prog {
+.progress {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,15 +134,13 @@ article.assignment__view {
   justify-content: space-around;
 }
 
-.selectList {
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
+
 
 .due-date {
+  width: 60%;
+  margin: auto;
   padding: 0.6em 0.8em;
-  border-radius: 6px;
+  border-radius: $radius;
   color: $default;
   text-align: center;
 

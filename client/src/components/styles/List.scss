@@ -5,36 +5,8 @@
   flex-direction: column;
   align-items: center;
 
-
   .card-li {
     margin-bottom: 3em;
     list-style: none; // removes bullet
   }
 }
-
-// .ul-view {
-//   border: none;
-// }
-
-
-// .admin_list {
-//   overflow: auto;
-//   height: auto;
-//   width: 80vw;
-//   background-color: hsla(50, 75%, 97%, 1);
-//   background-image:
-//     radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
-//     radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
-//   color: #262422;
-//   border-radius: 10px;
-//   padding: 2rem 2rem 2rem 2rem;
-//   box-shadow: $drop-shadow;
-
-//   &button {
-//     display: none;
-//   }
-// }
-
-// .list_content {
-//   width: 70vw;
-// }
