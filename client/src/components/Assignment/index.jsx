@@ -6,7 +6,7 @@ import Show from './Show';
 const AssignmentView = (props) => {
   return (
     <article className={`assignment__view ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
-      {<Show {...props} />}
+      {(props.view || !props.admin) && <Show {...props} />}
       {props.admin && <Form {...props} />}
     </article >
   );
