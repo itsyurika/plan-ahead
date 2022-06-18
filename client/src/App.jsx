@@ -44,12 +44,12 @@ const App = () => {
       />
 
       <main className='app'>
-        {!admin && <Popup 
-        isPopupOpen={isPopupOpen} 
-        onClose={() => togglePopup()} 
-        assignmentList={assignmentList}
-        student={student}
-        onRemind={() => send_sms()} 
+        {!admin && <Popup
+          isPopupOpen={isPopupOpen}
+          onClose={() => togglePopup()}
+          assignmentList={assignmentList}
+          student={student}
+          onRemind={() => send_sms()}
         />}
 
         <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
@@ -59,12 +59,14 @@ const App = () => {
           onNew={postAssignment}
           onEdit={putAssignment}
           onDelete={deleteAssignment}
-          onStart={(e) => { 
+          onStart={(e) => {
             patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
             party.confetti(e.target);
           }}
-          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); 
-          party.sparkles(e.target)}}
+          onComplete={(e) => {
+            patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
+            party.sparkles(e.target);
+          }}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
@@ -76,7 +78,7 @@ const App = () => {
           onAdd={showCreateForm}
           onFocus={(id) => setFocused(id)}
           closePopup={() => closePopup()}
-          />}
+        />}
         {view && view !== 'students' && <List
           student={student}
           assignmentList={assignmentList}

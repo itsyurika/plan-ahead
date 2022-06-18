@@ -8,7 +8,6 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const messagingServiceSid = process.env.TWILIO_MSG_SID;
 const phoneNumber = process.env.PHONENUMBER;
 const ENV = {accountSid, authToken, messagingServiceSid, phoneNumber}
-console.log("ENV from server/index.js : ", ENV);
 
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
@@ -35,7 +34,6 @@ app.use('/students', students(prisma));
 app.use('/assignments', assignments(prisma));
 app.use('/submissions', submissions(prisma));
 app.use('/sendAlerts', sendAlerts(ENV, client));
-
 
 // = generic endpoints =
 app.get('/', (req, res) => {
