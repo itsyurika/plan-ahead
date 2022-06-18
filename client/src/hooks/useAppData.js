@@ -126,7 +126,7 @@ export function useAppData() {
   const filterList = (assignment) => {
     if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
     if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
-    if (state.view === 'complete') return assignment.assigned.dateCompleted;
+    if (state.view === 'completed') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
     return false; // no valid view ?
   };

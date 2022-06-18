@@ -9,7 +9,7 @@ const List = (props) => {
 
   return (
     <section className='list__view' onClick={props.closePopup}>
-      <h1>{viewName()}Assignments </h1>
+      <h1>{viewName()} Assignments</h1>
       <article className='list-item'>
         <ul className='ul-view'>
 

@@ -11,7 +11,7 @@ const AssignmentView = (props) => {
   };
 
   return (
-    <article className='assignment__show'>
+    <article className={`assignment__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
       <header><h1 className='title'>{props.title}</h1></header>
       <p className='subject'>{props.subject.name}</p>
       <div className='description'>
@@ -21,7 +21,7 @@ const AssignmentView = (props) => {
       <p className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></p>
       <div className={`due-date ${dueDateColour()}`}><span>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
 
-      {(props.view !== 'complete' && !props.admin) && <Status {...props} />}
+      {(!props.admin) && <Status {...props} />}
     </article>
   );
 };
