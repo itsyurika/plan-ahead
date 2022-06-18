@@ -1,6 +1,5 @@
 import { format, parseISO } from 'date-fns';
 
-import Show from './Show';
 import Form from './Form';
 import Status from './Status';
 

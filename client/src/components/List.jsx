@@ -9,7 +9,7 @@ const List = (props) => {
 
   return (
     <section className='list__view' onClick={props.closePopup}>
-      <h1> {viewName()} Assignments </h1>
+      <h1>{viewName()}Assignments </h1>
       <article className='list-item'>
         <ul className='ul-view'>
 
@@ -24,17 +24,12 @@ const List = (props) => {
                 onCancelComplete={() => { props.updateStatus(assignment.assigned.id, { dateCompleted: null }); }}
               />}
 
-              {props.admin &&
-                <div className='admin-list'>
-                  <Assignment {...props} {...assignment} />
-                </div>}
-
+              {props.admin && <Assignment {...props} {...assignment} />}
             </li>)
           )}
         </ul>
       </article>
     </section>
-
   );
 };
 

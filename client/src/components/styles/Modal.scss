@@ -1,5 +1,12 @@
 @import "styles/variables.scss";
 
+.outerwrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+}
+
 .modalBackdrop {
   position: absolute;
   width: 100vw;
@@ -31,21 +38,20 @@
   .form-modalContainer {
     position: relative;
     width: 90vw;
-
+    z-index: 3;
     background-color: hsla(50, 75%, 97%, 1);
     background-image:
       radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
       radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
-    border: 5px solid blueviolet;
-    border-radius: 10px;
-
+    border: 5px solid rgb(9, 90, 121);
+    border-radius: $radius;
     box-shadow: $drop-shadow;
-    z-index: 3;
 
     // assignment view overrides
     article.assignment__view,
     .assignment__show,
     .complete {
+      width: 100%;
       border: none;
     }
   }

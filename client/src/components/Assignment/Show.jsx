@@ -21,7 +21,7 @@ const AssignmentView = (props) => {
       <p className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></p>
       <div className={`due-date ${dueDateColour()}`}><span>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
 
-      {(props.view !== 'complete') && <Status {...props} />}
+      {(props.view !== 'complete' && !props.admin) && <Status {...props} />}
     </article>
   );
 };
