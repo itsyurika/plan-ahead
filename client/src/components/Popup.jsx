@@ -2,8 +2,9 @@ import './styles/Popup.scss';
 import { parseISO, format, subDays } from 'date-fns'
 
 const Popup = (props) => {
-  console.log("popup props:", props)
  
+
+  // ==helpers==
   const dueToday = props.assignmentList.filter(assignment => { return (
     format(subDays(new Date(), 1), 'MMM dd yyyy') === format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')
   )})
