@@ -2,7 +2,9 @@ import 'components/styles/Table.scss';
 import { format, parseISO } from 'date-fns';
 
 const Table = (props) => {
+  console.log(props)
   return (
+    
     <section className='table__view'>
       <div className='student_names'>
         <div>Students</div>
@@ -35,7 +37,7 @@ const Table = (props) => {
                   <td className='row_values'>{assignment.subject.name}</td>
                   <td className='row_values'>{assignment.title}</td>
                   <td className='row_values'>{format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')}</td>
-                  <td className='row_values'>Status</td>
+                  <td className='row_values'>{assignment.status}</td>
                   <td className='row_values'>{assignment.url}</td>
                 </tr>
               );
