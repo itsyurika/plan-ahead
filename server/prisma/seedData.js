@@ -4,12 +4,19 @@ const teacher = [
   { firstName: 'Mr.', lastName: 'Matthews', email: 'link@yahoo.com', password: 'hyrule' },
 ];
 
+const group = [
+  { name: 'default', dateAdjustment: 0},
+  { name: 'LD students', dateAdjustment: 7}
+]
+
 const student = [
-  { firstName: 'Sarah', lastName: 'Carter', email: 'jam@gmail.com', password: '123' },
-  { firstName: 'Mikhail', lastName: 'Dmitrivic', email: 'potato@gmail.com', password: '123' },
-  { firstName: 'Jose', lastName: 'Federico', email: 'onion@yahoo.com', password: '123' },
-  { firstName: 'Jake', lastName: 'Powell', email: 'onion2@yahoo.com', password: '123' },
-  { firstName: 'Kayla', lastName: 'Wong', email: 'onion3@yahoo.com', password: '123' },
+  { firstName: 'Sarah', lastName: 'Carter', email: 'jam@gmail.com', password: '123', groupId: 2 },
+  { firstName: 'Jose', lastName: 'Federico', email: 'onion@yahoo.com', password: '123', groupId: 2 },
+  { firstName: 'Jake', lastName: 'Powell', email: 'onion2@yahoo.com', password: '123', groupId: 2 },
+  { firstName: 'Kayla', lastName: 'Wong', email: 'onion3@yahoo.com', password: '123', groupId: 2 },
+  { firstName: 'Mikhail', lastName: 'Dmitrivic', email: 'potato@gmail.com', password: '123', groupId: 1 }, 
+  { firstName: 'Andile', lastName: 'Nika', email: 'aanika@gmail.com', password: '123', groupId: 1 },
+  { firstName: 'Lukas', lastName: 'Sulaiman', email: 'lukasss@gmail.com', password: '123', groupId: 1 }
 ];
 
 const subject = [
@@ -154,4 +161,4 @@ const submission = [
   { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 10 },
 ];
 
-module.exports = { teacher, student, subject, assignment, submission };
+module.exports = { teacher, group, student, subject, assignment, submission};

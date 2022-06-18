@@ -14,6 +14,16 @@ model Teacher {
   email       String       @db.VarChar(255)
   password    String       @db.VarChar(255)
   assignments Assignment[] @relation("assignmentsToteachers")
+  groups      Group[]      @relation("groupsToteachers")
+}
+
+model Group {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  dateAdjustment  Int       @db.SmallInt
+  teacher         Teacher   @relation("groupsToteachers", fields: [teacherId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  teacherId       Int       @default(1)
+  students        Student[] @relation("studentsTogroups")
 }
 
 model Student {
@@ -23,6 +33,8 @@ model Student {
   email       String       @db.VarChar(255)
   password    String       @db.VarChar(255)
   submissions Submission[]
+  Group       Group        @relation("studentsTogroups", fields: [groupId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  groupId     Int          @default(1)
 }
 
 model Subject {
