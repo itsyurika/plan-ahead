@@ -1,5 +1,6 @@
 import './styles/App.scss';
 import 'normalize.css';
+import party from 'party-js';
 import { useAppData } from './hooks/useAppData';
 
 import Header from 'components/Header';
@@ -51,8 +52,12 @@ const App = () => {
           onNew={postAssignment}
           onEdit={putAssignment}
           onDelete={deleteAssignment}
-          onStart={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() }); }}
-          onComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); }}
+          onStart={(e) => { 
+            patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
+            party.confetti(e.target);
+          }}
+          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); 
+          party.sparkles(e.target)}}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
