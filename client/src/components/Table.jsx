@@ -2,9 +2,8 @@ import 'components/styles/Table.scss';
 import { format, parseISO } from 'date-fns';
 
 const Table = (props) => {
-  console.log(props)
   return (
-    
+
     <section className='table__view'>
       <div className='student_names'>
         <div>Students</div>
