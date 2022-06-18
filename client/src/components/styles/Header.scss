@@ -4,7 +4,7 @@
   --navbar-bg-color: transparent;
   --navbar-text-color: #455d3e;
   --navbar-text-color-focus: #748c70;
-  --navbar-height: 3rem;
+  --navbar-height: 4rem;
 }
 
 // Top nav bar
@@ -33,7 +33,7 @@ header.navbar {
 }
 
 
-// Calendar Header
+// Main Calendar (green) Header
 section.calendar {
   border-radius: $radius;
   overflow: hidden;
