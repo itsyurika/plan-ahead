@@ -13,7 +13,7 @@ const AssignmentView = (props) => {
   return (
     <article className={`assignment__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
       <header><h1 className='title'>{props.title}</h1></header>
-      <p className='subject'>{props.subject.name}</p>
+      <p className='subject'>{props.subject?.name}</p>
       <div className='description'>
         <header>Details</header>
         <p>{props.description}</p>

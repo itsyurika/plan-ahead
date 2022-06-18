@@ -8,5 +8,9 @@
   .card-li {
     margin-bottom: 3em;
     list-style: none; // removes bullet
+
+    .assignment__form {
+      display: none;
+    }
   }
 }
