@@ -8,17 +8,20 @@ article.assignment__view {
   overflow: hidden;
 
   article.assignment__show {
+    position: relative;
     padding: 2rem;
 
     p {
       margin: 1rem 0;
     }
 
+
     .title {
       color: $default;
       padding: 1rem;
-      background-image: linear-gradient(to right, $confirm 60%, $transparent);
-      border-radius: $radius/4;
+      background: linear-gradient(to right, $confirm 60%, $transparent);
+      border-radius: calc($radius/4);
+    
     }
 
     .subject {
@@ -34,7 +37,8 @@ article.assignment__view {
         padding: 0.5rem;
         background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
         color: $default;
-        border-radius: $radius/4;
+        border-radius: calc($radius/4);
+        
       }
 
       >p {
@@ -62,7 +66,31 @@ article.assignment__view {
     &.complete {
       background-color: $complete;
       background-image: none;
-    }
+
+      > header .title {
+
+        background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        animation: animatedgradient 3s ease alternate infinite;
+        background-size: 300% 300%;
+        
+        
+  
+      }
+        header {
+      background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+      animation: animatedgradient 3s ease alternate infinite;
+      background-size: 300% 300%;
+      border-radius: calc($radius/2);
+
+      }
+
+      .description {
+        >header {
+          border-radius: calc($radius/4); 
+        }
+      }
+    
+  }
 
     .due-date {
       width: 30%;
@@ -100,7 +128,7 @@ article.assignment__view {
     .buttons {
       margin-top: 1em;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       gap: 2em;
     }
   }
@@ -153,4 +181,33 @@ article.assignment__view {
       justify-content: space-around;
     }
   }
+}
+
+.star-img {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  right: 20%;
+  top: 4.5%;
+}
+
+.bear-img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 20%;
+  top: 5%;
+}
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

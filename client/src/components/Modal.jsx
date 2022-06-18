@@ -2,7 +2,6 @@ import 'components/styles/Assignment.scss';
 import Assignment from "components/Assignment";
 
 const Modal = (props) => {
-
   return (
     <article className='outerwrapper'>
       <div className={`modalBackdrop ${props.assigned?.dateCompleted ? 'complete' : ''}`}>
