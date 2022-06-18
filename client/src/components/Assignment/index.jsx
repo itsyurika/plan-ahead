@@ -5,7 +5,6 @@ import StatusForm from './StatusForm';
 import { format, parseISO } from 'date-fns';
 
 const AssignmentView = (props) => {
-  console.log("props from assignment view: ", props);
   const dueDateColour = () => {
     if (props.status !== 'Complete' && parseISO(props.assigned.dueDate) < new Date()) return 'pastDue';
     return 'due';
