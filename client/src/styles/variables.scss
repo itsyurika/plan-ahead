@@ -31,14 +31,14 @@ $active-opacity: 1;
 $inactive-opacity: 0.15;
 
 // sizing
-$font-scale: calc(0.6em + 0.3vw + 0.3vh);
+$font-scale: calc(0.6em + 0.3vw + 0.2vh);
 $radius: 1em;
 
 $nav-width: 5rem;
 $nav-height: 5rem;
 
 $cell-width: 8rem;
-$cell-height: 8rem;
+$cell-height: 4rem;
 
 // header colors
 :root {
