@@ -75,7 +75,7 @@
 
 .list-group {
   > *:hover {
-    cursor: pointer;
+    cursor: default;
   }
   li:hover {
     color: var(--color9);

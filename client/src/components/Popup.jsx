@@ -27,7 +27,7 @@ const Popup = (props) => {
       <h3>Due Today</h3>
       <ul>
       {dueToday.length ? dueToday.map((due) => {
-          return <li>{due.subject.name} - {due.title} - {due.status}</li>
+          return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>
         }) : <li>Nothing Due!</li>}
 
       </ul>
@@ -36,7 +36,7 @@ const Popup = (props) => {
       <h3>Due Tomorrow</h3>
       <ul>
       {dueTmrw.length ? dueTmrw.map((due) => {
-          return <li>{due.subject.name} - {due.title} - {due.status}</li>
+          return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>
         }) : <li>Nothing Due!</li>}
       </ul>
       </div>
@@ -44,7 +44,7 @@ const Popup = (props) => {
         <h3 onClick={props.showPastDue}>Past Due</h3>
         <ul>
         {dueBefore.length ? dueBefore.map((due) => {
-          return <li>{due.subject.name} - {due.title} - {due.status}</li>
+          return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>
         }) : <li>Great job! Nothing overdue!</li>}
         </ul>
       </div>
