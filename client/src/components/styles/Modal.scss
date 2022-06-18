@@ -1,62 +1,12 @@
 @import "styles/variables.scss";
+@import "components/styles/confetti.scss";
 
-$particles: 50;
-$width: 500;
-$height: 500;
 
-$box-shadow: ();
-$box-shadow2: ();
-@for $i from 0 through $particles {
-  $box-shadow: $box-shadow,
-               random($width)-$width / 2 + px
-               random($height)-$height / 1.2 + px
-               hsl(random(360), 100, 50);
-  $box-shadow2: $box-shadow2, 0 0 #fff
-}
-@mixin keyframes ($animationName) {
-    @-webkit-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-moz-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-o-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-ms-keyframes #{$animationName} {
-        @content;
-    }
-
-    @keyframes #{$animationName} {
-        @content;
-    }
-}
-
-@mixin animation-delay ($settings) {
-    -moz-animation-delay: $settings;
-    -webkit-animation-delay: $settings;
-    -o-animation-delay: $settings;
-    -ms-animation-delay: $settings;
-    animation-delay: $settings;
-}
-
-@mixin animation-duration ($settings) {
-    -moz-animation-duration: $settings;
-    -webkit-animation-duration: $settings;
-    -o-animation-duration: $settings;
-    -ms-animation-duration: $settings;
-    animation-duration: $settings;
-}
-
-@mixin animation ($settings) {
-    -moz-animation: $settings;
-    -webkit-animation: $settings;
-    -o-animation: $settings;
-    -ms-animation: $settings;
-    animation: $settings;
+.outerwrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
 }
 
 .modalBackdrop {
@@ -75,12 +25,20 @@ $box-shadow2: ();
   @include animation-duration((1.25s, 1.25s, 6.25s));
 
   &.del {
+    position: absolute;
     display: flex;
     right: 0;
     bottom: 0;
-    width: 79.5vw;
-    height: 69.5vh;
+    width: 100%;
+    height: 100%;
+  }
 
+  .cancel-X {
+    position: absolute;
+    right: 0.5em;
+    top: 0.2em;
+    font-size: 32px;
+    cursor: pointer;
   }
 
   // &.complete {
@@ -95,17 +53,36 @@ $box-shadow2: ();
   //   @include animation-delay((1.25s, 1.25s, 1.25s));
   //   @include animation-duration((1.25s, 1.25s, 6.25s));
   //   z-index: 30;
-    
+
   // }
+}
+
+.form-modalContainer {
+  position: relative;
+  width: 90vw;
+  z-index: 3;
+  overflow: hidden;
+
+  border: 5px solid rgb(9, 90, 121);
+  border-radius: $radius;
+  box-shadow: $drop-shadow;
+
+  // assignment view overrides
+  article.assignment__view,
+  .assignment__show,
+  .complete {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+  }
 }
 
 .del-modalContainer {
   position: absolute;
   display: flex;
-  top: 25%;
-  left: auto;
-  height: auto;
-  width: auto;
+  flex-direction: column;
+  align-items: center;
+
   background-color: tomato;
   color: white;
   font-size: 20px;
@@ -113,86 +90,15 @@ $box-shadow2: ();
   border: solid 5px red;
   border-radius: 10px;
   padding: 2rem;
-  box-shadow:
-    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-    100px 100px 80px rgba(0, 0, 0, 0.07);
+  box-shadow: $drop-shadow;
   z-index: 4;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
 }
 
-.form-modalContainer {
+
+.cancel-X {
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: auto;
-  height: auto;
-  width: 80vw;
-  background-color: hsla(50, 75%, 97%, 1);
-  background-image:
-    radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
-    radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
-  color: #262422;
-  border: 5px solid blueviolet;
-  border-radius: 10px;
-
-  box-shadow:
-    1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
-    3.9px 3.9px 3.1px rgba(0, 0, 0, 0.023),
-    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-    10.3px 10.3px 8.2px rgba(0, 0, 0, 0.033),
-    15.2px 15.2px 12.2px rgba(0, 0, 0, 0.037),
-    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-    33.5px 33.5px 26.8px rgba(0, 0, 0, 0.047),
-    53.4px 53.4px 42.7px rgba(0, 0, 0, 0.054),
-    100px 100px 80px rgba(0, 0, 0, 0.07);
-  z-index: 3;
-
-  button {
-    margin-right: .5rem;
-  }
-
-}
-
-
-
-
-
-@include keyframes(bang) {
-  to {
-    box-shadow:$box-shadow2;
-  }
-}
-    
-    
-@include keyframes(position) {
-  0%, 19.9% {
-    margin-top: 50%;
-    margin-left: 50%;
-  }
-  20%, 39.9% {
-    margin-top: 50%;
-    margin-left: 50%;
-  }
-  40%, 59.9% {  
-    margin-top: 50%;
-    margin-left: 50%
-  }
-  60%, 79.9% {  
-    margin-top: 50%;
-    margin-left: 50%;
-  }
-  80%, 99.9% {  
-    margin-top: 50%;
-    margin-left: 50%;
-  }
+  right: 0.5em;
+  top: 0.2em;
+  font-size: 32px;
+  cursor: pointer;
 }

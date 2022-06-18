@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns';
 
 const Table = (props) => {
   return (
-    
+
     <section className='table__view'>
       <div className='student_names'>
         <div className='student_header'><h2>Students</h2></div>

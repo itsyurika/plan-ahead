@@ -27,7 +27,7 @@
   list-style: none;
   cursor: pointer;
   &:hover {
-    
+
     transform: scale(1.1)
   }
 }
@@ -84,6 +84,5 @@ background: lightcyan;
   &.started {
     background-color: $danger;
     color: #f9f7f5;
-  } 
-
+  }
 }
