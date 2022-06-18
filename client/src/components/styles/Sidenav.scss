@@ -1,9 +1,5 @@
-#App {
-  font-family: sans-serif;
+@import "styles/variables.scss";
 
-  /* Give app full page to work with */
-  height: 100vh;
-}
 
 /* Individual item */
 .bm-item {
@@ -60,6 +56,8 @@
   background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
 
   h2 {
     cursor: pointer;

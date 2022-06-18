@@ -10,7 +10,6 @@
   --color7: #9b7ecb;
   --color8: #00427d;
   --color9: #005d82;
-
 }
 
 .popup {
@@ -48,12 +47,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-    height: 50%;
+    min-height: 50%;
     z-index: 100;
     box-shadow:
       0px 0px 30px rgba(0, 0, 0, 0.4),
       10px 14px 16px rgba(0, 0, 0, 0.2);
   }
+
   li {
     font-weight: 500;
   }
@@ -68,13 +68,17 @@
     width: 50px;
     height: 50px;
     border-radius: 0 25px 0 0;
+    cursor: pointer;
 
     div {
       visibility: hidden;
+    }
 
+    &:hover {
+      transition: 300ms;
+      transform: scale(1.2);
     }
   }
-
 }
 
 .list-group {

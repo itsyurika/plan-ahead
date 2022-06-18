@@ -15,13 +15,11 @@ article.assignment__view {
       margin: 1rem 0;
     }
 
-
     .title {
       color: $default;
       padding: 1rem;
       background: linear-gradient(to right, $confirm 60%, $transparent);
       border-radius: calc($radius/4);
-    
     }
 
     .subject {
@@ -38,7 +36,7 @@ article.assignment__view {
         background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
         color: $default;
         border-radius: calc($radius/4);
-        
+
       }
 
       >p {
@@ -49,48 +47,42 @@ article.assignment__view {
     }
 
     .classroom-url {
+      font-size: $font-scale;
       font-family: Arial, sans-serif;
       cursor: pointer;
     }
 
     &.notstarted {
       background-color: $default ;
-      background-image: none;
     }
 
     &.started {
       background-color: $started  !important;
-      background-image: none;
     }
 
     &.complete {
       background-color: $complete;
-      background-image: none;
 
-      > header .title {
+      // override overdue bg
+      .due-date {
+        background-color: $confirm !important;
+      }
 
+      // animated headers
+      >header .title {
         background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-        animation: animatedgradient 3s ease alternate infinite;
+        animation: animatedgradient 7s ease alternate infinite;
         background-size: 300% 300%;
-        
-        
-  
-      }
-        header {
-      background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-      animation: animatedgradient 3s ease alternate infinite;
-      background-size: 300% 300%;
-      border-radius: calc($radius/2);
-
       }
 
-      .description {
-        >header {
-          border-radius: calc($radius/4); 
-        }
+      .description>header {
+        background: linear-gradient(120deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        animation: animatedgradient 9s ease alternate infinite;
+        width: 40%;
+        background-size: 300% 300%;
+        border-radius: calc($radius/4);
       }
-    
-  }
+    }
 
     .due-date {
       width: 30%;
@@ -100,11 +92,11 @@ article.assignment__view {
       text-align: center;
 
       &.due {
-        background: $confirm;
+        background-color: $confirm;
       }
 
       &.pastDue {
-        background: $danger;
+        background-color: $danger;
       }
     }
   }
@@ -138,6 +130,7 @@ article.assignment__view {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    font-size: $font-scale;
 
     .error {
       margin-top: 1em;
@@ -201,13 +194,15 @@ article.assignment__view {
 
 
 @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
