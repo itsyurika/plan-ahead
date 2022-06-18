@@ -77,6 +77,14 @@ const assignment = [
     subjectId: 4
   },
   {
+    defaultDueDate: new Date('2022-06-20T06:00:00'),
+    title: 'Fractions - Decimals',
+    description: 'This is a review of how fractions work.  Fill out the handout from class, or get one from the google classroom link.  Convert the fractions into decimals, and the decimals into fractions.',
+    url: 'https://classroom.google.com/u/0/h',
+    teacherId: 1,
+    subjectId: 4
+  },
+  {
     defaultDueDate: new Date('2022-06-21T06:00:00'),
     title: 'Periodic Table - Elements',
     description: 'Look up an element in the periodic table.  What is it called?  What is the atomic weight? What else can you find out about it?',
@@ -91,14 +99,6 @@ const assignment = [
     url: 'https://classroom.google.com/u/0/h',
     teacherId: 1,
     subjectId: 5
-  },
-  {
-    defaultDueDate: new Date('2022-06-20T06:00:00'),
-    title: 'Fractions - Decimals',
-    description: 'This is a review of how fractions work.  Fill out the handout from class, or get one from the google classroom link.  Convert the fractions into decimals, and the decimals into fractions.',
-    url: 'https://classroom.google.com/u/0/h',
-    teacherId: 1,
-    subjectId: 2
   },
 ];
 

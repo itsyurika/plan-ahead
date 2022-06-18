@@ -2,10 +2,18 @@ import 'components/styles/Header.scss';
 import 'components/styles/Calendar.scss';
 
 import { useState } from 'react';
-import { format, addWeeks, isSameDay, } from 'date-fns';
+import { format, addWeeks, isSameDay, isBefore, addDays } from 'date-fns';
 import { getDatesForWeek, sortAssignmentsByDay } from 'hooks/helpers';
 
 import Column from 'components/Column';
+
+const getStyle = (day, today) => {
+  if (isSameDay(day, today)) return 'selected';
+  if (isBefore(day, today)) return 'past';
+  if (isBefore(day, addDays(today, 4))) return 'near';
+  return 'upcoming';
+};
+
 
 const Calendar = (props) => {
   const today = new Date();
@@ -25,12 +33,12 @@ const Calendar = (props) => {
         totalRows={totalRows}
         onFocus={props.onFocus}
         onAdd={() => props.onAdd(date)}
-        selected={isSameDay(date, today) ? 'selected' : ''}
+        style={getStyle(date, today)}
       />));
 
     return (
-      <section className='table' onClick={props.closePopup}>
-        <main className={'table__column'}>
+      <section className={'table'} onClick={props.closePopup}>
+        <main className={`table__column ${isBefore(date, today) ? 'past' : ''}`}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>
           </header>

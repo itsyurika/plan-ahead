@@ -26,11 +26,8 @@ section.calendar {
 
     // table 2
     &:last-of-type {
-
-
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
-      border-color: #81cdf2;
 
       header.cell.label {
         background: #b3e1f7;
@@ -68,6 +65,36 @@ section.calendar {
         }
       }
 
+      // dim past dates
+      &.past {
+        &.cards .cell {
+          background-color: #fbfbfb;
+        }
+
+        >header,
+        .card__show,
+        p {
+          opacity: 0.6;
+        }
+
+        .notstarted,
+        .started {
+          opacity: 1;
+        }
+      }
+
+      &.near {
+        .cell {
+          // yellow
+          background-color: #fffbeb;
+        }
+
+        .card-cell,
+        +.table__column .card-cell {
+          border-left-color: #e9b2ada7;
+        }
+      }
+
       // table header
       >header.cell.label {
         height: calc(1.8rem + 3vh); // sets min height and scales with viewport
@@ -76,7 +103,7 @@ section.calendar {
         word-break: nowrap; // disable word-break
         overflow: hidden;
         text-align: center;
-        border-left: 1px solid $outline-dark;
+        border-left: 1px solid $light-blue;
 
         display: flex;
         flex-direction: column;

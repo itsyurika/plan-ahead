@@ -18,7 +18,7 @@ article.assignment__view {
       color: $default;
       padding: 1rem;
       background-image: linear-gradient(to right, $confirm 60%, $transparent);
-      border-radius: $radius/4;
+      border-radius: calc($radius/4);
     }
 
     .subject {
@@ -34,7 +34,7 @@ article.assignment__view {
         padding: 0.5rem;
         background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
         color: $default;
-        border-radius: $radius/4;
+        border-radius: calc($radius/4);
       }
 
       >p {
@@ -100,7 +100,7 @@ article.assignment__view {
     .buttons {
       margin-top: 1em;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       gap: 2em;
     }
   }
