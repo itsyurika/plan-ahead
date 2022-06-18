@@ -29,14 +29,6 @@
     height: 100%;
   }
 
-  .cancel-X {
-    position: absolute;
-    right: 0.5em;
-    top: 0.2em;
-    font-size: 32px;
-    cursor: pointer;
-  }
-
 
 }
 
@@ -57,6 +49,14 @@
     width: 100%;
     border: none;
     border-radius: 0;
+  }
+  .cancel-X {
+    position: absolute;
+    right: 0.5em;
+    top: 0.2em;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 8;
   }
 }
 
@@ -81,14 +81,3 @@
 
 
 
-@keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
