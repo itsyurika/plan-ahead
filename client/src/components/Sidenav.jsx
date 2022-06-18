@@ -31,7 +31,7 @@ const Sidenav = (props) => {
           <li onClick={() => { props.selectView('pastDue'); }}>Past Due</li>
           {(props.admin
             && <li onClick={() => { props.selectView('all'); }} >All Assignments</li>)
-            || <li onClick={() => { props.selectView('complete'); }} >Completed</li>}
+            || <li onClick={() => { props.selectView('completed'); }} >Completed</li>}
         </ul>
       </div>
       {props.admin && <div>

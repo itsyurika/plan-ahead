@@ -1,5 +1,3 @@
-const { addDays } = require("date-fns");
-
 const teacher = [
   { firstName: 'Ms.', lastName: 'Clarino', email: 'rick.sandchez@gmail.com', password: 'picklerick' },
   { firstName: 'Ms.', lastName: 'Yama', email: 'lisa.simpson@gmail.com', password: 'ehhhhh' },
@@ -31,7 +29,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 1
   },
-
   {
     defaultDueDate: new Date('2022-06-17T06:00:00'),
     title: 'Watercolours',
@@ -40,7 +37,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 1
   },
-
   {
     defaultDueDate: new Date('2022-06-20T06:00:00'),
     title: "Isn't It Ironic?",
@@ -49,7 +45,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 2
   },
-
   {
     defaultDueDate: new Date('2022-06-17T06:00:00'),
     title: "Verbs, Adverbs & Proverbs?",
@@ -58,7 +53,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 2
   },
-
   {
     defaultDueDate: new Date('2022-06-23T06:00:00'),
     title: 'World War II',
@@ -67,7 +61,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 3
   },
-
   {
     defaultDueDate: new Date('2022-06-16T06:00:00'),
     title: 'World History',
@@ -76,7 +69,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 3
   },
-
   {
     defaultDueDate: new Date('2022-06-24T06:00:00'),
     title: 'Fractions - Multiplication',
@@ -84,7 +76,14 @@ const assignment = [
     teacherId: 1,
     subjectId: 4
   },
-
+  {
+    defaultDueDate: new Date('2022-06-20T06:00:00'),
+    title: 'Fractions - Decimals',
+    description: 'This is a review of how fractions work.  Fill out the handout from class, or get one from the google classroom link.  Convert the fractions into decimals, and the decimals into fractions.',
+    url: 'https://classroom.google.com/u/0/h',
+    teacherId: 1,
+    subjectId: 4
+  },
   {
     defaultDueDate: new Date('2022-06-21T06:00:00'),
     title: 'Periodic Table - Elements',
@@ -93,7 +92,6 @@ const assignment = [
     teacherId: 1,
     subjectId: 5
   },
-
   {
     defaultDueDate: new Date('2022-06-28T06:00:00'),
     title: 'Electrons, Protons, and Neutrons',
@@ -102,67 +100,58 @@ const assignment = [
     teacherId: 1,
     subjectId: 5
   },
-
-  {
-    defaultDueDate: new Date('2022-06-20T06:00:00'),
-    title: 'Fractions - Decimals',
-    description: 'This is a review of how fractions work.  Fill out the handout from class, or get one from the google classroom link.  Convert the fractions into decimals, and the decimals into fractions.',
-    url: 'https://classroom.google.com/u/0/h',
-    teacherId: 1,
-    subjectId: 2
-  },
 ];
 
 const submission = [
-  { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 1 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 2 },
-  { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 3 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 4 },
-  { dueDate: addDays((new Date()), -7), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 6 },
-  { dueDate: addDays((new Date()), -2), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 7 },
-  { dueDate: addDays((new Date()), -9), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 8 },
-  { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 9 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 10 },
-  { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 1 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 2 },
-  { dueDate: addDays((new Date()), -3), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 3 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 4 },
-  { dueDate: addDays((new Date()), 0), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 5 },
-  { dueDate: addDays((new Date()), -7), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 6 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 7 },
-  { dueDate: addDays((new Date()), -9), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 8 },
-  { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 9 },
-  { dueDate: addDays((new Date()), 4), dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 10 },
-  { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 1 },
-  { dueDate: addDays((new Date()), -1), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 2 },
-  { dueDate: addDays((new Date()), 0), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 3 },
-  { dueDate: addDays((new Date()), -1), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 3, assignmentId: 4 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 5 },
-  { dueDate: addDays((new Date()), -2), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 6 },
-  { dueDate: addDays((new Date()), 8), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 7 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 3, assignmentId: 8 },
-  { dueDate: addDays((new Date()), 6), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 9 },
-  { dueDate: addDays((new Date()), 7), dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 10 },
-  { dueDate: addDays((new Date()), 1), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 1 },
-  { dueDate: addDays((new Date()), -1), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 2 },
-  { dueDate: addDays((new Date()), 0), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 3 },
-  { dueDate: addDays((new Date()), -1), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 4 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 5 },
-  { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 4, assignmentId: 6 },
-  { dueDate: addDays((new Date()), 8), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 7 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 4, assignmentId: 8 },
-  { dueDate: addDays((new Date()), 6), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 9 },
-  { dueDate: addDays((new Date()), 7), dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 10 },
-  { dueDate: addDays((new Date()), 1), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 1 },
-  { dueDate: addDays((new Date()), -1), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 2 },
-  { dueDate: addDays((new Date()), 0), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 3 },
-  { dueDate: addDays((new Date()), -1), dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 4 },
-  { dueDate: addDays((new Date()), 5), dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 5 },
-  { dueDate: addDays((new Date()), -2), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 6 },
-  { dueDate: addDays((new Date()), 8), dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 7 },
-  { dueDate: addDays((new Date()), -6), dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 5, assignmentId: 8 },
-  { dueDate: addDays((new Date()), 6), dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 9 },
-  { dueDate: addDays((new Date()), 7), dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 4 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 2, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 3, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 3, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 3, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 4, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 4, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 4, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 5, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 5, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 10 },
 ];
 
 module.exports = { teacher, student, subject, assignment, submission };

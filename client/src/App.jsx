@@ -44,12 +44,12 @@ const App = () => {
       />
 
       <main className='app'>
-        {!admin && <Popup 
-        isPopupOpen={isPopupOpen} 
-        onClose={() => togglePopup()} 
-        assignmentList={assignmentList}
-        student={student}
-        onRemind={() => send_sms()} 
+        {!admin && <Popup
+          isPopupOpen={isPopupOpen}
+          onClose={() => togglePopup()}
+          assignmentList={assignmentList}
+          student={student}
+          onRemind={() => send_sms()}
         />}
 
         <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
@@ -59,7 +59,7 @@ const App = () => {
           onNew={postAssignment}
           onEdit={putAssignment}
           onDelete={deleteAssignment}
-          onStart={(e) => { 
+          onStart={(e) => {
             patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
             party.confetti(e.target, { count: party.variation.range(20,60)});
           }}
@@ -76,7 +76,7 @@ const App = () => {
           onAdd={showCreateForm}
           onFocus={(id) => setFocused(id)}
           closePopup={() => closePopup()}
-          />}
+        />}
         {view && view !== 'students' && <List
           student={student}
           assignmentList={assignmentList}

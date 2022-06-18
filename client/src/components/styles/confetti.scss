@@ -1,0 +1,101 @@
+@import "styles/variables.scss";
+
+$particles: 50;
+$width: 500;
+$height: 500;
+$box-shadow: (
+);
+$box-shadow2: (
+);
+
+@for $i from 0 through $particles {
+  $box-shadow: $box-shadow,
+  random($width)-$width / 2+px random($height)-$height / 1.2+px hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2,
+  0 0 #fff
+}
+
+@mixin keyframes ($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation-delay ($settings) {
+  -moz-animation-delay: $settings;
+  -webkit-animation-delay: $settings;
+  -o-animation-delay: $settings;
+  -ms-animation-delay: $settings;
+  animation-delay: $settings;
+}
+
+@mixin animation-duration ($settings) {
+  -moz-animation-duration: $settings;
+  -webkit-animation-duration: $settings;
+  -o-animation-duration: $settings;
+  -ms-animation-duration: $settings;
+  animation-duration: $settings;
+}
+
+@mixin animation ($settings) {
+  -moz-animation: $settings;
+  -webkit-animation: $settings;
+  -o-animation: $settings;
+  -ms-animation: $settings;
+  animation: $settings;
+}
+
+@include keyframes(bang) {
+  to {
+    box-shadow: $box-shadow2;
+  }
+}
+
+@include keyframes(position) {
+
+  0%,
+  19.9% {
+    margin-top: 50%;
+    margin-left: 50%;
+  }
+
+  20%,
+  39.9% {
+    margin-top: 50%;
+    margin-left: 50%;
+  }
+
+  40%,
+  59.9% {
+    margin-top: 50%;
+    margin-left: 50%
+  }
+
+  60%,
+  79.9% {
+    margin-top: 50%;
+    margin-left: 50%;
+  }
+
+  80%,
+  99.9% {
+    margin-top: 50%;
+    margin-left: 50%;
+  }
+}

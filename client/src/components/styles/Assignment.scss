@@ -1,207 +1,158 @@
 @import "styles/variables.scss";
 
-.outerwrapper {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 50;
-}
-
-article.assignment__show {
-  padding: 2rem;
-
-  p {
-    margin: 1rem 0;
-  }
-
-  &.notstarted {
-    background-color: $default;
-    background-image: none;
-  }
-
-  &.started {
-    background-color: $started;
-    background-image: none;
-  }
-
-  &.complete {
-    background-color: $complete;
-    background-image: none;
-  }
-}
-
-section.assignment__form {
-  margin: 0;
-
-  input {
-    display: block;
-    margin: 1rem 0;
-  }
-}
-
 article.assignment__view {
   background-color: $default;
-  max-width: 90%;
-  padding: .5rem;
-  margin: 1rem 0;
-  border: 1px solid blueviolet;
-  border-radius: 0.4rem;
+  width: 100%;
+  border: 0.2rem solid rgb(166, 57, 188);
+  border-radius: $radius;
+  overflow: hidden;
 
-  p {
-    margin: .5rem 0;
+  article.assignment__show {
+    padding: 2rem;
+
+    p {
+      margin: 1rem 0;
+    }
+
+    .title {
+      color: $default;
+      padding: 1rem;
+      background-image: linear-gradient(to right, $confirm 60%, $transparent);
+      border-radius: calc($radius/4);
+    }
+
+    .subject {
+      font-family: sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .description {
+      >header {
+        font-family: Helvetica, sans-serif;
+        font-size: 24px;
+        padding: 0.5rem;
+        background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
+        color: $default;
+        border-radius: calc($radius/4);
+      }
+
+      >p {
+        font-size: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid darkgray;
+      }
+    }
+
+    .classroom-url {
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    &.notstarted {
+      background-color: $default ;
+      background-image: none;
+    }
+
+    &.started {
+      background-color: $started  !important;
+      background-image: none;
+    }
+
+    &.complete {
+      background-color: $complete;
+      background-image: none;
+    }
+
+    .due-date {
+      width: 30%;
+      padding: 0.6em 0.8em;
+      border-radius: $radius;
+      color: $default;
+      text-align: center;
+
+      &.due {
+        background: $confirm;
+      }
+
+      &.pastDue {
+        background: $danger;
+      }
+    }
   }
 
-  button {
-    margin-right: .5rem;
+  .status__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .progress {
+      font-size: 16px;
+      border-top: 2px solid darkgray;
+      padding: 2rem;
+
+      span {
+        font-size: 20px;
+        font-style: italic;
+      }
+    }
+
+    .buttons {
+      margin-top: 1em;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2em;
+    }
   }
 
-  &header {
-    color: aqua;
+  section.assignment__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+
+    .error {
+      margin-top: 1em;
+      font-size: 1rem;
+      color: $danger;
+    }
+
+    input,
+    textarea {
+      display: block;
+      width: 30rem;
+      padding: 3px;
+      border-radius: 5px;
+      border: 2px solid lightblue;
+      margin: 1rem 0;
+    }
+
+    select {
+      padding: 3px;
+      border-radius: 5px;
+      border: 2px solid lightblue
+    }
+
+    .due-drop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .del-warning {
+      font-size: 32px;
+    }
+
+    .del-title {
+      font-size: 24px;
+    }
+
+    .buttons {
+      margin-top: 1em;
+      display: flex;
+      justify-content: space-around;
+    }
   }
-
-  &.started {
-    background-color: $started;
-  }
-
-  &.complete {
-    background-color: $complete;
-  }
-}
-
-
-
-.edit-title {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.edit-description {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.edit-url {
-  width: 30rem;
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.cancel-X {
-  position: absolute;
-  right: 0.5em;
-  top: 0.2em;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.error {
-  margin-top: 3px;
-  color: red;
-  font-weight: bold;
-}
-
-.assignment-header {
-  color: $default;
-  padding: 1rem;
-  background-image: linear-gradient(to right, $confirm 60%, $transparent);
-  border-radius: $radius/4;
-}
-
-.assn-subj {
-  font-family: sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-}
-
-.assn-desc {
-  font-family: Helvetica, sans-serif;
-  font-size: 24px;
-  padding: 0.5rem;
-  background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
-  color: $default;
-  border-radius: $radius/4;
-}
-
-.desc {
-  font-size: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid darkgray;
-}
-
-.assn-link {
-  font-family: Arial, sans-serif;
-  cursor: pointer;
-}
-
-.assn-prog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  border-top: 2px solid darkgray;
-  padding: 2rem;
-}
-
-.prog-status {
-  font-size: 20px;
-  font-style: italic;
-}
-
-.status__form {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.assignment__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.due-drop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.buttons {
-  margin-top: 1em;
-  display: flex;
-  justify-content: space-between;
-}
-
-.selectList {
-  padding: 3px;
-  border-radius: 5px;
-  border: 2px solid lightblue
-}
-
-.due-date {
-  padding: 0.6em 0.8em;
-  border-radius: 6px;
-  color: $default;
-  text-align: center;
-
-  &.due {
-    background: $confirm;
-  }
-
-  &.pastDue {
-    background: $danger;
-  }
-}
-
-.del-warning {
-  font-size: 32px;
-}
-
-.del-title {
-  font-size: 24px;
 }
 
 .star-img {
@@ -219,4 +170,3 @@ article.assignment__view {
   right: 20%;
   top: 5%;
 }
-
