@@ -3,9 +3,38 @@
 .table__view {
   margin-top: 2rem;
   display: flex;
+
   justify-content: space-between;
+  list-style: none;
 }
+
+.student_header {
+  font-weight: bold;
+  font-size: 26px;
+  margin: 1rem;
+}
+
+.student_names {
+  align-items: center;
+  list-style: none;
+}
+
+.student_li {
+  padding: 0.5rem;
+  border: 1px solid blue;
+  border-radius: 6px;
+  background: aliceblue;
+  list-style: none;
+  cursor: pointer;
+  &:hover {
+    
+    transform: scale(1.1)
+  }
+}
+
+
 .table_wrapper {
+  margin: 0 2rem 0 2rem;
   text-align: center;
 }
 
@@ -19,6 +48,7 @@
 .student_table {
 border: 1px solid black;
 padding: 1rem;
+background: lightcyan;
 }
 
 .table_rows {
@@ -30,9 +60,21 @@ padding: 1rem;
 .table_header {
   border: 1px solid black;
   min-width: 10vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #99ff99;
 }
 
 .row_values {
   padding: 1rem;
   border: 1px solid black;
+  background: aliceblue;
+  &.link {
+    color: blue;
+  }
+  &.started {
+    background-color: $danger;
+    color: #f9f7f5;
+  } 
+
 }

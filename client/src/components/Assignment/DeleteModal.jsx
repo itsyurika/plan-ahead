@@ -1,3 +1,5 @@
+import 'components/styles/Modal.scss';
+
 const DeleteModal = (props) => {
   const deleteAssignment = (id) => {
     props.onDelete(id);
@@ -7,10 +9,10 @@ const DeleteModal = (props) => {
   return (
     <div className="modalBackdrop del">
       <div className="del-modalContainer">
-        <div id="cancel-X" onClick={props.closeModal}>&#10006;</div>
-        <p id='del-warning'>&#9888;</p>
+        <div className="cancel-X" onClick={props.closeModal}>&#10006;</div>
+        <p className='del-warning'>&#9888;</p>
         <p>Please confirm that you would like to delete: </p>
-        <p id="del-title">{props.title}</p>
+        <p className="del-title">{props.title}</p>
         <br />
         <button className='del-btn' onClick={() => { deleteAssignment(props.id); }}>Delete</button>
       </div>

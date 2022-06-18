@@ -44,7 +44,13 @@ const App = () => {
       />
 
       <main className='app'>
-        <Popup isPopupOpen={isPopupOpen} onClose={() => togglePopup()} showPastDue={() => setView('pastDue')} onRemind={() => send_sms()} />
+        {!admin && <Popup 
+        isPopupOpen={isPopupOpen} 
+        onClose={() => togglePopup()} 
+        assignmentList={assignmentList}
+        student={student}
+        />}
+
         <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
 
         {focusedAssignment && <Modal {...focusedAssignment}

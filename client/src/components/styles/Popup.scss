@@ -16,6 +16,7 @@
 .popup {
   transition: all 1000ms all linear;
   border-radius: $radius;
+  width: 40vw;
   // transition-duration: 1s;
   // transition-property: height, width;
   // transition-timing-function: linear;
@@ -27,9 +28,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items:flex-start;
+  align-items: flex-start;
 
-  > * {
+  >* {
     margin: 1rem;
   }
 
@@ -40,17 +41,21 @@
 
 .popup {
   &.open {
-      background-color: var(--color6);
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 30%;
-      z-index: 100;
-      box-shadow:
-        -0px 0px 30px rgba(0, 0, 0, 0.5),
-        -15px 15px 10px rgba(0, 0, 0, 0.2);
-
+    font-size: $font-scale;
+    background-color: var(--color6);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    z-index: 100;
+    box-shadow:
+      0px 0px 30px rgba(0, 0, 0, 0.4),
+      10px 14px 16px rgba(0, 0, 0, 0.2);
+  }
+  li {
+    font-weight: 500;
   }
 }
 
@@ -73,9 +78,10 @@
 }
 
 .list-group {
-  > *:hover {
-    cursor: pointer;
+  >*:hover {
+    cursor: default;
   }
+
   li:hover {
     color: var(--color9);
   }

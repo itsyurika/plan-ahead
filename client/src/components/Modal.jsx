@@ -6,6 +6,7 @@ const Modal = (props) => {
     <article className='outerwrapper'>
       <div className='modalBackdrop'>
         <div className='form-modalContainer' >
+        <div className='cancel-X' onClick={props.onBack}>&#10006;</div>
           <Assignment  {...props} />
         </div>
       </div>
