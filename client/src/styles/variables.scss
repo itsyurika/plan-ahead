@@ -4,6 +4,15 @@ $bg-grey: #fdfbf0;
 $bg-light-grey: #f3f2f1;
 $bg-selected: #eff9f4;
 
+$bg3: #fdfbf2;
+
+$radial-bg1:  radial-gradient(at 50% 50%, #fdffe5 0px, transparent 50%),
+              radial-gradient(at 6% 80%, #ebfaff 0px, transparent 50%);
+$radial-bg2:  radial-gradient(at 50% 50%, #fdffe5 0px, transparent 50%),
+              radial-gradient(at 6% 80%, #ebfaff 0px, transparent 50%);
+$radial-bg3:  radial-gradient(at 50% 50%, #fdffe5 0px, transparent 50%),
+              radial-gradient(at 6% 80%, #ebfaff 0px, transparent 50%);
+
 // text
 $title-height: 3em;
 $text-dark: #455d3e;

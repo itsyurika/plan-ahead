@@ -4,7 +4,10 @@ body {
   background-color: $bg-light;
   color: $text-dark;
 
-  header, button, .bm-item, .popup {
+  header,
+  button,
+  .bm-item,
+  .popup {
     user-select: none;
   }
 
@@ -18,9 +21,21 @@ body {
   }
 }
 
+#root>#outer-container {
+  background-color: $bg3;
+
+  &.teacher {
+    background-image: $radial-bg1;
+  }
+
+  &.student {}
+}
+
 main.app {
   margin: 0 auto;
   width: 80vw;
+
+
 }
 
 section.calendar {

@@ -19,6 +19,8 @@
   align-items: center;
   backdrop-filter: blur(5px);
   z-index: 2;
+
+  // confetti stuff
   box-shadow: $box-shadow2;
   @include animation((1s bang ease-out infinite backwards, 5s position linear infinite backwards));
   @include animation-delay((1.25s, 1.25s, 1.25s));
@@ -32,6 +34,17 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.form-modalContainer {
+  position: relative;
+  width: 80vw;
+  overflow: hidden;
+  z-index: 3;
+
+  border: 5px solid rgb(9, 90, 121);
+  border-radius: $radius;
+  box-shadow: $drop-shadow;
 
   .cancel-X {
     position: absolute;
@@ -41,39 +54,12 @@
     cursor: pointer;
   }
 
-  // &.complete {
-  //   position: absolute;
-  //   left: 50%;
-  //   top: 50%;
-  //   width: 5px;
-  //   height: 5px;
-  //   border-radius: 50%;
-  //   box-shadow: $box-shadow2;
-  //   @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
-  //   @include animation-delay((1.25s, 1.25s, 1.25s));
-  //   @include animation-duration((1.25s, 1.25s, 6.25s));
-  //   z-index: 30;
-
-  // }
-}
-
-.form-modalContainer {
-  position: relative;
-  width: 90vw;
-  z-index: 3;
-  overflow: hidden;
-
-  border: 5px solid rgb(9, 90, 121);
-  border-radius: $radius;
-  box-shadow: $drop-shadow;
-
   // assignment view overrides
-  article.assignment__view,
-  .assignment__show,
-  .complete {
+  article.assignment__view {
     width: 100%;
     border: none;
     border-radius: 0;
+    margin: auto;
   }
 }
 
@@ -82,7 +68,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: tomato;
   color: white;
   font-size: 20px;
@@ -92,13 +77,4 @@
   padding: 2rem;
   box-shadow: $drop-shadow;
   z-index: 4;
-}
-
-
-.cancel-X {
-  position: absolute;
-  right: 0.5em;
-  top: 0.2em;
-  font-size: 32px;
-  cursor: pointer;
 }

@@ -35,7 +35,7 @@ const App = () => {
   } = useAppData();
 
   return (
-    <div id='outer-container'>
+    <div id={'outer-container'} className={admin ? 'teacher' : 'student'}>
       <SideNav
         pageWrapId={'app'}
         outerContainerId={'outer-container'}
@@ -43,7 +43,7 @@ const App = () => {
         admin={admin}
       />
 
-      <main className='app'>
+      <main className={`app`}>
         {!admin && <Popup
           isPopupOpen={isPopupOpen}
           onClose={() => togglePopup()}
