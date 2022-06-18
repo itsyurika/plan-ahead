@@ -39,10 +39,8 @@
     position: relative;
     width: 90vw;
     z-index: 3;
-    background-color: hsla(50, 75%, 97%, 1);
-    background-image:
-      radial-gradient(at 50% 50%, hsla(65, 100%, 95%, 1) 0px, transparent 50%),
-      radial-gradient(at 6% 80%, hsla(194, 100%, 96%, 1) 0px, transparent 50%);
+    overflow: hidden;
+
     border: 5px solid rgb(9, 90, 121);
     border-radius: $radius;
     box-shadow: $drop-shadow;
@@ -53,6 +51,7 @@
     .complete {
       width: 100%;
       border: none;
+      border-radius: 0;
     }
   }
 
