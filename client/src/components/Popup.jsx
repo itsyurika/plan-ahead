@@ -21,7 +21,6 @@ const Popup = (props) => {
   return (
     <div className={`popup ${props.isPopupOpen ? "open" : "closed"}`} onClick={props.onClose}>
     <div className="popup__contents">
-    <button onClick={props.onRemind}>Remind!</button>
       <h3>Welcome {props.student.firstName}!</h3>
       <h2>Work to do today</h2>
       <div className='list-group'>

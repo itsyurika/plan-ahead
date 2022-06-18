@@ -49,6 +49,7 @@ const App = () => {
         onClose={() => togglePopup()} 
         assignmentList={assignmentList}
         student={student}
+        onRemind={() => send_sms()} 
         />}
 
         <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
@@ -96,6 +97,7 @@ const App = () => {
           view={view}
           closePopup={() => closePopup}
           setStudent={(id) => setStudent(id)}
+          onRemind={() => send_sms()}
         />}
       </main>
     </div>

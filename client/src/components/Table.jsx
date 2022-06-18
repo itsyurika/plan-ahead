@@ -2,12 +2,11 @@ import 'components/styles/Table.scss';
 import { format, parseISO } from 'date-fns';
 
 const Table = (props) => {
-  console.log(props)
   return (
     
     <section className='table__view'>
       <div className='student_names'>
-        <div className='student_header'>Students</div>
+        <div className='student_header'><h2>Students</h2></div>
         <ul>
 
           {props.students.map((student) => (
@@ -16,10 +15,11 @@ const Table = (props) => {
             </li>
           ))}
         </ul>
+        <button className='remind_button' onClick={props.onRemind}>Remind Students</button>
       </div>
 
       <div className='table_wrapper' >
-        <p className='student_display'> {props.student.firstName}'s Assignments </p>
+        <h2 className='student_display'> {props.student.firstName}'s Assignments </h2>
         <table className='student_table'>
 
           <tbody>
