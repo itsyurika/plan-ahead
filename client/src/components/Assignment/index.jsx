@@ -12,7 +12,6 @@ const AssignmentView = (props) => {
 
   return (
     <article className={`assignment__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
-      <div className='cancel-X' onClick={props.onBack}>&#10006;</div>
       {props.status && <div>
         <header><h1 className={`assignment-header ${props.status.toLowerCase().replace(/\s+/g, '')}`}>
           {props.title}
