@@ -1,12 +1,18 @@
 const router = require('express').Router();
+const { addDays, parseISO } = require('date-fns');
 
 module.exports = (prisma) => {
   // creates relation for all students
   router.post('/', async (req, res) => {
-    const students = await prisma.student.findMany();
+    const students = await prisma.student.findMany({
+      include: {
+        Group: true
+      }
+    });
+   
     const submissions = await prisma.$transaction(students.map((user) => prisma.submission.create({
       data: {
-        dueDate: req.body.dueDate,
+        dueDate: addDays(parseISO((req.body.dueDate)), user.Group.dateAdjustment),
         studentId: +user.id,
         assignmentId: +req.body.assignmentId,
       }
