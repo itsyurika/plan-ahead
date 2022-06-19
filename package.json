@@ -1,0 +1,19 @@
+{
+  "name": "lhl-final-project",
+  "version": "1.0.0",
+  "description": "Single Page app designed to help teachers and young students keep track of their assignments and due dates. Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a front-end interface built with React.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsyurika/LHL-final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsyurika/LHL-final-project/issues"
+  },
+  "homepage": "https://github.com/itsyurika/LHL-final-project#readme"
+}
