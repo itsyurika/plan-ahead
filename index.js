@@ -3,6 +3,7 @@ require('dotenv').config();
 require('express-async-errors');
 
 const { ENVIRONMENT = 'dev', PORT = 3001 } = process.env;
+const path = require('path');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const messagingServiceSid = process.env.TWILIO_MSG_SID;
@@ -28,6 +29,7 @@ const client = require('twilio')(accountSid, authToken);
 
 app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use('/teachers', teachers(prisma));
 app.use('/students', students(prisma));
