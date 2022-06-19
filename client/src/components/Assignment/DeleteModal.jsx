@@ -1,5 +1,7 @@
 import 'components/styles/Modal.scss';
 
+import Button from 'components/Button';
+
 const DeleteModal = (props) => {
   const deleteAssignment = (id) => {
     props.onDelete(id);
@@ -14,7 +16,7 @@ const DeleteModal = (props) => {
         <p>Please confirm that you would like to delete: </p>
         <p className="del-title">{props.title}</p>
         <br />
-        <button className='del-btn' onClick={() => { deleteAssignment(props.id); }}>Delete</button>
+        <Button style='danger' action={() => { deleteAssignment(props.id); }}>Delete</Button>
       </div>
     </div>
   );

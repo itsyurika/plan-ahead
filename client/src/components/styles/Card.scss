@@ -64,6 +64,7 @@ article.card {
 
     &.complete {
       background-color: $complete;
+      opacity: 0.7;
     }
 
     &:hover {

@@ -10,7 +10,7 @@ import Column from 'components/Column';
 const getStyle = (day, today) => {
   if (isSameDay(day, today)) return 'selected';
   if (isBefore(day, today)) return 'past';
-  if (isBefore(day, addDays(today, 4))) return 'near';
+  if (isBefore(day, addDays(today, 3))) return 'near';
   return 'upcoming';
 };
 

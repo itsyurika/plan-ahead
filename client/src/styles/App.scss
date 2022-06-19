@@ -1,10 +1,13 @@
 @import "styles/variables.scss";
 
 body {
-  background-color: $bg-light;
+  background-color: $bg3;
   color: $text-dark;
 
-  header, button, .bm-item, .popup {
+  header,
+  button,
+  .bm-item,
+  .popup {
     user-select: none;
   }
 
@@ -18,8 +21,21 @@ body {
   }
 }
 
+#root>#outer-container {
+  &.teacher {
+    background-color: $bg1;
+    background-image: $radial-bg1;
+  }
+
+  &.student {
+    background-color: $bg2;
+    background-image: $radial-bg2;
+  }
+}
+
 main.app {
   margin: 0 auto;
+  height: 100vh;
   width: 80vw;
 }
 

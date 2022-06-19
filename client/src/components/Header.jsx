@@ -6,7 +6,7 @@ const Header = (props) => {
     <header className='navbar'>
       <nav className='navbar-container'>
         <h2 onClick={props.setHome}> {props.admin ? 'Ms. Lee' : props.student.firstName}'s Planner </h2>
-        <Button className='login' action={props.onLogin}> {props.admin ? 'Admin' : 'Login'}</Button>
+        <Button className='login' action={props.onLogin}> {props.admin ? 'Teacher' : 'Student'}</Button>
       </nav>
     </header>
   );

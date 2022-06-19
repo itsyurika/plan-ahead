@@ -35,7 +35,7 @@ const App = () => {
   } = useAppData();
 
   return (
-    <div id='outer-container'>
+    <div id={'outer-container'} className={admin ? 'teacher' : 'student'}>
       <SideNav
         pageWrapId={'app'}
         outerContainerId={'outer-container'}
@@ -43,7 +43,7 @@ const App = () => {
         admin={admin}
       />
 
-      <main className='app'>
+      <main className={`app`}>
         {!admin && <Popup
           isPopupOpen={isPopupOpen}
           onClose={() => togglePopup()}
@@ -63,7 +63,7 @@ const App = () => {
             patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
             party.confetti(e.target, { count: party.variation.range(20,60)});
           }}
-          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() }); 
+          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
           party.sparkles(e.target, { count: party.variation.range(20,60)})}}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}

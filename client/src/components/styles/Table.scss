@@ -3,86 +3,105 @@
 .table__view {
   margin-top: 2rem;
   display: flex;
-
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
-}
 
-.student_header {
-  // font-weight: bold;
-  // font-size: 26px;
-  margin: 1rem;
-}
-
-.student_names {
-  align-items: center;
-  list-style: none;
-}
-
-.student_li {
-  padding: 0.5rem;
-  border: 1px solid blue;
-  border-radius: 6px;
-  background: aliceblue;
-  list-style: none;
-  cursor: pointer;
-  &:hover {
-
-    transform: scale(1.1)
+  // student list
+  .student_header {
+    margin: 4rem 3rem 0;
   }
-}
 
-.remind_button {
-  margin: 3rem 0;
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #e5bd6f;
-  color: #473218;
-}
-
-
-.table_wrapper {
-  margin: 0 2rem 0 2rem;
-  text-align: center;
-}
-
-.student_display {
-  margin: 1rem;
-  // font-weight: bold;
-  // font-size: 26px;
-  text-align: center;
-}
-
-.student_table {
-border: 1px solid black;
-padding: 1rem;
-background: lightcyan;
-}
-
-.table_rows {
-  padding: 2rem;
-  border: 1px solid black;
-  text-align: center;
-}
-
-.table_header {
-  border: 1px solid black;
-  min-width: 10vw;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: #99ff99;
-}
-
-.row_values {
-  padding: 1rem;
-  border: 1px solid black;
-  background: aliceblue;
-  &.link {
-    color: blue;
+  .student_names {
+    align-items: center;
+    list-style: none;
   }
-  &.started {
-    background-color: $danger;
-    color: #f9f7f5;
+
+  .student_li {
+    margin: 1em 0;
+    padding: 0.5rem;
+    border: 1px solid blue;
+    border-radius: 6px;
+    background: aliceblue;
+    list-style: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+
+  .remind_button {
+    margin: 3rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e5bd6f;
+    color: #473218;
+  }
+
+  .table_wrapper {
+    margin: 0 2rem 0 2rem;
+    text-align: center;
+
+    // table header
+    .student_display {
+      margin: 1rem;
+      text-align: center;
+    }
+
+    .student_table {
+      background: lightcyan;
+      border: 1px solid black;
+      padding: 1rem;
+      border-radius: calc($radius/2);
+
+      // dumb rounded corners
+      th:first-of-type {
+        border-top-left-radius: calc($radius/2);
+      }
+
+      th:last-of-type {
+        border-top-right-radius: calc($radius/2);
+      }
+
+      tr:last-of-type {
+        td:first-of-type {
+          border-bottom-left-radius: calc($radius/2);
+        }
+
+        td:last-of-type {
+          border-bottom-right-radius: calc($radius/2);
+        }
+      }
+
+      .table_rows {
+        padding: 2rem;
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      .table_header {
+        border: 1px solid black;
+        min-width: 10vw;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: #99ff99;
+      }
+
+      .row_values {
+        padding: 1rem;
+        border: 1px solid black;
+        background: aliceblue;
+
+        &.link {
+          color: blue;
+        }
+
+        &.started {
+          background-color: $danger;
+          color: #f9f7f5;
+        }
+      }
+    }
   }
 }
