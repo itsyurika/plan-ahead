@@ -1,7 +1,7 @@
 @import "styles/variables.scss";
 
 body {
-  background-color: $bg3;
+  background-color: $bg2;
   color: $text-dark;
 
   header,
@@ -15,23 +15,22 @@ body {
     color: inherit;
     text-decoration: none;
   }
-
-  &::-webkit-scrollbar {
-    // display: none; // hides scrollbar
-  }
 }
 
 #root>#outer-container {
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &.teacher {
-    // background-color: $bg1;
     background-image: $linear-bg1;
-    height: 100vw;
   }
 
   &.student {
-    // background-color: $bg2;
+    background-color: $bg2;
     background-image: $linear-bg2;
-    height: 100vw;
   }
 }
 
