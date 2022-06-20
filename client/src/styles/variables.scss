@@ -1,4 +1,4 @@
-// bgs
+// bgs -old-
 $bg-light: #e8e7e3;
 $bg-grey: #fdfbf0;
 $bg-light-grey: #f3f2f1;
@@ -17,8 +17,25 @@ $radial-bg2: radial-gradient(at 140% 80%, #fff4e5 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ebfffc 0px, transparent 50%);
 $radial-bg3: radial-gradient(at 50% 50%, #ffe5e9 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ffebee 0px, transparent 50%);
-$linear-bg1: linear-gradient(180deg,  $bg1, $bg6);
-$linear-bg2: linear-gradient(0deg,  $bg1, $bg6);
+// -end old-
+
+
+
+// plan ahead colors
+$bg-green: #8AD277;
+$bg-red: #EA4335;
+$bg-orange: #FBBC05;
+$bg-blue: #4285F4;
+$bg-light: #E7E8E9;
+$bg-grey: #9FA3A9;
+$bg-dark: #424242;
+
+// gradient
+$pa1: #ea443510; // red
+$pa2: #34A85310; // green
+$linear-bg1: linear-gradient(180deg,  $bg1, $pa2);
+$linear-bg2: linear-gradient(0deg,  $bg1, $pa2);
+
 
 // text
 $title-height: 3em;
@@ -77,3 +94,4 @@ $cell-height: 4rem;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
+
