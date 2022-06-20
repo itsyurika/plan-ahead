@@ -14,8 +14,14 @@ const Show = (props) => {
   const setBorderColor = (dueDate) => {
     if (props.admin) return 'default';
     if (props.status === 'Complete') return 'complete';
-    if (isPastDue(dueDate)) return 'red';
-    if ((hrsRemaining(dueDate) < 24)) return 'yellow';
+    if (isPastDue(dueDate) && !props.admin) return 'red';
+    if ((hrsRemaining(dueDate) < 24) && !props.admin) return 'yellow';
+    if (props.admin && props.subject.name === 'Art') return 'art';
+    if (props.admin && props.subject.name === 'English') return 'english';
+    if (props.admin && props.subject.name === 'History') return 'history';
+    if (props.admin && props.subject.name === 'Math') return 'math';
+    if (props.admin && props.subject.name === 'Science') return 'science';
+
     return 'default';
   };
 
