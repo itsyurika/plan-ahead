@@ -17,21 +17,21 @@ body {
   }
 
   &::-webkit-scrollbar {
-    display: none; // hides scrollbar
+    // display: none; // hides scrollbar
   }
 }
 
 #root>#outer-container {
   &.teacher {
-    background-color: $bg1;
-    background-image: $radial-bg1;
-    overflow: auto;
+    // background-color: $bg1;
+    background-image: $linear-bg1;
+    height: 100vw;
   }
 
   &.student {
-    background-color: $bg2;
-    background-image: $radial-bg2;
-    overflow: auto;
+    // background-color: $bg2;
+    background-image: $linear-bg2;
+    height: 100vw;
   }
 }
 

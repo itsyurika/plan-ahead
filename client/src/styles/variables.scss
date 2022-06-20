@@ -14,6 +14,8 @@ $radial-bg2: radial-gradient(at 140% 80%, #fff4e5 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ebfffc 0px, transparent 50%);
 $radial-bg3: radial-gradient(at 50% 50%, #ffe5e9 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ffebee 0px, transparent 50%);
+$linear-bg1: linear-gradient(0,  #ebfffc, #fff4e5);
+$linear-bg2: linear-gradient(180deg,  #ebfffc, #fff4e5);
 
 // text
 $title-height: 3em;
