@@ -1,5 +1,5 @@
 import './styles/Popup.scss';
-import { parseISO, format, subDays } from 'date-fns';
+import { format, subDays } from 'date-fns';
 
 const Popup = (props) => {
 

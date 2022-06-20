@@ -56,8 +56,8 @@ const Form = (props) => {
         <input className='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea className='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
-        <div className='due-drop'>
-          <DatePicker selected={defaultDueDate} onChange={(date) => setDefaultDueDate(date)} />
+        <div className='dropdowns'>
+          <DatePicker classname={'datepicker'} selected={defaultDueDate} onChange={(date) => setDefaultDueDate(date)} />
           <select className='subjects-dropdown' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>
