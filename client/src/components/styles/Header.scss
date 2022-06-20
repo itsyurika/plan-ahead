@@ -11,7 +11,7 @@
 header.navbar {
   padding: 2rem 0;
   height: var(--navbar-height);
-  background-color: var(--navbar-bg-color);
+  background-color: $bg4;
 
   .navbar-container {
     position: relative;
@@ -27,7 +27,7 @@ header.navbar {
 
     button {
       position: absolute;
-      right: 0;
+      right: 10vw;
     }
   }
 }
