@@ -71,7 +71,7 @@ export function useAppData() {
   const addSubmissionToStudentsState = (data) => {
     const submission = data.find((submission) => submission.studentId === state.studentId);
     setState((prev) => {
-      const submissions = [...state.student.submissions, { ...submission }];
+      const submissions = [...state.student.submissions, { ...submission, dueDate: parseISO(submission.dueDate) }];
       const student = { ...prev.student, submissions };
       const students = state.students.map((student) => ({ ...student, submissions: [...student.submissions, submission] }));
       return { ...prev, student, students };
@@ -136,9 +136,9 @@ export function useAppData() {
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
   //send reminder
-  const send_sms = async() => {
-    await axios.get(`/sendAlerts`)
-  }
+  const send_sms = async () => {
+    await axios.get(`/sendAlerts`);
+  };
 
   return {
     // from state

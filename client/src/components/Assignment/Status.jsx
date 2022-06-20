@@ -3,8 +3,8 @@ import Button from 'components/Button';
 const Status = (props) => {
   return (
     <div className='status__form' >
-         {props.assigned.dateCompleted && <img className={'star-img'}src="/images/star.png" />}
-          {!props.assigned.dateCompleted && props.assigned.dateStarted && <img className={'bear-img'}src="/images/bear.png" />}
+      {props.assigned.dateCompleted && <img className={'star-img'} src="/images/star.png" />}
+      {!props.assigned.dateCompleted && props.assigned.dateStarted && <img className={'bear-img'} src="/images/bear.png" />}
       <p className='progress'>Your Progress:&nbsp;&nbsp;<span>{props.status}!</span></p>
       <div className='buttons'>
         {props.status === 'Not started' && <Button style="confirm" action={props.onStart}>Start</Button>}
