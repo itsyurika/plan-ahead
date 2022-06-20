@@ -61,15 +61,15 @@ const Calendar = (props) => {
       <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
-            Previous
+          &#x21E6;
           </div>
         </div>
 
-        <div className='col col-center icon' onClick={() => { setSelectedDate(new Date()); }}>
+        <div className='col col-center' onClick={() => { setSelectedDate(new Date()); }}>
           <p>Today is</p> <p>{format(today, 'eeee MMM do')}</p>
         </div>
         <div className='col col-end' onClick={() => { setSelectedDate(addWeeks(selectedDate, 1)); }}>
-          <div className='icon'>Next</div>
+          <div className='icon'>&#x21E8;</div>
         </div>
       </header>
 
