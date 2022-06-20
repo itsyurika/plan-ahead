@@ -1,5 +1,6 @@
 import 'components/styles/List.scss';
 import Assignment from "components/Assignment";
+import Alert from './Alert';
 
 const List = (props) => {
   const viewName = () => {
@@ -7,11 +8,13 @@ const List = (props) => {
     return views[0].toUpperCase() + views.substring(1);
   };
 
+
   return (
     <section className='list__view' onClick={props.closePopup}>
       <h1>{viewName()} Assignments</h1>
       <article className='list-item'>
         <ul className='ul-view'>
+          {!props.assignmentList.length &&  <li className={`card-li`}> <Alert title={'All Done'} text={`${props.view === 'completed' ? 'You\'re all caught up! Good work. ' + props.student.name : 'No Completed assignments'}`} /> </li>}
 
           {props.assignmentList.map((assignment) => (
             <li key={assignment.id} className={`card-li ${props.view}`} >

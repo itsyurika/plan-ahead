@@ -9,13 +9,12 @@ const getStatus = (submission) => {
 
 
 // = exported helpers =
-export const mapAssigned = (assignments, student) => {
-  if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: item.defaultDueDate } }));
-
+export const mapAssignments = (assignments, student) => {
+  if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: parseISO(item.defaultDueDate) } }));
 
   return student.submissions.map((submission) => ({
     ...assignments.find((assign) => assign.id === submission.assignmentId),
-    assigned: { ...submission },
+    assigned: { ...submission, dueDate: parseISO(submission.dueDate) },
     status: getStatus(submission),
   }));
 };
@@ -26,5 +25,5 @@ export const getDatesForWeek = (date) => {
 };
 
 export const sortAssignmentsByDay = (assignments, week) => {
-  return week.map((day) => assignments.filter((item) => isSameDay(parseISO(item.assigned.dueDate.slice(0, -1)), day)));
+  return week.map((day) => assignments.filter((item) => isSameDay(item.assigned.dueDate, day)));
 };

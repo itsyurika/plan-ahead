@@ -1,9 +1,9 @@
+import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
-import { format, parseISO } from 'date-fns';
 
 import DeleteModal from './DeleteModal';
 import Button from 'components/Button';
-
+import DatePicker from "react-datepicker";
 
 const Form = (props) => {
   const [title, setTitle] = useState(props.title || '');
@@ -12,8 +12,7 @@ const Form = (props) => {
   const [subjectId, setSubjectId] = useState(props.subjectId || 0);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-
-
+  const [defaultDueDate, setDefaultDueDate] = useState(props.day || props.defaultDueDate || new Date());
 
   // = helpers =
   const valid = () => {
@@ -34,11 +33,11 @@ const Form = (props) => {
 
   const saveNew = () => {
     if (!valid()) return;
-    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day });
+    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate });
     props.onBack();
   };
 
-  const options = [ // get from database
+  const options = [ // todo get from database
     <option key={0}>Subjects</option>,
     <option key={1} value='1'>Art</option>,
     <option key={2} value='2'>English</option>,
@@ -58,7 +57,7 @@ const Form = (props) => {
         <textarea className='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
         <div className='due-drop'>
-          <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+          <DatePicker selected={defaultDueDate} onChange={(date) => setDefaultDueDate(date)} />
           <select className='subjects-dropdown' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>

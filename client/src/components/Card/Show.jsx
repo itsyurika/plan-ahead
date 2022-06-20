@@ -1,32 +1,18 @@
-import { differenceInHours, isPast, parseISO } from "date-fns";
+import { isBefore } from "date-fns";
 
 const Show = (props) => {
-  const { dueDate } = props.assigned;
-
-  const isPastDue = (dueDate) => {
-    return isPast(parseISO(dueDate)); //returns true if it's pastDue
-  };
-
-  const hrsRemaining = (dueDate) => {
-    return differenceInHours(parseISO(dueDate), new Date());
-  };
-
-  const setBorderColor = (dueDate) => {
+  const getBorderColor = (date) => {
+    const today = new Date();
+    if (props.admin) return props.subject.name.toLowerCase();
     if (props.status === 'Complete') return 'complete';
-    if (isPastDue(dueDate) && !props.admin) return 'red';
-    if ((hrsRemaining(dueDate) < 24) && !props.admin) return 'yellow';
-    if (props.admin && props.subject.name === 'Art') return 'art';
-    if (props.admin && props.subject.name === 'English') return 'english';
-    if (props.admin && props.subject.name === 'History') return 'history';
-    if (props.admin && props.subject.name === 'Math') return 'math';
-    if (props.admin && props.subject.name === 'Science') return 'science';
-
+    if (isBefore(date, today)) return 'red';
+    if (isBefore(date, today + 1)) return 'yellow';
     return 'default';
   };
 
   return (
     <main
-      className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${setBorderColor(dueDate)}`}
+      className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${getBorderColor(props.assigned.dueDate)}`}
       onClick={props.onClick}
     >
       <header><h4>{props.title}</h4></header>

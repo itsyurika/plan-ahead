@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { parseISO, isBefore } from 'date-fns';
-import { mapAssigned } from 'hooks/helpers';
+import { mapAssignments } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -124,21 +124,21 @@ export function useAppData() {
   // view lookup
   const filterList = (assignment) => {
     if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(assignment.assigned.dueDate, new Date());
     if (state.view === 'completed') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
     return false; // no valid view ?
   };
 
   // find and filter assignments
-  const foundAssignments = mapAssigned(state.assignments, (!state.admin || state.view === 'students') && state.student);
+  const foundAssignments = mapAssignments(state.assignments, (!state.admin || state.view === 'students') && state.student);
   const assignmentList = foundAssignments.filter(filterList);
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
-  //send reminder 
+  //send reminder
   const send_sms = async() => {
     await axios.get(`/sendAlerts`)
-  }  
+  }
 
   return {
     // from state

@@ -6,10 +6,10 @@ module.exports = (prisma) => {
   router.post('/', async (req, res) => {
     const students = await prisma.student.findMany({
       include: {
-        Group: true
+        group: true
       }
     });
-   
+
     const submissions = await prisma.$transaction(students.map((user) => prisma.submission.create({
       data: {
         dueDate: addDays(parseISO((req.body.dueDate)), user.Group.dateAdjustment),
