@@ -43,6 +43,8 @@ const App = () => {
         admin={admin}
       />
 
+      <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
+
       <main className={`app`}>
         {!admin && <Popup
           isPopupOpen={isPopupOpen}
@@ -51,8 +53,6 @@ const App = () => {
           student={student}
           onRemind={() => send_sms()}
         />}
-
-        <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
 
         {focusedAssignment && <Modal {...focusedAssignment}
           admin={admin}
