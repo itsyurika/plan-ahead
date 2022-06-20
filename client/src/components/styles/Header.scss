@@ -38,23 +38,26 @@ section.calendar {
   border-radius: $radius;
   overflow: hidden;
 
-  .icon {
-    cursor: pointer;
-    transition: 150ms;
-  }
-
   >header {
     background: var(--header-color);
     color: #fff;
     display: flex;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 1rem;
     align-items: center;
     padding: 0.7em 1.5em;
 
     .icon:hover {
       transition: 250ms ease-out;
       color: var(--hover-color);
+    }
+
+    .icon {
+      cursor: pointer;
+      transition: 150ms;
+      font-size: 2rem;
+      padding: 0em;
     }
 
     .col {
