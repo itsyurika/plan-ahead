@@ -12,14 +12,20 @@ const AssignmentView = (props) => {
 
   return (
     <article className={`assignment__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
-      <header><h1 className='title'>{props.title}</h1></header>
-      <p className='subject'>{props.subject?.name}</p>
+    
+      <header className='title'> <i class="fa-solid fa-square fa-2xl"></i><h2>{props.title}</h2></header>
+
+    
+     <h3 className='subject'>{props.subject?.name}</h3>
+
+      <div className={`due-date ${dueDateColour()}`}><i class="fa-regular fa-clock fa-lg"></i><span>  Due {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
+      
+      <div className='link'> <i class="fa-solid fa-link fa-lg"></i> <span className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></span></div>
+
       <div className='description'>
-        <header>Details</header>
+      <i class="fa-regular fa-file-lines fa-xl"></i>
         <p>{props.description}</p>
       </div>
-      <p className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></p>
-      <div className={`due-date ${dueDateColour()}`}><span>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
 
       {(!props.admin) && <Status {...props} />}
     </article>

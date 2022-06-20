@@ -29,9 +29,9 @@ const Show = (props) => {
       className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${setBorderColor(dueDate)}`}
       onClick={props.onClick}
     >
-      <header><h4>{props.title}</h4></header>
-      <h5>{props.subject?.name}</h5>
-      <h5>{props.status}</h5>
+      <header>{props.title}</header>
+      <h4>{props.subject?.name}</h4>
+      <p>{props.status}</p>
     </main>
   );
 };

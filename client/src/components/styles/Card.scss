@@ -1,7 +1,7 @@
 @import "styles/variables.scss";
 
 article.card {
-  font-size: $font-scale;
+  // font-size: $font-scale;
   display: grid;
   position: relative;
   z-index: 11;
@@ -33,8 +33,14 @@ article.card {
       margin-right: .5rem;
     }
 
-    &header {
-      color: aqua;
+    >header {
+      font-size: $b3;
+      font-weight: 400;
+    }
+
+    >p {
+      font-size: $b3;
+      font-weight: 400;
     }
 
     // add glow

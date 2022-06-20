@@ -1,6 +1,7 @@
 @import "styles/variables.scss";
 
 article.assignment__view {
+  font-family: $font-default;
   background-color: $default;
   width: 100%;
   border: 0.2rem solid rgb(166, 57, 188);
@@ -16,39 +17,75 @@ article.assignment__view {
     }
 
     .title {
-      color: $default;
-      padding: 1rem;
-      background: linear-gradient(to right, $confirm 60%, $transparent);
-      border-radius: calc($radius/4);
+      display: flex;
+      align-items: center;
+      font-weight: 900;
+      color: #000000;
+    
+      >.fa-square {
+        margin-right: 1.3em;
+      }
     }
 
     .subject {
-      font-family: sans-serif;
-      font-size: 26px;
-      font-weight: bold;
+      font-weight: 900;
+      color: #9FA3A9;
+      margin-top: 0.5em;
+      margin-left: 2em;
+      margin-bottom: 1.5em;
+
+    }
+
+    .due-date {
+      display: flex;
+      align-items: center;
+      font-size: $b1;
+      font-weight: 700;
+      margin: 1.3em 0;
+
+      >.fa-clock {
+        margin-right: 1em;
+        color:#000000;
+      }
+      
+      &.due {
+        color: $confirm;
+      }
+
+      &.pastDue {
+       color: $danger;
+      }
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      font-size: $b2;
+      font-weight: 400;
+      margin: 1.3em 0;
+      color: #000000;
+
+      >.fa-link {
+        margin-right: 1.1em;
+        color: #000000
+      }
     }
 
     .description {
-      >header {
-        font-family: Helvetica, sans-serif;
-        font-size: 24px;
-        padding: 0.5rem;
-        background-image: linear-gradient(to right, $danger 10%, $transparent 30%);
-        color: $default;
-        border-radius: calc($radius/4);
-
-      }
-
-      >p {
-        font-size: 20px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid darkgray;
+      display: flex;
+      align-items: center;
+      font-size: $b2;
+      font-weight: 400;
+      margin: 1.3em 0;
+      color: #000000;
+      
+      >.fa-file-lines {
+        margin-right: 1.1em;
       }
     }
 
     .classroom-url {
       font-size: $font-scale;
-      font-family: Arial, sans-serif;
       cursor: pointer;
     }
 
@@ -62,43 +99,21 @@ article.assignment__view {
 
     &.complete {
       background-color: $complete;
-
-      // override overdue bg
-      .due-date {
-        background-color: $confirm !important;
-      }
-
+      
+      
       // animated headers
-      >header .title {
+      >header {
+        background: linear-gradient(to right, $confirm 60%, $transparent);
+        border-radius: calc($radius/4);
+  
         background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
         animation: animatedgradient 7s ease alternate infinite;
         background-size: 300% 300%;
+    
       }
 
-      .description>header {
-        background: linear-gradient(120deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-        animation: animatedgradient 9s ease alternate infinite;
-        width: 40%;
-        background-size: 300% 300%;
-        border-radius: calc($radius/4);
-      }
     }
 
-    .due-date {
-      width: 30%;
-      padding: 0.6em 0.8em;
-      border-radius: $radius;
-      color: $default;
-      text-align: center;
-
-      &.due {
-        background-color: $confirm;
-      }
-
-      &.pastDue {
-        background-color: $danger;
-      }
-    }
   }
 
   .status__form {
@@ -107,12 +122,12 @@ article.assignment__view {
     align-items: center;
 
     .progress {
-      font-size: 16px;
-      border-top: 2px solid darkgray;
+      font-size: $b2;
       padding: 2rem;
 
       span {
-        font-size: 20px;
+        font-size: $b1;
+        font-weight: 700;
         font-style: italic;
       }
     }

@@ -16,6 +16,8 @@
   padding: 0.6em 1.2em;
   border-radius: $radius/2;
   box-shadow: 2px 1px 2px gray;
+  font-size: $b2;
+  font-weight: 700;
 
   // undefined aka default
   &.button--undefined {
