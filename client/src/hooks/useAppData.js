@@ -38,7 +38,7 @@ export function useAppData() {
   const showCreateForm = (day) => {
     setState((prev) => ({
       ...prev, newAssignment:
-        { day, teacherId: state.teacherId, },
+        { defaultDueDate: day, teacherId: state.teacherId, },
     }));
     setFocused(-1);
   };
@@ -81,7 +81,7 @@ export function useAppData() {
 
   const updateSubmissionState = (data) => {
     setState((prev) => {
-      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
+      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data, dueDate: parseISO(data.dueDate) } : { ...submission });
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });

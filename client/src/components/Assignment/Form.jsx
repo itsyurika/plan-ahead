@@ -1,5 +1,5 @@
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import DeleteModal from './DeleteModal';
 import Button from 'components/Button';
@@ -12,7 +12,7 @@ const Form = (props) => {
   const [subjectId, setSubjectId] = useState(props.subjectId || 0);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-  const [defaultDueDate, setDefaultDueDate] = useState(props.day || props.defaultDueDate || new Date());
+  const [defaultDueDate, setDefaultDueDate] = useState(props.defaultDueDate || new Date());
 
   // = helpers =
   const valid = () => {
@@ -27,13 +27,13 @@ const Form = (props) => {
 
   const saveEdit = () => {
     if (!valid()) return;
-    props.onEdit(props.id, { title, description, url, subjectId });
+    props.onEdit(props.id, { title, description, url, subjectId, defaultDueDate, });
     props.onBack();
   };
 
   const saveNew = () => {
     if (!valid()) return;
-    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate });
+    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate, });
     props.onBack();
   };
 

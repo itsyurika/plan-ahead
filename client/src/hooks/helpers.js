@@ -1,4 +1,4 @@
-import { isSameDay, parseISO, addDays, startOfWeek } from 'date-fns';
+import { isSameDay, parseISO, addDays, startOfWeek, endOfDay } from 'date-fns';
 
 // = local helpers =
 const getStatus = (submission) => {
@@ -7,10 +7,9 @@ const getStatus = (submission) => {
   return 'Not started';
 };
 
-
 // = exported helpers =
 export const mapAssignments = (assignments, student) => {
-  if (!student.id) return assignments.map((item) => ({ ...item, assigned: { dueDate: parseISO(item.defaultDueDate) } }));
+  if (!student.id) return assignments.map((item) => ({ ...item, defaultDueDate: parseISO(item.defaultDueDate), assigned: { dueDate: parseISO(item.defaultDueDate) } }));
 
   return student.submissions.map((submission) => ({
     ...assignments.find((assign) => assign.id === submission.assignmentId),
@@ -21,7 +20,7 @@ export const mapAssignments = (assignments, student) => {
 
 export const getDatesForWeek = (date) => {
   const startDate = startOfWeek(date, { weekStartsOn: 1 });
-  return [...Array(7)].map((_, i) => addDays(startDate, i));
+  return [...Array(7)].map((_, i) => addDays(endOfDay(startDate), i)); // end of day so timezone doesn't flip
 };
 
 export const sortAssignmentsByDay = (assignments, week) => {
