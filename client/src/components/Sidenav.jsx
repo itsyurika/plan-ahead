@@ -2,8 +2,6 @@ import 'components/styles/Sidenav.scss';
 import Menu from 'react-burger-menu/lib/menus/slide';
 
 const Sidenav = (props) => {
-
-  console.log('sidenav', props)
   return (
     <Menu {...props}>
       <div>
