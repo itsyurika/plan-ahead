@@ -67,6 +67,27 @@ article.card {
       opacity: 0.7;
     }
 
+    &.art {
+      border: 2px solid darkorchid;
+    }
+
+    &.english {
+      border: 2px solid green
+    }
+
+    &.history {
+      border: 2px solid dodgerblue;
+    }
+
+    &.math {
+      border: 2px solid orange;
+    }
+
+    &.science {
+      border: 2px solid orangered;
+    }
+
+
     &:hover {
       position: relative;
       transform: scale(1.05);
