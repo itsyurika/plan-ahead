@@ -12,7 +12,6 @@ const Show = (props) => {
   };
 
   const setBorderColor = (dueDate) => {
-    if (props.admin) return 'default';
     if (props.status === 'Complete') return 'complete';
     if (isPastDue(dueDate) && !props.admin) return 'red';
     if ((hrsRemaining(dueDate) < 24) && !props.admin) return 'yellow';
