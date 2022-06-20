@@ -41,6 +41,8 @@ const App = () => {
         outerContainerId={'outer-container'}
         selectView={(name) => { setView(name); }}
         admin={admin}
+        students={students}
+        setStudent={(id) => setStudent(id)}
       />
 
       <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
