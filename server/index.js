@@ -1,6 +1,5 @@
 // = imports =
 require('dotenv').config();
-require('express-async-errors');
 
 const { ENVIRONMENT = 'dev', PORT = 3001 } = process.env;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
