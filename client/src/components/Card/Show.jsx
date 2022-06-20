@@ -14,6 +14,17 @@ const Show = (props) => {
     return 'default';
   };
 
+  const completeGifRandomizer = () => {
+    const stickers = [
+      'star-spin.gif',
+      'cat-roll.gif',
+      'bouncing-panda.gif',
+      'alpaca.webp',
+    ];
+
+    return '/images/card-gif/' + stickers[Math.floor(Math.random() * stickers.length)];
+  };
+
   // render component
   return (
     <main
@@ -23,6 +34,7 @@ const Show = (props) => {
       <header><h4>{props.title}</h4></header>
       <h5>{props.subject?.name}</h5>
       <h5>{props.status}</h5>
+      {props.status === 'Complete' && <img className={'card-gif'} src={`${completeGifRandomizer()}`} />}
     </main>
   );
 };

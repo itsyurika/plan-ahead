@@ -25,6 +25,16 @@
   color: white;
 }
 
+.students-nav {
+  margin: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.students-nav:hover {
+  color: white;
+}
+
 /* The rest copied directly from react-burger-menu docs */
 /* Position and sizing of burger button */
 .bm-burger-button {
