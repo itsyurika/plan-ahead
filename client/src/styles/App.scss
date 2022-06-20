@@ -25,11 +25,13 @@ body {
   &.teacher {
     background-color: $bg1;
     background-image: $radial-bg1;
+    overflow: auto;
   }
 
   &.student {
     background-color: $bg2;
     background-image: $radial-bg2;
+    overflow: auto;
   }
 }
 
