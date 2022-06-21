@@ -24,6 +24,14 @@ const Show = (props) => {
     return 'default';
   };
 
+  const completeGifRandomizer = () => {
+    const rnd = Math.floor(Math.random() * 4 + 1);
+    if (rnd === 1) return '/images/card-gif/star-spin.gif';
+    if (rnd === 2) return '/images/card-gif/cat-roll.gif';
+    if (rnd === 3) return '/images/card-gif/bouncing-panda.gif';
+    if (rnd === 4) return '/images/card-gif/alpaca.webp';
+  };
+
   return (
     <main
       className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${setBorderColor(dueDate)}`}
@@ -32,6 +40,7 @@ const Show = (props) => {
       <header>{props.title}</header>
       <h4>{props.subject?.name}</h4>
       <p>{props.status}</p>
+      {props.status === 'Complete' && <img className={'card-gif'} src={`${completeGifRandomizer()}`} />}
     </main>
   );
 };

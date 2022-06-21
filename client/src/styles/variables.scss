@@ -1,12 +1,15 @@
-// bgs
+// bgs -old-
 $bg-light: #e8e7e3;
 $bg-grey: #fdfbf0;
 $bg-light-grey: #f3f2f1;
 $bg-selected: #eff9f4;
 
-$bg1: rgb(253, 243, 243);
-$bg2: rgb(233, 242, 245);
-$bg3: rgb(233, 245, 242);
+$bg1: rgb(253, 243, 243); // light red
+$bg2: rgb(233, 242, 245); // light grey
+$bg3: rgb(233, 245, 242); // ligth green
+$bg4: #ebfffc; // light cyan
+$bg5: #fff4e5; // light yellow
+$bg6: rgb(210, 235, 243); // light blue
 
 $radial-bg1: radial-gradient(at 50% 50%, #fdffe5 0px, transparent 80%),
   radial-gradient(at 6% 80%, #ffebeb 0px, transparent 50%);
@@ -14,10 +17,35 @@ $radial-bg2: radial-gradient(at 140% 80%, #fff4e5 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ebfffc 0px, transparent 50%);
 $radial-bg3: radial-gradient(at 50% 50%, #ffe5e9 0px, transparent 50%),
   radial-gradient(at 6% 80%, #ffebee 0px, transparent 50%);
+// -end old-
+
+
+
+// plan ahead colors
+$bg-green: #8AD277;
+$bg-red: #EA4335;
+$bg-orange: #FBBC05;
+$bg-blue: #4285F4;
+$bg-light: #E7E8E9;
+$bg-grey: #9FA3A9;
+$bg-dark: #424242;
+
+// gradient
+$pa1: rgba(234, 68, 53, 0.1); // red
+$pa2: rgba(52, 168, 83, 0.1); // green
+$linear-bg1: linear-gradient(180deg, $bg1, $pa2);
+$linear-bg2: linear-gradient($pa1, $pa2);
+
+
+//* design color palettes 
+$default-text: #000000;
+$sub-text: #424242;
+$dark-grey: #9FA3A9;
+$light-grey: #E7E8E9;
 
 // text
 $title-height: 3em;
-$text-dark: #455d3e;
+$text-dark: #000000;
 $dark-brown: #262422;
 $font-default: 'Montserrat', sans-serif;
 
@@ -28,6 +56,8 @@ $b3: 1.4em;
 
 
 // colors
+$white: #fff;
+$black: #000;
 $outline-light: #dadce0;
 $outline-dark: #b3bac6;
 $selected: #2a935774;
@@ -41,6 +71,7 @@ $danger: #ee5264;
 $danger-dim: #9d4545;
 
 // card bgs
+
 $transparent: rgba(0, 0, 0, 0);
 $default: #fdfbf0;
 $complete: #eff4f5;
@@ -63,8 +94,7 @@ $drop-shadow: 1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
 $font-scale: calc(0.7em + 0.3vw + 0.3vh);
 $radius: 1em;
 
-$nav-width: 5rem;
-$nav-height: 5rem;
+$nav-height: 1rem;
 
 $cell-width: 8rem;
 $cell-height: 4rem;
@@ -78,4 +108,8 @@ $cell-height: 4rem;
   --border-color: #eee;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
+
+  --navbar-bg-color: transparent;
+  --navbar-text-color: #424242;
+  --navbar-text-color-focus: #red;
 }

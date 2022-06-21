@@ -38,7 +38,7 @@ const Calendar = (props) => {
 
     return (
       <section className={'table'} onClick={props.closePopup}>
-        <main className={`table__column ${isBefore(date, today) ? 'past' : ''}`}>
+        <main className={`table__column past ${isBefore(date, today) ? 'past' : ''}`}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>
           </header>
@@ -58,18 +58,18 @@ const Calendar = (props) => {
   // render calendar
   return (
     <section className='calendar'>
-      <header>
+       <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
-            Previous
+          &#x21E6;
           </div>
         </div>
 
-        <div className='col col-center icon' onClick={() => { setSelectedDate(new Date()); }}>
-          <p>Today is</p> <p>{format(today, 'eeee MMM do')}</p>
+        <div className='col col-center' onClick={() => { setSelectedDate(new Date()); }}>
+          <p>Today is</p> <p>{format(today, 'eeee, MMMM do')}</p>
         </div>
         <div className='col col-end' onClick={() => { setSelectedDate(addWeeks(selectedDate, 1)); }}>
-          <div className='icon'>Next</div>
+          <div className='icon'>&#x21E8;</div>
         </div>
       </header>
 

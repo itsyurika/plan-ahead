@@ -21,10 +21,10 @@ const Popup = (props) => {
   return (
     <div className={`popup ${props.isPopupOpen ? "open" : "closed"}`} onClick={props.onClose}>
     <div className="popup__contents">
-      <h3>Welcome {props.student.firstName}!</h3>
-      <h2>Work to do today</h2>
+      <h4>Welcome {props.student.firstName}!</h4>
+      <h3>Work to do today</h3>
       <div className='list-group'>
-      <h3>Due Today</h3>
+      <h4>Due Today</h4>
       <ul>
       {dueToday.length ? dueToday.map((due) => {
           return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>
@@ -33,7 +33,7 @@ const Popup = (props) => {
       </ul>
       </div>
       <div className='list-group'>
-      <h3>Due Tomorrow</h3>
+      <h4>Due Tomorrow</h4>
       <ul>
       {dueTmrw.length ? dueTmrw.map((due) => {
           return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>
@@ -41,7 +41,7 @@ const Popup = (props) => {
       </ul>
       </div>
       <div className='list-group past-due'>
-        <h3 onClick={props.showPastDue}>Past Due</h3>
+        <h4 onClick={props.showPastDue}>Past Due</h4>
         <ul>
         {dueBefore.length ? dueBefore.map((due) => {
           return <li key={due.id}>{due.subject.name} - {due.title} - {due.status}</li>

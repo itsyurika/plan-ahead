@@ -2,10 +2,16 @@
 
 
 /* Individual item */
+
+img.logo {
+  width: 140px;
+}
+
 .bm-item {
   display: inline-block;
   /* Our sidebar item styling */
   text-decoration: none;
+  margin-left: 1rem;
   margin-bottom: 2rem;
   color: #d1d1d1;
   transition: color 0.2s;
@@ -13,15 +19,27 @@
 
 .bm-item ul {
   list-style: square inside;
+  margin-right: 0;
 }
 
 .bm-item li {
+  font-size: $b2;
   margin: 1rem 0;
   cursor: pointer;
 }
 
 /* Change color on hover */
 .bm-item li:hover {
+  color: white;
+}
+
+.students-nav {
+  margin: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.students-nav:hover {
   color: white;
 }
 
@@ -32,12 +50,12 @@
   width: 36px;
   height: 30px;
   left: 25px;
-  top: 25px;
+  top: 1rem;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #455d3e;
+  background: #424242;
 }
 
 /* Position and sizing of clickable cross button */
@@ -53,13 +71,13 @@
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: #424242;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   border-top-right-radius: $radius;
   border-bottom-right-radius: $radius;
 
-  h2 {
+  img {
     cursor: pointer;
   }
 

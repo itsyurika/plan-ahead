@@ -41,7 +41,11 @@ const App = () => {
         outerContainerId={'outer-container'}
         selectView={(name) => { setView(name); }}
         admin={admin}
+        students={students}
+        setStudent={(id) => setStudent(id)}
       />
+
+      <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
 
       <main className={`app`}>
         {!admin && <Popup
@@ -51,8 +55,6 @@ const App = () => {
           student={student}
           onRemind={() => send_sms()}
         />}
-
-        <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
 
         {focusedAssignment && <Modal {...focusedAssignment}
           admin={admin}

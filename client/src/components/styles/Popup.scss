@@ -35,13 +35,14 @@
 
   li {
     margin: 0.5rem;
+    font-size: $b3;
   }
 }
 
 .popup {
   &.open {
     font-size: $font-scale;
-    background-color: var(--color6);
+    background-color: #FFD96A;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -64,7 +65,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: var(--color5);
+    background-color: #FFD96A;
     width: 50px;
     height: 50px;
     border-radius: 0 25px 0 0;

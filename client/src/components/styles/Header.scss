@@ -1,17 +1,15 @@
 @import "styles/variables.scss";
 
-:root {
-  --navbar-bg-color: transparent;
-  --navbar-text-color: #455d3e;
-  --navbar-text-color-focus: #748c70;
-  --navbar-height: 4rem;
-}
 
 // Top nav bar
 header.navbar {
-  padding: 2rem 0;
-  height: var(--navbar-height);
-  background-color: var(--navbar-bg-color);
+  width: 100%;
+  position: relative;
+  top: 0;
+  z-index: 50;
+  padding: 1rem 0;
+  // height: $nav-height;
+  background-color: transparent;
 
   .navbar-container {
     position: relative;
@@ -27,7 +25,7 @@ header.navbar {
 
     button {
       position: absolute;
-      right: 0;
+      right: 10vw;
     }
   }
 }
@@ -35,26 +33,28 @@ header.navbar {
 
 // Main Calendar (green) Header
 section.calendar {
-  border-radius: $radius;
   overflow: hidden;
 
-  .icon {
-    cursor: pointer;
-    transition: 150ms;
-  }
-
   >header {
-    background: var(--header-color);
-    color: #fff;
+    background: transparent;
+    color: $sub-text;
     display: flex;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 1rem;
     align-items: center;
     padding: 0.7em 1.5em;
 
     .icon:hover {
       transition: 250ms ease-out;
-      color: var(--hover-color);
+      color: $dark-grey
+    }
+
+    .icon {
+      cursor: pointer;
+      transition: 150ms;
+      font-size: 2rem;
+      padding: 0em;
     }
 
     .col {
@@ -72,9 +72,6 @@ section.calendar {
       justify-content: center;
       text-align: center;
       transition: 50ms !important;
-
-      border-left: 1px solid $outline-light;
-      border-right: 1px solid $outline-light;
     }
 
     .col-end {

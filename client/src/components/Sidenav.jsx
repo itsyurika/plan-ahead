@@ -6,14 +6,14 @@ const Sidenav = (props) => {
     <Menu {...props}>
       <div>
         <header>
-          <h2 onClick={() => { props.selectView(null); }}>Return to Calendar</h2>
+          <img className='logo' src={'/images/PlanAhead-logo.png'}onClick={() => { props.selectView(null); }}/>
         </header>
       </div>
 
       <div>
         <ul>
           <header>
-            <h3>Subjects</h3>
+            <h4>Subjects</h4>
           </header>
           <li onClick={() => { props.selectView('art'); }}>Art</li>
           <li onClick={() => { props.selectView('english'); }}>English</li>
@@ -26,7 +26,7 @@ const Sidenav = (props) => {
       <div>
         <ul>
           <header>
-            <h3>Assignments</h3>
+            <h4>Assignments</h4>
           </header>
           <li onClick={() => { props.selectView('pastDue'); }}>Past Due</li>
           {(props.admin
@@ -35,8 +35,13 @@ const Sidenav = (props) => {
         </ul>
       </div>
       {props.admin && <div>
-        <ul> <h3>Teacher</h3>
-          <li onClick={() => {props.selectView('students')}}>Students</li>
+        <ul> <h3>Students</h3>
+        <li className='students-nav' onClick={() => {props.selectView('students')}}>Student Overview</li>
+        {props.students.map((student) => (
+            <li key={student.id} onClick={() => props.setStudent(student.id)}>
+              {student.firstName} {student.lastName}
+            </li>
+          ))}
         </ul>
       </div>}
 
