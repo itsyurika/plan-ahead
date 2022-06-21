@@ -107,6 +107,7 @@ article.assignment__view {
 
       // animated headers
       >header {
+        color: $default;
         background: linear-gradient(to right, $confirm 60%, $transparent);
         border-radius: calc($radius/4);
   

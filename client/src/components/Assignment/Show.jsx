@@ -20,7 +20,7 @@ const AssignmentView = (props) => {
     
      <h3 className='subject'>{props.subject?.name}</h3>
 
-      <div className={`due-date ${dueDateColour()}`}><i class="fa-regular fa-clock fa-lg"></i><span>  Due {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
+      <div className={`due-date ${dueDateColour(props.assigned.dueDate)}`}><i className="fa-regular fa-clock fa-lg"></i><span>  Due {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</span></div>
       
       <div className='link'> <i class="fa-solid fa-link fa-lg"></i> <span className='classroom-url'><a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a></span></div>
 
