@@ -1,5 +1,5 @@
 import 'components/styles/Table.scss';
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 
 const Table = (props) => {
   return (
