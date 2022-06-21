@@ -24,5 +24,13 @@ export const getDatesForWeek = (date) => {
 };
 
 export const sortAssignmentsByDay = (assignments, week) => {
+  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate) - parseISO(b.assigned.dueDate));
+
+  return week.map((day) => assignments.filter((item) => isSameDay(item.assigned.dueDate, day)));
+};
+
+export const filterAssignmentsByDay = (assignments, week) => {
+  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate) - parseISO(b.assigned.dueDate));
+
   return week.map((day) => assignments.filter((item) => isSameDay(item.assigned.dueDate, day)));
 };
