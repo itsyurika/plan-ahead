@@ -44,25 +44,25 @@ section.calendar {
       // current day
       &.selected {
         z-index: 1;
-        font-weight: bold;
-        outline: 3px solid $selected;
-        outline-offset: -3px;
-        border-radius: $radius;
+      //   font-weight: bold;
+      //   outline: 3px solid $selected;
+      //   outline-offset: -3px;
+      //   border-radius: $radius;
 
-        >header.cell p {
-          font-weight: 700 !important;
-          font-size: 90% !important;
-        }
+      //   >header.cell p {
+      //     font-weight: 700 !important;
+      //     font-size: 90% !important;
+      //   }
 
         .cell {
-          background-color: $bg-selected;
+          // background-color: $bg-selected;
         }
 
-        // disable default border for selected column and next sibling
-        >.cell,
-        +.table__column .cell {
-          border-left: none !important;
-        }
+      //   // disable default border for selected column and next sibling
+      //   >.cell,
+      //   +.table__column .cell {
+      //     border-left: none !important;
+      //   }
       }
 
       // dim past dates
@@ -74,7 +74,7 @@ section.calendar {
         >header,
         .card__show,
         p {
-          opacity: 0.6;
+          // opacity: 0.6;
         }
 
         .notstarted,

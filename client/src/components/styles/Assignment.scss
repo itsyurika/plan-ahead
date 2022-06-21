@@ -21,7 +21,7 @@ article.assignment__view {
       align-items: center;
       font-weight: 900;
       color: #000000;
-    
+
       >.fa-square {
         margin-right: 1.3em;
       }
@@ -45,15 +45,15 @@ article.assignment__view {
 
       >.fa-clock {
         margin-right: 1em;
-        color:#000000;
+        color: #000000;
       }
-      
+
       &.due {
         color: $confirm;
       }
 
       &.pastDue {
-       color: $danger;
+        color: $danger;
       }
     }
 
@@ -78,7 +78,7 @@ article.assignment__view {
       font-weight: 400;
       margin: 1.3em 0;
       color: #000000;
-      
+
       >.fa-file-lines {
         margin-right: 1.1em;
       }
@@ -100,25 +100,26 @@ article.assignment__view {
     &.complete {
       background-color: $complete;
 
-      // // override overdue bg
-      // .due-date {
-      //   background-color: $confirm  !important;
-      // }
+      .title>.fa-square {
+        visibility: hidden;
+      }
+
+      // override overdue colour
+      .due-date {
+        color: $confirm;
+      }
 
       // animated headers
       >header {
         color: $default;
-        background: linear-gradient(to right, $confirm 60%, $transparent);
-        border-radius: calc($radius/4);
-  
+        border-radius: calc($radius/2);
+
+        // background: linear-gradient(to right, $confirm 60%, $transparent);
         background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
         animation: animatedgradient 7s ease alternate infinite;
         background-size: 300% 300%;
-    
       }
-
     }
-
   }
 
   .status__form {

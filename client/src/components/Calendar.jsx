@@ -38,7 +38,7 @@ const Calendar = (props) => {
 
     return (
       <section className={'table'} onClick={props.closePopup}>
-        <main className={`table__column past ${isBefore(date, today) ? 'past' : ''}`}>
+        <main className={`table__column ${isBefore(date, today) ? 'past' : ''}`}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>
           </header>
