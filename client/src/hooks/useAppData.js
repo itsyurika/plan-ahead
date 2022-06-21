@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { parseISO, isBefore } from 'date-fns';
-import { mapAssigned } from 'hooks/helpers';
+import { mapAssignments } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -34,11 +34,11 @@ export function useAppData() {
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view = null) => { setState((prev) => ({ ...prev, view })); };
-  const setStudent = (id) => { setState((prev) => ({ ...prev, student: state.students.find((student) => student.id === id), })); };
+  const setStudent = (id) => { setState((prev) => ({ ...prev, student: prev.students.find((student) => student.id === id), })); };
   const showCreateForm = (day) => {
     setState((prev) => ({
       ...prev, newAssignment:
-        { day, teacherId: state.teacherId, },
+        { defaultDueDate: day, teacherId: prev.teacherId, },
     }));
     setFocused(-1);
   };
@@ -46,7 +46,7 @@ export function useAppData() {
   // update state
   const addAssignmentToState = (data) => {
     setState((prev) => {
-      const assignments = [...state.assignments, { ...data }];
+      const assignments = [...prev.assignments, { ...data }];
       return { ...prev, assignments, };
     });
     return data;
@@ -54,7 +54,7 @@ export function useAppData() {
 
   const updateAssignmentState = (data) => {
     setState((prev) => {
-      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
+      const assignments = prev.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
       return { ...prev, assignments, };
     });
     return data;
@@ -62,18 +62,33 @@ export function useAppData() {
 
   const removeAssignmentFromState = (data) => {
     setState((prev) => {
-      const assignments = state.assignments.filter((assignment) => assignment.id !== data.id);
+      const assignments = prev.assignments.filter((assignment) => assignment.id !== data.id);
       return { ...prev, assignments, };
     });
     return data;
   };
 
-  const addSubmissionToStudentsState = (data) => {
-    const submission = data.find((submission) => submission.studentId === state.studentId);
+  const removeSubmissionFromStudentState = (data) => {
     setState((prev) => {
-      const submissions = [...state.student.submissions, { ...submission }];
+      // update current student
+      const submissions = [...prev.student.submissions.filter((submission) => submission.assignmentId !== data.id)];
       const student = { ...prev.student, submissions };
-      const students = state.students.map((student) => ({ ...student, submissions: [...student.submissions, submission] }));
+
+      // update rest of students
+      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions.filter((submission) => submission.assignmentId !== data.id)] }));
+      return { ...prev, student, students };
+    });
+    return data;
+  };
+
+  const addSubmissionToStudentsState = (data) => {
+    setState((prev) => {
+      // update current student
+      const submissions = [...prev.student.submissions, { ...data.find(({ studentId }) => studentId === prev.student.id), }];
+      const student = { ...prev.student, submissions };
+
+      // update rest of students
+      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions, { ...data.find(({ studentId }) => studentId === student.id) }] }));
       return { ...prev, student, students };
     });
     return data;
@@ -81,7 +96,7 @@ export function useAppData() {
 
   const updateSubmissionState = (data) => {
     setState((prev) => {
-      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
+      const submissions = prev.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
@@ -106,6 +121,7 @@ export function useAppData() {
   const deleteAssignment = async (id) => {
     const { data: assignment } = await axios.delete(`/assignments/${id}`);
     removeAssignmentFromState(assignment);
+    removeSubmissionFromStudentState(assignment);
     return assignment;
   };
 
@@ -124,21 +140,21 @@ export function useAppData() {
   // view lookup
   const filterList = (assignment) => {
     if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(parseISO(assignment.assigned.dueDate), new Date());
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(assignment.assigned.dueDate, new Date());
     if (state.view === 'completed') return assignment.assigned.dateCompleted;
     if (state.view) return assignment.subject.name.toLowerCase() === state.view;
     return false; // no valid view ?
   };
 
   // find and filter assignments
-  const foundAssignments = mapAssigned(state.assignments, (!state.admin || state.view === 'students') && state.student);
+  const foundAssignments = mapAssignments(state.assignments, (!state.admin || state.view === 'students') && state.student);
   const assignmentList = foundAssignments.filter(filterList);
   const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
-  //send reminder 
-  const send_sms = async() => {
-    await axios.get(`/sendAlerts`)
-  }  
+  //send reminder
+  const send_sms = async () => {
+    await axios.get(`/sendAlerts`);
+  };
 
   return {
     // from state

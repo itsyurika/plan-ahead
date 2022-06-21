@@ -1,5 +1,5 @@
 import 'components/styles/Table.scss';
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 
 const Table = (props) => {
   return (
@@ -36,7 +36,7 @@ const Table = (props) => {
                 <tr key={assignment.id}>
                   <td className='row_values'>{assignment.subject.name}</td>
                   <td className='row_values'>{assignment.title}</td>
-                  <td className='row_values'>{format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')}</td>
+                  <td className='row_values'>{format(assignment.assigned.dueDate, 'MMM dd yyyy')}</td>
                   <td className={`row_values ${assignment.status}`}>{assignment.status}</td>
                   <td className='row_values link'><a href={assignment.url} target="_blank" rel="noopener noreferrer">Link to Google Classroom</a></td>
                 </tr>

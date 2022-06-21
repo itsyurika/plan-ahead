@@ -99,8 +99,12 @@ article.assignment__view {
 
     &.complete {
       background-color: $complete;
-      
-      
+
+      // // override overdue bg
+      // .due-date {
+      //   background-color: $confirm  !important;
+      // }
+
       // animated headers
       >header {
         background: linear-gradient(to right, $confirm 60%, $transparent);
@@ -155,24 +159,29 @@ article.assignment__view {
 
     input,
     textarea {
-      display: block;
       width: 30rem;
+      display: block;
       padding: 3px;
       border-radius: 5px;
       border: 2px solid lightblue;
       margin: 1rem 0;
     }
 
-    select {
-      padding: 3px;
-      border-radius: 5px;
-      border: 2px solid lightblue
-    }
-
-    .due-drop {
+    .dropdowns {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      // date picker
+      input {
+        width: 10em;
+      }
+
+      select {
+        padding: 3px;
+        border-radius: 5px;
+        border: 2px solid lightblue
+      }
     }
 
     .del-warning {

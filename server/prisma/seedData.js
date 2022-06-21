@@ -6,15 +6,15 @@ const teacher = [
 
 const group = [
   { name: 'default', dateAdjustment: 0},
-  { name: 'LD students', dateAdjustment: 7}
-]
+  { name: 'LD students', dateAdjustment: 7},
+];
 
 const student = [
   { firstName: 'Sarah', lastName: 'Carter', email: 'jam@gmail.com', password: '123', groupId: 2 },
   { firstName: 'Jose', lastName: 'Federico', email: 'onion@yahoo.com', password: '123', groupId: 2 },
   { firstName: 'Jake', lastName: 'Powell', email: 'onion2@yahoo.com', password: '123', groupId: 2 },
   { firstName: 'Kayla', lastName: 'Wong', email: 'onion3@yahoo.com', password: '123', groupId: 2 },
-  { firstName: 'Mikhail', lastName: 'Dmitrivic', email: 'potato@gmail.com', password: '123', groupId: 1 }, 
+  { firstName: 'Mikhail', lastName: 'Dmitrivic', email: 'potato@gmail.com', password: '123', groupId: 1 },
   { firstName: 'Andile', lastName: 'Nika', email: 'aanika@gmail.com', password: '123', groupId: 1 },
   { firstName: 'Lukas', lastName: 'Sulaiman', email: 'lukasss@gmail.com', password: '123', groupId: 1 }
 ];

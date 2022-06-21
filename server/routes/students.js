@@ -4,12 +4,12 @@ module.exports = (prisma) => {
 
   // = student routes =
   router.get('/', async (req, res) => {
-    const students = await prisma.student.findMany({ include: { submissions: true } });
+    const students = await prisma.student.findMany({ include: { group: true, submissions: true } });
     res.json(students);
   });
 
   router.get('/:id', async (req, res) => {
-    const student = await prisma.student.findUnique({ where: { id: +req.params.id }, include: { submissions: true } });
+    const student = await prisma.student.findUnique({ where: { id: +req.params.id }, include: {group: true,  submissions: true } });
     res.json(student);
   });
 

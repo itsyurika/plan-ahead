@@ -1,0 +1,20 @@
+@import "styles/variables.scss";
+
+article.alert {
+  background-color: $default;
+  width: 100%;
+  border: 0.2rem solid rgb(166, 57, 188);
+  border-radius: $radius;
+  overflow: hidden;
+
+  .description {
+    position: relative;
+    padding: 2rem;
+    font-size: $font-scale;
+
+    p {
+      margin: 1rem 0;
+    }
+
+  }
+}

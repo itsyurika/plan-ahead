@@ -1,21 +1,21 @@
 import './styles/Popup.scss';
-import { parseISO, format, subDays } from 'date-fns'
+import { format, subDays } from 'date-fns';
 
 const Popup = (props) => {
- 
+  const today = new Date();
 
   // ==helpers==
-  const dueToday = props.assignmentList.filter(assignment => { return (
-    format(subDays(new Date(), 1), 'MMM dd yyyy') === format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')
-  )})
+  const dueToday = props.assignmentList.filter(assignment => (
+    format(subDays(today, 1), 'MMM dd yyyy') === format(assignment.assigned.dueDate, 'MMM dd yyyy')
+  ));
 
-  const dueTmrw = props.assignmentList.filter(assignment => { return (
-    format(new Date(), 'MMM dd yyyy') === format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy')
-  )})
+  const dueTmrw = props.assignmentList.filter(assignment => (
+    format(today, 'MMM dd yyyy') === format(assignment.assigned.dueDate, 'MMM dd yyyy')
+  ));
 
-  const dueBefore = props.assignmentList.filter(assignment => { return (
-    format(new Date(), 'MMM dd yyyy') > format(parseISO(assignment.assigned.dueDate), 'MMM dd yyyy') && !assignment.assigned.dateCompleted
-  )})
+  const dueBefore = props.assignmentList.filter(assignment => (
+    (format(today, 'MMM dd yyyy') > format(assignment.assigned.dueDate, 'MMM dd yyyy') && !assignment.assigned.dateCompleted)
+  ));
 
 
   return (
@@ -49,9 +49,9 @@ const Popup = (props) => {
         </ul>
       </div>
 
-    </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Popup;

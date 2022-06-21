@@ -1,40 +1,34 @@
-import { differenceInHours, isPast, parseISO } from "date-fns";
+import { isBefore, addDays } from "date-fns";
 
 const Show = (props) => {
-  const { dueDate } = props.assigned;
-
-  const isPastDue = (dueDate) => {
-    return isPast(parseISO(dueDate)); //returns true if it's pastDue
-  };
-
-  const hrsRemaining = (dueDate) => {
-    return differenceInHours(parseISO(dueDate), new Date());
-  };
-
-  const setBorderColor = (dueDate) => {
+  // helpers
+  const getBorderColor = (date) => {
+    // priority styles
+    if (props.admin) return props.subject.name.toLowerCase();
     if (props.status === 'Complete') return 'complete';
-    if (isPastDue(dueDate) && !props.admin) return 'red';
-    if ((hrsRemaining(dueDate) < 24) && !props.admin) return 'yellow';
-    if (props.admin && props.subject.name === 'Art') return 'art';
-    if (props.admin && props.subject.name === 'English') return 'english';
-    if (props.admin && props.subject.name === 'History') return 'history';
-    if (props.admin && props.subject.name === 'Math') return 'math';
-    if (props.admin && props.subject.name === 'Science') return 'science';
 
+    // check overdue status
+    const today = new Date();
+    if (isBefore(date, today)) return 'red';
+    if (isBefore(date, addDays(today, 1))) return 'yellow';
     return 'default';
   };
 
   const completeGifRandomizer = () => {
-    const rnd = Math.floor(Math.random() * 4 + 1);
-    if (rnd === 1) return '/images/card-gif/star-spin.gif';
-    if (rnd === 2) return '/images/card-gif/cat-roll.gif';
-    if (rnd === 3) return '/images/card-gif/bouncing-panda.gif';
-    if (rnd === 4) return '/images/card-gif/alpaca.webp';
+    const stickers = [
+      'star-spin.gif',
+      'cat-roll.gif',
+      'bouncing-panda.gif',
+      'alpaca.webp',
+    ];
+
+    return '/images/card-gif/' + stickers[Math.floor(Math.random() * stickers.length)];
   };
 
+  // render component
   return (
     <main
-      className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${setBorderColor(dueDate)}`}
+      className={`card__show ${props.status?.toLowerCase().replace(/\s+/g, '')} ${getBorderColor(props.assigned.dueDate)}`}
       onClick={props.onClick}
     >
       <header>{props.title}</header>

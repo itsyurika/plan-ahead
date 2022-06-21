@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { format, parseISO } from 'date-fns';
+import "react-datepicker/dist/react-datepicker.css";
+import { useState, useEffect } from 'react';
 
 import DeleteModal from './DeleteModal';
 import Button from 'components/Button';
-
+import DatePicker from "react-datepicker";
 
 const Form = (props) => {
   const [title, setTitle] = useState(props.title || '');
@@ -12,8 +12,7 @@ const Form = (props) => {
   const [subjectId, setSubjectId] = useState(props.subjectId || 0);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-
-
+  const [defaultDueDate, setDefaultDueDate] = useState(props.defaultDueDate || new Date());
 
   // = helpers =
   const valid = () => {
@@ -28,17 +27,17 @@ const Form = (props) => {
 
   const saveEdit = () => {
     if (!valid()) return;
-    props.onEdit(props.id, { title, description, url, subjectId });
+    props.onEdit(props.id, { title, description, url, subjectId, defaultDueDate, });
     props.onBack();
   };
 
   const saveNew = () => {
     if (!valid()) return;
-    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate: props.day });
+    props.onNew({ title, description, url, subjectId, teacherId: props.teacherId, defaultDueDate, });
     props.onBack();
   };
 
-  const options = [ // get from database
+  const options = [ // todo get from database
     <option key={0}>Subjects</option>,
     <option key={1} value='1'>Art</option>,
     <option key={2} value='2'>English</option>,
@@ -57,8 +56,8 @@ const Form = (props) => {
         <input className='edit-title' spellCheck='true' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea className='edit-description' rows='8' spellCheck='true' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
         <input className='edit-url' placeholder='Google Classroom Link' value={url} onChange={(e) => setUrl(e.target.value)} />
-        <div className='due-drop'>
-          <p className='due-date'>Due: {format(props.day || parseISO(props.defaultDueDate), 'MMM dd yyyy')}</p>
+        <div className='dropdowns'>
+          <DatePicker classname={'datepicker'} selected={defaultDueDate} onChange={(date) => setDefaultDueDate(date)} />
           <select className='subjects-dropdown' value={subjectId} onChange={(e) => setSubjectId(+e.target.value)}>
             {options}
           </select>

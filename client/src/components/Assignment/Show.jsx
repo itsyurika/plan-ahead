@@ -4,12 +4,14 @@ import { format, parseISO } from 'date-fns';
 
 import Status from './Status';
 
-const AssignmentView = (props) => {
-  const dueDateColour = () => {
-    if (parseISO(props.defaultDueDate) < new Date()) return 'pastDue';
-    return 'due';
-  };
+// = helpers =
+const dueDateColour = (date) => {
+  if (date < new Date()) return 'pastDue';
+  return 'due';
+};
 
+// = main component =
+const AssignmentView = (props) => {
   return (
     <article className={`assignment__show ${props.status?.toLowerCase().replace(/\s+/g, '')}`}>
     
