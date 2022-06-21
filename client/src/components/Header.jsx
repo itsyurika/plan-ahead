@@ -8,7 +8,7 @@ const Header = (props) => {
         <h2 onClick={props.setHome}> {props.admin ? 'Ms. Lee' : props.student.firstName}'s Planner </h2>
         <Button className='login' action={props.onLogin}> {props.admin ? 'Teacher' : 'Student'}</Button>
       </nav>
-    </header>
+    </header >
   );
 };
 

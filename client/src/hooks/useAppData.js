@@ -100,11 +100,36 @@ export function useAppData() {
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
-    return data;
+  };
+
+  const findMatchingSubmission = (student, submissions) => {
+    return submissions.find((updated) => updated.studentId === student.id) || null;
+  };
+
+  const buildStudentSubmissions = (student, submission) => {
+    return student.submissions.map((old) => old.id === submission.id ? { ...submission } : { ...old });
+  };
+
+  function buildNewStudent(student, submissions) {
+    const newData = findMatchingSubmission(student, submissions);
+    return { ...student, submissions: newData ? buildStudentSubmissions(student, newData) : student.submissions };
   };
 
 
-  // api requests
+  const updateAllSubmissionsState = (data) => {
+    setState((prev) => {
+      const student = buildNewStudent(prev.student, data);
+      const students = prev.students.map((student) => buildNewStudent(student, data));
+
+      return { ...prev, student, students };
+    });
+  };
+
+
+  // = api requests =
+
+  // = assignment requests =
+  // Create Form submit
   const postAssignment = async (body) => {
     const { data: assignment } = await axios.post('/assignments', body);
     addAssignmentToState(assignment);
@@ -112,9 +137,11 @@ export function useAppData() {
     return assignment;
   };
 
+  // Edit Form submit
   const putAssignment = async (id, body) => {
     const { data: assignment } = await axios.put(`/assignments/${id}`, body);
     updateAssignmentState(assignment);
+    patchAllSubmissions(assignment);
     return assignment;
   };
 
@@ -125,17 +152,27 @@ export function useAppData() {
     return assignment;
   };
 
+  // = submission requests =
   const postSubmission = async (body) => {
     const { data: submissions } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
     addSubmissionToStudentsState(submissions);
     return submissions;
   };
 
+  // updates submission for all students on Assignment edit
+  const patchAllSubmissions = async (body) => {
+    const { data: submissions } = await axios.patch(`/submissions/`, body);
+    updateAllSubmissionsState(submissions);
+    return submissions;
+  };
+
+  // updates time started and completed for one student
   const patchSubmission = async (id, body) => {
     const { data: submission } = await axios.patch(`/submissions/${id}`, body);
     updateSubmissionState(submission);
     return submission;
   };
+
 
   // view lookup
   const filterList = (assignment) => {

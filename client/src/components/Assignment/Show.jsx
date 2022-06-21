@@ -29,7 +29,7 @@ const AssignmentView = (props) => {
         <p>{props.description}</p>
       </div>
 
-      {(!props.admin) && <Status {...props} />}s
+      {(!props.admin) && <Status {...props} />}
     </article>
   );
 };

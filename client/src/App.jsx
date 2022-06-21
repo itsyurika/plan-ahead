@@ -63,10 +63,12 @@ const App = () => {
           onDelete={deleteAssignment}
           onStart={(e) => {
             patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
-            party.confetti(e.target, { count: party.variation.range(20,60)});
+            party.confetti(e.target, { count: party.variation.range(20, 60) });
           }}
-          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
-          party.sparkles(e.target, { count: party.variation.range(20,60)})}}
+          onComplete={(e) => {
+            patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
+            party.sparkles(e.target, { count: party.variation.range(20, 60) });
+          }}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
