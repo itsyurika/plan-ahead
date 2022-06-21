@@ -19,6 +19,12 @@
   font-size: $b2;
   font-weight: 700;
 
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none; // disable hover effects
+  }
+
   // undefined aka default
   &.button--undefined {
     background-color: rgb(232, 252, 255);
