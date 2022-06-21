@@ -6,7 +6,7 @@ const Sidenav = (props) => {
     <Menu {...props}>
       <div>
         <header>
-          <img className='logo' src={'/images/PlanAhead-logo.png'}onClick={() => { props.selectView(null); }}/>
+          <img className='logo' src={'/images/PlanAhead-logo.png'} onClick={() => { props.selectView(null); }} />
         </header>
       </div>
 
@@ -36,20 +36,17 @@ const Sidenav = (props) => {
       </div>
 
       {props.admin &&
-        <header>
-          <h4 className='students-nav' onClick={() => { props.selectView('students'); }}>Student Overview</h4>
-        </header>}
-      
-      <ul>
-        <header>
-          <h4>Students</h4>
-        </header>
-        {props.students.map((student) => (
-          <li key={student.id} onClick={() => props.setStudent(student.id)}>
-            {student.firstName} {student.lastName}
-          </li>
-        ))}
-      </ul>
+        <ul>
+          <header>
+            <h4 className='students-nav' onClick={() => { props.selectView('students'); }}>Student Overview</h4>
+          </header>
+
+          {props.students.map((student) => (
+            <li key={student.id} onClick={() => props.setStudent(student.id)}>
+              {student.firstName} {student.lastName}
+            </li>
+          ))}
+        </ul>}
     </Menu>
   );
 };
