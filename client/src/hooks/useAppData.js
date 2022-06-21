@@ -34,11 +34,11 @@ export function useAppData() {
   const setAdmin = () => { setState((prev) => ({ ...prev, admin: !prev.admin, })); };
   const setFocused = (id) => { setState((prev) => ({ ...prev, focused: id, })); };
   const setView = (view = null) => { setState((prev) => ({ ...prev, view })); };
-  const setStudent = (id) => { setState((prev) => ({ ...prev, student: state.students.find((student) => student.id === id), })); };
+  const setStudent = (id) => { setState((prev) => ({ ...prev, student: prev.students.find((student) => student.id === id), })); };
   const showCreateForm = (day) => {
     setState((prev) => ({
       ...prev, newAssignment:
-        { defaultDueDate: day, teacherId: state.teacherId, },
+        { defaultDueDate: day, teacherId: prev.teacherId, },
     }));
     setFocused(-1);
   };
@@ -46,7 +46,7 @@ export function useAppData() {
   // update state
   const addAssignmentToState = (data) => {
     setState((prev) => {
-      const assignments = [...state.assignments, { ...data }];
+      const assignments = [...prev.assignments, { ...data }];
       return { ...prev, assignments, };
     });
     return data;
@@ -54,7 +54,7 @@ export function useAppData() {
 
   const updateAssignmentState = (data) => {
     setState((prev) => {
-      const assignments = state.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
+      const assignments = prev.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
       return { ...prev, assignments, };
     });
     return data;
@@ -62,18 +62,33 @@ export function useAppData() {
 
   const removeAssignmentFromState = (data) => {
     setState((prev) => {
-      const assignments = state.assignments.filter((assignment) => assignment.id !== data.id);
+      const assignments = prev.assignments.filter((assignment) => assignment.id !== data.id);
       return { ...prev, assignments, };
     });
     return data;
   };
 
-  const addSubmissionToStudentsState = (data) => {
-    const submission = data.find((submission) => submission.studentId === state.studentId);
+  const removeSubmissionFromStudentState = (data) => {
     setState((prev) => {
-      const submissions = [...state.student.submissions, { ...submission, dueDate: parseISO(submission.dueDate) }];
+      // update current student
+      const submissions = [...prev.student.submissions.filter((submission) => submission.assignmentId !== data.id)];
       const student = { ...prev.student, submissions };
-      const students = state.students.map((student) => ({ ...student, submissions: [...student.submissions, submission] }));
+
+      // update rest of students
+      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions.filter((submission) => submission.assignmentId !== data.id)] }));
+      return { ...prev, student, students };
+    });
+    return data;
+  };
+
+  const addSubmissionToStudentsState = (data) => {
+    setState((prev) => {
+      // update current student
+      const submissions = [...prev.student.submissions, { ...data.find((submission) => submission.studentId === prev.studentId), }];
+      const student = { ...prev.student, submissions };
+
+      // update rest of students
+      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions, { ...data.find(({ studentId }) => studentId === student.id) }] }));
       return { ...prev, student, students };
     });
     return data;
@@ -81,7 +96,7 @@ export function useAppData() {
 
   const updateSubmissionState = (data) => {
     setState((prev) => {
-      const submissions = state.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
+      const submissions = prev.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
       const student = { ...prev.student, submissions };
       return { ...prev, student, };
     });
@@ -106,6 +121,7 @@ export function useAppData() {
   const deleteAssignment = async (id) => {
     const { data: assignment } = await axios.delete(`/assignments/${id}`);
     removeAssignmentFromState(assignment);
+    removeSubmissionFromStudentState(assignment);
     return assignment;
   };
 
