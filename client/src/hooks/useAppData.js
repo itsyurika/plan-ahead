@@ -84,7 +84,7 @@ export function useAppData() {
   const addSubmissionToStudentsState = (data) => {
     setState((prev) => {
       // update current student
-      const submissions = [...prev.student.submissions, { ...data.find((submission) => submission.studentId === prev.studentId), }];
+      const submissions = [...prev.student.submissions, { ...data.find(({ studentId }) => studentId === prev.student.id), }];
       const student = { ...prev.student, submissions };
 
       // update rest of students
