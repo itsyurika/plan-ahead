@@ -61,7 +61,7 @@ const Calendar = (props) => {
        <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
-          &#x21E6;
+          <i className="fa-solid fa-angle-left"></i>
           </div>
         </div>
 
@@ -69,7 +69,7 @@ const Calendar = (props) => {
           <p>Today is</p> <p>{format(today, 'eeee, MMMM do')}</p>
         </div>
         <div className='col col-end' onClick={() => { setSelectedDate(addWeeks(selectedDate, 1)); }}>
-          <div className='icon'>&#x21E8;</div>
+          <div className='icon'><i className="fa-solid fa-angle-right"></i></div>
         </div>
       </header>
 

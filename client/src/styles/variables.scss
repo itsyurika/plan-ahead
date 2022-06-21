@@ -31,8 +31,8 @@ $bg-grey: #9FA3A9;
 $bg-dark: #424242;
 
 // gradient
-$pa1: rgba(234, 68, 53, 0.1); // red
-$pa2: rgba(52, 168, 83, 0.1); // green
+$pa1: rgba(234, 68, 53, 0.15); // red
+$pa2: rgba(52, 168, 83, 0.15); // green
 $linear-bg1: linear-gradient(180deg, $bg1, $pa2);
 $linear-bg2: linear-gradient($pa1, $pa2);
 

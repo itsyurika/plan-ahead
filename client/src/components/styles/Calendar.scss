@@ -45,7 +45,7 @@ section.calendar {
       &.selected {
         z-index: 1;
         font-weight: bold;
-        outline: 3px solid $selected;
+        // outline: 3px solid $selected;
         outline-offset: -3px;
         border-radius: $radius;
 
@@ -59,10 +59,10 @@ section.calendar {
         }
 
         // disable default border for selected column and next sibling
-        >.cell,
-        +.table__column .cell {
-          border-left: none !important;
-        }
+        // >.cell,
+        // +.table__column .cell {
+        //   border-left: none !important;
+        // }
       }
 
       // dim past dates
