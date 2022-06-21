@@ -40,7 +40,7 @@ const Popup = (props) => {
         }) : <li>Nothing Due!</li>}
       </ul>
       </div>
-      <div className='list-group past-due'>
+      <div className='list-group past-due' onClick={() => { props.selectView('pastDue'); }}>
         <h4 onClick={props.showPastDue}>Past Due</h4>
         <ul>
         {dueBefore.length ? dueBefore.map((due) => {

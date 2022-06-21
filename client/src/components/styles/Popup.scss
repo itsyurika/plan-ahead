@@ -53,11 +53,18 @@
     box-shadow:
       0px 0px 30px rgba(0, 0, 0, 0.4),
       10px 14px 16px rgba(0, 0, 0, 0.2);
-  }
+      
+    li {
+        font-weight: 500;
+      }
+      
+    .past-due {
+      >*:hover {
+        cursor: pointer;
+      }
+    }
+    }
 
-  li {
-    font-weight: 500;
-  }
 }
 
 .popup {
