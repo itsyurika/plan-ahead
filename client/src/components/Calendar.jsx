@@ -3,7 +3,7 @@ import 'components/styles/Calendar.scss';
 
 import { useState } from 'react';
 import { format, addWeeks, isSameDay, isBefore, addDays } from 'date-fns';
-import { getDatesForWeek, sortAssignmentsByDay } from 'hooks/helpers';
+import { getDatesForWeek, filterAssignmentsByDay } from 'hooks/helpers';
 
 import Column from 'components/Column';
 
@@ -23,7 +23,7 @@ const Calendar = (props) => {
   // = helpers =
   const renderTable = (date) => {
     const dates = getDatesForWeek(date);
-    const sorted = sortAssignmentsByDay(props.assignments, dates);
+    const sorted = filterAssignmentsByDay(props.assignments, dates);
 
     const columns = dates.map((date, i) => (
       <Column key={i}
@@ -58,10 +58,10 @@ const Calendar = (props) => {
   // render calendar
   return (
     <section className='calendar'>
-       <header>
+      <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
-          &#x21E6;
+            &#x21E6;
           </div>
         </div>
 

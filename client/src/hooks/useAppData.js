@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { parseISO, isBefore } from 'date-fns';
-import { mapAssignments } from 'hooks/helpers';
+import { mapAssignments, buildNewStudent, } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -102,18 +102,6 @@ export function useAppData() {
     });
   };
 
-  const findMatchingSubmission = (student, submissions) => {
-    return submissions.find((updated) => updated.studentId === student.id) || null;
-  };
-
-  const buildStudentSubmissions = (student, submission) => {
-    return student.submissions.map((old) => old.id === submission.id ? { ...submission } : { ...old });
-  };
-
-  function buildNewStudent(student, submissions) {
-    const newData = findMatchingSubmission(student, submissions);
-    return { ...student, submissions: newData ? buildStudentSubmissions(student, newData) : student.submissions };
-  };
 
 
   const updateAllSubmissionsState = (data) => {
