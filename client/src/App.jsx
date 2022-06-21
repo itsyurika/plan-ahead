@@ -54,6 +54,7 @@ const App = () => {
           assignmentList={assignmentList}
           student={student}
           onRemind={() => send_sms()}
+          selectView={(name) => { setView(name); }}
         />}
 
         {focusedAssignment && <Modal {...focusedAssignment}
