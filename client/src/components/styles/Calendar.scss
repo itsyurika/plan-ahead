@@ -41,34 +41,37 @@ section.calendar {
       flex-grow: 1;
       flex-basis: 0;
 
-      // current day
+      // current day style
       &.selected {
         z-index: 1;
-      //   font-weight: bold;
-      //   outline: 3px solid $selected;
-      //   outline-offset: -3px;
-      //   border-radius: $radius;
 
-      //   >header.cell p {
-      //     font-weight: 700 !important;
-      //     font-size: 90% !important;
-      //   }
+        // outline
+        // outline: 3px solid $selected;
+        // outline-offset: -3px;
+        // border-radius: $radius;
 
+
+        //   // disable default border for selected column and next sibling
+        //   >.cell,
+        //   +.table__column .cell {
+        //     border-left: none !important;
+        //   }
+
+        // bold selected header
+        >header.cell p {
+          // font-weight: 700 !important;
+        }
+
+        // highlight background
         .cell {
           // background-color: $bg-selected;
         }
-
-      //   // disable default border for selected column and next sibling
-      //   >.cell,
-      //   +.table__column .cell {
-      //     border-left: none !important;
-      //   }
       }
 
       // dim past dates
       &.past {
         &.cards .cell {
-          background-color: #fbfbfb;
+          // background-color: #fbfbfb;
         }
 
         >header,
@@ -103,11 +106,11 @@ section.calendar {
           font-weight: 400;
           padding: 0.2vh;
 
-        &.date {
-          font-weight: 700;
+          &.date {
+            font-weight: 700;
+          }
         }
-        }
-        }
+      }
 
       // middle columns
       >.card-cell {

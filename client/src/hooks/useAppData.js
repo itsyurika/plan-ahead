@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { isBefore } from 'date-fns';
-import { mapAssignments, buildNewStudent, } from 'hooks/helpers';
+import { mapAssignments, updateStudent, } from 'hooks/helpers';
 
 export function useAppData() {
   const [state, setState] = useState({
@@ -43,74 +43,24 @@ export function useAppData() {
     setFocused(-1);
   };
 
-  // update state
-  const addAssignmentToState = (data) => {
-    setState((prev) => {
-      const assignments = [...prev.assignments, { ...data }];
-      return { ...prev, assignments, };
-    });
-    return data;
+
+  // view lookup
+  const filterList = (assignment) => {
+    if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
+    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(assignment.assigned.dueDate, new Date());
+    if (state.view === 'completed') return assignment.assigned.dateCompleted;
+    if (state.view) return assignment.subject.name.toLowerCase() === state.view;
+    return false; // no valid view ?
   };
 
-  const updateAssignmentState = (data) => {
-    setState((prev) => {
-      const assignments = prev.assignments.map((assignment) => assignment.id === data.id ? { ...data } : { ...assignment });
-      return { ...prev, assignments, };
-    });
-    return data;
-  };
+  // find and filter assignments
+  const foundAssignments = mapAssignments(state.assignments, (!state.admin || state.view === 'students') && state.student);
+  const assignmentList = foundAssignments.filter(filterList);
+  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
 
-  const removeAssignmentFromState = (data) => {
-    setState((prev) => {
-      const assignments = prev.assignments.filter((assignment) => assignment.id !== data.id);
-      return { ...prev, assignments, };
-    });
-    return data;
-  };
-
-  const removeSubmissionFromStudentState = (data) => {
-    setState((prev) => {
-      // update current student
-      const submissions = [...prev.student.submissions.filter((submission) => submission.assignmentId !== data.id)];
-      const student = { ...prev.student, submissions };
-
-      // update rest of students
-      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions.filter((submission) => submission.assignmentId !== data.id)] }));
-      return { ...prev, student, students };
-    });
-    return data;
-  };
-
-  const addSubmissionToStudentsState = (data) => {
-    setState((prev) => {
-      // update current student
-      const submissions = [...prev.student.submissions, { ...data.find(({ studentId }) => studentId === prev.student.id), }];
-      const student = { ...prev.student, submissions };
-
-      // update rest of students
-      const students = prev.students.map((student) => ({ ...student, submissions: [...student.submissions, { ...data.find(({ studentId }) => studentId === student.id) }] }));
-      return { ...prev, student, students };
-    });
-    return data;
-  };
-
-  const updateSubmissionState = (data) => {
-    setState((prev) => {
-      const submissions = prev.student.submissions.map((submission) => submission.id === data.id ? { ...data } : { ...submission });
-      const student = { ...prev.student, submissions };
-      return { ...prev, student, };
-    });
-  };
-
-
-
-  const updateAllSubmissionsState = (data) => {
-    setState((prev) => {
-      const student = buildNewStudent(prev.student, data);
-      const students = prev.students.map((student) => buildNewStudent(student, data));
-
-      return { ...prev, student, students };
-    });
+  //send reminder
+  const send_sms = async () => {
+    await axios.post(`/sendAlerts`);
   };
 
 
@@ -140,6 +90,7 @@ export function useAppData() {
     return assignment;
   };
 
+
   // = submission requests =
   const postSubmission = async (body) => {
     const { data: submissions } = await axios.post('/submissions', { assignmentId: body.id, dueDate: body.defaultDueDate });
@@ -157,29 +108,11 @@ export function useAppData() {
   // updates time started and completed for one student
   const patchSubmission = async (id, body) => {
     const { data: submission } = await axios.patch(`/submissions/${id}`, body);
-    updateSubmissionState(submission);
+    setState((prev) => ({ ...prev, student: updateStudent(prev.student, submission) }));
     return submission;
   };
 
 
-  // view lookup
-  const filterList = (assignment) => {
-    if ([null, 'all', 'students',].includes(state.view)) return true; // retrieve all assignments
-    if (state.view === 'pastDue') return !assignment.assigned.dateCompleted && isBefore(assignment.assigned.dueDate, new Date());
-    if (state.view === 'completed') return assignment.assigned.dateCompleted;
-    if (state.view) return assignment.subject.name.toLowerCase() === state.view;
-    return false; // no valid view ?
-  };
-
-  // find and filter assignments
-  const foundAssignments = mapAssignments(state.assignments, (!state.admin || state.view === 'students') && state.student);
-  const assignmentList = foundAssignments.filter(filterList);
-  const focusedAssignment = state.focused === -1 ? state.newAssignment : assignmentList.find((assignment) => assignment.id === state.focused);
-
-  //send reminder
-  const send_sms = async () => {
-    await axios.get(`/sendAlerts`);
-  };
 
   return {
     // from state
@@ -198,11 +131,13 @@ export function useAppData() {
     setView,
     showCreateForm,
     togglePopup,
+    closePopup,
+    send_sms,
+
+    // api requsts
     postAssignment,
     putAssignment,
     deleteAssignment,
     patchSubmission,
-    closePopup,
-    send_sms
   };
 };

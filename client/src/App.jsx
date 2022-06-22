@@ -45,6 +45,8 @@ const App = () => {
         setStudent={(id) => setStudent(id)}
       />
 
+
+
       <Header onLogin={setAdmin} view={view} admin={admin} student={student} setHome={() => { setView(view ? null : (admin ? 'all' : 'pastDue')); }} />
 
       <main className={`app`}>
