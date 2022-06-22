@@ -7,6 +7,16 @@ const getStatus = (submission) => {
   return 'Not started';
 };
 
+const findMatchingSubmission = (student, submissions) => {
+  return submissions.find((updated) => updated.studentId === student.id) || null;
+};
+
+const buildStudentSubmissions = (student, submission) => {
+  return student.submissions.map((old) => old.id === submission.id ? { ...submission } : { ...old });
+};
+
+
+
 // = exported helpers =
 export const mapAssignments = (assignments, student) => {
   if (!student.id) return assignments.map((item) => ({ ...item, defaultDueDate: parseISO(item.defaultDueDate), assigned: { dueDate: parseISO(item.defaultDueDate) } }));
@@ -18,19 +28,23 @@ export const mapAssignments = (assignments, student) => {
   }));
 };
 
+// selectors for assignments
 export const getDatesForWeek = (date) => {
   const startDate = startOfWeek(date, { weekStartsOn: 1 });
   return [...Array(7)].map((_, i) => addDays(endOfDay(startDate), i)); // end of day so timezone doesn't flip
 };
 
-export const sortAssignmentsByDay = (assignments, week) => {
-  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate) - parseISO(b.assigned.dueDate));
-
-  return week.map((day) => assignments.filter((item) => isSameDay(item.assigned.dueDate, day)));
+export const sortAssignmentsByDate = (assignments) => {
+  return assignments.sort((a, b) => a.assigned.dueDate - b.assigned.dueDate);
 };
 
 export const filterAssignmentsByDay = (assignments, week) => {
-  const sorted = assignments.sort((a, b) => parseISO(a.assigned.dueDate) - parseISO(b.assigned.dueDate));
-
   return week.map((day) => assignments.filter((item) => isSameDay(item.assigned.dueDate, day)));
+};
+
+
+// build state objects
+export const buildNewStudent = (student, submissions) => {
+  const newData = findMatchingSubmission(student, submissions);
+  return { ...student, submissions: newData ? buildStudentSubmissions(student, newData) : student.submissions };
 };

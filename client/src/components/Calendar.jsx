@@ -3,7 +3,7 @@ import 'components/styles/Calendar.scss';
 
 import { useState } from 'react';
 import { format, addWeeks, isSameDay, isBefore, addDays } from 'date-fns';
-import { getDatesForWeek, sortAssignmentsByDay } from 'hooks/helpers';
+import { getDatesForWeek, filterAssignmentsByDay } from 'hooks/helpers';
 
 import Column from 'components/Column';
 
@@ -23,7 +23,7 @@ const Calendar = (props) => {
   // = helpers =
   const renderTable = (date) => {
     const dates = getDatesForWeek(date);
-    const sorted = sortAssignmentsByDay(props.assignments, dates);
+    const sorted = filterAssignmentsByDay(props.assignments, dates);
 
     const columns = dates.map((date, i) => (
       <Column key={i}
@@ -38,7 +38,7 @@ const Calendar = (props) => {
 
     return (
       <section className={'table'} onClick={props.closePopup}>
-        <main className={`table__column past ${isBefore(date, today) ? 'past' : ''}`}>
+        <main className={`table__column ${isBefore(date, today) ? 'past' : ''}`}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>
           </header>
@@ -57,8 +57,8 @@ const Calendar = (props) => {
 
   // render calendar
   return (
-    <section className={`calendar ${props.admin}`}>
-       <header>
+    <section className='calendar'>
+      <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
           <i className="fa-solid fa-angle-left"></i>

@@ -36,23 +36,17 @@ const Sidenav = (props) => {
       </div>
 
       {props.admin &&
-        <div><ul>
+        <ul>
           <header>
             <h4 className='students-nav' onClick={() => { props.selectView('students'); }}>Student Overview</h4>
           </header>
-        </ul></div>
-      }
 
-      <ul>
-        <header>
-          <h4>Students</h4>
-        </header>
-        {props.students.map((student) => (
-          <li key={student.id} onClick={() => props.setStudent(student.id)}>
-            {student.firstName} {student.lastName}
-          </li>
-        ))}
-      </ul>
+          {props.students.map((student) => (
+            <li key={student.id} onClick={() => props.setStudent(student.id)}>
+              {student.firstName} {student.lastName}
+            </li>
+          ))}
+        </ul>}
     </Menu>
   );
 };

@@ -45,7 +45,7 @@ const App = () => {
         setStudent={(id) => setStudent(id)}
       />
 
-      <Header onLogin={setAdmin} admin={admin} student={student} setHome={() => { setView(view ? null : 'pastDue'); }} />
+      <Header onLogin={setAdmin} view={view} admin={admin} student={student} setHome={() => { setView(view ? null : admin ? 'all' : 'pastDue'); }} />
 
       <main className={`app`}>
         {!admin && <Popup
@@ -64,10 +64,12 @@ const App = () => {
           onDelete={deleteAssignment}
           onStart={(e) => {
             patchSubmission(focusedAssignment.assigned.id, { dateStarted: new Date() });
-            party.confetti(e.target, { count: party.variation.range(20,60)});
+            party.confetti(e.target, { count: party.variation.range(20, 60) });
           }}
-          onComplete={(e) => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
-          party.sparkles(e.target, { count: party.variation.range(20,60)})}}
+          onComplete={(e) => {
+            patchSubmission(focusedAssignment.assigned.id, { dateCompleted: new Date() });
+            party.sparkles(e.target, { count: party.variation.range(20, 60) });
+          }}
           onCancelStarted={() => { patchSubmission(focusedAssignment.assigned.id, { dateStarted: null }); }}
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
