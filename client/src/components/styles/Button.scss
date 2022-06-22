@@ -52,4 +52,13 @@
       background-color: $danger-dim;
     }
   }
+
+  &.button--danger-delete {
+    background-color: $danger;
+    font-size: $b4;
+
+    &:hover {
+      background-color: $danger-dim;
+    }
+  }
 }

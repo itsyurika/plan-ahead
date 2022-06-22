@@ -16,7 +16,7 @@ const DeleteModal = (props) => {
         <p>Please confirm that you would like to delete: </p>
         <p className="del-title">{props.title}</p>
         <br />
-        <Button style='danger' action={() => { deleteAssignment(props.id); }}>Delete</Button>
+        <Button style='danger-delete' action={() => { deleteAssignment(props.id); }}>Delete</Button>
       </div>
     </div>
   );

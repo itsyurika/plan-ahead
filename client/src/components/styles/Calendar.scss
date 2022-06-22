@@ -45,7 +45,7 @@ section.calendar {
       &.selected {
         z-index: 1;
         font-weight: bold;
-        // outline: 3px solid $selected;
+        outline: 3px solid $selected;
         outline-offset: -3px;
         border-radius: $radius;
 
@@ -63,6 +63,176 @@ section.calendar {
         // +.table__column .cell {
         //   border-left: none !important;
         // }
+      }
+
+      // dim past dates
+      &.past {
+        &.cards .cell {
+          background-color: #fbfbfb;
+        }
+
+        >header,
+        .card__show,
+        p {
+          opacity: 0.6;
+        }
+
+        .notstarted,
+        .started {
+          opacity: 1;
+        }
+      }
+
+      // table header
+      >header.cell.label {
+        height: calc(1.8rem + 3vh); // sets min height and scales with viewport
+        font-size: $font-scale;
+        flex-grow: 0; // fix height
+        word-break: nowrap; // disable word-break
+        overflow: hidden;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        >p {
+          display: flex;
+          text-transform: uppercase;
+          font-weight: 400;
+          padding: 0.2vh;
+
+        &.date {
+          font-weight: 700;
+        }
+        }
+        }
+
+      // middle columns
+      >.card-cell {
+        min-height: calc($cell-height/2 + 10vh); // sets min height and scales with viewport
+        flex-grow: 1;
+        flex-basis: 0;
+        border-left: 1px solid $outline-light;
+        border-bottom: 1px solid $outline-light;
+      }
+
+      // first column
+      &:first-of-type {
+        min-width: 0; // resets flex basis
+        flex-grow: .4; // width
+        user-select: none; // disable text highlight
+
+        >header.cell {
+          border: none;
+
+          p {
+            font-size: 100%;
+            font-weight: bold;
+          }
+        }
+
+        >div.label {
+          margin: auto;
+          white-space: nowrap;
+          flex-wrap: wrap;
+          color: #70757a;
+          font-size: calc($font-scale*1.2);
+          text-align: center;
+          // rotate text
+          writing-mode: vertical-rl;
+          transform: scale(-1, -1);
+
+          p:last-of-type {
+            padding-right: 0.2vw;
+            font-weight: 600;
+          }
+        }
+      }
+
+      // weekend column width
+      &:nth-last-child(-n+2) {
+        min-width: 0;
+        flex-grow: .5;
+      }
+
+      // weekend background colours
+      &:nth-last-child(-n+2)>.card-cell {
+        background-color: #f1f3f4;
+
+        img {
+          display: none;
+        }
+      }
+
+      // disable bottom border
+      >:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+  }
+}
+
+//*todo calendar view for admin - temporary solution for demo day 
+section.calendar.true {
+
+  // individual tables
+  section.table {
+    display: flex;
+    justify-content: center;
+
+    background-color: #fff;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    margin-bottom: 2em;
+
+    overflow: hidden; // allows rounded borders
+
+    // table 1
+    &:first-of-type {
+      border-color: #bcc3e5;
+
+      header.cell.label {
+        background: #d7dbef;
+        border-left: 1px solid $outline-dark;
+      }
+    }
+
+    // table 2
+    &:last-of-type {
+      header.cell.label {
+        background: #d7dbef;
+        border-left: 1px solid $outline-dark;
+      }
+    }
+
+    // flex coloumns
+    .table__column {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 0;
+
+      // current day
+      &.selected {
+  
+
+        >header.cell p {
+          font-weight: 700 !important;
+          font-size: 90% !important;
+        }
+
+        .cell {
+          background-color: $bg-selected;
+        }
+
+        disable default border for selected column and next sibling
+        >.cell,
+        +.table__column .cell {
+          border-left: none !important;
+        }
       }
 
       // dim past dates

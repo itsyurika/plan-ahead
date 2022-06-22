@@ -57,7 +57,7 @@ const Calendar = (props) => {
 
   // render calendar
   return (
-    <section className='calendar'>
+    <section className={`calendar ${props.admin}`}>
        <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
