@@ -20,7 +20,7 @@ const Table = (props) => {
 
   const assignmentStatus = (dueDate, assignmentStatus) => {
     console.log("assignment status fxn: ", dueDate, assignmentStatus);
-    if (isAfter(dueDate, new Date())) {
+    if ((isAfter(new Date(), dueDate)) && (assignmentStatus !== 'Complete')) {
       return 'Overdue';}
     return assignmentStatus;
   }
@@ -54,19 +54,19 @@ const Table = (props) => {
             <h4 className='name'> {props.student.firstName}'s Assignments </h4>
             <div className='stats'>
               <div className='stat'>
-                <h2 className='number' id='complete'>7</h2>
+                <h2 className='number' id='complete'>4</h2>
                 <p className='label'>Complete</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='started'>3</h2>
+                <h2 className='number' id='started'>1</h2>
                 <p className='label'>Started</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='overdue'>5</h2>
+                <h2 className='number' id='overdue'>3</h2>
                 <p className='label'>Overdue</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='assigned'>15</h2>
+                <h2 className='number' id='assigned'>10</h2>
                 <p className='label'>Assigned</p>
               </div>
             </div>

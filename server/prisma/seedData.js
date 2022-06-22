@@ -61,7 +61,7 @@ const assignment = [
     subjectId: 2
   },
   {
-    defaultDueDate: new Date('2022-06-24T06:00:00Z'),
+    defaultDueDate: new Date('2022-06-25T06:00:00Z'),
     title: 'World War II',
     description: 'This is your essay project!  Write a short essay about World War II.  If you need help deciding on a topic, you can refer to the handout in class, or the google classroom link.  Remember an essay has a thesis statement in the introduction, three paragraphs, and a conclusion.',
     url: 'https://classroom.google.com/u/0/h',
@@ -112,7 +112,7 @@ const assignment = [
 const submission = [
   { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 1 },
   { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 2 },
-  { dueDate: assignment[2].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 3 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-22T06:00:00'), dateCompleted: new Date('2022-06-22T06:00:00'), studentId: 1, assignmentId: 3 },
   { dueDate: assignment[3].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 4 },
   { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 5 },
   { dueDate: assignment[5].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 6 },
