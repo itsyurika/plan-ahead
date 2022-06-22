@@ -4,6 +4,7 @@
   display: flex;
   // padding-top: 2rem;
   justify-content: space-around;
+  font-size: $font-scale;
 
   .sidebar{
     display: flex;
@@ -25,7 +26,7 @@
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid $dark-grey;
-    
+
     .student_names{
     padding: 1em;
     }
@@ -50,20 +51,20 @@
     }
   }
   }
-  
+
 
   .body {
     display: flex;
     flex-direction: column;
     font-family: $font-default;
     margin: 1rem 2rem;
-    
+
     .header {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       margin-bottom: 1.5em;
-  
+
       .dropdown{
         font-size: $b4;
         >*{
@@ -71,19 +72,19 @@
           margin: auto 0.5em;
         }
       }
-  
+
       .student_stats_container {
         border-radius: 8px;
         border: 1px solid $dark-grey;
         border-bottom: none;
         display: flex;
         flex-direction: column;
-        
+
         .name{
           padding: 0.7em 1em 0.3em 1em;
           font-style: italic;
         }
-  
+
         div.stats{
           padding: 1em;
           background-color: white;
@@ -92,14 +93,14 @@
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
           border-bottom: 1px solid $dark-grey;
-          
+
           > .stat {
             padding: 0 1.5em;
           }
           > .stat:first-of-type {
             padding: 0 1em;
           }
-  
+
           .number {
             font-style: italic;
             font-weight: 900;
@@ -122,10 +123,10 @@
             }
           }
         }
-  
+
       }
     }
-    
+
     table.student_table {
       border: 1px solid $dark-grey;
       border-radius: 8px;
@@ -148,7 +149,7 @@
         padding: 1em 0;
         border: none;
         min-width: 10vw;
-        
+
       }
 
 
@@ -174,7 +175,7 @@
         }
 
       }
-      
+
     }
 
 
