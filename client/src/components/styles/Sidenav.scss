@@ -22,14 +22,15 @@ img.logo {
 }
 
 .bm-item ul {
-  list-style: square inside;
+  list-style: inside none;
   margin-right: 0;
 }
 
 .bm-item li {
   font-size: $b2;
-  margin: 1rem 0;
+  margin: 1rem 0 1rem 1rem;
   cursor: pointer;
+  list-style: inside none;
 }
 
 /* Change color on hover */

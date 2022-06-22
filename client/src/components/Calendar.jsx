@@ -37,7 +37,7 @@ const Calendar = (props) => {
       />));
 
     return (
-      <section className={'table'} onClick={props.closePopup}>
+      <section className={`table`} onClick={props.closePopup}>
         <main className={`table__column ${isBefore(date, today) ? 'past' : ''}`}>
           <header className={'cell label'}>
             <p>{format(date, 'MMMM')}</p>
@@ -57,7 +57,7 @@ const Calendar = (props) => {
 
   // render calendar
   return (
-    <section className='calendar'>
+    <section className={`calendar ${props.admin}`}>
       <header>
         <div className='col col-start'>
           <div className='icon' onClick={() => { setSelectedDate(addWeeks(selectedDate, -1)); }}>
