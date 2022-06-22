@@ -1,5 +1,5 @@
 import 'components/styles/Table.scss';
-import { format, isAfter} from 'date-fns';
+import { format, isAfter } from 'date-fns';
 
 const Table = (props) => {
   const subjOptions = [ // todo get from database
@@ -19,29 +19,51 @@ const Table = (props) => {
   ];
 
   const assignmentStatus = (dueDate, assignmentStatus) => {
-    console.log("assignment status fxn: ", dueDate, assignmentStatus);
     if ((isAfter(new Date(), dueDate)) && (assignmentStatus !== 'Complete')) {
-      return 'Overdue';}
+      return 'Overdue';
+    }
     return assignmentStatus;
-  }
+  };
 
+  console.log("loading props: ", props.assignmentList);
+  const stats = (assignments) => {
+    const stats = {
+      complete: 0,
+      started: 0,
+      overdue: 0,
+      assigned: assignments.length
+    };
+   
+    for (const assn of assignments) {
+      if ((isAfter(new Date(), assn.assigned.dueDate)) && (assn.status !== 'Complete')) {
+         stats.overdue++;
+      } else if (assn.status === 'Complete') {
+        stats.complete++;
+      } else if (assn.status === 'Started') {
+        stats.started++;
+      }
+    }
+    return stats;
+  };
+
+  const {complete, started, overdue, assigned} = stats(props.assignmentList);
   return (
     <section className='student_overview'>
       <div className='sidebar'>
-      <button className='remind_button' onClick={props.onRemind}><p>Remind Students</p></button>
+        <button className='remind_button' onClick={props.onRemind}><p>Remind Students</p></button>
 
-      <div className='student_list'>
-        <h4 className='student_names'>Student</h4>
-        {props.students.map((student) => (
-          <p className='student_name' key={student.id} onClick={() => props.setStudent(student.id)}>
-            {student.firstName} {student.lastName}
-          </p>
-        ))}
+        <div className='student_list'>
+          <h4 className='student_names'>Student</h4>
+          {props.students.map((student) => (
+            <p className='student_name' key={student.id} onClick={() => props.setStudent(student.id)}>
+              {student.firstName} {student.lastName}
+            </p>
+          ))}
         </div>
       </div>
       <div className='body'>
         <div className='header'>
-          
+
           <div className='dropdown'>
             <select className='subjects' onChange={(e) => console.log("selected subject")}>
               {subjOptions}
@@ -54,19 +76,19 @@ const Table = (props) => {
             <h4 className='name'> {props.student.firstName}'s Assignments </h4>
             <div className='stats'>
               <div className='stat'>
-                <h2 className='number' id='complete'>4</h2>
+                <h2 className='number' id='complete'>{complete}</h2>
                 <p className='label'>Complete</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='started'>1</h2>
+                <h2 className='number' id='started'>{started}</h2>
                 <p className='label'>Started</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='overdue'>3</h2>
+                <h2 className='number' id='overdue'>{overdue}</h2>
                 <p className='label'>Overdue</p>
               </div>
               <div className='stat'>
-                <h2 className='number' id='assigned'>10</h2>
+                <h2 className='number' id='assigned'>{assigned}</h2>
                 <p className='label'>Assigned</p>
               </div>
             </div>

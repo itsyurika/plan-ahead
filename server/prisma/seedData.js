@@ -160,6 +160,26 @@ const submission = [
   { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 5, assignmentId: 8 },
   { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 9 },
   { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 5, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 6, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 6, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-22T06:00:00'), dateCompleted: new Date('2022-06-22T06:00:00'), studentId: 6, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-22T06:00:00'), dateCompleted: null, studentId: 6, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 6, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 6, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: new Date('2022-06-17T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 6, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 6, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: new Date('2022-06-17T06:00:00'), dateCompleted: null, studentId: 6, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 6, assignmentId: 10 },
+  { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 7, assignmentId: 1 },
+  { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-17T06:00:00'), dateCompleted: null, studentId: 7, assignmentId: 2 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-22T06:00:00'), dateCompleted: new Date('2022-06-22T06:00:00'), studentId: 7, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-18T06:00:00'), dateCompleted: new Date('2022-06-18T06:00:00'), studentId: 7, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: new Date('2022-06-15T06:00:00'), dateCompleted: null, studentId: 7, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 7, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 7, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 7, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: new Date('2022-06-18T06:00:00'), dateCompleted: null, studentId: 7, assignmentId: 9 },
+  { dueDate: assignment[9].defaultDueDate, dateStarted: new Date('2022-06-20T06:00:00'), dateCompleted: new Date('2022-06-20T06:00:00'), studentId: 7, assignmentId: 10 }
 ];
 
 module.exports = { teacher, group, student, subject, assignment, submission};
