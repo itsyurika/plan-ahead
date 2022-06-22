@@ -45,7 +45,7 @@ const assignment = [
     subjectId: 1
   },
   {
-    defaultDueDate: new Date('2022-06-20T06:00:00'),
+    defaultDueDate: new Date('2022-06-30T06:00:00'),
     title: "Isn't It Ironic?",
     description: 'Click on the google classroom link, and listen to the three scenarios.  Can you create a definition of what irony is?',
     url: 'https://classroom.google.com/u/0/h',
@@ -61,7 +61,7 @@ const assignment = [
     subjectId: 2
   },
   {
-    defaultDueDate: new Date('2022-06-23T06:00:00'),
+    defaultDueDate: new Date('2022-06-24T06:00:00Z'),
     title: 'World War II',
     description: 'This is your essay project!  Write a short essay about World War II.  If you need help deciding on a topic, you can refer to the handout in class, or the google classroom link.  Remember an essay has a thesis statement in the introduction, three paragraphs, and a conclusion.',
     url: 'https://classroom.google.com/u/0/h',
@@ -69,7 +69,7 @@ const assignment = [
     subjectId: 3
   },
   {
-    defaultDueDate: new Date('2022-06-16T06:00:00'),
+    defaultDueDate: new Date('2022-06-16T06:00:00Z'),
     title: 'World History',
     description: "Research a country and write about some of it's history.  The more details you have the better, and then we'll share what we learned with the rest of the class.",
     url: 'https://classroom.google.com/u/0/h',
@@ -77,14 +77,14 @@ const assignment = [
     subjectId: 3
   },
   {
-    defaultDueDate: new Date('2022-06-24T06:00:00'),
+    defaultDueDate: new Date('2022-06-25T06:00:00Z'),
     title: 'Fractions - Multiplication',
     description: 'Fill out the handout from class, or get it from the google classroom link.  Remember: The first step when multiplying fractions is to multiply the two numerators. The second step is to multiply the two denominators. Finally, simplify the new fractions. The fractions can also be simplified before multiplying by factoring out common factors in the numerator and denominator.', url: 'https://classroom.google.com/u/0/h',
     teacherId: 1,
     subjectId: 4
   },
   {
-    defaultDueDate: new Date('2022-06-20T06:00:00'),
+    defaultDueDate: new Date('2022-07-05T06:00:00Z'),
     title: 'Fractions - Decimals',
     description: 'This is a review of how fractions work.  Fill out the handout from class, or get one from the google classroom link.  Convert the fractions into decimals, and the decimals into fractions.',
     url: 'https://classroom.google.com/u/0/h',
@@ -112,12 +112,13 @@ const assignment = [
 const submission = [
   { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 1 },
   { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 2 },
-  { dueDate: assignment[2].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 3 },
-  { dueDate: assignment[3].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 4 },
-  { dueDate: assignment[5].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 6 },
-  { dueDate: assignment[6].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 7 },
-  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 8 },
-  { dueDate: assignment[8].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 9 },
+  { dueDate: assignment[2].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 3 },
+  { dueDate: assignment[3].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 4 },
+  { dueDate: assignment[4].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 5 },
+  { dueDate: assignment[5].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 6 },
+  { dueDate: assignment[6].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 1, assignmentId: 7 },
+  { dueDate: assignment[7].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 8 },
+  { dueDate: assignment[8].defaultDueDate, dateStarted: new Date('2022-06-18T06:00:00'), dateCompleted: null, studentId: 1, assignmentId: 9 },
   { dueDate: assignment[9].defaultDueDate, dateStarted: null, dateCompleted: null, studentId: 1, assignmentId: 10 },
   { dueDate: assignment[0].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 1 },
   { dueDate: assignment[1].defaultDueDate, dateStarted: new Date('2022-06-13T06:00:00'), dateCompleted: new Date('2022-06-15T06:00:00'), studentId: 2, assignmentId: 2 },

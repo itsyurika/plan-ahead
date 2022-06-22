@@ -30,18 +30,29 @@ $bg-light: #E7E8E9;
 $bg-grey: #9FA3A9;
 $bg-dark: #424242;
 
-// gradient
-$pa1: rgba(234, 68, 53, 0.1); // red
-$pa2: rgba(52, 168, 83, 0.1); // green
-$linear-bg1: linear-gradient(180deg, $bg1, $pa2);
-$linear-bg2: linear-gradient($pa1, $pa2);
-
 
 //* design color palettes 
 $default-text: #000000;
 $sub-text: #424242;
 $dark-grey: #9FA3A9;
 $light-grey: #E7E8E9;
+$overdue: #EA4335;
+$started-yellow: #FBBC05;
+
+//*ex-design color palettes
+$calender-header1: #d7dbef;
+$border-cal-header1: #bcc3e5;
+$calender-header2: #b3e1f7;
+
+
+
+// gradient
+$pa1: rgba(234, 67, 53, 0.1); // red
+$pa2: rgba(52, 168, 83, 0.15); // green
+$pa3: rgb(255, 243, 243);
+$linear-bg1: linear-gradient($pa3, $pa2);
+$linear-bg2: linear-gradient($light-grey, $dark-grey);
+
 
 // text
 $title-height: 3em;
@@ -53,6 +64,7 @@ $font-default: 'Montserrat', sans-serif;
 $b1: 1.8em;
 $b2: 1.6em;
 $b3: 1.4em;
+$b4: 1.2em;
 
 
 // colors

@@ -1,107 +1,182 @@
 @import "styles/variables.scss";
 
-.table__view {
-  margin-top: 2rem;
+.student_overview {
   display: flex;
+  // padding-top: 2rem;
   justify-content: space-around;
-  list-style: none;
 
-  // student list
-  .student_header {
-    margin: 4rem 3rem 0;
-  }
+  .sidebar{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10em;
 
-  .student_names {
-    align-items: center;
-    list-style: none;
-  }
-
-  .student_li {
-    margin: 1em 0;
-    padding: 0.5rem;
-    border: 1px solid blue;
-    border-radius: 6px;
-    background: aliceblue;
-    list-style: none;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.1)
-    }
-  }
-
-  .remind_button {
-    margin: 3rem 0;
-    padding: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #e5bd6f;
-    color: #473218;
-  }
-
-  .table_wrapper {
-    margin: 0 2rem 0 2rem;
-    text-align: center;
-
-    // table header
-    .student_display {
-      margin: 1rem;
-      text-align: center;
+    .remind_button{
+      margin-bottom: 1em;
+      padding: 0.8em 1em;
+      background-color: #34A853;
+      border: 1px solid $light-grey;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: $b4;
+      font-weight: 700;
     }
 
-    .student_table {
-      background: lightcyan;
-      border: 1px solid black;
-      padding: 1rem;
-      border-radius: calc($radius/2);
+  .student_list {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid $dark-grey;
+    
+    .student_names{
+    padding: 1em;
+    }
 
-      // dumb rounded corners
-      th:first-of-type {
-        border-top-left-radius: calc($radius/2);
+    .student_name:last-of-type{
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom: 1px solid $dark-grey;
+    }
+
+    .student_name{
+      padding: 1em 2em ;
+      list-style: inside none;
+      border-top: 1px solid $dark-grey;
+      font-size: $b4;
+      font-weight: 400;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $light-grey;
       }
+    }
+  }
+  }
+  
 
-      th:last-of-type {
-        border-top-right-radius: calc($radius/2);
-      }
-
-      tr:last-of-type {
-        td:first-of-type {
-          border-bottom-left-radius: calc($radius/2);
+  .body {
+    display: flex;
+    flex-direction: column;
+    font-family: $font-default;
+    margin: 1rem 2rem;
+    
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 1.5em;
+  
+      .dropdown{
+        font-size: $b4;
+        >*{
+          padding: 0.5em 3em 0.5em 0.4em;
+          margin: auto 0.5em;
         }
-
-        td:last-of-type {
-          border-bottom-right-radius: calc($radius/2);
+      }
+  
+      .student_stats_container {
+        border-radius: 8px;
+        border: 1px solid $dark-grey;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        
+        .name{
+          padding: 0.7em 1em 0.3em 1em;
+          font-style: italic;
         }
+  
+        div.stats{
+          padding: 1em;
+          background-color: white;
+          display: flex;
+          justify-content: space-around;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+          border-bottom: 1px solid $dark-grey;
+          
+          > .stat {
+            padding: 0 1.5em;
+          }
+          > .stat:first-of-type {
+            padding: 0 1em;
+          }
+  
+          .number {
+            font-style: italic;
+            font-weight: 900;
+            line-height: 1.2em;
+
+            &#complete{
+              color: $dark-grey;
+            }
+
+            &#started{
+              color: $started-yellow;
+            }
+
+            &#overdue{
+              color: $overdue;
+            }
+
+            &#assigned{
+              color: black;
+            }
+          }
+        }
+  
+      }
+    }
+    
+    table.student_table {
+      border: 1px solid $dark-grey;
+      border-radius: 8px;
+      background-color: white;
+      padding: 0;
+      border-spacing: 0;
+
+      .table_header:first-of-type{
+        border-top-left-radius: 8px;
+      border: transparent;
       }
 
-      .table_rows {
-        padding: 2rem;
-        border: 1px solid black;
-        text-align: center;
+      .table_header:last-of-type{
+        border-top-right-radius: 8px;
+        border: transparent;
       }
-
       .table_header {
-        border: 1px solid black;
+        background-color: $light-grey;
+        font-size: $b3;
+        padding: 1em 0;
+        border: none;
         min-width: 10vw;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: #99ff99;
+        
       }
+
 
       .row_values {
-        padding: 1rem;
-        border: 1px solid black;
-        background: aliceblue;
+        padding: 1em 2em 1em 2em;
+        background: transparent;
+        font-size: $b4;
 
-        &.link {
-          color: blue;
+        &.Not {
+          background-color: $white;
         }
 
-        &.started {
-          background-color: $danger;
-          color: #f9f7f5;
+        &.Complete {
+          background-color: $dark-grey;
         }
+
+        &.Started {
+          background-color: $started-yellow;
+        }
+
+        &.Overdue {
+          background-color: $overdue;
+        }
+
       }
+      
     }
+
+
   }
 }

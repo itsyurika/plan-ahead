@@ -3,7 +3,7 @@ import Card from 'components/Card';
 
 const Column = (props) => {
   return (
-    <main className={`table__column cards-column ${props.style}`}>
+    <main className={`table__column cards-column ${props.style} `}>
       <header className={`cell label`}>
         <p className='date'>{format(props.day, 'dd')}</p>
         <p>{format(props.day, 'eee')}</p>

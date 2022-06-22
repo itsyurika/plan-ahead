@@ -107,6 +107,7 @@ const App = () => {
           onRemind={() => send_sms()}
         />}
       </main>
+      <img id='logo' src='/images/PlanAhead-logo.png'/>
     </div>
   );
 };
