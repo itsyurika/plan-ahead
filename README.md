@@ -1,6 +1,11 @@
 # Plan Ahead (LHL Finals Apr 04, 2022)
 
-Single Page App designed to help teachers and young students keep track of their assignments and due dates. Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a front-end interface built with React.js.
+Single Page App designed to help teachers, young students and those with learning disabilities keep track of their assignments and due dates. \
+Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a front-end interface built with React.js.
+
+## Demo
+
+A live demo can be found on Heroku - [Plan Ahead Live Demo](https://plan-ahead.herokuapp.com)
 
 ### Homepage 
 
@@ -24,19 +29,14 @@ Single Page App designed to help teachers and young students keep track of their
 
 ---
 
-## Demo
-
-A live demo can be found on Heroku
-
-[Plan Ahead Live Demo](https://plan-ahead.herokuapp.com)
-
 ## Usage
 
 Clone and CD into Project Folder:
 
 `git clone git@github.com:itsyurika/plan-ahead.git plan-ahead && cd plan-ahead`
 
-The project consists of back-end Server, and front-end Client each with independent folders and dependencies. To run the application, first we will set up the back-end database and API. 
+The project consists of back-end Server, and front-end Client each with independent folders and dependencies. \
+To run the application, first we will set up the back-end database and API. 
 
 ## Set up the Database
 
