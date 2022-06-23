@@ -10,6 +10,7 @@ import Modal from "components/Modal";
 import Popup from 'components/Popup';
 import List from 'components/List';
 import Table from 'components/Table';
+import About from 'components/About';
 
 const App = () => {
   const {
@@ -74,7 +75,7 @@ const App = () => {
           onCancelComplete={() => { patchSubmission(focusedAssignment.assigned.id, { dateCompleted: null }); }}
           onBack={() => setFocused(null)}
         />}
-
+        
         {!view && <Calendar
           admin={admin}
           assignments={assignmentList}
@@ -82,7 +83,8 @@ const App = () => {
           onFocus={(id) => setFocused(id)}
           closePopup={() => closePopup()}
         />}
-        {view && view !== 'students' && <List
+
+        {view && view !== 'students' && view !== 'about' && <List
           student={student}
           assignmentList={assignmentList}
           admin={admin}
@@ -104,8 +106,9 @@ const App = () => {
           setStudent={(id) => setStudent(id)}
           onRemind={() => send_sms()}
         />}
+         {view === 'about' && <About/>}
       </main>
-      <img id='logo' src='/images/PlanAhead-logo.png'/>
+      <img id='logo' src='/images/PlanAhead-logo.png' onClick={() => {setView('about')}}/>
     </div>
   );
 };
