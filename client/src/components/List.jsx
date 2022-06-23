@@ -14,7 +14,7 @@ const List = (props) => {
       <h1>{viewName()} Assignments</h1>
       <article className='list-item'>
         <ul className='ul-view'>
-          {!props.assignmentList.length &&  <li className={`card-li`}> <Alert title={''} text={`${props.view === 'pastDue' ? 'You\'re all caught up! Good work.' : 'No assignments to show.'}`} /> </li>}
+          {!props.assignmentList.length && <li className={`card-li`}> <Alert title={''} text={`${props.view === 'pastDue' ? 'You\'re all caught up! Good work.' : 'No assignments to show.'}`} /> </li>}
 
           {props.assignmentList.map((assignment) => (
             <li key={assignment.id} className={`card-li ${props.view}`} >

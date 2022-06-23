@@ -42,6 +42,7 @@ const App = () => {
         selectView={(name) => { setView(name); }}
         admin={admin}
         students={students}
+        onLogin={setAdmin}
         setStudent={(id) => setStudent(id)}
       />
 

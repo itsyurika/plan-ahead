@@ -11,6 +11,7 @@ body {
     user-select: none;
   }
 
+  // disables default link colours and underline
   a {
     color: inherit;
     text-decoration: none;
@@ -18,10 +19,10 @@ body {
 }
 
 #root>#outer-container {
-  overflow: auto;
+  overflow: auto; // fixes background color stretch, but breaks scroll bar
 
   &::-webkit-scrollbar {
-    display: none;
+    display: none; // hides scrollbar
   }
 
   &.teacher {
@@ -39,7 +40,7 @@ main.app {
   height: 100vh;
   width: 80vw;
 
-  
+
 }
 
 section.calendar {

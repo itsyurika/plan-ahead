@@ -1,79 +1,5 @@
 @import "styles/variables.scss";
 
-
-/* Individual item */
-
-img.logo {
-  width: 140px;
-}
-
-.bm-item {
-  display: inline-block;
-  /* Our sidebar item styling */
-  text-decoration: none;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
-  color: #9FA3A9;
-  transition: color 0.2s;
-
-  header {
-  color: #d1d1d1;  
-  }
-}
-
-.bm-item ul {
-  list-style: inside none;
-  margin-right: 0;
-}
-
-.bm-item li {
-  font-size: $b2;
-  margin: 1rem 0 1rem 1rem;
-  cursor: pointer;
-  list-style: inside none;
-}
-
-/* Change color on hover */
-.bm-item li:hover {
-  color: white;
-}
-
-.students-nav {
-  margin: 1rem 0;
-  cursor: pointer;
-  list-style: none;
-}
-
-.students-nav:hover {
-  color: white;
-}
-
-/* The rest copied directly from react-burger-menu docs */
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 25px;
-  top: 1rem;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #424242;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
-
 /* General sidebar styles */
 .bm-menu {
   background: #424242;
@@ -89,16 +15,103 @@ img.logo {
   h2:hover {
     color: white;
   }
+
+  img.logo {
+    width: 140px;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    display: flex;
+    flex-direction: column;
+    color: #b8b7ad;
+
+    /* Individual item */
+    .bm-item {
+      /* Our sidebar item styling */
+      text-decoration: none;
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      color: #9FA3A9;
+      transition: color 0.2s;
+
+      header {
+        color: #d1d1d1;
+      }
+
+      &.debug {
+        position: absolute;
+        bottom: 0;
+        font-size: 0.5rem;
+        opacity: 0.4;
+        margin: 0;
+
+        li {
+          margin-left: 0;
+        }
+
+        button {
+          background: none;
+          box-shadow: none;
+          margin: 1em 0;
+          padding: 0;
+        }
+      }
+    }
+
+    .bm-item ul {
+      list-style: inside none;
+      margin-right: 0;
+    }
+
+    .bm-item li {
+      font-size: $b2;
+      margin: 1rem 0 1rem 1rem;
+      cursor: pointer;
+      list-style: inside none;
+    }
+
+    /* Change color on hover */
+    .bm-item li:hover {
+      color: white;
+    }
+
+    .students-nav {
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+  }
+}
+
+/* The rest copied directly from react-burger-menu docs */
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 25px;
+  top: 1rem;
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #424242;
+  }
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 40px;
+  width: 40px;
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
 }
 
 /* Styling of overlay */

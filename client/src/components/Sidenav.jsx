@@ -1,5 +1,6 @@
 import 'components/styles/Sidenav.scss';
 import Menu from 'react-burger-menu/lib/menus/slide';
+import Button from './Button';
 
 const Sidenav = (props) => {
   return (
@@ -34,19 +35,23 @@ const Sidenav = (props) => {
             || <li onClick={() => { props.selectView('completed'); }} >Completed</li>}
         </ul>
       </div>
-
       {props.admin &&
-        <ul>
-          <header>
-            <h4 className='students-nav' onClick={() => { props.selectView('students'); }}>Student Overview</h4>
+        <div>
+          <header className='students-nav'>
+            <h4 onClick={() => { props.selectView('students'); }}>Student Overview</h4>
           </header>
+        </div>}
 
+      <div className='debug'>
+        <ul className='debug students-nav'>
           {props.students.map((student) => (
             <li key={student.id} onClick={() => props.setStudent(student.id)}>
               {student.firstName} {student.lastName}
             </li>
           ))}
-        </ul>}
+          <Button style='info debug' action={props.onLogin} disabled={props.view === 'students'}> {props.admin ? 'Teacher' : 'Student'}</Button>
+        </ul>
+      </div>
     </Menu>
   );
 };

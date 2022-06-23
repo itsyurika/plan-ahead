@@ -31,7 +31,7 @@ $bg-grey: #9FA3A9;
 $bg-dark: #424242;
 
 
-//* design color palettes 
+//* design color palettes
 $default-text: #000000;
 $sub-text: #424242;
 $dark-grey: #9FA3A9;
@@ -75,6 +75,8 @@ $outline-dark: #b3bac6;
 $selected: #2a935774;
 $light-blue: #97bed1;
 
+$info: #3c5a7b;
+$info-dim: #223043;
 $confirm: #10ac84;
 $confirm-dim: #29705f;
 $warning: #ff4369;
@@ -83,7 +85,6 @@ $danger: #ee5264;
 $danger-dim: #9d4545;
 
 // card bgs
-
 $transparent: rgba(0, 0, 0, 0);
 $default: #fdfbf0;
 $complete: #eff4f5;
@@ -105,9 +106,7 @@ $drop-shadow: 1.7px 1.7px 1.4px rgba(0, 0, 0, 0.016),
 // sizing
 $font-scale: calc(0.7em + 0.3vw + 0.3vh);
 $radius: 1em;
-
 $nav-height: 1rem;
-
 $cell-width: 8rem;
 $cell-height: 4rem;
 

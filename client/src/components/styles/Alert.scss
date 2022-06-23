@@ -6,6 +6,7 @@ article.alert {
   border: 0.2rem solid rgb(166, 57, 188);
   border-radius: $radius;
   overflow: hidden;
+  font-size: 1rem;
 
   .description {
     position: relative;
@@ -15,6 +16,5 @@ article.alert {
     p {
       margin: 1rem 0;
     }
-
   }
 }
