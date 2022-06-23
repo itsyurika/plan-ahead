@@ -13,7 +13,7 @@ const About = () => {
           <div className='links'>
             <h4><a href='https://github.com/symphony' target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github fa-xl"></i></a></h4>
             <h4><a href='https://www.linkedin.com/in/jordan-ciurcovich/' target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin fa-xl"></i></a></h4>
-            <h4><a href='#' target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file fa-xl"></i></a></h4>
+            <h4><a href='https://symphony.bitverse.io/resume.pdf' target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file fa-xl"></i></a></h4>
           </div>
         </div>
 
@@ -23,7 +23,7 @@ const About = () => {
           <div className='links'>
             <h4><a href='https://github.com/Ben-Finlay' target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github fa-xl"></i></a></h4>
             <h4><a href='https://www.linkedin.com/in/ben-finlay/' target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin fa-xl"></i></a></h4>
-            <h4><a href='#' target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file fa-xl"></i></a></h4>
+            <h4><a href='https://resume.creddle.io/resume/2p8fmq2vvlg' target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file fa-xl"></i></a></h4>
           </div>
 
         </div>

@@ -108,7 +108,9 @@ const App = () => {
         />}
          {view === 'about' && <About/>}
       </main>
-      <img id='logo' src='/images/PlanAhead-logo.png' onClick={() => {setView('about')}}/>
+      <img id='logo' src='/images/PlanAhead-logo.png' onClick={() => {
+        setView('about');
+        }}/>
     </div>
   );
 };
