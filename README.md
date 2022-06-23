@@ -1,4 +1,4 @@
-# Plan Ahead (LHL Finals Apr 04 2022)
+# Plan Ahead (LHL Finals Apr 04, 2022)
 
 Single Page App designed to help teachers and young students keep track of their assignments and due dates. Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a front-end interface built with React.js.
 
@@ -8,19 +8,19 @@ Single Page App designed to help teachers and young students keep track of their
 
 ### Student Calendar
 
-<img alt="Screenshot of Scheduler's Edit Page" src="_docs/02-student-calendar.png?raw=true" name="Student Calendar" width="800"></img>
+<img alt="Student Calendar View" src="_docs/02-student-calendar.png?raw=true" name="Student Calendar" width="800"></img>
 
 ### Assignment Card View
 
-<img alt="Screenshot of Delete Confirmation" src="_docs/03-card-view.png?raw=true" name="Assignment Card View" width="800"></img>
+<img alt="Assignment Card View" src="_docs/03-card-view.png?raw=true" name="Assignment Card View" width="800"></img>
 
 ### Teacher Dashboard
 
-<img alt="Screenshot of Mobile View" src="_docs/04-teacher-dashboard.png?raw=true" name="Teacher Dashboard" width="800"></img>
+<img alt="Teacher's Dashboard" src="_docs/04-teacher-dashboard.png?raw=true" name="Teacher Dashboard" width="800"></img>
 
 ### Assignment Edit
 
-<img alt="Screenshot of Mobile View" src="_docs/05-assignment-edit.png?raw=true" name="Assignment Edit" width="800"></img>
+<img alt="Edit Assignment view" src="_docs/05-assignment-edit.png?raw=true" name="Assignment Edit" width="800"></img>
 
 ---
 
@@ -28,7 +28,7 @@ Single Page App designed to help teachers and young students keep track of their
 
 A live demo can be found on Heroku
 
-[Plan Ahead Live Demo](https://plan-ahead.herokuapp.com/)
+[Plan Ahead Live Demo](https://plan-ahead.herokuapp.com)
 
 ## Usage
 
@@ -44,7 +44,7 @@ Our development environment connects the server to a local instance of PostgreSQ
 
 To set up the database you will need PostgreSQL installed on your host machine and a PSQL account with admin permissions.
 
-Instructions can be found here: [Installing Postgres](https://www.postgresguide.com/setup/install/).
+Instructions can be found here: [Installing Postgres](https://www.postgresguide.com/setup/install).
 
 Once inside PSQL in your terminal create the database:
 
@@ -104,6 +104,7 @@ Visit the App in your browser at http://localhost:3000
 * morgan 1.x
 
 ## Contributors
+
 Yuri Yang - [@itsyurika](https://github.com/itsyurika)
 
 Ben Finlay - [@Ben-Finlay](https://github.com/Ben-Finlay)
@@ -111,5 +112,7 @@ Ben Finlay - [@Ben-Finlay](https://github.com/Ben-Finlay)
 Jordan Ciurcovich - [@symphony](https://github.com/symphony)
 
 - Forked from: [@itsyurika/plan-ahead](https://github.com/itsyurika/plan-ahead)
+
+Lighthouse Labs - [@lighthouse-labs](https://github.com/lighthouse-labs)
 
 Thank you for visiting our project. 
