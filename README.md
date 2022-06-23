@@ -34,7 +34,7 @@ A live demo can be found on Heroku
 
 Clone and CD into Project Folder:
 
-`git clone git@github.com:itsyurika/LHL-final-project.git student-planner && cd student-planner`
+`git clone git@github.com:itsyurika/plan-ahead.git plan-ahead && cd plan-ahead`
 
 The project consists of back-end Server, and front-end Client each with independent folders and dependencies. To run the application, first we will set up the back-end database and API. 
 
