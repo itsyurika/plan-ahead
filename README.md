@@ -5,13 +5,10 @@ Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a 
 
 ## Contributors 
 
-**Yuri Yang** - Product Owner, Developer ([@itsyurika](https://github.com/itsyurika))
-
-**Ben Finlay** - Developer ([@Ben-Finlay](https://github.com/Ben-Finlay))
-
-**Jordan Ciurcovich** - Developer ([@symphony](https://github.com/symphony))
-
-**Minah Lee** - Designer (Portfolio by [@mmlleeee](https://www.minahlee.art/))
+**Yuri Yang** - Product Owner, Developer ([@itsyurika](https://github.com/itsyurika)) \
+**Ben Finlay** - Developer ([@Ben-Finlay](https://github.com/Ben-Finlay)) \
+**Jordan Ciurcovich** - Developer ([@symphony](https://github.com/symphony)) \
+**Minah Lee** - Designer (Portfolio by [@mmlleeee](https://www.minahlee.art/)) 
 
 ## Demo
 
@@ -41,8 +38,7 @@ A live demo can be found on Heroku - [Plan Ahead Live Demo](https://plan-ahead.h
 
 ## Usage
 
-Clone and CD into Project Folder:
-
+Clone and CD into Project Folder: \
 `git clone git@github.com:itsyurika/plan-ahead.git plan-ahead && cd plan-ahead`
 
 The project consists of back-end Server, and front-end Client each with independent folders and dependencies. \
@@ -56,31 +52,39 @@ To set up the database you will need PostgreSQL installed on your host machine a
 
 Instructions can be found here: [Installing Postgres](https://www.postgresguide.com/setup/install)
 
-Once inside PSQL in your terminal create the database:
-
+Once inside PSQL in your terminal create the database: \
 `CREATE DATABASE planner_development;`
 
-Exit PSQL with `\q`
+Exit PSQL: \
+`\q`
 
 ## Set up Server API
 
-CD into Server folder `cd server`
+CD into Server folder: \
+`cd server`
 
-Install Server dependencies `npm i`
+Install Server dependencies: \
+`npm i`
 
-Create .env with `cp .env.example .env` 
+Create .env file from template: \
+`cp .env.example .env` 
 
-Seed the database with `npm run db:reset`
+Seed the database: \
+`npm run db:reset`
 
-Start the Server `npm start`
+Start the Server: \
+`npm start`
 
 ## Set up Client
 
-From another terminal, CD into the Client folder `cd client`
+From another terminal, CD into the Client folder: \
+`cd client`
 
-Install Server dependencies `npm i`
+Install Server dependencies: \
+`npm i`
 
-Run the client `npm start`
+Run the client: \
+`npm start`
 
 Visit the App in your browser at http://localhost:3000
 
@@ -94,21 +98,18 @@ Visit the App in your browser at http://localhost:3000
 * react-scripts 5.x
 * react-burger-menu 3.x
 * react-datepicker 4.x
-* web-vitals 2.x
 * axios 0.27.x
 * date-fns 2.x
 * normalize.css 8.x
-* classnames 2.x
 * sass 1.5x
     
 ## Server Dependencies
     
 * @prisma/client 3.x
-* express 4.x
 * prisma 3.x
+* express 4.x
 * dotenv 16.x
 * twilio 3.x
-* express-async-errors 3.x
 * body-parser 1.2x
 * nodemon 2.x
 * morgan 1.x

@@ -29,10 +29,9 @@ const Sidenav = (props) => {
           <header>
             <h4>Assignments</h4>
           </header>
+          <li onClick={() => { props.selectView('all'); }} >All Assignments</li>
           <li onClick={() => { props.selectView('pastDue'); }}>Past Due</li>
-          {(props.admin
-            && <li onClick={() => { props.selectView('all'); }} >All Assignments</li>)
-            || <li onClick={() => { props.selectView('completed'); }} >Completed</li>}
+          {!props.admin && <li onClick={() => { props.selectView('completed'); }} >Completed</li>}
         </ul>
       </div>
       {props.admin &&
