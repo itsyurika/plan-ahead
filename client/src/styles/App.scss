@@ -19,7 +19,7 @@ body {
 }
 
 #root>#outer-container {
-  overflow: auto; // fixes background color stretch, but breaks scroll bar
+  overflow: auto; // FIXME: fixes background color stretch, but breaks scroll bar
 
   &::-webkit-scrollbar {
     display: none; // hides scrollbar
