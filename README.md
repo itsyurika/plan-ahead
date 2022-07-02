@@ -3,6 +3,16 @@
 Single Page App designed to help teachers, young students and those with learning disabilities keep track of their assignments and due dates. \
 Utilizes a back-end Server API built with Express Node.js and PostgreSQL, and a front-end interface built with React.js.
 
+## Contributors 
+
+**Yuri Yang** - Product Owner, Developer ([@itsyurika](https://github.com/itsyurika))
+
+**Ben Finlay** - Developer ([@Ben-Finlay](https://github.com/Ben-Finlay))
+
+**Jordan Ciurcovich** - Developer ([@symphony](https://github.com/symphony))
+
+**Minah Lee** - Designer (Portfolio by [@mmlleeee](https://www.minahlee.art/))
+
 ## Demo
 
 A live demo can be found on Heroku - [Plan Ahead Live Demo](https://plan-ahead.herokuapp.com)
@@ -44,7 +54,7 @@ Our development environment connects the server to a local instance of PostgreSQ
 
 To set up the database you will need PostgreSQL installed on your host machine and a PSQL account with admin permissions.
 
-Instructions can be found here: [Installing Postgres](https://www.postgresguide.com/setup/install).
+Instructions can be found here: [Installing Postgres](https://www.postgresguide.com/setup/install)
 
 Once inside PSQL in your terminal create the database:
 
@@ -103,16 +113,8 @@ Visit the App in your browser at http://localhost:3000
 * nodemon 2.x
 * morgan 1.x
 
-## Contributors
+## Resources
 
-Yuri Yang - [@itsyurika](https://github.com/itsyurika)
+* Program - [Full-Stack Web Development Bootcamp](https://www.lighthouselabs.ca/en/web-development-bootcamp) ([@lighthouse-labs](https://github.com/lighthouse-labs))
 
-Ben Finlay - [@Ben-Finlay](https://github.com/Ben-Finlay)
-
-Jordan Ciurcovich - [@symphony](https://github.com/symphony)
-
-- Forked from: [@itsyurika/plan-ahead](https://github.com/itsyurika/plan-ahead)
-
-Lighthouse Labs - [@lighthouse-labs](https://github.com/lighthouse-labs)
-
-Thank you for visiting our project. 
+\- Thank you for visiting our project -
