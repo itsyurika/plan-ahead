@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import 'components/styles/Assignment.scss';
 import Assignment from "components/Assignment";
+import 'components/styles/Assignment.scss';
 
 const Modal = (props) => {
   const modalRef = useRef(null);
@@ -10,7 +10,6 @@ const Modal = (props) => {
       props.onBack();
     }
   };
-
 
   return (
     <article className='outerwrapper'>
