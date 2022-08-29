@@ -5,7 +5,7 @@ import 'components/styles/Assignment.scss';
 const Modal = (props) => {
   const modalRef = useRef(null);
 
-  const handleClick = (e) => {
+  const closeModal = (e) => {
     if (modalRef.current === e.target) {
       props.onBack();
     }
@@ -13,7 +13,7 @@ const Modal = (props) => {
 
   return (
     <article className='outerwrapper'>
-      <div ref={modalRef} onClick={handleClick} className={`modalBackdrop ${props.assigned?.dateCompleted ? 'complete' : ''}`}>
+      <div ref={modalRef} onClick={closeModal} className={`modalBackdrop ${props.assigned?.dateCompleted ? 'complete' : ''}`}>
         <div className='form-modalContainer' >
           <div className='cancel-X' onClick={props.onBack}>&#10006;</div>
           <Assignment  {...props} />
