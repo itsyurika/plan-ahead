@@ -28,7 +28,7 @@ const About = () => {
 
         </div>
         <div className='member'>
-          <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFd83-Ykae-nw/profile-displayphoto-shrink_800_800/0/1520041146270?e=1661385600&v=beta&t=ccI8Xiw6b4GGUWPg6APNicEQnOycL6MsQnL031oxrRw" alt="Yuri's lovely selfie" />
+          <img src="https://i.imgur.com/w2Asa7t.jpg" alt="Yuri's lovely selfie" />
           <h3 className='name'>Yuri Yang</h3>
           <div className='links'>
             <h4><a href='https://github.com/itsyurika' target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github fa-xl"></i></a></h4>
